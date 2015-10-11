@@ -1,0 +1,11 @@
+{
+  "name": "vietcongada",
+  "private": true,
+  "dependencies": {
+    "modernizr": "~2.8.3"
+  },
+  "devDependencies": {
+    "chai": "~3.3.0",
+    "mocha": "~2.3.2"
+  }
+}
