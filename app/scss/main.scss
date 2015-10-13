@@ -10,3 +10,89 @@ body {
   color: #000;
   padding: 0.2em 0;
 }
+
+// Map
+// --------------------------------------------------
+
+.Map {
+  position: absolute;
+  top: 0; // TODO: calc
+  margin-left: -350px;
+
+  &.is-fixed {
+    position: fixed;
+  }
+}
+
+.Route {
+  fill: none;
+  stroke: #ccc;
+  stroke-dasharray: 2,2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+
+  &.is-hidden {
+    display: none;
+  }
+}
+
+.Route--story {
+  display: none;
+  stroke: #f93;
+  stroke-opacity: .6;
+  stroke-width: 3px;
+
+  &.is-active {
+    display: block;
+  }
+}
+
+.City {
+  cursor: pointer;
+  fill: #999;
+
+  &.is-active {
+    fill: #333;
+  }
+}
+
+.City-label {
+  font-size: 11px;
+  fill: #ccc;
+  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+  cursor: pointer;
+
+  &.is-visited {
+    fill: #333;
+  }
+
+  &.is-active {
+    fill: #333;
+    font-weight: bold;
+  }
+}
+
+// Header
+// --------------------------------------------------
+
+.Header {
+  height: 550px;
+}
+
+
+// Content
+// --------------------------------------------------
+
+.Content {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  h1 {
+    margin-top: 40px;
+  }
+}
+
+.Content-inner {
+  position: relative;
+}
