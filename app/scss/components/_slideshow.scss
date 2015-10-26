@@ -1,0 +1,12 @@
+// Slideshow
+// --------------------------------------------------
+
+.Slideshow {
+  width: calc(100% + 250px);
+  margin-top: $spacing-unit * 2;
+  margin-bottom: $spacing-unit * 2;
+
+  @include media-query($layout-xl) {
+    width: 100%;
+  }
+}

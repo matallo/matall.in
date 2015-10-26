@@ -1,0 +1,33 @@
+// Buttons
+// --------------------------------------------------
+
+.Button {
+  display: inline-block;
+  border: 2px solid #EEE;
+  text-align: center;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #999;
+  border-radius: 3px;
+  transition: all .2s;
+  outline: none;
+
+  &:hover {
+    text-decoration: none;
+    border-color: #DDD;
+    color: #666;
+  }
+
+  > span {
+    display: inline-block;
+  }
+}
+
+.Button--m {
+  > span {
+    padding: $spacing-unit / 2 $spacing-unit;
+  }
+}

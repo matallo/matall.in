@@ -1,0 +1,17 @@
+// Utilities
+// --------------------------------------------------
+
+.u-inner {
+  @include clearfix;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: $layout-m;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $spacing-unit;
+  padding-left: $spacing-unit;
+}
+.u-right {
+  float: right;
+}

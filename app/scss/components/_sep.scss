@@ -1,0 +1,16 @@
+// Separator
+// --------------------------------------------------
+
+.Sep {
+  display: block;
+  width: 120px;
+  height: 2px;
+  background: #eee;
+}
+.Sep--content {
+  margin-top: $spacing-unit * 2;
+  margin-bottom: $spacing-unit * 2;
+}
+.Sep--footer {
+  margin: $spacing-unit * 3 auto;
+}

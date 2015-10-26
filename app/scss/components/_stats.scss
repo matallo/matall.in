@@ -1,0 +1,36 @@
+// Stats
+// --------------------------------------------------
+
+.Stats {
+  margin-right: 25%;
+  margin-left: 25%;
+  text-align: right;
+
+  @include media-query($layout-l) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.Stats-item {
+  display: inline-block;
+  margin-left: 40px;
+  font-size: 13px;
+  text-align: left;
+  text-shadow: 0 2px 0 rgba(#000, 0.3);
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  @include media-query($layout-s) {
+    width: 100%;
+    margin-top: $spacing-unit;
+    margin-left: 0;
+  }
+}
+.Stats-num {
+  display: block;
+  margin-bottom: $spacing-unit / 2;
+  font-weight: 600;
+  font-size: 36px;
+}

@@ -47,7 +47,7 @@ module.exports = function (grunt) {
           files: [
             '<%= config.app %>/{,*/}*.html',
             '<%= config.tmp %>/css/{,*/}*.css',
-            '<%= config.app %>/img/{,*/}*',
+            '<%= config.app %>/img/**/*',
             '<%= config.tmp %>/js/{,*/}*.js'
           ],
           port: 9000,
@@ -188,7 +188,7 @@ module.exports = function (grunt) {
         src: [
           '<%= config.dist %>/js/{,*/}*.*',
           '<%= config.dist %>/css/{,*/}*.css',
-          '<%= config.dist %>/img/{,*/}*.*'
+          '<%= config.dist %>/img/**/*.*'
         ]
       }
     },
@@ -211,6 +211,11 @@ module.exports = function (grunt) {
         patterns: {
           js: [
             [/(js\/data\/.*?\.(?:json))/gm, 'Update the js to reference revved json']
+          ],
+          html: [
+            [/(img\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the html to reference revved images'],
+            [/(css\/.*?\.css)/gm, 'Update the html to reference revved stylesheets'],
+            [/(js\/.*?\.js)/gm, 'Update the html to reference revved scripts']
           ]
         }
       },
@@ -224,7 +229,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= config.app %>/img',
-          src: '{,*/}*.{gif,jpeg,jpg,png}',
+          src: '**/*.{gif,jpeg,jpg,png}',
           dest: '<%= config.dist %>/img'
         }]
       }
@@ -235,7 +240,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= config.app %>/img',
-          src: '{,*/}*.svg',
+          src: '**/*.svg',
           dest: '<%= config.dist %>/img'
         }]
       }
@@ -278,8 +283,8 @@ module.exports = function (grunt) {
           dest: '<%= config.dist %>',
           src: [
             '*.{ico,png,txt}',
-            'img/{,*/}*.webp',
-            '{,*/}*.html'
+            '{,*/}*.html',
+            'fonts/{,*/}*.*'
           ]
         }, {
           expand: true,

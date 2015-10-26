@@ -1,0 +1,70 @@
+// Map
+// --------------------------------------------------
+
+.Map {
+  display: block;
+  position: absolute;
+  top: 0;
+  margin-left: -360px - $spacing-unit / 2;
+
+  &.is-fixed {
+    position: fixed;
+  }
+
+  &.is-bottom {
+    position: absolute;
+    top: auto;
+    bottom: -72px;
+  }
+
+  @include media-query($layout-m) {
+    display: none;
+  }
+}
+.Country {
+  fill: #F9F9F9;
+}
+.Route {
+  fill: none;
+  stroke: #CCC;
+  stroke-dasharray: 2,2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+
+  &.is-hidden {
+    display: none;
+  }
+}
+.Route--story {
+  display: none;
+  stroke: #F93;
+  stroke-opacity: .6;
+  stroke-width: 3px;
+
+  &.is-active {
+    display: block;
+  }
+}
+.City {
+  cursor: pointer;
+  fill: #999;
+
+  &.is-active {
+    fill: #333;
+  }
+}
+.City-label {
+  font-size: 10px;
+  fill: #CCC;
+  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+  cursor: pointer;
+
+  &.is-visited {
+    fill: #333;
+  }
+
+  &.is-active {
+    fill: #333;
+    font-weight: bold;
+  }
+}

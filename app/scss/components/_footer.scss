@@ -1,0 +1,21 @@
+// Footer
+// --------------------------------------------------
+
+.Footer {
+  margin-bottom: $spacing-unit * 3;
+}
+.Footer-image {
+  display: inline-block;
+  vertical-align: middle;
+
+  img {
+    border-radius: 51px;
+  }
+}
+.Footer-description {
+  display: inline-block;
+  width: calc(100% - 104px);
+  margin-bottom: 0;
+  padding-left: 40px;
+  vertical-align: middle;
+}

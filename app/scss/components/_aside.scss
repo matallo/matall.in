@@ -1,0 +1,35 @@
+// Aside
+// --------------------------------------------------
+
+.Aside {
+  float: right;
+  width: 150px;
+  margin: $spacing-unit / 2 0 $spacing-unit / 2 $spacing-unit * 2;
+
+  @include media-query($layout-xl) {
+    float: none;
+    width: 100%;
+    margin-top: $spacing-unit * 2;
+    margin-bottom: $spacing-unit * 2;
+    margin-left: 0;
+  }
+}
+.Aside-media {
+  width: 400px;
+  max-width: none;
+
+  @include media-query($layout-xl) {
+    width: 100%;
+  }
+}
+.Aside-caption,
+.Slideshow-caption {
+  margin-bottom: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 13px;
+  color: #999;
+}
+.Aside-caption {
+  width: 400px;
+}

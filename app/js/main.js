@@ -11,7 +11,6 @@ App.Views.Main = Backbone.View.extend({
     this.$map = this.$('.js-Map');
 
     this._initViews();
-    this._initBindings();
   },
 
   _initBindings: function() {
@@ -56,7 +55,7 @@ App.Views.Main = Backbone.View.extend({
           }
         }
       },
-      offset: 'bottom-in-view'
+      offset: $(window).outerHeight()
     });
 
     this.$('h2').waypoint({
@@ -85,6 +84,32 @@ App.Views.Main = Backbone.View.extend({
         }
       }
     });
+
+    this.$('.js-Share').waypoint({
+      handler: function(direction) {
+        if (direction == 'down') {
+          _this.$map.addClass('is-bottom');
+        }
+
+        if (direction == 'up') {
+          _this.$map.removeClass('is-bottom');
+        }
+      },
+      offset: $(window).outerHeight()
+    });
+
+    this.$('.js-Share').waypoint({
+      handler: function(direction) {
+        if (direction == 'down') {
+          _this.$map.addClass('is-bottom');
+        }
+
+        if (direction == 'up') {
+          _this.$map.removeClass('is-bottom');
+        }
+      },
+      offset: $(window).outerHeight()
+    });
   },
 
   _fixMenu: function() {
@@ -104,7 +129,7 @@ App.Views.Main = Backbone.View.extend({
           delay = (opt && opt.delay) || 0,
           margin = (opt && opt.margin) || 0;
 
-      $('html, body').delay(delay).animate({scrollTop:$el.offset().top - margin}, speed);
+      $('html, body').delay(delay).animate({scrollTop: $el.offset().top - margin}, speed);
 
       setTimeout(function() {
         callback && callback();
@@ -113,14 +138,16 @@ App.Views.Main = Backbone.View.extend({
   },
 
   _initViews: function() {
-    this._initMap();
+    if ($(window).width() > 800) {
+      this._initMap();
+    }
   },
 
   _initMap: function() {
     var _this = this;
 
     var width = 360;
-    var height = 500;
+    var height = 720;
 
     var svg = d3.select('#map')
         .append('svg')
@@ -129,7 +156,7 @@ App.Views.Main = Backbone.View.extend({
 
     var projection = d3.geo.mercator()
         .center([101.3097594, 15.8565707])
-        .scale(2500)
+        .scale(2400)
         .translate([0, height / 2]);
 
     var path = d3.geo.path()
@@ -139,6 +166,14 @@ App.Views.Main = Backbone.View.extend({
       if (error) {
         return console.error(error);
       }
+
+      svg
+        .selectAll('.Country')
+        .data(topojson.feature(vietcongada, vietcongada.objects.world_borders_hd_copy).features)
+        .enter()
+        .append('path')
+          .attr('class', 'Country')
+          .attr('d', path);
 
       svg
         .selectAll('.Route')
@@ -172,19 +207,17 @@ App.Views.Main = Backbone.View.extend({
           .attr('class', function(d) { return 'City-label js-City-label js-City-label--' + d.properties.slug; })
           .attr('transform', function(d) { return 'translate(' + projection(d.geometry.coordinates) + ')'; })
           .text(function(d) { return d.properties.label ? d.properties.name : ''; })
-          .attr('dy', '.35em')
+          .attr('dy', '1.5em')
           .attr('dx', function(d) {
-            var w = parseInt(d3.select(this).style('width').replace('px', ''), 10);
+            var w = parseInt(d3.select(this).style('width').replace('px', ''), 10) / 2 * -1;
 
-            return '-' + (w + 10);
+            return w;
           })
           .on('click', function(d) {
-            _this._goTo(_this.$('#'+d.properties.slug), { margin: 20 });
+            _this._goTo(_this.$('#'+d.properties.slug), { margin: 66 });
           });
 
-      // ho_chi_minh_city is-active by default
-      d3.select('.js-City--ho_chi_minh_city').classed('is-active', true);
-      d3.select('.js-City-label--ho_chi_minh_city').classed('is-active is-visited', true);
+      _this._initBindings();
     });
   }
 
