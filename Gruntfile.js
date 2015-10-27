@@ -6,26 +6,90 @@ module.exports = function (grunt) {
     useminPrepare: 'grunt-usemin'
   });
 
+  var env = grunt.option('target') || 'development';
+
   var config = {
     app: 'app',
     tmp: '.tmp',
-    dist: 'dist'
+    dist: 'dist',
+    aws: grunt.file.readJSON('grunt-aws.'+env+'.json')
   };
 
   grunt.initConfig({
     config: config,
+
+    // put your credentials and save
+    // grunt-aws.development.json to grunt-aws.production.json
+    aws_s3: {
+      options: {
+        accessKeyId: "<%= config.aws.accessKeyId %>",
+        secretAccessKey: "<%= config.aws.secretAccessKey %>",
+        bucket: '<%= config.aws.bucket %>',
+        region: 'us-west-2',
+        uploadConcurrency: 5
+      },
+      clean: {
+        options: {
+          // Doesn't actually delete but shows log
+          debug: true
+        },
+        files: [
+          { dest: '/', action: 'delete' }
+        ]
+      },
+      dist: {
+        options: {
+          differential: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= config.dist %>/',
+          src: [
+            '**/*.html',
+            '*.{ico,png}'
+          ],
+          dest: '/'
+        }]
+      },
+      assets: {
+        options: {
+          params: {
+            'CacheControl': 'max-age=31536000, public',
+            'Expires': new Date(Date.now() + 31536000 * 1000)
+          },
+          differential: true,
+          gzipRename: 'ext'
+        },
+        gzip: true,
+        files: [{
+          expand: true,
+          cwd: '<%= config.dist %>/',
+          src: [
+            'css/{,*/}*.gz',
+            'js/{,*/}*.gz',
+            'img/**/*.{gif,jpeg,jpg,png,svg}',
+            'fonts/{,*/}*.{eot,woff,woff2,ttf,svg}'
+          ],
+          dest: '/'
+        }]
+      }
+    },
 
     watch: {
       babel: {
         files: ['<%= config.app %>/js/{,*/}*.js'],
         tasks: ['babel:dist']
       },
-      babelTest: {
-        files: ['test/spec/{,*/}*.js'],
-        tasks: ['babel:test', 'test:watch']
-      },
       gruntfile: {
         files: ['Gruntfile.js']
+      },
+      html: {
+        files: [
+          '<%= config.app %>/**/*.{html,md}',
+          '<%= config.app %>/img/**/*.{gif,jpeg,jpg,png,svg}',
+          '<%= config.app %>/fonts/{,*/}*.{eot,woff,woff2,ttf,svg}'
+        ],
+        tasks: ['shell:development', 'sass:server', 'postcss']
       },
       sass: {
         files: ['<%= config.app %>/scss/{,*/}*.{scss,sass}'],
@@ -34,6 +98,15 @@ module.exports = function (grunt) {
       styles: {
         files: ['<%= config.app %>/scss/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'postcss']
+      }
+    },
+
+    shell: {
+      development: {
+        command: "bundle exec jekyll build"
+      },
+      production: {
+        command: "bundle exec jekyll build --config _config.yml,_config-prod.yml"
       }
     },
 
@@ -46,27 +119,13 @@ module.exports = function (grunt) {
         options: {
           files: [
             '<%= config.app %>/{,*/}*.html',
-            '<%= config.tmp %>/css/{,*/}*.css',
-            '<%= config.app %>/img/**/*',
-            '<%= config.tmp %>/js/{,*/}*.js'
+            '.tmp/css/{,*/}*.css',
+            '<%= config.app %>/img/{,*/}*',
+            '.tmp/js/{,*/}*.js'
           ],
           port: 9000,
           server: {
-            baseDir: [config.tmp, config.app],
-            routes: {
-              '/bower_components': './bower_components'
-            }
-          }
-        }
-      },
-      test: {
-        options: {
-          port: 9001,
-          open: false,
-          logLevel: 'silent',
-          host: 'localhost',
-          server: {
-            baseDir: [config.tmp, './test', config.app],
+            baseDir: [config.tmp, config.dist],
             routes: {
               '/bower_components': './bower_components'
             }
@@ -86,31 +145,20 @@ module.exports = function (grunt) {
         files: [{
           dot: true,
           src: [
-            '<%= config.tmp %>',
+            '.tmp',
             '<%= config.dist %>/*',
             '!<%= config.dist %>/.git*'
           ]
         }]
-      },
-      server: '<%= config.tmp %>'
+      }
     },
 
     eslint: {
       target: [
         'Gruntfile.js',
         '<%= config.app %>/js/{,*/}*.js',
-        '!<%= config.app %>/js/vendor/*',
-        'test/spec/{,*/}*.js'
+        '!<%= config.app %>/js/vendor/*'
       ]
-    },
-
-    mocha: {
-      all: {
-        options: {
-          run: true,
-          urls: ['http://<%= browserSync.test.options.host %>:<%= browserSync.test.options.port %>/index.html']
-        }
-      }
     },
 
     babel: {
@@ -123,15 +171,6 @@ module.exports = function (grunt) {
           cwd: '<%= config.app %>/js',
           src: '{,*/}*.js',
           dest: '<%= config.tmp %>/js',
-          ext: '.js'
-        }]
-      },
-      test: {
-        files: [{
-          expand: true,
-          cwd: 'test/spec',
-          src: '{,*/}*.js',
-          dest: '<%= config.tmp %>/spec',
           ext: '.js'
         }]
       }
@@ -147,8 +186,8 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= config.app %>/scss',
-          src: ['*.{scss,sass}'],
+          cwd: '<%= config.app %>/_scss/',
+          src: ['*.scss'],
           dest: '<%= config.tmp %>/css',
           ext: '.css'
         }]
@@ -156,8 +195,8 @@ module.exports = function (grunt) {
       server: {
         files: [{
           expand: true,
-          cwd: '<%= config.app %>/scss',
-          src: ['*.{scss,sass}'],
+          cwd: '<%= config.app %>/_scss/',
+          src: ['*.scss'],
           dest: '<%= config.tmp %>/css',
           ext: '.css'
         }]
@@ -188,7 +227,8 @@ module.exports = function (grunt) {
         src: [
           '<%= config.dist %>/js/{,*/}*.*',
           '<%= config.dist %>/css/{,*/}*.css',
-          '<%= config.dist %>/img/**/*.*'
+          '<%= config.dist %>/img/**/*.*',
+          '<%= config.dist %>/fonts/{,*/}*.*'
         ]
       }
     },
@@ -197,7 +237,7 @@ module.exports = function (grunt) {
       options: {
         dest: '<%= config.dist %>'
       },
-      html: '<%= config.app %>/index.html'
+      html: '<%= config.dist %>/index.html'
     },
 
     usemin: {
@@ -271,27 +311,9 @@ module.exports = function (grunt) {
     copy: {
       styles: {
         expand: true,
-        cwd: '<%= config.app %>/scss',
+        cwd: '<%= config.app %>/_scss',
         src: '{,*/}*.css',
         dest: '<%= config.tmp %>/css/'
-      },
-      dist: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= config.app %>',
-          dest: '<%= config.dist %>',
-          src: [
-            '*.{ico,png,txt}',
-            '{,*/}*.html',
-            'fonts/{,*/}*.*'
-          ]
-        }, {
-          expand: true,
-          cwd: '<%= config.app %>/js/data',
-          src: '{,*/}*.json',
-          dest: '<%= config.dist %>/js/data'
-        }]
       }
     },
 
@@ -316,9 +338,6 @@ module.exports = function (grunt) {
         'copy:styles',
         'sass:server'
       ],
-      test: [
-        'babel'
-      ],
       dist: [
         'babel',
         'copy:styles',
@@ -326,6 +345,26 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
+    },
+
+    compress: {
+      dist: {
+        options: {
+          mode: 'gzip',
+          level: 9
+        },
+        files: [{
+          expand: true,
+          src: ['<%= config.dist %>/css/*.css'],
+          ext: '.css.gz',
+          extDot: 'last'
+        }, {
+          expand: true,
+          src: ['<%= config.dist %>/js/{,*/}*.js'],
+          ext: '.js.gz',
+          extDot: 'last'
+        }]
+      }
     }
   });
 
@@ -337,7 +376,8 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'clean:server',
+      'clean',
+      'shell:development',
       'concurrent:server',
       'postcss',
       'browserSync:livereload',
@@ -350,39 +390,26 @@ module.exports = function (grunt) {
     grunt.task.run([target ? ('serve:' + target) : 'serve']);
   });
 
-  grunt.registerTask('test', function (target) {
-    if (target !== 'watch') {
-      grunt.task.run([
-        'clean:server',
-        'concurrent:test',
-        'postcss'
-      ]);
-    }
-
-    grunt.task.run([
-      'browserSync:test',
-      'mocha'
-    ]);
-  });
-
   grunt.registerTask('build', [
-    'clean:dist',
+    'clean',
+    'shell:production',
     'useminPrepare',
     'concurrent:dist',
     'postcss',
     'concat',
     'cssmin',
     'uglify',
-    'copy:dist',
     'modernizr',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'compress',
+    'aws_s3:dist',
+    'aws_s3:assets'
   ]);
 
   grunt.registerTask('default', [
     'newer:eslint',
-    'test',
     'build'
   ]);
 };

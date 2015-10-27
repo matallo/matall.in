@@ -1,0 +1,13 @@
+# Site settings
+title: Carlos Matallín
+description: "Code, design, and mountains."
+baseurl: ""
+url: "http://matall.in"
+
+# Build settings
+source: 'app'
+destination: 'dist'
+markdown: kramdown
+permalink: pretty
+
+# analytics_property_id: ''

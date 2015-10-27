@@ -3,7 +3,7 @@
 
 'use strict';
 
-App.Views.Main = Backbone.View.extend({
+App.Views.Map = Backbone.View.extend({
 
   el: 'body',
 
@@ -18,15 +18,15 @@ App.Views.Main = Backbone.View.extend({
 
     $(document)
       .ready(function() {
-        _this._fixMenu();
+        _this._fixMap();
       });
 
     $(window)
       .scroll(function() {
-        _this._fixMenu();
+        _this._fixMap();
       })
       .resize(function() {
-        _this._fixMenu();
+        _this._fixMap();
       });
 
     this.$('h2').waypoint({
@@ -112,7 +112,7 @@ App.Views.Main = Backbone.View.extend({
     });
   },
 
-  _fixMenu: function() {
+  _fixMap: function() {
     var headerHeight = this.$('.js-Header').outerHeight();
     var scrollNumber = document.body.scrollTop;
 
