@@ -50,14 +50,11 @@ p, ul, ol {
   }
 }
 blockquote {
-  margin: $spacing-unit * 2 $spacing-unit * 4;
+  margin: $spacing-unit * 2;
   font-weight: 300;
   font-size: 21px;
   line-height: 30px;
-
-  @include media-query($layout-m) {
-    margin: $spacing-unit * 2;
-  }
+  text-align: center;
 
   span {
     position: relative;

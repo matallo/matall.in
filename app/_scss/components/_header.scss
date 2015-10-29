@@ -6,7 +6,7 @@
   height: 300px;
 }
 .Header.Header--home {
-  height: 550px;
+  height: 500px;
 
   @include media-query($layout-m) {
     display: none;
@@ -28,7 +28,7 @@
 }
 .Header-footer {
   position: absolute;
-  bottom: $spacing-unit / 2;
+  bottom: $spacing-unit;
   width: 100%;
   color: #fff;
 }

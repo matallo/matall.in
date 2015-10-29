@@ -37,7 +37,7 @@ background_image: "/img/backgrounds/148065923.jpg"
             <div class="Sep Sep--block"></div>
 
             <h2 class="Block-title">Work</h2>
-            <p>Currently I work as Front-end developer at <a href="https://cartodb.com/">CartoDB</a>, a SaaS location intelligence and data visualization tool.</p>
+            <p>Currently I work as Front-end developer at <a href="https://cartodb.com/">CartoDB</a>, a location intelligence and data visualization platform.</p>
 
             <!-- p><a href="#" class="Button Button--m"><span>Portfolio</span></a></p -->
           </div>
@@ -55,11 +55,11 @@ background_image: "/img/backgrounds/148065923.jpg"
 
     <div class="u-inner u-inner--xxl">
       {% for post in site.posts | limit: 1 %}
-        <a href="{{ post.url }}" class="Story-image">
+        <a href="{{ post.url }}" class="Story-image" title="{{ post.description }}">
           <div class="Story-gradient"></div>
           <div class="Story-header">
-            <h3 class="Story-title">Vietnam</h3>
-            <p class="Story-description">Summer 2015</p>
+            <h3 class="Story-title">{{ post.title }}</h3>
+            <p class="Story-description">{{ post.when }}</p>
           </div>
 
           <img src="{{ post.background_image }}" alt="{{ post.title }}">
@@ -79,8 +79,9 @@ background_image: "/img/backgrounds/148065923.jpg"
           <div class="Sep Sep--block"></div>
 
           <h2 class="Block-title">Contact</h2>
-          <p>You can find me on <a href="https://twitter.com/matallo" target="_blank">Twitter</a> or <a href="mailto:carlos@matallin.com">send me an email</a>. You can also find me in other social networks.</p>
+          <p>Feel free to <a href="mailto:carlos@matallin.com">send me an email</a>. You can also find me in other social networks.</p>
           <ul>
+            <li class="Social-item"><a href="https://twitter.com/matallo/" class="Social-link" target="_blank"><i class="Icon Icon--twitter"></i></a></li>
             <li class="Social-item"><a href="https://instagram.com/matallo/" class="Social-link" target="_blank"><i class="Icon Icon--instagram"></i></a></li>
             <li class="Social-item"><a href="https://es.linkedin.com/in/carlosmatallin" class="Social-link" target="_blank"><i class="Icon Icon--linkedin-squared"></i></a></li>
             <li class="Social-item"><a href="https://dribbble.com/matallo" class="Social-link" target="_blank"><i class="Icon Icon--dribbble"></i></a></li>

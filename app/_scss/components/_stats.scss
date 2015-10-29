@@ -6,8 +6,7 @@
 }
 .Stats-item {
   display: inline-block;
-  margin-left: 40px;
-  font-size: 13px;
+  margin-left: $spacing-unit * 2;
   text-align: left;
   text-shadow: 0 2px 0 rgba(#000, 0.3);
 
