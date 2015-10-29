@@ -2,14 +2,7 @@
 // --------------------------------------------------
 
 .Stats {
-  margin-right: 25%;
-  margin-left: 25%;
   text-align: right;
-
-  @include media-query($layout-l) {
-    margin-left: auto;
-    margin-right: auto;
-  }
 }
 .Stats-item {
   display: inline-block;
@@ -28,7 +21,7 @@
     margin-left: 0;
   }
 }
-.Stats-num {
+.Stats-number {
   display: block;
   margin-bottom: $spacing-unit / 2;
   font-weight: 600;

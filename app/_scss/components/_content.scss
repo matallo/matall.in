@@ -9,27 +9,32 @@
   margin-left: auto;
   margin-right: auto;
 }
-.Content--map {
-  margin-left: 25%;
-  margin-right: 25%;
-
-  @include media-query($layout-m) {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
 .Content-inner {
   position: relative;
   padding-top: $spacing-unit * 3;
+}
+.Home-header {
+  margin-top: -110px;
+  text-align: center;
+
+  @include media-query($layout-m) {
+    margin-top: 0;
+  }
+}
+.Post-header {
+  margin-bottom: $spacing-unit * 2;
 }
 .Content-title {
   margin-top: 0;
 }
 .Content-subtitle {
-  margin-bottom: $spacing-unit * 2;
   font-weight: 300;
   font-size: 21px;
   color: #999;
+
+  a {
+    font-weight: 300;
+  }
 }
 .Content-date {
   margin-bottom: 0;

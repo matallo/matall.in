@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<header class="Header js-Header">
+  <div class="Header-background Header-background--cover" style="background-image: url({{ page.background_image }});"></div>
+  <div class="Header-background Header-background--black"></div>
+
+  <div class="Header-footer">
+    <div class="Stats">
+      <ul class="u-inner">
+        {% for stats_item in page.stats %}
+          <li class="Stats-item"><strong class="Stats-number">{{ stats_item.number }}</strong> {{ stats_item.name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</header>
+
+<div class="Content">
+  <div class="u-inner">
+    {{ content }}
+  </div>
+</div>
+
+{% include footer.html %}

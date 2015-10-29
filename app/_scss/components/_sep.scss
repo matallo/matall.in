@@ -14,3 +14,13 @@
 .Sep--footer {
   margin: $spacing-unit * 3 auto;
 }
+.Sep--block {
+  margin-bottom: $spacing-unit * 2;
+}
+@include media-query($layout-m) {
+  .Sep--block,
+  .Sep--content {
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

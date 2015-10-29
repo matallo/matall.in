@@ -1,0 +1,11 @@
+// Avatar
+// --------------------------------------------------
+
+@mixin avatar {
+  display: inline-block;
+  vertical-align: middle;
+
+  img {
+    border-radius: 51px;
+  }
+}

@@ -1,0 +1,27 @@
+// Grid
+//
+// --------------------------------------------------
+
+.Grid {
+  display: flex;
+}
+.Grid-inner {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  margin-right: -$spacing-unit;
+  margin-left: -$spacing-unit;
+}
+.Grid-cell {
+  padding-right: $spacing-unit;
+  padding-left: $spacing-unit;
+}
+.Grid-cell--col6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+
+  @include media-query($layout-m) {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

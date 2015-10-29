@@ -14,11 +14,40 @@
   &.is-bottom {
     position: absolute;
     top: auto;
-    bottom: -72px;
+    bottom: -50px;
   }
 
   @include media-query($layout-m) {
     display: none;
+  }
+}
+.Placeholder {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: -240px;
+  width: 200px;
+  height: 200px;
+  background: #f9f9f9;
+
+  &.is-active {
+    display: block;
+  }
+}
+.Placeholder-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  line-height: 200px;
+  text-align: center;
+  vertical-align: middle;
+  color: #999;
+  transition: all .2s;
+
+  &:hover {
+    color: darken(#999, 5%);
   }
 }
 .Country {

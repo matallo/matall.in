@@ -3,7 +3,7 @@
 
 'use strict';
 
-App.Views.Map = Backbone.View.extend({
+App.Views.Story = Backbone.View.extend({
 
   el: 'body',
 
@@ -55,7 +55,7 @@ App.Views.Map = Backbone.View.extend({
           }
         }
       },
-      offset: $(window).outerHeight()
+      offset: $(window).height()
     });
 
     this.$('h2').waypoint({
@@ -85,7 +85,7 @@ App.Views.Map = Backbone.View.extend({
       }
     });
 
-    this.$('.js-Share').waypoint({
+    this.$('.js-Sticky').waypoint({
       handler: function(direction) {
         if (direction == 'down') {
           _this.$map.addClass('is-bottom');
@@ -95,20 +95,7 @@ App.Views.Map = Backbone.View.extend({
           _this.$map.removeClass('is-bottom');
         }
       },
-      offset: $(window).outerHeight()
-    });
-
-    this.$('.js-Share').waypoint({
-      handler: function(direction) {
-        if (direction == 'down') {
-          _this.$map.addClass('is-bottom');
-        }
-
-        if (direction == 'up') {
-          _this.$map.removeClass('is-bottom');
-        }
-      },
-      offset: $(window).outerHeight()
+      offset: 720
     });
   },
 
@@ -140,6 +127,8 @@ App.Views.Map = Backbone.View.extend({
   _initViews: function() {
     if ($(window).width() > 800) {
       this._initMap();
+    } else {
+      this.$('.js-Placeholder').addClass('is-active');
     }
   },
 
@@ -149,7 +138,7 @@ App.Views.Map = Backbone.View.extend({
     var width = 360;
     var height = 720;
 
-    var svg = d3.select('#map')
+    var svg = d3.select('.js-Map')
         .append('svg')
           .attr('width', width)
           .attr('height', height);
@@ -162,7 +151,7 @@ App.Views.Map = Backbone.View.extend({
     var path = d3.geo.path()
         .projection(projection);
 
-    d3.json('js/data/vietcongada.json', function(error, vietcongada) {
+    d3.json('/js/data/vietcongada.json', function(error, vietcongada) {
       if (error) {
         return console.error(error);
       }
@@ -221,4 +210,8 @@ App.Views.Map = Backbone.View.extend({
     });
   }
 
+});
+
+$(function() {
+  window.Story = new App.Views.Story();
 });

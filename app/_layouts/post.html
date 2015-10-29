@@ -1,6 +1,15 @@
 ---
 layout: default
 ---
-{{ content }}
+<header class="Header">
+  <div class="Header-background Header-background--cover" style="background-image: url({{ page.background_image }});"></div>
+  <div class="Header-background Header-background--black"></div>
+</header>
+
+<div class="Content Post">
+  <div class="u-inner">
+    {{ content }}
+  </div>
+</div>
 
 {% include footer.html %}

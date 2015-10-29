@@ -30,10 +30,12 @@ h2, h3 {
 h1 {
   font-weight: 700;
   font-size: 36px;
+  line-height: 40px;
 }
 h2 {
   margin-bottom: $spacing-unit;
   font-size: 24px;
+  line-height: 30px;
 }
 h3 {
   font-size: 18px;
@@ -42,11 +44,20 @@ h3 {
     margin-top: 0;
   }
 }
+p, ul, ol {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
 blockquote {
   margin: $spacing-unit * 2 $spacing-unit * 4;
   font-weight: 300;
   font-size: 21px;
   line-height: 30px;
+
+  @include media-query($layout-m) {
+    margin: $spacing-unit * 2;
+  }
 
   span {
     position: relative;

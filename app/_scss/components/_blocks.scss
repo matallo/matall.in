@@ -1,0 +1,15 @@
+// Blocks
+// --------------------------------------------------
+
+.Block {
+  margin-top: $spacing-unit * 3;
+
+  @include media-query($layout-m) {
+    text-align: center;
+  }
+}
+.Block-title {
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: uppercase;
+}

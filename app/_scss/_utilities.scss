@@ -12,6 +12,9 @@
   padding-right: $spacing-unit;
   padding-left: $spacing-unit;
 }
-.u-right {
-  float: right;
+.u-inner.u-inner--l {
+  max-width: $layout-l;
+}
+.u-inner.u-inner--xxl {
+  max-width: $layout-xxl;
 }

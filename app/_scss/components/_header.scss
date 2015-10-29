@@ -5,6 +5,13 @@
   position: relative;
   height: 300px;
 }
+.Header.Header--home {
+  height: 550px;
+
+  @include media-query($layout-m) {
+    display: none;
+  }
+}
 .Header-background {
   position: absolute;
   top: 0;
@@ -12,14 +19,11 @@
   bottom: 0;
   left: 0;
 }
-.Header-background--cover {
+.Header-background.Header-background--cover {
   background-size: cover;
   background-position: center;
 }
-.Header-background--vietnam {
-  background-image: url("../img/21660789875_470f590f01_b.jpg");
-}
-.Header-background--black {
+.Header-background.Header-background--black {
   background: rgba(#000, .2);
 }
 .Header-footer {

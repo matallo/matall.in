@@ -1,0 +1,52 @@
+// Story
+// --------------------------------------------------
+
+.Story-image {
+  display: block;
+  position: relative;
+}
+.Story-gradient {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(#000, .2);
+}
+.Story-header {
+  position: absolute;
+  top: 50%;
+  margin-top: -38px;
+  width: 100%;
+  text-align: center;
+
+  @include media-query($layout-m) {
+    margin-top: -30px;
+  }
+}
+.Story-title,
+.Story-description {
+  color: #fff;
+  text-shadow: 0 2px 0 rgba(#000, 0.3);
+}
+.Story-title {
+  margin-top: 0;
+  margin-bottom: $spacing-unit / 2;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  text-transform: uppercase;
+
+  @include media-query($layout-m) {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+.Story-description {
+  font-weight: 400;
+  font-size: 21px;
+
+  @include media-query($layout-m) {
+    font-size: 18px;
+  }
+}

@@ -92,7 +92,7 @@ module.exports = function (grunt) {
         tasks: ['shell:development', 'sass:server', 'postcss']
       },
       sass: {
-        files: ['<%= config.app %>/scss/{,*/}*.{scss,sass}'],
+        files: ['<%= config.app %>/_scss/{,*/}*.scss'],
         tasks: ['sass:server', 'postcss']
       },
       styles: {

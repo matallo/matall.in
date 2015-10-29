@@ -1,220 +1,101 @@
 ---
-layout: post
+layout: default
+background_image: "/img/backgrounds/148065923.jpg"
 ---
-<header class="Header js-Header">
-  <div class="Header-background Header-background--cover Header-background--vietnam"></div>
+<header class="Header Header--home">
+  <div class="Header-background Header-background--cover" style="background-image: url({{ page.background_image }});"></div>
   <div class="Header-background Header-background--black"></div>
-
-  <div class="Header-footer">
-    <div class="Stats">
-      <ul class="u-inner">
-        <li class="Stats-item"><strong class="Stats-num">14</strong> days</li>
-        <li class="Stats-item"><strong class="Stats-num">3,000</strong> kilometers</li>
-        <li class="Stats-item"><strong class="Stats-num">1,600€</strong> expenses</li>
-      </ul>
-    </div>
-  </div>
 </header>
 
-<div class="Content Content--map js-Content">
-  <div class="u-inner">
+<div class="Content">
+  <div class="u-inner u-inner--l">
     <div class="Content-inner">
-      <div id="map" class="Map js-Map"></div>
+      <div class="Home-header">
+        <a href="/" class="Home-image">
+          <picture>
+            <source srcset="/img/about/1363306686_04d7bb3035.jpg 1x, /img/about/1363306686_04d7bb3035@2x.jpg 2x">
+            <img src="/img/about/1363306686_04d7bb3035.jpg" alt="matallo" />
+          </picture>
+        </a>
 
-      <h1 class="Content-title">Vietnam</h1>
-      <p class="Content-subtitle">Summer 2015 — Carlos and Adrián's Top Gear: Vietnam Special</p>
+        <h1 class="Content-title">Hi, I'm Carlos Matallín</h1>
+        <p class="Content-subtitle">Code, design, and mountains.</p>
+      </div>
 
-      <!-- p>The weekend I started collecting the notes I made during my trip to Vietnam I was supposed to be hiking in the Pyrenees, but I finally bailed out for several reasons, among others: brutal hangover from the <a href="http://novobrief.com/cartodb-series-b-funding-accel/">CartoDB Series B financing</a> celebration, guilty feeling because of the shit-load of pending work, scare to death of injuring my feet one week before my first half marathon, and I could go on and on. So, instead of having rest and train I binge-watched episodes of Rick and Morty and wrote this review.</p -->
+      <div class="Grid">
+        <div class="Grid-inner">
+          <div class="Grid-cell Grid-cell--col6 Block">
+            <div class="Sep Sep--block"></div>
 
-      <p>Last Summer I took a holiday trip to Vietnam with the single purpose of crossing the country on a motorbike with my friend <a href="https://twitter.com/adrpz">Adrián</a>, who convinced me to join this adventure.</p>
+            <h2 class="Block-title">About</h2>
+            <p>I’m a 27 year old geek from Valencia living in Madrid. I’m a web enthusiast, passionate about technology and design. I climb mountains, too.</p>
 
-      <p>I had never ridden a motorbike before. Seriously, not even in high school. But after watching <a href="https://en.wikipedia.org/wiki/Top_Gear:_Vietnam_Special">Top Gear: Vietnam Special</a> — just look for it in <abbr title="The Pirate Bay">TPB</abbr> — it sounded like a great vacation plan. I had already been to Sri Lanka three years before and the idea of coming back to Southeast Asia for a long trip resonated well.</p>
+            <!-- p><a href="#" class="Button Button--m"><span>Learn more</span></a></p -->
+          </div>
 
-      <p>We asked for holidays at work, bought our plane tickets and waited until the last minute to prepare all the rest of stuff while drinking beers and eating croquetas. <a href="#fn:1" id="fnref:1" class="Footnote">1</a></p>
+          <div class="Grid-cell Grid-cell--col6 Block">
+            <div class="Sep Sep--block"></div>
 
-      <p>We were departing from Madrid to Ho Chi Minh City, make our way to Hanoi, and then come back. The initial plan, as in the original Top Gear route, was to <strong>drive across the whole country from South to North</strong>, but after checking the distances and all we wanted to do — plus, remember the fact that I didn't know how to ride a motorbike — we discarded this option early, and ended up making use of different means of transportation: car, plane, motorbike, bike, train, bus, and boat.</p>
+            <h2 class="Block-title">Work</h2>
+            <p>Currently I work as Front-end developer at <a href="https://cartodb.com/">CartoDB</a>, a SaaS location intelligence and data visualization tool.</p>
 
-      <p>It could be tempting to squeeze a lot of places to see and things to do, but we arranged a good mix of touristing, resting and traveling. We were on holidays, so the last thing you want to do is stressing out.</p>
+            <!-- p><a href="#" class="Button Button--m"><span>Portfolio</span></a></p -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <p>Regarding the motorbike: <strong>you don't need a driving license</strong>. You will find a lot of info online about how you are not supposed to ride a motorbike in Vietnam unless you have a Vietnamese driving license, besides how dangerous Vietnamese roads are. Honestly, I hardly saw any police, the roads are even better than many secondary roads in Spain and the only thing you have to worry about is to wear a helmet and orientate properly. <a href="#fn:2" id="fnref:2" class="Footnote">2</a></p>
+  <div class="Block">
+    <div class="u-inner u-inner--l">
+      <div class="Sep Sep--block"></div>
 
-      <p>Of course this is my personal experience, and maybe we were just lucky, but I wouldn't make such a big deal of it. Either way, buy good travel insurance which covers driving a vehicle: <a href="https://www.worldnomads.com/">World Nomads</a> is the quality standard.</p>
-
-      <p>In the following text I basically will leave out all the general information you can find in the <a href="http://amzn.to/1LggYRV">Lonely Planet travel guide</a> and recommend the places and advice that worked for us. <a href="#fn:3" id="fnref:3" class="Footnote">3</a></p>
-
-      <h3 class="Content-date">Days 1 to 3</h3>
-      <h2 id="ho_chi_minh_city">Ho Chi Minh City</h2>
-
-      <p>Ho Chi Minh City received us with a warm welcome, and after booking an Uber <a href="#fn:4" id="fnref:4" class="Footnote">4</a> from the Airport to the <a href="http://www.booking.com/hotel/vn/bich-duyen.html?aid=879223">Bich Duyen hotel <i class="Icon Icon--location"></i></a> the first drama bursted out: <strong>I had lost my passport</strong>. I assumed this could happen at some point, but we had not even spent an hour in the country and we were already in trouble. Retracing our steps: we went to the airline desks to clarify some doubts for the upcoming internal flights (more on this later), we bought the SIM card for our smartphones <a href="#fn:5" id="fnref:5" class="Footnote">5</a>, and we withdrew several millions of <abbr title="Vietnamese dongs">VND</abbr> from the ATM. <a href="#fn:6" id="fnref:6" class="Footnote">6</a> I must had it forgotten somewhere along that path (with the rest of my documentation). That's where I learnt one of the good things of traveling with a sidekick: you always have a backup when things go awry. Before I could freak out the Lost and Found office of the airport contacted me to pick my passport up: phew!</p>
-
-      <p>A tough touristic day was awaiting the next day, so we had a Phở for dinner at <a href="http://www.tripadvisor.es/Restaurant_Review-g293925-d2492572-Reviews-Pho_Quynh-Ho_Chi_Minh_City.html">Pho Quynh <i class="Icon Icon--location"></i></a>, went back to the hotel and called it a day.</p>
-
-      <p>One of the things I liked most about Vietnam was its assorted food dishes. You can have Phở for breakfast but the majority of the hotels will serve you a mix of scrambled eggs, bacon, and fruit. So that's what we had, as well as drank some juice and <strong>the worst coffee ever</strong>. Damn, as good the food is there, they still brew a horrible coffee, but we needed the energy boost.</p>
-
-      <aside class="Aside">
-        <img src="img/11821086_1485207625130151_1329221319_n.jpg" alt="" class="Aside-media">
-        <p class="Aside-caption">Sputnik statue at Central Post Office</p>
-      </aside>
-
-      <p>We headed to the <a href="http://www.tripadvisor.com/Attraction_Review-g293925-d317890-Reviews-Reunification_Palace-Ho_Chi_Minh_City.html">Reunification Palace <i class="Icon Icon--location"></i></a>, and then we visited <a href="http://www.tripadvisor.es/Attraction_Review-g293925-d311103-Reviews-War_Remnants_Museum-Ho_Chi_Minh_City.html">War Remnants Museum <i class="Icon Icon--location"></i></a>. You may think you know what happened in Vietnam as you've seen it in the movies and such, but <strong>words can't describe the atrocities that these poor people suffered</strong>, it was a really moving visit. We also went to see <a href="http://www.tripadvisor.com/ShowUserReviews-g293925-d2273335-r121975767-Ba_Thien_Hau_Temple-Ho_Chi_Minh_City.html">Phuoc An Hoi Quan Pagoda <i class="Icon Icon--location"></i></a> and we walked our way back to Backpackers district through old Saigon: <a href="http://www.tripadvisor.com/Attraction_Review-g293925-d317893-Reviews-Ho_Chi_Minh_Square-Ho_Chi_Minh_City.html">Ho Chi Minh Square <i class="Icon Icon--location"></i></a>, <a href="http://www.tripadvisor.es/Attraction_Review-g293925-d317896-Reviews-Saigon_Notre_Dame_Cathedral-Ho_Chi_Minh_City.html">Notre Dame <i class="Icon Icon--location"></i></a> (yes, they also have a Notre Dame), and <a href="http://www.tripadvisor.com/Attraction_Review-g293925-d311089-Reviews-Central_Post_Office-Ho_Chi_Minh_City.html">Central Post Office <i class="Icon Icon--location"></i></a> which I discovered it has a Sputnik commemorative statue (I couldn't find this in any guide!).</p>
-
-      <p>Once at the Backpackers district, we drank the cheapest Saigon beer at some corner bar, had the tastiest Tikka Masala for dinner at <a href="http://www.tripadvisor.com/Restaurant_Review-g293925-d2254119-Reviews-Baba_s_Kitchen-Ho_Chi_Minh_City.html">Baba's Kitchen <i class="Icon Icon--location"></i></a>, and ordered Jack Daniels shots at a live music place before passing out.</p>
-
-      <p>The day after we had quite a hangover but we were just a communist burger with fries away to fix this. Luckily there was <a href="http://www.tripadvisor.es/Restaurant_Review-g293925-d4731745-Reviews-Chuck_s_Burgers-Ho_Chi_Minh_City.html">Chuck's Burgers <i class="Icon Icon--location"></i></a> to help and once we were fully recovered we visited the <a href="http://www.tripadvisor.com/Attraction_Review-g293925-d455387-Reviews-Fine_Arts_Museum-Ho_Chi_Minh_City.html">Fine Arts Museum <i class="Icon Icon--location"></i></a>. As said, there were several days of not doing very much, I read a lot on those days (I finished <a href="http://waitbutwhy.com/2015/08/spacex-post-pdf.html">Tim Urban's SpaceX series</a>, <a href="http://amzn.to/1kcLBz3">The Martian</a>, and <a href="http://amzn.to/1LUhMcC">Elon Musk's biography</a>) or just rested: it's even better at a French café drinking an iced coffee.</p>
-
-      <p>At the end of the day we packed up our bags and prepared everything for the next days on the road.</p>
-
-      <h3 class="Content-date">Days 4 and 5</h3>
-      <h2 id="hoi_an">Hoi An</h2>
-
-      <p>We had bought plane tickets from <abbr title="Ho Chi Minh City">HCMC</abbr> to Da Nang. This was one of the things I was least sure. First we were going to go by motorbike, then by train, and finally we decided to stay one night more at the hotel and fly. We wanted to be fresh and have a whole day at our disposal to get used to the motorbikes. In the end it was the best decision, <strong>whenever you can, just fly long distances.</strong></p>
-
-      <p>We had already arranged with <a href="http://www.tripadvisor.com/Attraction_Review-g298082-d4680804-Reviews-MotorVina_Motorbike_Rentals-Hoi_An_Quang_Nam_Province.html">MotorVina Motorbike Rentals</a> we would be arriving in the morning to Da Nang to pick up the bikes so we had the entire day to go to Hoi An, where we were going to be staying for a couple of days. I can still remember the face of the guy when he first saw me:</p>
-
-      <blockquote><span>“</span>Has your friend ever ridden a motorbike?<span>”</span></blockquote>
-
-      <p>Ha! A couple of minutes and I had already tamed the beast in our way to the closest petrol station, next stop: Hoi An. There wasn't really much to do in Da Nang so we went by the coastline until we found the village of Hoi An and we checked-in at the <a href="http://www.booking.com/hotel/vn/full-house-homestay.html?aid=879223">Full House Homestay <i class="Icon Icon--location"></i></a>. <strong>I was totally blown away by the kindness of the host family</strong>, who treated us like kings since the very moment we crossed the door. This wasn't an exception as this story already happened at <abbr title="Ho Chi Minh City">HCMC</abbr> and will repeat in Hue.</p>
-
-      <p>The thing to do in Hoi An is to get a bespoke shirt or dress; I also took the opportunity to walk through the market stalls, and buy some souvenirs. The food was delicious too, and we had a lunch composed of the local dishes: <em>banh vac, banh bao, cao lau</em> and my favourite: <em>banh xeo</em>. We had to wait until the tailor finished the clothes so we sunbathed in <a href="http://www.tripadvisor.es/Attraction_Review-g298082-d2294435-Reviews-Cua_Dai_Beach-Hoi_An_Quang_Nam_Province.html">Cua Dai Beach <i class="Icon Icon--location"></i></a> for the rest of the day.</p>
-
-      <h3 class="Content-date">Day 6</h3>
-      <h2 id="hai_van_pass">Hai Van Pass</h2>
-
-      <p>The great day arrived. I mean, the whole travel made sense (if it made any) because we wanted to drive through the roads that one day served as the highway for the country. The itinerary for the day was: start at Hoi An and arrive to Hue, making some pauses in the middle.</p>
-
-      <aside class="Aside">
-        <img src="img/CNEkv_vUsAAsrut.jpg" alt="" class="Aside-media">
-        <p class="Aside-caption">My motorbike was a Honda 150cc</p>
-      </aside>
-
-      <ul>
-        <li>Marble Mountains</li>
-        <li>Hai Van Pass</li>
-        <li>Lang Co Bay</li>
-        <li>Elephant Springs</li>
-      </ul>
-
-      <p><strong>I really liked the sensation of driving the bike</strong> and the turns in the pass; the sights were also astonishing. Everything went smoothly until the last part of the route when it started pouring. I thought it was ok to hit pedal to the metal, this way we could arrive as soon as possible to our hotel and dry ourselves, but when Adrián overtook me to pull-over it was clear it was not ok. I still laugh when I remember telling this to our new friends some days after.</p>
-
-      <h3 class="Content-date">Day 7 an 8</h3>
-      <h2 id="hue">Hue</h2>
-
-      <p>The <a href="http://www.booking.com/hotel/vn/jade-hue.html?aid=879223">Jade Hotel <i class="Icon Icon--location"></i></a> in Hue didn't let down. Actually this would be an understatement. We arrived to the entrance with the motorbikes and two bellboys parked them and brought our backpacks inside, where two fruit juices were waiting for us. Many restaurants and bars piled in the streets beside the river, where we had a well deserved dinner.</p>
-
-      <aside class="Slideshow">
-        <img src="img/21660789875_470f590f01_b.jpg" alt="" class="Slideshow-media">
-        <p class="Slideshow-caption">Tomb of Tu Duc, photograph by <a href="https://www.flickr.com/photos/41426288@N00/21660789875">Adrián Perez</a></p>
-      </aside>
-
-      <p>We wanted to make the most of time with the bikes so we went to <a href="http://www.tripadvisor.es/Attraction_Review-g293926-d451128-Reviews-Tomb_of_Tu_Duc-Hue_Thua_Thien_Hue_Province.html">Tomb of Tu Duc <i class="Icon Icon--location"></i></a> in the morning, and spent the afternoon in <a href="http://www.tripadvisor.com/Attraction_Review-g293926-d317599-Reviews-Hue_Imperial_City_The_Citadel-Hue_Thua_Thien_Hue_Province.html">The Imperial City <i class="Icon Icon--location"></i></a> after waving goodbye to our beloved Hondas. Some beers at the <a href="http://www.tripadvisor.es/Restaurant_Review-g293926-d1748982-Reviews-Why_Not_Bar_Restaurant-Hue_Thua_Thien_Hue_Province.html">Why not? <i class="Icon Icon--location"></i></a> because why not? and back to the hotel.</p>
-
-      <p>Tip: unlike in Spain, if you ask for peanuts you'll probably have to pay them.</p>
-
-      <p>The last day at Hue was really quiet as the only agenda was taking the train to Hanoi. We bought some supplies as we were going to be spending more than 12 hours (all night long) in a soft berth.</p>
-
-      <p>Despite we initially wanted to take the <a href="https://vietnam-railway.com/train/sapatourist/livitrans-express-train">Livitrans Express</a> (the luxury train) they were sold out and we finally took the <a href="https://vietnam-railway.com/train/route/train-from-hue-to-hanoi">Reunification Express</a>. We weren't sure about the conditions of the train but it really surprised me: Adrián, who is 1.90 meters tall slept through the night.</p>
-
-      <p>We arrived on time to have a proper full breakfast at <a href="http://www.tripadvisor.es/Restaurant_Review-g293924-d1236678-Reviews-Puku_Cafe-Hanoi.html">Puku <i class="Icon Icon--location"></i></a> before embarking in our Ha Long Bay love cruise.</p>
-
-      <h3 class="Content-date">Days 9 to 11</h3>
-      <h2 id="ha_long_bay">Ha Long Bay</h2>
-
-      <p>Maybe the most difficult part about going on a cruise by Ha Long Bay is deciding which travel agency to trust, as prices vary for the same type of cruise. Or even worse: you're sold a quality which doesn't correspond for the price you're paying. We had already done our homework and chose <a href="http://www.tripadvisor.es/Attraction_Review-g293924-d6894263-Reviews-Lily_s_Travel_Agency_Day_Tours-Hanoi.html">Lily's Travel Agency</a>. We went on a 3-day cruise sleeping the first night at the <strong>Fantasea</strong> boat and the second night in Cat Ba island, <em>all-but-drinks-included</em>.</p>
-
-      <p>Peter —Mr. "hello, everysbody"—, our excellent guide for the next three days picked us up at Lily's office and we got on the bus for a dull 4-hour journey to the tourist boat wharf. Passengers on board, plenty of food for lunch, and first stop at a cave with a cock shaped rock. Some swimming and kayaking before dropping anchor between the beautiful karst rocks.</p>
-
-      <aside class="Slideshow">
-        <img src="img/11939584_639257006217468_1401974900_n.jpg" alt="" class="Slideshow-media">
-        <p class="Slideshow-caption">Ha Long Bay, photograph by <a href="https://instagram.com/p/62Bd-ZGwvg/">Carlos Matallín</a></p>
-      </aside>
-
-      <p>In all these travels there's this sort of epiphany where induced by the drinks and the gorgeous landscapes I think of how lucky I am; to be able to travel to the other side of the world —literally— and enjoy with some new friends we made on the boat.</p>
-
-      <p>That or we were drunk as hell. <a href="#fn:7" id="fnref:7" class="Footnote">7</a></p>
-
-      <p>The second day we set course to Cat Ba island, the largest of the archipelago which at its heart lies a National Park. We did some intense sweaty hiking and checked-in at the <a href="http://www.booking.com/hotel/vn/catba-fantasea-and-queen.html?aid=879223">Cat Ba Palace Hotel <i class="Icon Icon--location"></i></a> for lunch. A quick nap after we were already on our way to <a href="http://www.tripadvisor.com/Attraction_Review-g737051-d5979069-Reviews-Monkey_Island-Cat_Ba.html">Monkey Island <i class="Icon Icon--location"></i></a>, quite a place to celebrate the <a href="http://grumpygamer.com/monkey25">25th birthday</a> of the game laying at the beach. Spoiler: it's full of monkeys and no trace of Guybrush Threepwood.</p>
-
-      <p>After the unexpected party the day before on the boat, a couple of drinks were more than enough to return to the hotel early.</p>
-
-      <p>The third day on the boat was mostly to return to land first and then to Hanoi in the damn bus. But before that we attended a Vietnamese food cooking class on the deck, where we prepared our own lunch.</p>
-
-      <h3 class="Content-date">Days 12 and 13</h3>
-      <h2 id="hanoi">Hanoi</h2>
-
-      <p>We didn't like Hanoi as much as we did <abbr title="Ho Chi Minh City">HCMC</abbr>, maybe because we had spent some more time in Saigon and knew it better. You can visit all the interesting places in just one day, however, you can't miss some of the best restaurants and cafés of all Vietnam.</p>
-
-      <p>Sharing all that time on the Fantasea cruise invited making a special bond with some people, so once we got off the bus we had a quick shower at the hotel <a href="#fn:8" id="fnref:8" class="Footnote">8</a> and went to have a beer and some dinner at <a href="http://www.tripadvisor.es/Attraction_Review-g293924-d2220663-Reviews-Nola_Cafe-Hanoi.html">Nola Café <i class="Icon Icon--location"></i></a>, the most charming café in town hands down.</p>
-
-      <p>The day after we woke up early to go to the <a href="http://www.tripadvisor.co.uk/Attraction_Review-g293924-d311064-Reviews-Ho_Chi_Minh_Mausoleum-Hanoi.html">Ho Chi Minh mausoleum complex <i class="Icon Icon--location"></i></a>, not that we were very into the Government buildings, but seeing the bearded guy everywhere got me intrigued at least. The place looks very Soviet-era as expected, and there was an special exhibit for the 70th anniversary of Vietnam People's Army. <a href="#fn:9" id="fnref:9" class="Footnote">9</a></p>
-
-      <p>The highlight of the day was the lunch at <a href="http://www.tripadvisor.es/Restaurant_Review-g293924-d941423-Reviews-KOTO_Van_Mieu_Training_Restaurant-Hanoi.html">Koto <i class="Icon Icon--location"></i></a>, we shared a mix of starters, the duck dish, and finished  with a piece of cake: delicious.</p>
-
-      <p>Other spots that are worth paying the visit are the <a href="http://www.tripadvisor.com/Attraction_Review-g293924-d311083-Reviews-Temple_of_Literature_National_University-Hanoi.html">Temple of Literature <i class="Icon Icon--location"></i></a> and the <a href="http://www.tripadvisor.es/Attraction_Review-g293924-d311069-Reviews-Hoa_Lo_Prison-Hanoi.html">Hoa Lo Prison Museum <i class="Icon Icon--location"></i></a>, with the later being as impressive as the War Remnants Museum.</p>
-
-      <p>The trip was coming to an end and we had to catch a plane the next day, <a href="#fn:10" id="fnref:10" class="Footnote">10</a> so after wandering a bit through the Old Quarter streets we found a nice place to have dinner.</p>
-
-      <h3 class="Content-date">Day 14</h3>
-      <h2>Back to Ho Chi Minh City</h2>
-
-      <p>We spent the last day in HCMC visiting those places we didn't have time on the first days: <a href="http://www.tripadvisor.com/Attraction_Review-g293925-d454973-Reviews-Museum_of_Ho_Chi_Minh_City-Ho_Chi_Minh_City.html">Museum of Ho Chi Minh City <i class="Icon Icon--location"></i></a> and the saddest <a href="http://www.tripadvisor.es/Attraction_Review-g293925-d317904-Reviews-Zoo_and_Botanical_Gardens-Ho_Chi_Minh_City.html"> zoo and botanical garden in the world <i class="Icon Icon--location"></i></a>, but at least we enjoyed a Japanese-inspired pizza for lunch at <a href="http://www.tripadvisor.es/Restaurant_Review-g293925-d2200413-Reviews-Pizza_4P_s-Ho_Chi_Minh_City.html">4P's <i class="Icon Icon--location"></i></a> and a fulfilling barbeque at <a href="http://www.tripadvisor.es/Restaurant_Review-g293925-d1813651-Reviews-Quan_Nuong-Ho_Chi_Minh_City.html">Quan Nuong <i class="Icon Icon--location"></i></a> to wrap up our 2-week travel to Vietnam.</p>
-
-      <h2>End of travel</h2>
-
-      <p>One of the things that surprised me most about the country was <strong>despite the fact that it is a Communist regime the day to day doesn't differ that much from any other Western country</strong>. The Vietnamese way of being ranges from the uncanny kindness to the ruthless unenthusiasm, depending on the opinion of the tourists having an impact on their jobs or businesses. In any case, it is praiseworthy how they have overcome any kind of resentment the war may have provoked in them.</p>
-
-      <p>To cut it short: <strong>this is the perfect trip for couples</strong> —at this point I won't avoid the joke— and there's a wide range of things to do if you like outdoors, motorbikes, and food. If I missed anything it was a bit more of adventure. It's difficult to get away from the tourist circuit, but this doesn't mean you won't enjoy it a lot. Also, it's moderately cheap, so you won't spend a fortune. The only downside was it gets pretty hot depending on the hour of the day.</p>
-
-      <p>We're already thinking of the next destination.</p>
+      <h2 class="Block-title">Stories</h2>
     </div>
 
-    <div class="Sep Sep--content"></div>
+    <div class="u-inner u-inner--xxl">
+      {% for post in site.posts | limit: 1 %}
+        <a href="{{ post.url }}" class="Story-image">
+          <div class="Story-gradient"></div>
+          <div class="Story-header">
+            <h3 class="Story-title">Vietnam</h3>
+            <p class="Story-description">Summer 2015</p>
+          </div>
 
-    <div id="Share" class="js-Share">
-      <p><a href="https://twitter.com/intent/tweet?text=I%20enjoyed%20reading%20%22Carlos%20and%20Adri%C3%A1n%27s%20Top%20Gear%3A%20Vietnam%20Special%22&amp;url=http%3A%2F%2Fmatall.in/vietnam/&amp;via=matallo" class="Button Button--m"><span><i class="Icon Icon--twitter Icon--grey"></i> Tweet this</span></a></p>
-
-      <p>If you want to receive new articles when they come out, <a href="http://eepurl.com/bDKLp1" target="_blank">enter your email address here</a>.</p>
+          <img src="{{ post.background_image }}" alt="{{ post.title }}">
+        </a>
+      {% endfor %}
     </div>
 
-    <div class="Sep Sep--content"></div>
+    <!-- div class="u-inner u-inner--l">
+      <p><a href="#" class="Button Button--m"><span>See all</span></a></p>
+    </div -->
+  </div>
 
-    <div id="Resources">
-      <p>Here's a list of resources I used for the article besides my own notes:</p>
+  <div class="u-inner u-inner--l">
+    <div class="Grid">
+      <div class="Grid-inner">
+        <div class="Grid-cell Grid-cell--col6 Block">
+          <div class="Sep Sep--block"></div>
 
-      <ul>
-        <li><a href="https://www.flickr.com/photos/elgekonegro">Adrián's Flickr photo gallery</a></li>
-        <li><a href="https://instagram.com/explore/tags/vietcongada/">Our pictures on Instagram</a></li>
-        <li><a href="https://twitter.com/search?q=%23vietcongada&src=typd">Our over-oversharing on Twitter</a></li>
-        <!-- li><a href="#">All the places marked with a pin in this article</a></li -->
-        <li><a href="https://team.cartodb.com/u/matallo/tables/openpaths_matallo_20150818_20150831">My OpenPaths running in background for two weeks</a> <a href="#fn:11" id="fnref:11" class="Footnote">11</a></li>
-      </ul>
-
-      <p><em>I couldn't be grateful enough to <a href="https://twitter.com/fdans">Fran</a>, <a href="https://twitter.com/phobeo">Ricardo</a>, and <a href="https://twitter.com/javier">Javier</a> for proofreading an early version of this article, to <a href="https://twitter.com/adrpz">Adrián</a> for putting up with me the whole travel, and to <a href="http://www.nytimes.com/newsgraphics/2013/10/13/russia/" title="New York Times">NYT</a> whom I blatantly stole the story layout.</em></p>
+          <h2 class="Block-title">Contact</h2>
+          <p>You can find me on <a href="https://twitter.com/matallo" target="_blank">Twitter</a> or <a href="mailto:carlos@matallin.com">send me an email</a>. You can also find me in other social networks.</p>
+          <ul>
+            <li class="Social-item"><a href="https://instagram.com/matallo/" class="Social-link" target="_blank"><i class="Icon Icon--instagram"></i></a></li>
+            <li class="Social-item"><a href="https://es.linkedin.com/in/carlosmatallin" class="Social-link" target="_blank"><i class="Icon Icon--linkedin-squared"></i></a></li>
+            <li class="Social-item"><a href="https://dribbble.com/matallo" class="Social-link" target="_blank"><i class="Icon Icon--dribbble"></i></a></li>
+            <li class="Social-item"><a href="https://github.com/matallo" class="Social-link" target="_blank"><i class="Icon Icon--github-circled"></i></a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-
-    <div class="Sep Sep--content"></div>
-
-    <ol id="Footnotes" class="Footnotes js-Footnotes">
-      <li id="fn:1" class="Footnotes-item">Note for future self: buying plane tickets with a bar public wifi may not be the safest Internet practice. <a href="#fnref:1">↩</a></li>
-
-      <li id="fn:2" class="Footnotes-item">This is the part where I can't enter the country anymore. <a href="#fnref:2">↩</a></li>
-
-      <li id="fn:3" class="Footnotes-item">The <a href="http://amzn.to/1LggYRV">Lonely Planet travel guide</a> is a must, to know what to see in the major cities we relied on <a href="http://www.tripadvisor.es/">TripAdvisor</a>, and for the reservations of the flights and hotels we used <a href="https://www.kayak.es/">Kayak</a> and <a href="http://www.booking.com/">Booking</a> respectively. For foreign travel advice the page of the <a href="http://www.exteriores.gob.es/Embajadas/HANOI/es/Embajada/Paginas/Recomendaciones.aspx?IdP=195">Embassy of Spain in Hanoi</a> is the way to go, as well as the page of the <a href="http://www.vietnamembassy.es/">Vietnam Embassy in Spain</a>. This post by <a href="https://medium.com/@marbarbera/vietnam-en-16-d%C3%ADas-e7a01fcaf4d4">Mar Barbera</a> is also priceless, and helped us prepare most of our itinerary, as well as the Vietnam series of <a href="http://losjunys.com/tag/vietnam/">Los Junys</a>. <a href="#fnref:3">↩</a></li>
-
-      <li id="fn:4" class="Footnotes-item">I'm not the biggest fan of Uber practices, but I prefered not to get ripped off by taxi drivers. It payed off because when we had a problem with a driver who got lost in one of the journeys, the company responded very well to my feedback and got a reasonable discount. <a href="#fnref:4">↩</a></li>
-
-      <li id="fn:5" class="Footnotes-item">Look for the MobiFone stands just by the airport exit. You can give your mobile to the girls in the desk to set it up (<a href="https://medium.com/android-news/what-is-the-surprisingly-commercial-android-backdoor-depicted-in-mr-robot-bde7804cbac5#.j30zchoz4">and a backdoor</a>) for you. You can get a data plan for few hundred thousand <abbr title="Vietnamese dongs">VND</abbr> and there's good 3G coverage in the whole country. <a href="#fnref:5">↩</a></li>
-
-      <li id="fn:6" class="Footnotes-item">1 Million <abbr title="Vietnamese dongs">VND</abbr> ~= 40 EUR. We had enough with 6M each, and payed the food and accomodation with credit card (they charge 3% per transaction). <a href="#fnref:6">↩</a></li>
-
-      <li id="fn:7" class="Footnotes-item">We spent 1,000,000 <abbr title="Vietnamese dongs">VND</abbr> on beers. <strong>One. Fucking. Million.</strong> <a href="#fnref:7">↩</a></li>
-
-      <li id="fn:8" class="Footnotes-item">By far the Backpackers Hotel was the worst of all in which we stayed, bad hygiene (cockroaches in the bathtub), not enough breakfast, and bad service (we had to ask for toilet paper). I'm not even linking it. <a href="#fnref:8">↩</a></li>
-
-      <li id="fn:9" class="Footnotes-item">I'm not sure if this was normal but there was propaganda on every corner. It's true that our visit happened at the same time as the country's celebration on 18 Aug. and 2 Sep. <a href="#fnref:9">↩</a></li>
-
-      <li id="fn:10" class="Footnotes-item">The airport is located far from the city but it only takes less than 2 hours and several thousand <abbr title="Vietnamese dongs">VND</abbr> to go by bus.<a href="#fnref:10">↩</a></li>
-
-      <li id="fn:11" class="Footnotes-item">There are several gaps (i.e. in the train arriving to Hanoi) after running out of battery. <a href="#fnref:11">↩</a></li>
-    </ol>
   </div>
 </div>
+
+<footer class="Footer">
+  <div class="Sep Sep--footer"></div>
+
+  <div class="u-inner">
+    <p class="Footer-credits">2015 © Carlos Matallín</p>
+  </div>
+</footer>
