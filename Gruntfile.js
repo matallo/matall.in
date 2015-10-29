@@ -259,7 +259,7 @@ module.exports = function (grunt) {
           ]
         }
       },
-      html: ['<%= config.dist %>/{,*/}*.html'],
+      html: ['<%= config.dist %>/**/*.html'],
       css: ['<%= config.dist %>/css/{,*/}*.css'],
       js: ['<%= config.dist %>/js/{,*/}*.js']
     },
