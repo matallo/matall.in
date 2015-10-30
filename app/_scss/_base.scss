@@ -31,6 +31,11 @@ h1 {
   font-weight: 700;
   font-size: 36px;
   line-height: 40px;
+
+  @include media-query($layout-m) {
+    font-size: 30px;
+    line-height: 36px;
+  }
 }
 h2 {
   margin-bottom: $spacing-unit;
@@ -39,6 +44,7 @@ h2 {
 }
 h3 {
   font-size: 18px;
+  line-height: 22px;
 
   + h2 {
     margin-top: 0;

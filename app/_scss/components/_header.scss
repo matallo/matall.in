@@ -3,11 +3,9 @@
 
 .Header {
   position: relative;
-  height: 300px;
+  height: 500px;
 }
 .Header.Header--home {
-  height: 500px;
-
   @include media-query($layout-m) {
     display: none;
   }
