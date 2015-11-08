@@ -1,6 +1,8 @@
 # Site settings
-title: Carlos Matallín
-description: "Code, design, and mountains."
+title: "Carlos Matallín — Code, design, and mountains"
+description: >
+  Map maker at CartoDB. I'm a 27 year old geek from Valencia living in Madrid. I’m a web enthusiast, passionate about
+  technology and design. I climb mountains, too.
 baseurl: ""
 url: "http://matall.in"
 
@@ -9,5 +11,7 @@ source: 'app'
 destination: 'dist'
 markdown: kramdown
 permalink: pretty
+
+years: 27
 
 # analytics_property_id: ''

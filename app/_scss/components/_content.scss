@@ -8,6 +8,7 @@
   position: relative;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: $spacing-unit * 3;
 }
 .Content.Content--post {
   margin-left: 25%;
@@ -23,18 +24,15 @@
   padding-top: $spacing-unit * 3;
 }
 .Home-header {
-  margin-top: -110px;
   text-align: center;
-
-  @include media-query($layout-m) {
-    margin-top: 0;
-  }
 }
 .Post-header {
   margin-bottom: $spacing-unit * 2;
 }
 .Content-title {
   margin-top: 0;
+  margin-bottom: $spacing-unit / 2;
+  letter-spacing: -1px;
 }
 .Content-subtitle {
   font-weight: 300;
@@ -49,21 +47,12 @@
   margin-bottom: 0;
   font-size: 15px;
   text-transform: uppercase;
-  color: #999;
 }
 .Content-aside {
   width: 150px;
   float: right;
 }
 .Content-sep {
-  display: block;
-  width: 120px;
-  height: 2px;
-  margin-top: $spacing-unit * 2;
-  margin-bottom: $spacing-unit * 2;
-  background: #eee;
-}
-.Content-sep--center {
   display: block;
   width: 120px;
   height: 2px;

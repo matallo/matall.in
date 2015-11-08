@@ -10,3 +10,33 @@
     width: 100%;
   }
 }
+.Slideshow.Slideshow--center {
+  width: $layout-l - $spacing-unit * 2;
+  margin-left: -($layout-l - $layout-m)/2;
+
+  @include media-query($layout-l) {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  img {
+    border-radius: 3px;
+  }
+}
+.Slideshow-social {
+  float: right;
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #03b3ee;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  vertical-align: middle;
+  color: #03b3ee;
+  border-radius: 50%;
+
+  &:hover {
+    color: #027aa2;
+  }
+}

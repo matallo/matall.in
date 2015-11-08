@@ -20,7 +20,7 @@ p, blockquote, pre,
 ul, ol, dl, figure {
   @include vertical-rhythm;
 }
-h1, h2, h3 {
+h1, h2 {
   color: #444;
 }
 h2, h3 {
@@ -45,6 +45,7 @@ h2 {
 h3 {
   font-size: 18px;
   line-height: 22px;
+  color: #999;
 
   + h2 {
     margin-top: 0;

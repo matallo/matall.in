@@ -18,7 +18,7 @@
   &:hover {
     text-decoration: none;
     border-color: #DDD;
-    color: #666;
+    color: darken(#999, 5%);
   }
 
   > span {

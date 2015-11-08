@@ -6,21 +6,17 @@
   width: 120px;
   height: 2px;
   background: #eee;
-}
-.Sep--content {
-  margin-top: $spacing-unit * 2;
-  margin-bottom: $spacing-unit * 2;
-}
-.Sep--footer {
-  margin: $spacing-unit * 3 auto;
-}
-.Sep--block {
-  margin-bottom: $spacing-unit * 2;
-}
-@include media-query($layout-m) {
-  .Sep--block,
-  .Sep--content {
+
+  @include media-query($layout-m) {
     margin-right: auto;
     margin-left: auto;
   }
+}
+.Sep.Sep--center {
+  margin-right: auto;
+  margin-left: auto;
+}
+.Sep.Sep--content {
+  margin-top: $spacing-unit * 2;
+  margin-bottom: $spacing-unit * 2;
 }

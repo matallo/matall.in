@@ -5,7 +5,7 @@
 
 App.Views.Story = Backbone.View.extend({
 
-  el: 'body',
+  el: '.js-Story',
 
   initialize: function() {
     this.$map = this.$('.js-Map');
@@ -100,10 +100,7 @@ App.Views.Story = Backbone.View.extend({
   },
 
   _fixMap: function() {
-    var headerHeight = this.$('.js-Header').outerHeight();
-    var scrollNumber = document.body.scrollTop;
-
-    if (scrollNumber >= headerHeight) {
+    if (document.body.scrollTop >= 580) {
       this.$map.addClass('is-fixed');
     } else {
       this.$map.removeClass('is-fixed');
@@ -213,5 +210,5 @@ App.Views.Story = Backbone.View.extend({
 });
 
 $(function() {
-  window.Story = new App.Views.Story();
+  window.story = new App.Views.Story();
 });

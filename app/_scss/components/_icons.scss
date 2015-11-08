@@ -24,8 +24,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.Icon--grey {
+.Icon--cGgrey {
   color: #DDD;
+}
+.Icon--s12 {
+  font-size: 12px;
 }
 .Icon--location:before { content: '\e800'; } /* '' */
 .Icon--twitter:before { content: '\e801'; } /* '' */

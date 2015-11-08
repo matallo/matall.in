@@ -1,34 +1,6 @@
-// Header
+// Navbar
 // --------------------------------------------------
 
-.Header {
-  position: relative;
-  height: 500px;
-
-  @include media-query($layout-m) {
-    height: 300px;
-  }
-}
-.Header-background {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-.Header-background.Header-background--cover {
-  background-size: cover;
-  background-position: center;
-}
-.Header-background.Header-background--black {
-  background: rgba(#000, .2);
-}
-.Header-footer {
-  position: absolute;
-  bottom: $spacing-unit;
-  width: 100%;
-  color: #fff;
-}
 .Navbar {
   height: 80px;
   padding-right: $spacing-unit;

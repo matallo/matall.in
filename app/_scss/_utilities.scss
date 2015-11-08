@@ -18,3 +18,9 @@
 .u-inner.u-inner--xxl {
   max-width: $layout-xxl;
 }
+.u-wide img {
+  min-width: $layout-l;
+  max-width: $layout-l;
+  margin-left: - ($layout-l - $layout-m) / 2;
+  border-radius: 3px;
+}

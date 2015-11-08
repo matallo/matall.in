@@ -8,22 +8,20 @@
   display: inline-block;
   margin-left: $spacing-unit * 2;
   text-align: left;
-  text-shadow: 0 2px 0 rgba(#000, 0.3);
+  text-shadow: 0 2px 0 rgba(#000, .3);
 
   &:first-child {
     margin-left: 0;
-  }
-
-  @include media-query($layout-s) {
-    width: 100%;
-    margin-top: $spacing-unit;
-    margin-left: 0;
-    text-align: right;
   }
 }
 .Stats-number {
   display: block;
   margin-bottom: $spacing-unit / 2;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 36px;
+
+  @include media-query($layout-m) {
+    font-size: 30px;
+    line-height: 36px;
+  }
 }

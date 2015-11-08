@@ -1,11 +1,14 @@
 // Avatar
 // --------------------------------------------------
 
-@mixin avatar {
+.Avatar {
   display: inline-block;
   vertical-align: middle;
 
   img {
     border-radius: 51px;
   }
+}
+.Avatar.Avatar--home {
+  margin-bottom: $spacing-unit * 2;
 }

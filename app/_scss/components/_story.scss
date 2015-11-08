@@ -1,33 +1,41 @@
 // Story
 // --------------------------------------------------
 
-.Story-image {
+.Story {
   display: block;
   position: relative;
+  // margin-bottom: $spacing-unit;
 }
+.Story-inner {
+  &:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    margin-left: -4px;
+  }
+}
+.Story-inner,
 .Story-gradient {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+}
+.Story-gradient {
   background: rgba(#000, .2);
 }
 .Story-header {
-  position: absolute;
-  top: 50%;
-  margin-top: -38px;
+  display: inline-block;
   width: 100%;
   text-align: center;
-
-  @include media-query($layout-m) {
-    margin-top: -30px;
-  }
+  vertical-align: middle;
 }
 .Story-title,
 .Story-description {
   color: #fff;
-  text-shadow: 0 2px 0 rgba(#000, 0.3);
+  text-shadow: 0 2px 0 rgba(#000, .3);
 }
 .Story-title {
   margin-top: 0;
