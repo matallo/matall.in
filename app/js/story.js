@@ -210,5 +210,7 @@ App.Views.Story = Backbone.View.extend({
 });
 
 $(function() {
-  window.story = new App.Views.Story();
+  if ($('body').hasClass('js-Story')) {
+    window.story = new App.Views.Story();
+  }
 });
