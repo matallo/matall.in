@@ -5,6 +5,8 @@ description: >
   technology and design. I climb mountains, too.
 baseurl: ""
 url: "http://matall.in"
+gems:
+  - jekyll-sitemap
 
 # Build settings
 source: 'app'
