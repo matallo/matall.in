@@ -12,16 +12,16 @@
   <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="{{ '/' | prepend: site.url }}"/>
-  {% if page.background_image %}
-    <meta property="og:image" content="{{ page.background_image | prepend: site.url }}">
+  {% if page.twitter_image %}
+    <meta property="og:image" content="{{ page.twitter_image | prepend: site.url }}">
   {% endif %}
 
   <meta name="twitter:site" content="@matallo">
   <meta name="twitter:title" content="{% if page.title_meta %}{{ page.title_meta }} — {% elsif page.title %}{{ page.title }} — {% endif %}{{ site.title }}">
   <meta name="twitter:description" content="{% if page.description_meta %}{{ page.description_meta }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-  {% if page.background_image %}
+  {% if page.twitter_image %}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{{ page.background_image | prepend: site.url }}">
+    <meta name="twitter:image" content="{{ page.twitter_image | prepend: site.url }}">
   {% else %}
     <meta name="twitter:card" content="summary" />
   {% endif %}
