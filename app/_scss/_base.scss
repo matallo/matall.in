@@ -8,7 +8,7 @@ body {
   background-color: $background-color;
   text-rendering: optimizeLegibility;
   -webkit-text-rendering: optimizeLegibility;
-  /* -webkit-font-smoothing: antialiased; */
+  -webkit-font-smoothing: antialiased;
   color: $text-color;
   font-weight: $font-weight-base;
   font-size: $font-size-base;
@@ -109,18 +109,30 @@ img {
   max-width: 100%;
   vertical-align: middle;
 }
-li {
-  list-style-position: inside;
-
-  > ul, > ol {
-    margin-bottom: 0;
-  }
+ul, ol {
+  margin-left: $spacing-unit;
 }
-ul li {
+ul {
   list-style-type: disc;
 }
-ol li {
+ol {
   list-style-type: decimal;
+}
+li {
+  margin-bottom: $spacing-unit / 2;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  > p, > ul, > ol {
+    margin-top: $spacing-unit / 2;
+    margin-bottom: 0;
+
+    + p {
+      margin-top: $spacing-unit / 2;
+    }
+  }
 }
 sup {
   top: -0.5em;

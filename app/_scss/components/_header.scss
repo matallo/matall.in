@@ -23,41 +23,22 @@
 .Header-background.Header-background--black {
   background: rgba(#000, .2);
 }
+.Header-back {
+  position: absolute;
+  top: $spacing-unit;
+  left: $spacing-unit;
+  opacity: .6;
+  transform: translateX(0);
+  transition: all .2s;
+
+  &:hover {
+    opacity: .8;
+    transform: translateX(-2px);
+  }
+}
 .Header-footer {
   position: absolute;
   bottom: $spacing-unit;
   width: 100%;
   color: #fff;
-}
-.Navbar {
-  height: 80px;
-  padding-right: $spacing-unit;
-  padding-left: $spacing-unit;
-}
-.Navbar-menu {
-  text-align: center;
-}
-.Navbar-item {
-  display: inline-block;
-  margin-right: $spacing-unit * 2;
-  list-style: none;
-  text-transform: uppercase;
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  @include media-query($layout-m) {
-    margin-right: $spacing-unit;
-  }
-}
-.Navbar-link {
-  line-height: 80px;
-  color: #999;
-  transition: all .2s;
-
-  &:hover {
-    color: darken(#999, 5%);
-    text-decoration: none;
-  }
 }
