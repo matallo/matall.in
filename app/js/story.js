@@ -31,9 +31,9 @@ App.Views.Story = Backbone.View.extend({
 
     this.$('h2').waypoint({
       handler: function(direction) {
-        var id = this.element.id;
-
         if (direction == 'down') {
+          var id = this.element.id;
+
           if ($('.js-City-label--'+id).length) {
             d3.selectAll('.js-City').classed('is-active', false);
             d3.select('.js-City--'+id).classed('is-active', true);
@@ -60,9 +60,9 @@ App.Views.Story = Backbone.View.extend({
 
     this.$('h2').waypoint({
       handler: function(direction) {
-        var id = this.element.id;
-
         if (direction == 'up') {
+          var id = this.element.id;
+
           if ($('.js-City-label--'+id).length) {
             d3.selectAll('.js-City').classed('is-active', false);
             d3.select('.js-City--'+id).classed('is-active', true);
@@ -100,7 +100,9 @@ App.Views.Story = Backbone.View.extend({
   },
 
   _fixMap: function() {
-    if (document.body.scrollTop >= 580) {
+    var scroll = document.documentElement.scrollTop||document.body.scrollTop;
+
+    if (scroll >= 580) {
       this.$map.addClass('is-fixed');
     } else {
       this.$map.removeClass('is-fixed');

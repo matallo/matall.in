@@ -227,7 +227,8 @@ module.exports = function (grunt) {
         src: [
           '<%= config.dist %>/js/{,*/}*.*',
           '<%= config.dist %>/css/{,*/}*.css',
-          '<%= config.dist %>/img/**/*.*',
+          '<%= config.dist %>/img/{,*/}*.*',
+          '!<%= config.dist %>/img/posts/*.*', // rss readers
           '<%= config.dist %>/fonts/{,*/}*.*'
         ]
       }
@@ -302,7 +303,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= config.dist %>',
-          src: '{,*/}*.html',
+          src: '**/*.html',
           dest: '<%= config.dist %>'
         }]
       }
@@ -403,9 +404,9 @@ module.exports = function (grunt) {
     'filerev',
     'usemin',
     'htmlmin',
-    'compress',
-    'aws_s3:dist',
-    'aws_s3:assets'
+    // 'compress',
+    // 'aws_s3:dist',
+    // 'aws_s3:assets'
   ]);
 
   grunt.registerTask('default', [
