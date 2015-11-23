@@ -403,14 +403,18 @@ module.exports = function (grunt) {
     'modernizr',
     'filerev',
     'usemin',
-    'htmlmin',
-    // 'compress',
-    // 'aws_s3:dist',
-    // 'aws_s3:assets'
+    'htmlmin'
+  ]);
+
+  grunt.registerTask('deploy', [
+    'compress',
+    'aws_s3:dist',
+    'aws_s3:assets'
   ]);
 
   grunt.registerTask('default', [
-    'newer:eslint',
-    'build'
+    // 'newer:eslint',
+    'build',
+    'deploy'
   ]);
 };
