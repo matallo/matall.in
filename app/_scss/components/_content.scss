@@ -9,19 +9,6 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: $spacing-unit * 3;
-}
-.Content.Content--post {
-  margin-left: 25%;
-  margin-right: 25%;
-
-  @include media-query($layout-m) {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-.Content-inner {
-  position: relative;
-  padding-top: $spacing-unit * 3;
 
   ul, ol {
     margin-left: $spacing-unit;
@@ -48,6 +35,19 @@
       }
     }
   }
+}
+.Content.Content--post {
+  margin-left: 25%;
+  margin-right: 25%;
+
+  @include media-query($layout-m) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.Content-inner {
+  position: relative;
+  padding-top: $spacing-unit * 3;
 }
 .Home-header {
   text-align: center;
