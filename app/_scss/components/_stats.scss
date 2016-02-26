@@ -6,7 +6,7 @@
 }
 .Stats-item {
   display: inline-block;
-  margin-left: $spacing-unit * 2;
+  margin-left: 40px;
   text-align: left;
   text-shadow: 0 2px 0 rgba(#000, .3);
 
@@ -16,11 +16,11 @@
 }
 .Stats-number {
   display: block;
-  margin-bottom: $spacing-unit / 2;
+  margin-bottom: 10px;
   font-weight: 400;
   font-size: 36px;
 
-  @include media-query($layout-m) {
+  @media (max-width: $layout-m) {
     font-size: 30px;
     line-height: 36px;
   }

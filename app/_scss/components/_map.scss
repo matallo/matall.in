@@ -5,7 +5,7 @@
   display: block;
   position: absolute;
   top: 0;
-  margin-left: -360px - $spacing-unit / 2;
+  margin-left: -360px;
 
   &.is-fixed {
     position: fixed;
@@ -17,7 +17,7 @@
     bottom: -50px;
   }
 
-  @include media-query($layout-m) {
+  @media screen and (max-width: $layout-xxl - 1px) {
     display: none;
   }
 }

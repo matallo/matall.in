@@ -4,13 +4,13 @@
 .Aside {
   float: right;
   width: 150px;
-  margin: $spacing-unit / 2 0 $spacing-unit / 2 $spacing-unit * 2;
+  margin: 10px 0 10px 40px;
 
-  @include media-query($layout-xl) {
+  @media (max-width: $layout-xl) {
     float: none;
     width: 100%;
-    margin-top: $spacing-unit * 2;
-    margin-bottom: $spacing-unit * 2;
+    margin-top: 40px;
+    margin-bottom: 40px;
     margin-left: 0;
   }
 }
@@ -18,7 +18,7 @@
   width: 400px;
   max-width: none;
 
-  @include media-query($layout-xl) {
+  @media (max-width: $layout-xl) {
     width: 100%;
   }
 }

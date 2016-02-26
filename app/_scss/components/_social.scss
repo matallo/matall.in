@@ -1,20 +1,10 @@
 // Social
 // --------------------------------------------------
-
 .Social-item {
   display: inline-block;
-  margin-left: $spacing-unit;
+  margin-left: 20px;
 
   &:first-child {
     margin-left: 0;
-  }
-}
-.Social-link {
-  font-size: 24px;
-  color: #DDD;
-  transition: all .2s;
-
-  &:hover {
-    color: #CCC;
   }
 }

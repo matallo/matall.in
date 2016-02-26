@@ -12,6 +12,15 @@ destination: 'dist'
 markdown: kramdown
 permalink: pretty
 
-years: 27
+years: 28
 
 # analytics_property_id: ''
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      permalink: /posts/:title/

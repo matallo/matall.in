@@ -9,18 +9,15 @@
   max-width: $layout-m;
   margin-right: auto;
   margin-left: auto;
-  padding-right: $spacing-unit;
-  padding-left: $spacing-unit;
+  padding-right: 20px;
+  padding-left: 20px;
 }
-.u-inner.u-inner--l {
+.u-inner--l {
   max-width: $layout-l;
 }
-.u-inner.u-inner--xxl {
+.u-inner--xxl {
   max-width: $layout-xxl;
 }
-.u-wide img {
-  min-width: $layout-l;
-  max-width: $layout-l;
-  margin-left: - ($layout-l - $layout-m) / 2;
-  border-radius: 3px;
+.u-strike {
+  text-decoration: line-through;
 }

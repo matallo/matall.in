@@ -8,10 +8,23 @@
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: $spacing-unit * 3;
+  margin-bottom: 60px;
+}
+.Content--post {
+  margin-left: 25%;
+  margin-right: 25%;
+
+  @media (max-width: $layout-xl) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.Content-inner {
+  position: relative;
+  padding-top: 60px;
 
   ul, ol {
-    margin-left: $spacing-unit;
+    margin-left: 20px;
   }
   ul {
     list-style-type: disc;
@@ -20,49 +33,37 @@
     list-style-type: decimal;
   }
   li {
-    margin-bottom: $spacing-unit / 2;
+    margin-bottom: 10px;
 
     &:last-child {
       margin-bottom: 0;
     }
 
     > p, > ul, > ol {
-      margin-top: $spacing-unit / 2;
+      margin-top: 10px;
       margin-bottom: 0;
 
       + p {
-        margin-top: $spacing-unit / 2;
+        margin-top: 10px;
       }
     }
   }
-}
-.Content.Content--post {
-  margin-left: 25%;
-  margin-right: 25%;
-
-  @include media-query($layout-m) {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-.Content-inner {
-  position: relative;
-  padding-top: $spacing-unit * 3;
 }
 .Home-header {
   text-align: center;
 }
 .Post-header {
-  margin-bottom: $spacing-unit * 2;
+  margin-bottom: 40px;
 }
 .Content-title {
   margin-top: 0;
-  margin-bottom: $spacing-unit / 2;
+  margin-bottom: 10px;
   letter-spacing: -1px;
 }
 .Content-subtitle {
   font-weight: 300;
   font-size: 21px;
+  line-height: 1.4;
   color: #999;
 
   a {
@@ -82,7 +83,7 @@
   display: block;
   width: 120px;
   height: 2px;
-  margin-top: $spacing-unit * 2;
-  margin-bottom: $spacing-unit * 2;
+  margin-top: 40px;
+  margin-bottom: 40px;
   background: #eee;
 }

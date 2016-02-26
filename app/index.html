@@ -40,7 +40,7 @@ background_image: "/img/backgrounds/148065923.jpg"
             <div class="Sep"></div>
 
             <h2 class="Block-title">Work</h2>
-            <p>Interaction designer. Currently I work as Front-end developer at <a href="https://cartodb.com/">CartoDB</a>, a location intelligence and data visualization platform.</p>
+            <p>Interaction designer. Currently I work as Front-end developer at <a href="https://cartodb.com/">CartoDB</a>, a location intelligence platform to map your world's data.</p>
 
             <!-- p><a href="/work/" class="Button Button--m"><span>Portfolio</span></a></p -->
           </div>
@@ -53,11 +53,12 @@ background_image: "/img/backgrounds/148065923.jpg"
     <div class="u-inner u-inner--l">
       <div class="Sep"></div>
 
-      <h2 class="Block-title">Posts</h2>
+      <h2 class="Block-title">Stories</h2>
     </div>
 
     <div class="u-inner u-inner--xxl">
-      {% for post in site.posts | limit: 1 %}
+      {% assign stories = site.posts | where: "category", "stories" %}
+      {% for post in stories | limit: 1 %}
         <a href="{{ post.url }}" class="Story" title="{{ post.description }}">
           <div class="Story-gradient"></div>
           <div class="Story-inner">
@@ -75,6 +76,15 @@ background_image: "/img/backgrounds/148065923.jpg"
     <!-- div class="u-inner u-inner--l">
       <p><a href="/posts/" class="Button Button--m"><span>See all</span></a></p>
     </div -->
+    <div class="u-inner u-inner--l">
+      <h2 class="Block-title">Posts</h2>
+
+      <ul class="Posts-list">
+        {% for post in site.posts | limit: 5 %}
+          <li>{{ post.date | date_to_string }} <a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
 
   <div class="u-inner u-inner--l">
@@ -86,12 +96,16 @@ background_image: "/img/backgrounds/148065923.jpg"
           <h2 class="Block-title">Contact</h2>
           <p>Feel free to <a href="mailto:carlos@matallin.com">drop me a line</a>. You can also find me in other social networks.</p>
 
-          <ul>
-            <li class="Social-item"><a href="https://twitter.com/matallo/" class="Social-link" target="_blank"><i class="Icon Icon--twitter"></i></a></li>
-            <li class="Social-item"><a href="https://instagram.com/matallo/" class="Social-link" target="_blank"><i class="Icon Icon--instagram"></i></a></li>
-            <li class="Social-item"><a href="https://es.linkedin.com/in/carlosmatallin" class="Social-link" target="_blank"><i class="Icon Icon--linkedin-squared"></i></a></li>
-            <li class="Social-item"><a href="https://dribbble.com/matallo" class="Social-link" target="_blank"><i class="Icon Icon--dribbble"></i></a></li>
-            <li class="Social-item"><a href="https://github.com/matallo" class="Social-link" target="_blank"><i class="Icon Icon--github-circled"></i></a></li>
+          <ul class="Social-list">
+            <li class="Social-item">
+              {% include social/twitter.html %}
+            </li>
+            <li class="Social-item">
+              {% include social/github.html %}
+            </li>
+            <li class="Social-item">
+              {% include social/strava.html %}
+            </li>
           </ul>
         </div>
       </div>
@@ -103,6 +117,6 @@ background_image: "/img/backgrounds/148065923.jpg"
 
 <footer class="Footer">
   <div class="u-inner">
-    <p class="Footer-credits">2015 © Carlos Matallín</p>
+    <p class="Footer-credits">2016 © Carlos Matallín</p>
   </div>
 </footer>

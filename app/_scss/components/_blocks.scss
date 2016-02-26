@@ -2,14 +2,14 @@
 // --------------------------------------------------
 
 .Block {
-  margin-top: $spacing-unit * 3;
+  margin-top: 60px;
 
-  @include media-query($layout-m) {
+  @media (max-width: $layout-m) {
     text-align: center;
   }
 }
 .Block-title {
-  margin-top: $spacing-unit * 2;
+  margin-top: 40px;
   font-weight: 600;
   font-size: 15px;
   text-transform: uppercase;

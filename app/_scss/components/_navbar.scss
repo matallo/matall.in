@@ -3,8 +3,8 @@
 
 .Navbar {
   height: 80px;
-  padding-right: $spacing-unit;
-  padding-left: $spacing-unit;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 .Navbar-menu {
   margin-left: 0;
@@ -12,15 +12,15 @@
 }
 .Navbar-item {
   display: inline-block;
-  margin-right: $spacing-unit * 2;
+  margin-right: 40px;
   text-transform: uppercase;
 
   &:last-child {
     margin-right: 0;
   }
 
-  @include media-query($layout-m) {
-    margin-right: $spacing-unit;
+  @media (max-width: $layout-m) {
+    margin-right: 20px;
   }
 }
 .Navbar-link {

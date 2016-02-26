@@ -8,7 +8,7 @@ body {
   background-color: $background-color;
   text-rendering: optimizeLegibility;
   -webkit-text-rendering: optimizeLegibility;
-  // -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
   color: $text-color;
   font-weight: $font-weight-base;
   font-size: $font-size-base;
@@ -18,13 +18,13 @@ body {
 h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl, figure {
-  @include vertical-rhythm;
+  margin-bottom: 20px;
 }
 h1, h2 {
   color: #444;
 }
 h2, h3 {
-  margin-top: $spacing-unit * 2;
+  margin-top: 40px;
   font-weight: 300;
 }
 h1 {
@@ -32,13 +32,13 @@ h1 {
   font-size: 36px;
   line-height: 40px;
 
-  @include media-query($layout-m) {
+  @media (max-width: $layout-m) {
     font-size: 30px;
     line-height: 36px;
   }
 }
 h2 {
-  margin-bottom: $spacing-unit;
+  margin-bottom: 20px;
   font-size: 24px;
   line-height: 30px;
 }
@@ -57,7 +57,7 @@ p, ul, ol {
   }
 }
 blockquote {
-  margin: $spacing-unit * 2;
+  margin: 40px;
   font-weight: 300;
   font-size: 21px;
   line-height: 30px;
@@ -117,4 +117,15 @@ sub, sup {
   line-height: 0;
   position: relative;
   vertical-align: baseline;
+}
+pre,
+code {
+  font-size: 13px;
+  font-family: 'PT Mono', monospace;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: #f9f9f9;
+}
+code {
+  padding: 1px 5px;
 }

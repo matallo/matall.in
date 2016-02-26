@@ -7,7 +7,7 @@
   height: 2px;
   background: #eee;
 
-  @include media-query($layout-m) {
+  @media (max-width: $layout-m) {
     margin-right: auto;
     margin-left: auto;
   }
@@ -17,6 +17,6 @@
   margin-left: auto;
 }
 .Sep.Sep--content {
-  margin-top: $spacing-unit * 2;
-  margin-bottom: $spacing-unit * 2;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
