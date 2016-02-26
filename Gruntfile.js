@@ -15,6 +15,8 @@ module.exports = function (grunt) {
     aws: grunt.file.readJSON('grunt-aws.' + env + '.json')
   }
 
+  var mozjpeg = require('imagemin-mozjpeg')
+
   grunt.initConfig({
     config: config,
 
@@ -39,15 +41,18 @@ module.exports = function (grunt) {
       },
       dist: {
         options: {
+          params: {
+            'CacheControl': 'max-age=0, public',
+            'Expires': new Date(Date.now() + 31536000 * 1000)
+          },
           differential: true
         },
         files: [{
           expand: true,
           cwd: '<%= config.dist %>/',
           src: [
-            'flights/**/*.*',
-            '**/*.{html,xml}',
-            '*.{ico,png}'
+            'flights/**/*',
+            '**/*.{html,xml}'
           ],
           dest: '/'
         }]
@@ -66,6 +71,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '<%= config.dist %>/',
           src: [
+            '*.{ico,png}',
             'css/{,*/}*.gz',
             'js/{,*/}*.gz',
             'img/**/*.{gif,jpeg,jpg,png,svg}',
@@ -228,8 +234,7 @@ module.exports = function (grunt) {
         src: [
           '<%= config.dist %>/js/{,*/}*.*',
           '<%= config.dist %>/css/{,*/}*.css',
-          '<%= config.dist %>/img/{,*/}*.*',
-          '!<%= config.dist %>/img/posts/*.*', // rss readers
+          '<%= config.dist %>/img/**/*.*',
           '<%= config.dist %>/fonts/{,*/}*.*'
         ]
       }
@@ -261,13 +266,19 @@ module.exports = function (grunt) {
           ]
         }
       },
-      html: ['<%= config.dist %>/**/*.html'],
+      html: [
+        '<%= config.dist %>/**/*.html',
+        '<%= config.dist %>/feed.xml'
+      ],
       css: ['<%= config.dist %>/css/{,*/}*.css'],
       js: ['<%= config.dist %>/js/{,*/}*.js']
     },
 
     imagemin: {
       dist: {
+        options: {
+          use: [mozjpeg()]
+        },
         files: [{
           expand: true,
           cwd: '<%= config.app %>/img',
