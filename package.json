@@ -18,7 +18,6 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-eslint": "^16.0.0",
     "grunt-filerev": "^2.2.0",
-    "grunt-modernizr": "^0.6.0",
     "grunt-newer": "^1.1.0",
     "grunt-postcss": "^0.5.3",
     "grunt-sass": "^1.0.0",
