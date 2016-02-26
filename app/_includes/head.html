@@ -33,6 +33,20 @@
   <!-- build:css(.tmp) /css/main.css -->
   <link rel="stylesheet" href="/css/main.css">
   <!-- endbuild -->
+  <style>
+    {% if page.background_image %}
+      .Header-background--image {
+        background-image: url({{ page.background_image }});
+      }
+    {% endif %}
+    {% if page.background_image_mobile %}
+      @media (max-width: 560px) {
+        .Header-background--image {
+          background-image: url({{ page.background_image_mobile }});
+        }
+      }
+    {% endif %}
+  </style>
   <!--[if lt IE 9]>
     <!-- build:js(.) /js/vendor/html5shiv.js -->
     <script src="/bower_components/html5shiv/dist/html5shiv.js"></script>

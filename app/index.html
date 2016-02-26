@@ -1,7 +1,7 @@
 ---
 title: Code, design, and mountains
 description: >
-  Map maker at CartoDB. I'm a 27 year old geek from Valencia living in Madrid. I’m a web enthusiast, passionate about
+  Map maker at CartoDB. I'm a 28 year old geek from Valencia living in Madrid. I’m a web enthusiast, passionate about
   technology and design. I climb mountains, too.
 layout: default
 background_image: "/img/backgrounds/148065923.jpg"
@@ -15,7 +15,7 @@ background_image: "/img/backgrounds/148065923.jpg"
         <a href="/" class="Avatar Avatar--home">
           <picture>
             <source srcset="/img/about/1363306686_04d7bb3035.jpg 1x, /img/about/1363306686_04d7bb3035@2x.jpg 2x">
-            <img src="/img/about/1363306686_04d7bb3035.jpg" alt="matallo" />
+            <img src="/img/about/1363306686_04d7bb3035.jpg" alt="matallo" width="100" height="100" />
           </picture>
         </a>
 
@@ -68,20 +68,25 @@ background_image: "/img/backgrounds/148065923.jpg"
             </div>
           </div>
 
-          <img src="{{ post.background_image }}" alt="{{ post.title }}">
+          {% if post.background_image_mobile %}
+            <picture>
+              <source media="(min-width: 560px)" srcset="{{ post.background_image }} 1x">
+              <source srcset="{{ post.background_image_mobile }} 1x">
+              <img src="{{ post.background_image }}" alt="{{ post.title }}" width="1280" height="720" />
+            </picture>
+          {% else %}
+            <img src="{{ post.background_image }}" alt="{{ post.title }}" width="1280" height="720" />
+          {% endif %}
         </a>
       {% endfor %}
     </div>
 
-    <!-- div class="u-inner u-inner--l">
-      <p><a href="/posts/" class="Button Button--m"><span>See all</span></a></p>
-    </div -->
     <div class="u-inner u-inner--l">
       <h2 class="Block-title">Posts</h2>
 
       <ul class="Posts-list">
         {% for post in site.posts | limit: 5 %}
-          <li>{{ post.date | date_to_string }} <a href="{{ post.url }}">{{ post.title }}</a></li>
+          <li class="Posts-item">{{ post.date | date_to_string }} <a href="{{ post.url }}" class="Posts-link">{{ post.title }}</a></li>
         {% endfor %}
       </ul>
     </div>

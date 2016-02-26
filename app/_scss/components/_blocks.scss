@@ -3,10 +3,6 @@
 
 .Block {
   margin-top: 60px;
-
-  @media (max-width: $layout-m) {
-    text-align: center;
-  }
 }
 .Block-title {
   margin-top: 40px;

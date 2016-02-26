@@ -1,0 +1,15 @@
+// Posts
+// --------------------------------------------------
+.Posts-item {
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: $layout-m) {
+  .Posts-link {
+    display: block;
+  }
+}

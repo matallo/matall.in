@@ -6,11 +6,6 @@
   width: 120px;
   height: 2px;
   background: #eee;
-
-  @media (max-width: $layout-m) {
-    margin-right: auto;
-    margin-left: auto;
-  }
 }
 .Sep.Sep--center {
   margin-right: auto;

@@ -33,26 +33,26 @@ module.exports = function (grunt) {
       clean: {
         options: {
           // Doesn't actually delete but shows log
-          debug: true
+          debug: true,
+          differential: true
         },
         files: [
-          { dest: '/', action: 'delete' }
+          { cwd: '<%= config.dist %>/', dest: '/', exclude: 'flights/**/*', action: 'delete' }
         ]
       },
       dist: {
         options: {
           params: {
-            'CacheControl': 'max-age=0, public',
-            'Expires': new Date(Date.now() + 31536000 * 1000)
+            'CacheControl': 'max-age=0, public'
           },
-          differential: true
+          differential: true,
+          gzipRename: 'ext'
         },
         files: [{
           expand: true,
           cwd: '<%= config.dist %>/',
           src: [
-            'flights/**/*',
-            '**/*.{html,xml}'
+            '**/*.{html,xml}.gz'
           ],
           dest: '/'
         }]
@@ -66,7 +66,6 @@ module.exports = function (grunt) {
           differential: true,
           gzipRename: 'ext'
         },
-        gzip: true,
         files: [{
           expand: true,
           cwd: '<%= config.dist %>/',
@@ -360,6 +359,11 @@ module.exports = function (grunt) {
           expand: true,
           src: ['<%= config.dist %>/js/{,*/}*.js'],
           ext: '.js.gz',
+          extDot: 'last'
+        }, {
+          expand: true,
+          src: ['<%= config.dist %>/**/*.html'],
+          ext: '.html.gz',
           extDot: 'last'
         }]
       }

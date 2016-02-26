@@ -2,7 +2,7 @@
 title: The Setup
 description: This is what I use to get stuff done
 layout: post
-twitter_image: "/img/usesthis/IMG_20151114_133235@tw.jpg"
+twitter_image: "/img/usesthis/IMG_20151114_133235@mobile.jpg"
 ---
 <div class="Post-header">
   <h1 class="Content-title">The Setup</h1>
@@ -10,7 +10,12 @@ twitter_image: "/img/usesthis/IMG_20151114_133235@tw.jpg"
 </div>
 
 <figure class="Slideshow Slideshow--center">
-  <img src="/img/usesthis/IMG_20151114_133235.jpg" alt="the cave" />
+  <picture>
+    <source media="(min-width: 560px)" srcset="/img/usesthis/IMG_20151114_133235.jpg 1x">
+    <source srcset="/img/usesthis/IMG_20151114_133235@mobile.jpg 1x">
+    <img src="/img/usesthis/IMG_20151114_133235.jpg" alt="The Cave" width="1280" height="960" />
+  </picture>
+
   <div class="Slideshow-caption">
     <p>The Cave</p>
   </div>
