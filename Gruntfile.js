@@ -83,7 +83,7 @@ module.exports = function (grunt) {
 
     watch: {
       babel: {
-        files: ['<%= config.app %>/js/{,*/}*.js'],
+        files: ['<%= config.app %>/_js/*.js'],
         tasks: ['babel:dist']
       },
       gruntfile: {
@@ -100,10 +100,6 @@ module.exports = function (grunt) {
       sass: {
         files: ['<%= config.app %>/_scss/{,*/}*.scss'],
         tasks: ['sass:server', 'postcss']
-      },
-      styles: {
-        files: ['<%= config.app %>/scss/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'postcss']
       }
     },
 
@@ -174,8 +170,8 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= config.app %>/js',
-          src: '{,*/}*.js',
+          cwd: '<%= config.app %>/_js',
+          src: '*.js',
           dest: '<%= config.tmp %>/js',
           ext: '.js'
         }]
@@ -323,23 +319,25 @@ module.exports = function (grunt) {
     },
 
     copy: {
-      styles: {
-        expand: true,
-        cwd: '<%= config.app %>/_scss',
-        src: '{,*/}*.css',
-        dest: '<%= config.tmp %>/css/'
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= config.app %>/_js',
+          src: '{data,vendor}/*',
+          dest: '<%= config.tmp %>/js/'
+        }]
       }
     },
 
     concurrent: {
       server: [
-        'babel:dist',
-        'copy:styles',
+        'babel',
+        'copy',
         'sass:server'
       ],
       dist: [
         'babel',
-        'copy:styles',
+        'copy',
         'sass:dist',
         'imagemin',
         'svgmin'
