@@ -322,9 +322,14 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= config.app %>/_js',
-          src: '{data,vendor}/*',
-          dest: '<%= config.tmp %>/js/'
+          cwd: '<%= config.app %>/_js/vendor',
+          src: '*.js',
+          dest: '<%= config.tmp %>/js/vendor'
+        }, {
+          expand: true,
+          cwd: '<%= config.app %>/_js/data',
+          src: '*.json',
+          dest: '<%= config.dist %>/js/data'
         }]
       }
     },
@@ -359,6 +364,11 @@ module.exports = function (grunt) {
           expand: true,
           src: ['<%= config.dist %>/js/{,*/}*.js'],
           ext: '.js.gz',
+          extDot: 'last'
+        }, {
+          expand: true,
+          src: ['<%= config.dist %>/js/{,*/}*.json'],
+          ext: '.json.gz',
           extDot: 'last'
         }, {
           expand: true,
