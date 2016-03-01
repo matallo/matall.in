@@ -4,5 +4,7 @@ rvm:
 install:
   - bundle install
   - npm install
+  - npm install -g bower
+before_script:
   - bower install
 script: grunt build
