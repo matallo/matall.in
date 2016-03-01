@@ -3,7 +3,7 @@ rvm:
   - 2.3.0
 install:
   - bundle install
-  - npm install
+  - npm install -g npm@latest
   - npm install -g bower
 before_script:
   - bower install
