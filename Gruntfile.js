@@ -6,13 +6,15 @@ module.exports = function (grunt) {
     useminPrepare: 'grunt-usemin'
   })
 
-  var env = grunt.option('target') || 'development'
-
   var config = {
     app: 'app',
     tmp: '.tmp',
     dist: 'dist',
-    aws: grunt.file.readJSON('grunt-aws.' + env + '.json')
+    aws: {
+      accesskeyid: process.env.AWS_ACCESSKEYID,
+      secretaccesskey: process.env.AWS_SECRETACCESSKEY,
+      bucket: process.env.AWS_BUCKET
+    }
   }
 
   var mozjpeg = require('imagemin-mozjpeg')
@@ -21,7 +23,7 @@ module.exports = function (grunt) {
     config: config,
 
     // put your credentials and save
-    // grunt-aws.development.json to grunt-aws.production.json
+    // config.env.example to config.env
     aws_s3: {
       options: {
         accessKeyId: '<%= config.aws.accessKeyId %>',
@@ -410,26 +412,19 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'filerev',
-    'usemin'
+    'usemin',
+    'htmlmin'
   ])
 
-  grunt.registerTask('deploy', function () {
-    if (env === 'staging' || env === 'production') {
-      grunt.task.run([
-        'build',
-        'htmlmin',
-        'compress',
-        'aws_s3:dist',
-        'aws_s3:assets'
-      ])
-    } else {
-      grunt.log.warn('The `deploy` task needs a target option. Use `deploy --target=ENV`')
-    }
-  })
+  grunt.registerTask('deploy', [
+    'build',
+    'compress',
+    'aws_s3:dist',
+    'aws_s3:assets'
+  ])
 
   grunt.registerTask('default', [
     // 'newer:eslint',
-    'build',
     'deploy'
   ])
 }
