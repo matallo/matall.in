@@ -9,4 +9,4 @@ install:
   - bundle install
   - npm install
   - bower install
-script: grunt build
+script: grunt deploy
