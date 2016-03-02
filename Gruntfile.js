@@ -11,8 +11,8 @@ module.exports = function (grunt) {
     tmp: '.tmp',
     dist: 'dist',
     aws: {
-      accesskeyid: process.env.AWS_ACCESSKEYID,
-      secretaccesskey: process.env.AWS_SECRETACCESSKEY,
+      accessKeyId: process.env.AWS_ACCESSKEYID,
+      secretAccessKey: process.env.AWS_SECRETACCESSKEY,
       bucket: process.env.AWS_BUCKET
     }
   }
