@@ -10,3 +10,6 @@ install:
   - npm install
   - bower install
 script: grunt deploy
+notifications:
+  webhooks: https://dockbit.com/webhooks/512bc5d52c269ac63c9b8c8837d0c2babdc75a42
+  
