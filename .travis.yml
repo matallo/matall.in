@@ -11,5 +11,8 @@ install:
 before_script: bower install
 script: grunt
 after_success: grunt deploy
+branches:
+  only:
+    - master
 notifications:
   slack: matallin:WiB9wQ4XqhLjMD14aI5mNEwX
