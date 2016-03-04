@@ -8,7 +8,8 @@ before_install:
 install:
   - bundle install
   - npm install
-  - bower install
-script: grunt deploy
+before_script: bower install
+script: grunt
+after_success: grunt deploy
 notifications:
   slack: matallin:WiB9wQ4XqhLjMD14aI5mNEwX

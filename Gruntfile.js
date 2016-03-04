@@ -111,6 +111,14 @@ module.exports = function (grunt) {
       },
       production: {
         command: 'bundle exec jekyll build --config _config.yml,_config-prod.yml'
+      },
+      htmlproof: {
+        command: 'bundle exec htmlproof ./dist --only-4xx --empty-alt-ignore',
+        options: {
+          execOptions: {
+            maxBuffer: Infinity
+          }
+        }
       }
     },
 
@@ -304,7 +312,6 @@ module.exports = function (grunt) {
           conservativeCollapse: true,
           removeAttributeQuotes: true,
           removeCommentsFromCDATA: true,
-          removeEmptyAttributes: true,
           removeOptionalTags: true,
           removeRedundantAttributes: false,
           useShortDoctype: true,
@@ -412,12 +419,15 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'filerev',
-    'usemin',
-    'htmlmin'
+    'usemin'
+  ])
+
+  grunt.registerTask('htmlproof', [
+    'shell:htmlproof'
   ])
 
   grunt.registerTask('deploy', [
-    'build',
+    'htmlmin',
     'compress',
     'aws_s3:dist',
     'aws_s3:assets'
@@ -425,6 +435,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     // 'newer:eslint',
-    'deploy'
+    'build',
+    'htmlproof'
   ])
 }
