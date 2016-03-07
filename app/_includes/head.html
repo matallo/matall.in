@@ -13,7 +13,7 @@
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="{{ page.url | prepend: site.url }}"/>
   {% if page.twitter_image %}
-    <meta property="og:image" content="{{ page.twitter_image }}">
+    <meta property="og:image" content="{{ page.twitter_image | prepend: site.url }}">
   {% endif %}
 
   <meta name="twitter:site" content="@matallo">
@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="{% if page.description_meta %}{{ page.description_meta }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   {% if page.twitter_image %}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{{ page.twitter_image }}">
+    <meta name="twitter:image" content="{{ page.twitter_image | prepend: site.url }}">
   {% else %}
     <meta name="twitter:card" content="summary" />
   {% endif %}
