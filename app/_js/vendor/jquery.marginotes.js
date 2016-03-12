@@ -1,12 +1,12 @@
 var marginotes = function (options) {
   var options = options || {}
   $('body').append('<div class = "margintooltip" style = "display:none;"></div>')
-  var field = options.field || "desc"
+  var field = options.field || "href"
   var spans = this.filter("span")
   spans.css({ 'border-bottom': '1px dashed #337ab7',
               'cursor': 'help' })
   this.hover(function (e) {
-    var description = $(this).attr(field)
+    var description = $(document.getElementById($(this).attr(field).split('#')[1])).html()
     var parent = $(this.parentElement)
     var position = parent.position()
     var tooltip = $('.margintooltip')
