@@ -30,13 +30,13 @@ module.exports = function (grunt) {
         secretAccessKey: '<%= config.aws.secretAccessKey %>',
         bucket: '<%= config.aws.bucket %>',
         region: 'us-west-2',
-        uploadConcurrency: 5
+        uploadConcurrency: 5,
+        differential: true
       },
       clean: {
         options: {
           // Doesn't actually delete but shows log
-          debug: true,
-          differential: true
+          debug: true
         },
         files: [
           { cwd: '<%= config.dist %>/', dest: '/', exclude: 'flights/**/*', action: 'delete' }
@@ -47,7 +47,6 @@ module.exports = function (grunt) {
           params: {
             'CacheControl': 'max-age=0, public'
           },
-          differential: true,
           gzipRename: 'ext'
         },
         files: [{
@@ -65,7 +64,6 @@ module.exports = function (grunt) {
             'CacheControl': 'max-age=31536000, public',
             'Expires': new Date(Date.now() + 31536000 * 1000)
           },
-          differential: true,
           gzipRename: 'ext'
         },
         files: [{
@@ -88,6 +86,10 @@ module.exports = function (grunt) {
         files: ['<%= config.app %>/_js/*.js'],
         tasks: ['babel:dist']
       },
+      js: {
+        files: ['<%= config.app %>/_js/{data,vendor}/*'],
+        tasks: ['copy']
+      },
       gruntfile: {
         files: ['Gruntfile.js']
       },
@@ -97,7 +99,7 @@ module.exports = function (grunt) {
           '<%= config.app %>/img/**/*.{gif,jpeg,jpg,png,svg}',
           '<%= config.app %>/fonts/{,*/}*.{eot,woff,woff2,ttf,svg}'
         ],
-        tasks: ['shell:development', 'sass:server', 'postcss']
+        tasks: ['shell:development', 'concurrent:server', 'postcss']
       },
       sass: {
         files: ['<%= config.app %>/_scss/{,*/}*.scss'],

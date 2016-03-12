@@ -126,6 +126,11 @@ App.Views.Story = Backbone.View.extend({
     if ($(window).width() > 1279) {
       this._initMap()
     }
+    this._initNotes()
+  },
+
+  _initNotes: function () {
+    this.$('.js-Footnote').marginotes()
   },
 
   _initMap: function () {
