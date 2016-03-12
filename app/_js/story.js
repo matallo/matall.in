@@ -7,8 +7,16 @@ App.Views.Story = Backbone.View.extend({
 
   el: '.js-Story',
 
+  events: {
+    'mouseover .js-Footnote': '_onMouseoverFootnote',
+    'mouseout .js-Footnote': '_onMouseoutFootnote'
+  },
+
   initialize: function () {
+    this.mobile = 1280
+
     this.$map = this.$('.js-Map')
+    this.$marginote = this.$('.js-Marginote')
 
     this._initViews()
   },
@@ -123,17 +131,34 @@ App.Views.Story = Backbone.View.extend({
   },
 
   _initViews: function () {
-    if ($(window).width() > 1279) {
-      this._initMap()
-    }
-    this._initNotes()
+    this._initMap()
   },
 
-  _initNotes: function () {
-    this.$('.js-Footnote').marginotes()
+  _onMouseoverFootnote: function (e) {
+    if ($(window).width() < this.mobile) {
+      return
+    }
+
+    var $target = $(e.target)
+    var text = $(document.getElementById($($target).attr('href').split('#')[1])).html()
+
+    this.$marginote
+      .html(text)
+      .css({
+        top: $target.position().top
+      })
+      .fadeIn(200)
+  },
+
+  _onMouseoutFootnote: function (e) {
+    this.$marginote.fadeOut(200)
   },
 
   _initMap: function () {
+    if ($(window).width() < this.mobile) {
+      return
+    }
+
     var _this = this
 
     var width = 360

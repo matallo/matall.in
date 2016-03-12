@@ -34,13 +34,28 @@
     color: #FFF;
   }
 }
-.Content-footnotes {
-  margin-bottom: 0;
-}
 .Footnotes-item {
   margin-bottom: 20px;
 
   &:last-child {
     margin-bottom: 0;
+  }
+}
+.Marginote {
+  display: none;
+  position: absolute;
+  right: 0;
+  width: 300px;
+  margin-right: -320px;
+  border-left: 1px solid #eee;
+  padding-left: 20px;
+  font-size: 13px;
+
+  @media screen and (max-width: $layout-xxl - 1px) {
+    display: none;
+  }
+
+  .Footnote-return {
+    display: none;
   }
 }
