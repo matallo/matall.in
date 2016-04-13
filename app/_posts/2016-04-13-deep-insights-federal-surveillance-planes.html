@@ -25,7 +25,7 @@ body_class: "js-Marginotes"
 
 <p>Checking the methodology used by <strong>BuzzFeed News</strong> I asked myself: <em>"What if we could do the same analysis with Spanish cities?"</em>.</p>
 
-<p>Actually, this is something many Madrid citizens have already brought up before: If you live near Madrid center, you'd have noticed the annoying noise of a helicopter flying over the city on some quiet nights. Just to have a rough idea, there's a Twitter account called <a href="https://twitter.com/putohelicoptero">@putohelicoptero</a> featuring the helicopter.</p>
+<p>Actually, this is something many Madrid citizens have already brought up before: If you live near Madrid city center, you'd have noticed the annoying noise of a helicopter flying over the city on some quiet nights. Just to give a rough idea, there's a Twitter account called <a href="https://twitter.com/putohelicoptero">@putohelicoptero</a> featuring the helicopter.</p>
 
 <p>Digging for information I found the model of the helicopter in a news article by <a href="http://www.elmundo.es/elmundo/2012/10/26/madrid/1351281127.html">El Mundo</a>, reporting all the inconveniences that the now known <strong>EC-135 'Cóndor'</strong> caused.</p>
 
@@ -33,7 +33,7 @@ body_class: "js-Marginotes"
 
 <p>And it exists.</p>
 
-<p>The <a href="http://www.seguridadaerea.gob.es/lang_castellano/aeronaves/matric_clasif_regis/default.aspx">Registro de Matrícula de Aeronaves Civiles</a> publishes a <a href="http://www.seguridadaerea.gob.es/media/3748914/aeronaves_inscritas.pdf">document</a> with all the aircraft registered in Spain. <a href="#fn:2" id="fnref:2" class="Footnote js-Footnote">2</a> At first glance, at least 41 of those aircraft matched with the model I was looking for, and then a colleague helped me introduce them in <strong>Flightradar24</strong> for further filtering. <a href="#fn:3" id="fnref:3" class="Footnote js-Footnote">3</a></p>
+<p>The <a href="http://www.seguridadaerea.gob.es/lang_castellano/aeronaves/matric_clasif_regis/default.aspx">Registro de Matrícula de Aeronaves Civiles</a> publishes a <a href="http://www.seguridadaerea.gob.es/media/3748914/aeronaves_inscritas.pdf">document</a> with all the aircraft registered in Spain. <a href="#fn:2" id="fnref:2" class="Footnote js-Footnote">2</a> At first glance, at least 41 of those aircraft were a match with with the model I was looking for, and then a colleague helped me introducing them in <strong>Flightradar24</strong> for further filtering. <a href="#fn:3" id="fnref:3" class="Footnote js-Footnote">3</a></p>
 
 <p>Once we found it, we just had to export the location data and map it in <a href="https://cartodb.com/">CartoDB</a>. As an example, this is the flight of the helicopter for New Year's Eve, checking Santiago Bernabéu stadium (Start of San Silvestre Vallecana), Vallecas (End of San Silvestre Vallecana), and Plaza de Sol.</p>
 
@@ -45,6 +45,9 @@ body_class: "js-Marginotes"
 
 <blockquote><span>“</span>What is the #putohelicoptero looking for?<span>”</span></blockquote>
 
+<p>We can see in which zones were conducted most of the surveillance flights, performing a spatial join to the boundaries of <a href="http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=46b55cde99be2410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD
+">Madrid barrios</a> (activate the layer in the map above). <a href="#fn:4" id="fnref:4" class="Footnote js-Footnote">4</a></p>
+
 <p><em>Disclaimer: <a href="https://www.flightradar24.com/">Flightradar24</a> has a pretty restrictive license, thus I haven't shared the data from <strong>#putohelicoptero</strong>. The data for federal surveillance flights is already available in BuzzFeed News GitHub account.</em></p>
 
 <div class="Sep Sep--content"></div>
@@ -55,4 +58,6 @@ body_class: "js-Marginotes"
   <li id="fn:2" class="Footnotes-item js-Footnotes-item">Last updated on 1st April 2016, as for the day of publication of this post <a href="#fnref:2" class="Footnote-return">↩</a></li>
 
   <li id="fn:3" class="Footnotes-item js-Footnotes-item">You need a Premium account for more than 7 days historic data, but it's easy to obtain. Thanks to <a href="https://github.com/javitonino">@javitonino</a> who assisted me in this process. <a href="#fnref:3" class="Footnote-return">↩</a></li>
+
+  <li id="fn:4" class="Footnotes-item js-Footnotes-item">Data from November 2015 to March 2016. <a href="#fnref:4" class="Footnote-return">↩</a></li>
 </ol>
