@@ -438,6 +438,6 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     // 'newer:eslint',
     'build',
-    'htmlproof'
+    // 'htmlproof'
   ])
 }
