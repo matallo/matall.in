@@ -115,7 +115,7 @@ module.exports = function (grunt) {
         command: 'bundle exec jekyll build --config _config.yml,_config-prod.yml'
       },
       htmlproof: {
-        command: 'bundle exec htmlproof ./dist --only-4xx --empty-alt-ignore',
+        command: 'bundle exec htmlproofer ./dist --only-4xx --empty-alt-ignore',
         options: {
           execOptions: {
             maxBuffer: Infinity
