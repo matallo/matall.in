@@ -1,5 +1,5 @@
 ---
-title: Analyzing federal surveillance flights with CartoDB
+title: Analyzing federal surveillance planes with CartoDB
 description: "Using CartoDB Deep Insights to analyze data from BuzzFeed News on federal surveillance planes"
 twitter_image: "/img/posts/deep-insights-federal-surveillance-planes/tpl_b8fa5944_00d5_11e6_9e0e_0ecfd53eb7d3@mobile.png"
 body_class: "js-Marginotes"
@@ -13,7 +13,7 @@ body_class: "js-Marginotes"
 
 <p>One week ago <a href="https://www.buzzfeed.com/peteraldhous/spies-in-the-skies">BuzzFeed News</a> broke the story of U.S. government surveillance planes routinely circling over most major cities. It was while reading the <a href="https://news.ycombinator.com/item?id=11465978">Hacker News thread</a> on the topic that I found the data, along with notes on the analysis, available on <a href="http://buzzfeednews.github.io/2016-04-federal-surveillance-planes/analysis.html">GitHub</a>.</p>
 
-<p>As I showed on my <a href="/posts/deep-insights-visualizing-1m-flight-routes/">flights analysis post</a> we are working at <a href="https://cartodb.com/">CartoDB</a> on a visualization solution to explore and analyze location data.</p>
+<p>As I showed on my <a href="/posts/deep-insights-visualizing-1m-flight-routes/">flights routes post</a> we are working at <a href="https://cartodb.com/">CartoDB</a> on a visualization solution to explore and analyze location data.</p>
 
 <p>This time I didn't have to collect the data as <strong>BuzzFeed News</strong> had already done the job. I just recreated their analysis with a set of widgets for dynamic filtering.</p>
 
@@ -29,11 +29,11 @@ body_class: "js-Marginotes"
 
 <p>Digging for information I found the model of the helicopter in a news article by <a href="http://www.elmundo.es/elmundo/2012/10/26/madrid/1351281127.html">El Mundo</a>, reporting all the inconveniences that the now known <strong>EC-135 'Cóndor'</strong> caused.</p>
 
-<p>As explained in the <strong>BuzzFeed News</strong> analysis, <a href="https://www.flightradar24.com/">Flightradar24</a> receives data from a network of ground-based receivers, you just need an identifier for each aircraft to access that data. If only there was an aircraft registry similar to the Federal Aviation Administration <a href="http://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/releasable_aircraft_download/">registration database</a> I could identify the model the "Policia Nacional" flights.</p>
+<p>As explained in the <strong>BuzzFeed News</strong> analysis, <a href="https://www.flightradar24.com/">Flightradar24</a> receives data from a network of ground-based receivers, <a href="#fn:1" id="fnref:1" class="Footnote js-Footnote">1</a> you just need an identifier for each aircraft to access that data. If only there was an aircraft registry similar to the Federal Aviation Administration <a href="http://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/releasable_aircraft_download/">registration database</a> I could identify the model the "Policia Nacional" flights.</p>
 
 <p>And it exists.</p>
 
-<p>The <a href="http://www.seguridadaerea.gob.es/lang_castellano/aeronaves/matric_clasif_regis/default.aspx">Registro de Matrícula de Aeronaves Civiles</a> publishes a <a href="http://www.seguridadaerea.gob.es/media/3748914/aeronaves_inscritas.pdf">document</a> with all the aircraft registered in Spain. <a href="#fn:1" id="fnref:1" class="Footnote js-Footnote">1</a> At first glance, at least 41 of those aircraft matched with the model I was looking for, and then a colleague helped me introduce them in <strong>Flightradar24</strong> for further filtering. <a href="#fn:2" id="fnref:2" class="Footnote js-Footnote">2</a></p>
+<p>The <a href="http://www.seguridadaerea.gob.es/lang_castellano/aeronaves/matric_clasif_regis/default.aspx">Registro de Matrícula de Aeronaves Civiles</a> publishes a <a href="http://www.seguridadaerea.gob.es/media/3748914/aeronaves_inscritas.pdf">document</a> with all the aircraft registered in Spain. <a href="#fn:2" id="fnref:2" class="Footnote js-Footnote">2</a> At first glance, at least 41 of those aircraft matched with the model I was looking for, and then a colleague helped me introduce them in <strong>Flightradar24</strong> for further filtering. <a href="#fn:3" id="fnref:3" class="Footnote js-Footnote">3</a></p>
 
 <p>Once we found it, we just had to export the location data and map it in <a href="https://cartodb.com/">CartoDB</a>. As an example, this is the flight of the helicopter for New Year's Eve, checking Santiago Bernabéu stadium (Start of San Silvestre Vallecana), Vallecas (End of San Silvestre Vallecana), and Plaza de Sol.</p>
 
@@ -41,7 +41,7 @@ body_class: "js-Marginotes"
   <iframe width="100%" height="520" frameborder="0" src="https://team.cartodb.com/u/matallo/viz/3ed93c04-0038-11e6-b597-0ea31932ec1d/embed_map" allowfullscreen></iframe>
 </figure>
 
-<p>At a lower scale, "Policia Nacional" is also conducting surveillance flights that can be tracked. At last we can already answer the question:</p>
+<p>At a lower scale, "Policia Nacional" is also conducting surveillance flights that can be tracked, and later analyzed. At last we can already answer the question:</p>
 
 <blockquote><span>“</span>What is the #putohelicoptero looking for?<span>”</span></blockquote>
 
@@ -50,7 +50,9 @@ body_class: "js-Marginotes"
 <div class="Sep Sep--content"></div>
 
 <ol>
-  <li id="fn:1" class="Footnotes-item js-Footnotes-item">Last updated on 1st April 2016, as for the day of publication of this post <a href="#fnref:1" class="Footnote-return">↩</a></li>
+  <li id="fn:1" class="Footnotes-item js-Footnotes-item">You can <a href="https://www.flightradar24.com/build-your-own">build your own receiver</a> with a Raspberry Pi and a low cost DVB-T USB stick, or <a href="https://www.flightradar24.com/apply-for-receiver">apply for a receiver</a> <a href="#fnref:1" class="Footnote-return">↩</a></li>
 
-  <li id="fn:2" class="Footnotes-item js-Footnotes-item">You need a Premium account for more than 7 days historic data, but it's easy to obtain. Thanks to <a href="https://github.com/javitonino">@javitonino</a> who assisted me in this process. <a href="#fnref:2" class="Footnote-return">↩</a></li>
+  <li id="fn:2" class="Footnotes-item js-Footnotes-item">Last updated on 1st April 2016, as for the day of publication of this post <a href="#fnref:2" class="Footnote-return">↩</a></li>
+
+  <li id="fn:3" class="Footnotes-item js-Footnotes-item">You need a Premium account for more than 7 days historic data, but it's easy to obtain. Thanks to <a href="https://github.com/javitonino">@javitonino</a> who assisted me in this process. <a href="#fnref:3" class="Footnote-return">↩</a></li>
 </ol>
