@@ -1,10 +1,9 @@
 ---
 title: Vietnam
 description: "Carlos and Adrián's Top Gear: Vietnam Special"
-when: Summer 2015
 layout: story
 permalink: /posts/:title/
-body_class: "js-Story"
+body_class: "js-Story js-Marginotes"
 background_image: "/img/posts/vietnam/21660789875_5d302a0c18_o.jpg"
 background_image_mobile: "/img/posts/vietnam/21660789875_5d302a0c18_o@mobile.jpg"
 twitter_image: "/img/posts/vietnam/21660789875_5d302a0c18_o@mobile.jpg"
@@ -12,8 +11,6 @@ category: stories
 stats:
   - number: "14"
     name: days
-  - number: "3,000"
-    name: kilometers
   - number: "1,600€"
     name: expenses
 ---
@@ -22,7 +19,7 @@ stats:
 
 <div class="Post-header">
   <h1 class="Content-title">{{ page.title }}</h1>
-  <p class="Content-subtitle">{{ page.when }} — {{ page.description }}</p>
+  <p class="Content-subtitle">{{ page.date | date_to_string }} — {{ page.description }}</p>
 </div>
 
 <p>Last Summer I took a holiday trip to Vietnam with the single purpose of crossing the country on a motorbike with my friend <a href="https://twitter.com/adrpz">Adrián</a>, who convinced me to join this adventure.</p>
@@ -205,7 +202,6 @@ stats:
   <li><a href="https://www.flickr.com/photos/elgekonegro">Adrián's Flickr photo gallery</a></li>
   <li><a href="https://instagram.com/explore/tags/vietcongada/">Our pictures on Instagram</a></li>
   <li><a href="https://twitter.com/search?q=%23vietcongada&src=typd">Our over-oversharing on Twitter</a></li>
-  <!-- li><a href="#">All the places marked with a pin in this article</a></li -->
   <li><a href="https://team.cartodb.com/u/matallo/tables/openpaths_matallo_20150818_20150831">My OpenPaths running in background for two weeks</a> <a href="#fn:11" id="fnref:11" class="Footnote js-Footnote">11</a></li>
 </ul>
 
