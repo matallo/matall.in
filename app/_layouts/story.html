@@ -9,11 +9,9 @@ layout: default
 
   <div class="Header-footer">
     <div class="Stats">
-      <ul class="u-inner">
-        {% for stats_item in page.stats %}
-          <li class="Stats-item"><strong class="Stats-number">{{ stats_item.number }}</strong> {{ stats_item.name }}</li>
-        {% endfor %}
-      </ul>
+      <div class="u-inner">
+        <p class="Stats-item"><strong class="Stats-number">{{ page.days }}</strong> days</p>
+      </div>
     </div>
   </div>
 </header>
@@ -22,11 +20,21 @@ layout: default
 
 <div class="Content Content--post">
   <div class="u-inner">
-    <div class="Content-inner">
+    <article class="Content-inner" itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="Map js-Map"></div>
+      <div class="Marginote js-Marginote"></div>
 
-      {{ content }}
+      <div class="Content-header">
+        <h1 class="Content-title" itemprop="name headline">{{ page.title }}</h1>
+        <p class="Content-subtitle"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date_to_string }}</time> — {{ page.description }}</p>
+      </div>
 
-    </div>
+      <div class="Content-body" itemprop="articleBody">
+
+        {{ content }}
+
+      </div>
+    </article>
 
     <div class="Sep Sep--content js-Sticky"></div>
 

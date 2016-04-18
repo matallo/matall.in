@@ -203,7 +203,7 @@ App.Views.Story = Backbone.View.extend({
             return w
           })
           .on('click', function (d) {
-            _this._goTo(_this.$('#' + d.properties.slug), { margin: 66 })
+            _this._goTo(_this.$('#' + d.properties.slug), { margin: 40 })
           })
 
       _this._initBindings()

@@ -14,6 +14,9 @@
     max-width: 100%;
   }
 }
+.Slideshow--right {
+  float: right;
+}
 .Slideshow--center {
   width: $layout-l - 40px;
   margin-left: -($layout-l - $layout-m) / 2;
