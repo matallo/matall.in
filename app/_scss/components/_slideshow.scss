@@ -10,12 +10,20 @@
     width: 100%;
   }
 
-  iframe {
+  iframe,
+  img {
     max-width: 100%;
   }
 }
 .Slideshow--right {
   float: right;
+}
+.Slideshow--center,
+.Slideshow--wide {
+  iframe,
+  img {
+    border-radius: 3px;
+  }
 }
 .Slideshow--center {
   width: $layout-l - 40px;
@@ -24,11 +32,6 @@
   @media (max-width: $layout-l) {
     width: 100%;
     margin-left: 0;
-  }
-
-  iframe,
-  img {
-    border-radius: 3px;
   }
 }
 .Slideshow--wide {

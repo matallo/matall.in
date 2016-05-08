@@ -28,14 +28,17 @@
     width: 100%;
   }
 }
-.Aside-caption,
-.Slideshow-caption {
+.Caption {
   margin-bottom: 0;
   padding: 10px 0;
   border-bottom: 1px solid #eee;
   font-size: 13px;
   color: #999;
 }
-.Aside-caption {
+.Caption--aside {
   width: 400px;
+
+  @media (max-width: $layout-xl) {
+    width: 100%;
+  }
 }
