@@ -1,11 +1,17 @@
 // Aside
 // --------------------------------------------------
 
-.Aside {
+.Aside--right {
   float: right;
   width: 150px;
   margin: 10px 0 10px 40px;
-
+}
+.Aside--left {
+  float: left;
+  width: 400px;
+  margin: 10px 40px 10px -250px;
+}
+.Aside {
   @media (max-width: $layout-xl) {
     float: none;
     width: 100%;

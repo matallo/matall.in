@@ -123,12 +123,16 @@ App.Views.Story = Backbone.View.extend({
   },
 
   _initViews: function () {
-    if ($(window).width() > 1279) {
-      this._initMap()
-    }
+    this._initMap()
   },
 
   _initMap: function () {
+    var mobile = 1280
+
+    if ($(window).width() < mobile) {
+      return
+    }
+
     var _this = this
 
     var width = 360
@@ -199,7 +203,7 @@ App.Views.Story = Backbone.View.extend({
             return w
           })
           .on('click', function (d) {
-            _this._goTo(_this.$('#' + d.properties.slug), { margin: 66 })
+            _this._goTo(_this.$('#' + d.properties.slug), { margin: 40 })
           })
 
       _this._initBindings()

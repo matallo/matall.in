@@ -52,13 +52,14 @@
 .Home-header {
   text-align: center;
 }
-.Post-header {
+.Content-header {
   margin-bottom: 40px;
 }
 .Content-title {
   margin-top: 0;
   margin-bottom: 10px;
   letter-spacing: -1px;
+  color: #444;
 }
 .Content-subtitle {
   font-weight: 300;
@@ -71,9 +72,10 @@
   }
 }
 .Content-date {
-  margin-bottom: 0;
+  display: block;
   font-size: 15px;
   text-transform: uppercase;
+  color: #999;
 }
 .Content-aside {
   width: 150px;

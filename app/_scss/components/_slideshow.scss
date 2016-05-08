@@ -2,11 +2,9 @@
 // --------------------------------------------------
 
 .Slideshow {
+  width: calc(100% + 250px);
   margin-top: 40px;
   margin-bottom: 40px;
-}
-.Slideshow {
-  width: calc(100% + 250px);
 
   @media (max-width: $layout-xl) {
     width: 100%;
@@ -15,6 +13,9 @@
   iframe {
     max-width: 100%;
   }
+}
+.Slideshow--right {
+  float: right;
 }
 .Slideshow--center {
   width: $layout-l - 40px;
@@ -30,7 +31,7 @@
     border-radius: 3px;
   }
 }
-.Slideshow.Slideshow--wide {
+.Slideshow--wide {
   width: $layout-xxl - 40px;
   margin-left: -($layout-xxl - $layout-m) / 2;
 
