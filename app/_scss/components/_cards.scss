@@ -1,0 +1,33 @@
+// Card
+// --------------------------------------------------
+
+.Card {
+  display: block;
+  height: 100%;
+  border: 1px solid rgba(#000, .1);
+  border-radius: 3px;
+
+  &:hover {
+    border: 1px solid rgba(#000, .2);
+    text-decoration: none;
+  }
+}
+.Card-image {
+  display: block;
+  width: 100%;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 2px 2px 0 0;
+}
+.Card-inner {
+  padding: 20px;
+}
+.Card-title {
+  margin-bottom: 10px;
+  font-size: 21px;
+}
+.Card-description {
+  font-weight: 400;
+  color: $text-color;
+}

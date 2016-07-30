@@ -21,3 +21,18 @@
 .u-strike {
   text-decoration: line-through;
 }
+.u-hEllipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.u-vEllipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.u-vEllipsis--lin3 {
+  -webkit-line-clamp: 3;
+}
