@@ -3,13 +3,13 @@
 
 .Aside--right {
   float: right;
-  width: 150px;
+  width: 160px;
   margin: 10px 0 10px 40px;
 }
 .Aside--left {
   float: left;
   width: 400px;
-  margin: 10px 40px 10px -250px;
+  margin: 10px 40px 10px -240px;
 }
 .Aside {
   @media (max-width: $layout-xl) {
