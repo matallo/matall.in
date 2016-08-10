@@ -18,29 +18,33 @@ layout: default
 
 {% include navigation.html %}
 
-<div class="Content Content--post">
-  <div class="u-inner">
-    <article class="Content-inner" itemscope itemtype="http://schema.org/BlogPosting">
-      <div class="Map js-Map"></div>
-      <div class="Marginote js-Marginote"></div>
+<div class="Content">
+  <div class="Content-inner Content-inner--post">
+    <div class="u-inner">
+      <article class="Content-body" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="Map js-Map"></div>
+        <div class="Marginote js-Marginote"></div>
 
-      <div class="Content-header">
-        <h1 class="Content-title" itemprop="name headline">{{ page.title }}</h1>
-        <p class="Content-subtitle"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date_to_string }}</time> — {{ page.description }}</p>
-      </div>
+        <div class="Content-header">
+          <h1 class="Content-title" itemprop="name headline">{{ page.title }}</h1>
+          <p class="Content-subtitle"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date_to_string }}</time> — {{ page.description }}</p>
+        </div>
 
-      <div class="Content-body" itemprop="articleBody">
+        <div itemprop="articleBody">
 
-        {{ content }}
+          {{ content }}
 
-      </div>
-    </article>
+        </div>
+      </article>
 
-    <div class="Sep Sep--content js-Sticky"></div>
+      <div class="Sep Sep--content js-Sticky"></div>
 
-    {% include share.html %}
+      {% include share.html %}
+    </div>
   </div>
+</div>
 
+<div class="Content">
   {% include related.html %}
 </div>
 

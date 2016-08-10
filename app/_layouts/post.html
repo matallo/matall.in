@@ -5,18 +5,22 @@ layout: default
 {% include navigation.html %}
 
 <div class="Content">
-  <div class="u-inner">
-    <div class="Content-inner">
+  <div class="Content-inner">
+    <div class="u-inner">
+      <div class="Content-body">
 
-      {{ content }}
+        {{ content }}
 
+      </div>
+
+      <div class="Sep Sep--content"></div>
+
+      {% include share.html %}
     </div>
-
-    <div class="Sep Sep--content"></div>
-
-    {% include share.html %}
   </div>
+</div>
 
+<div class="Content">
   {% include related.html %}
 </div>
 

@@ -6,11 +6,14 @@
 }
 .Content {
   position: relative;
-  margin-left: auto;
   margin-right: auto;
   margin-bottom: 60px;
+  margin-left: auto;
 }
-.Content-post {
+.Content-inner {
+  padding-top: 60px;
+}
+.Content-inner--post {
   margin-left: 25%;
   margin-right: 25%;
 
@@ -19,9 +22,8 @@
     margin-right: auto;
   }
 }
-.Content-inner {
+.Content-body {
   position: relative;
-  padding-top: 60px;
 
   ul, ol {
     margin-left: 20px;
@@ -75,12 +77,4 @@
   font-size: 15px;
   text-transform: uppercase;
   color: #999;
-}
-.Content-sep {
-  display: block;
-  width: 120px;
-  height: 2px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  background: #eee;
 }
