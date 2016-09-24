@@ -129,3 +129,15 @@ code {
 code {
   padding: 1px 5px;
 }
+pre {
+  padding: 16px;
+  line-height: 24px;
+  overflow-x: auto;
+  white-space: pre-line;
+
+  > code {
+    border: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
