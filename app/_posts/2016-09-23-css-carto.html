@@ -23,7 +23,7 @@ body_class: "js-Marginotes"
 
 <p>One of the first measures taken was splitting the commercial, blog, and docs sites into its own projects. We build them with <a href="https://jekyllrb.com/">Jekyll</a>, and then they are deployed to an <a href="https://aws.amazon.com/s3/">Amazon S3</a> bucket via our CI setup, to both staging, and production environments. We even run tests to check the authors and categories are right.</p>
 
-<p>I have a pretty similar setup for this site, which I usually use as a playground for new ideas, and I have been deeply inspired by <a href="http://yeoman.io/">Yeoman</a>, using <a href="http://gruntjs.com/">Grunt</a> as task runner, and <a href="https://bower.io/">Bower</a> as package manager. <a href="#fn:1" id="fnref:1" class="Footnote js-Footnote">1</a> Despite that <a href="https://jekyllrb.com/">Jekyll</a> manages stylesheets pretty well, with support for <a href="http://sass-lang.com/">SASS</a>, in my opinion there's still need of a better asset management (or space to improve).</p>
+<p>I have a pretty similar setup for <a href="https://github.com/matallo/vietcongada">this site</a>, which I usually use as a playground for new ideas, and I have been deeply inspired by <a href="http://yeoman.io/">Yeoman</a>, using <a href="http://gruntjs.com/">Grunt</a> as task runner, and <a href="https://bower.io/">Bower</a> as package manager. <a href="#fn:1" id="fnref:1" class="Footnote js-Footnote">1</a> Despite that <a href="https://jekyllrb.com/">Jekyll</a> manages stylesheets pretty well, with support for <a href="http://sass-lang.com/">SASS</a>, in my opinion there's still need of a better asset management (or space to improve).</p>
 
 <h2>How we work with CSS</h2>
 
@@ -43,6 +43,9 @@ body_class: "js-Marginotes"
   <li>Use <a href="http://meyerweb.com/eric/tools/css/reset/">Reset CSS</a>, along with our own base styles.</li>
   <li>Use SCSS as preprocessor. I feel OK using CSS, but the support for mixins, and imports completely increases the productivity working with stylesheets. I'm not completely sold on SASS syntax, though.</li>
   <li>Use a <a href="https://smacss.com/" title="Scalable and Modular Architecture for CSS">SMACSS</a> approach for file structure.</li>
+  <li>Avoid unnecessary nesting, and use it mostly for pseudoclasses (i.e. <code>:hover</code>). The use of <code>@extend</code> can cause similar effects, bloating your files.</li>
+  <li>Use <a href="https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md">SuitCSS</a> naming conventions, or <a href="https://en.bem.info/methodology/quick-start/">BEM</a>.</li>
+  <li>Use <a href="https://github.com/postcss/postcss">PostCSS</a> for vendor prefixes.</li>
 </ul>
 
 <p class="u-txt-center"><img src="/img/posts/css-carto/css-carto.png" alt="SCSS files" width="640" height="480" /></p>
@@ -51,15 +54,15 @@ body_class: "js-Marginotes"
 
 <script src="https://gist.github.com/matallo/adb09592c227503c3bddde0d14bf6c29.js"></script>
 
-<p>Each of these self-describing files serves a purpose. I.e. file <code>_components.scss</code> requires all the files inside the <code>components</code> folder. I prefer to require all these files explicitely.</p>
+<p>By requireing the non-rendering SCSS at the top of the file we make available the variables and mixins to the rest of the files.</p>
+
+<p>Each of these self-describing files serves a purpose. I.e. the file <code>_components.scss</code> requires all the files inside the <code>components</code> folder. I prefer to require all the files explicitely.</p>
 
 <script src="https://gist.github.com/matallo/137f08ca6f82d0f7aa5c0ce9c896c2a8.js"></script>
 
-<ul>
-  <li>Avoid unnecessary nesting, and use it mostly for pseudoclasses (i.e. <code>:hover</code>). The use of <code>@extend</code> can cause similar effects, bloating your files.</li>
-  <li>Use <a href="https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md">SuitCSS</a> naming conventions, or <a href="https://en.bem.info/methodology/quick-start/">BEM</a>.</li>
-  <li>Use <a href="https://github.com/postcss/postcss">PostCSS</a> for vendor prefixes.</li>
-</ul>
+<p>Here's an example for the <code>_grids.scss</code> component (edited for demonstration purposes):</p>
+
+<script src="https://gist.github.com/matallo/2d9ac23c713b3434f9921d447e33172e.js"></script>
 
 <p>There's already some basic <strong>linting</strong> in the build tasks, and next steps would include extending the check of selectors usage, and implementing <a href="https://github.com/katiefenn/parker">Parker</a> for stats.</p>
 
