@@ -386,6 +386,11 @@ module.exports = function (grunt) {
           src: ['<%= config.dist %>/**/*.html'],
           ext: '.html.gz',
           extDot: 'last'
+        }, {
+          expand: true,
+          src: ['<%= config.dist %>/**/*.xml'],
+          ext: '.xml.gz',
+          extDot: 'last'
         }]
       }
     }
