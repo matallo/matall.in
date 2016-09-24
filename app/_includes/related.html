@@ -1,15 +1,15 @@
 <div class="Sep Sep--center"></div>
 
-<div class="u-inner u-inner--l">
+<div class="u-inner u-inner--xxl">
   <div class="Block">
     <div class="Grid">
       <ul class="Grid-inner Grid-inner--hCenter">
         {% assign counter = 0 %}
 
         {% for post in site.related_posts %}
-          {% if counter < 3 %}
+          {% if counter < 4 %}
             {% assign counter = counter | plus:1 %}
-            <li class="Grid-cell Grid-cell--col4 Grid">
+            <li class="Grid-cell Grid-cell--col3 Grid">
               <a href="{{ post.url }}" class="Card" title="{{ post.title }}">
                 <div class="Card-image" style="background-image: url({{ post.twitter_image }})" alt="{{ post.title }}"></div>
 

@@ -31,7 +31,7 @@ body_class: "js-Marginotes"
 
 <p>There's a recurring discussion that keeps appearing in every team I've been:</p>
 
-<blockquote><span>“</span>How are we working with our CSS?<span>”</span></blockquote>
+<blockquote><span>“</span>How do we work with our CSS?<span>”</span></blockquote>
 
 <p>I have not been able to answer this yet, nor I don't have a silver bullet, but there are some possible solutions. Of course, there's some degree of compromise in every of them.</p>
 
@@ -52,6 +52,8 @@ body_class: "js-Marginotes"
 <script src="https://gist.github.com/matallo/adb09592c227503c3bddde0d14bf6c29.js"></script>
 
 <p>Each of these self-describing files serves a purpose. I.e. file <code>_components.scss</code> requires all the files inside the <code>components</code> folder. I prefer to require all these files explicitely.</p>
+
+<script src="https://gist.github.com/matallo/137f08ca6f82d0f7aa5c0ce9c896c2a8.js"></script>
 
 <ul>
   <li>Avoid unnecessary nesting, and use it mostly for pseudoclasses (i.e. <code>:hover</code>). The use of <code>@extend</code> can cause similar effects, bloating your files.</li>
