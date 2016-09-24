@@ -11,7 +11,7 @@ body_class: "js-Marginotes"
   <p class="Content-subtitle">{{ page.description }}</p>
 </div>
 
-<p>Recently I've switched teams within <a href="https://carto.com/">CARTO</a> and now I'm working full-time in the <strong>Builder team</strong>, since the <a href="https://carto.com/blog/welcome-to-carto-builder/">CARTO Builder was launched</a> earlier this year. For some years now I've been in charge of the <strong>commercial, blog, and docs</strong> sites working with a team of talented designers.</p>
+<p>Recently I've switched teams within <a href="https://carto.com/">CARTO</a> and now I'm working full-time in the Builder team, since the <a href="https://carto.com/blog/welcome-to-carto-builder/">CARTO Builder was launched</a> earlier this year. For some years now I've been in charge of the <strong>commercial, blog, and docs</strong> sites working with a team of talented designers.</p>
 
 <p>While these sites have been redesigned several times during this period until the look they have now after <a href="https://carto.com/blog/from-cartodb-to-carto/">the new brand was introduced</a>, the development and build process has mostly remained, refined in each iteration.</p>
 
@@ -21,7 +21,7 @@ body_class: "js-Marginotes"
 
 <p>This worked for a ~10 people company, but as <strong>CARTO</strong> grew over 100 people, with dedicated marketing and design teams, it wasn't the case anymore.</p>
 
-<p>One of the first measures taken was splitting the commercial, blog, and docs sites into its own projects. We build them with <a href="https://jekyllrb.com/">Jekyll</a>, and then they are deployed to an <a href="https://aws.amazon.com/s3/">Amazon S3</a> bucket via our CI setup, to both staging, and production environments. We even run tests to check the authors and categories are right.</p>
+<p>One of the first measures taken was splitting the <strong>commercial, blog, and docs</strong> sites into its own projects. We build them with <a href="https://jekyllrb.com/">Jekyll</a>, and then they are deployed to an <a href="https://aws.amazon.com/s3/">Amazon S3</a> bucket via our CI setup, to both staging, and production environments. We even run tests to check the authors and categories are right.</p>
 
 <p>I have a pretty similar setup for <a href="https://github.com/matallo/vietcongada">this site</a>, which I usually use as a playground for new ideas, and I have been deeply inspired by <a href="http://yeoman.io/">Yeoman</a>, using <a href="http://gruntjs.com/">Grunt</a> as task runner, and <a href="https://bower.io/">Bower</a> as package manager. <a href="#fn:1" id="fnref:1" class="Footnote js-Footnote">1</a> Despite that <a href="https://jekyllrb.com/">Jekyll</a> manages stylesheets pretty well, with support for <a href="http://sass-lang.com/">SASS</a>, in my opinion there's still need of a better asset management (or space to improve).</p>
 
@@ -40,37 +40,31 @@ body_class: "js-Marginotes"
 <p>Most of the complaints CSS (unfairly) receives are related to how easy is to end up with a mess of files, classes, and <code>!important</code>s, however there are some guidelines I like to follow to avoid these situations.</p>
 
 <ul>
+  <li>Use SCSS as preprocessor. I feel OK using CSS, but the support for mixins, and imports completely increases the productivity working with stylesheets. I'm not totally sold on SASS syntax, though.</li>
+  <li>Use a <a href="https://smacss.com/" title="Scalable and Modular Architecture for CSS">SMACSS</a> approach for file structure, categorizing CSS rules in <strong>Base, Components, and Layout</strong>.</li>
   <li>Use <a href="http://meyerweb.com/eric/tools/css/reset/">Reset CSS</a>, along with our own base styles.</li>
-  <li>Use SCSS as preprocessor. I feel OK using CSS, but the support for mixins, and imports completely increases the productivity working with stylesheets. I'm not completely sold on SASS syntax, though.</li>
-  <li>Use a <a href="https://smacss.com/" title="Scalable and Modular Architecture for CSS">SMACSS</a> approach for file structure.</li>
-  <li>Avoid unnecessary nesting, and use it mostly for pseudoclasses (i.e. <code>:hover</code>). The use of <code>@extend</code> can cause similar effects, bloating your files.</li>
-  <li>Use <a href="https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md">SuitCSS</a> naming conventions, or <a href="https://en.bem.info/methodology/quick-start/">BEM</a>.</li>
+  <li>Use <a href="https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md">SuitCSS</a> naming conventions, or <a href="https://en.bem.info/methodology/quick-start/">BEM</a>, creating reusable, composable components.</li>
+  <li>Avoid unnecessary nesting. The use of <code>@extend</code> can cause similar effects, bloating your files.</li>
   <li>Use <a href="https://github.com/postcss/postcss">PostCSS</a> for vendor prefixes.</li>
 </ul>
 
 <p class="u-txt-center"><img src="/img/posts/css-carto/css-carto.png" alt="SCSS files" width="640" height="480" /></p>
 
-<p>The <code>main.scss</code> file, the only file which doesn't start with underscore, is the entry point and has the following contents:</p>
+<p>The <code>main.scss</code> file is the entry point, and is the only file which doesn't start with underscore:</p>
 
 <script src="https://gist.github.com/matallo/adb09592c227503c3bddde0d14bf6c29.js"></script>
 
 <p>By requireing the non-rendering SCSS at the top of the file we make available the variables and mixins to the rest of the files.</p>
 
-<p>Each of these self-describing files serves a purpose. I.e. the file <code>_components.scss</code> requires all the files inside the <code>components</code> folder. I prefer to require all the files explicitely.</p>
+<p>Similar files (such components) can be grouped in folders. I prefer to require every file in these folders explicitly.</p>
 
-<script src="https://gist.github.com/matallo/137f08ca6f82d0f7aa5c0ce9c896c2a8.js"></script>
-
-<p>Here's an example for the <code>_grids.scss</code> component (edited for demonstration purposes):</p>
-
-<script src="https://gist.github.com/matallo/2d9ac23c713b3434f9921d447e33172e.js"></script>
-
-<p>There's already some basic <strong>linting</strong> in the build tasks, and next steps would include extending the check of selectors usage, and implementing <a href="https://github.com/katiefenn/parker">Parker</a> for stats.</p>
+<p>There's already some basic linting in the build tasks, and next steps would include extending the check of selectors usage, and implementing <a href="https://github.com/katiefenn/parker">Parker</a> for stats.</p>
 
 <h3>Development</h3>
 
 <p>So, the process of updating the stylesheets would go as follows:</p>
 
-<p>You check if the component you want to use already exists in the current stylesheets, if you need to extend it you create a modifier, if you find two components are very similar you consolidate them into one and create the corresponding children and modifiers, or you just create a new one. You rebuild the library if necessary, running the linters, and publish it to the package manager or repository.</p>
+<p>You check if the component you want to use already exists in the current stylesheets, if you need to extend it you create a modifier, if you find two components are very similar you consolidate them into one and create the corresponding children and modifiers, or you just create a new one.</p>
 
 <p>Of course, you'd need to update the components library in every project it is being used.</p>
 
@@ -80,9 +74,9 @@ body_class: "js-Marginotes"
 
 <ul>
   <li><strong>Having the stylesheets checked in as part of every project</strong> and replicate them where needed. This obviously doesn't scale, and it is very easy to end up having several differenciated user interfaces between projects. Also, you'll find many times having to manually overwrite the styles because they have not been completely updated.</li>
-  <li><strong>Create a repository and include them as a submodule.</strong> While this has brought us many headaches in the past, I think it is a good idea if you don't want to fiddle with package managers</li>
-  <li><strong>Include them via Sprockets.</strong> Of course this only applies in some cases like <a href="http://rubyonrails.org/">Rails</a>, but I've had great experiences before. When working at <a href="https://www.crisalix.com/en">Crisalix</a>, we already required our common stylesheets for use with the assets pipeline. <a href="https://github.com/">GitHub</a> does this with <a href="https://github.com/primer/primer">Primer</a>, too, their internal CSS toolkit and guidelines. <em>Edit: Just realized they distribute them via npm now</em>.</li>
-  <li><strong>Package them with Bower/npm.</strong> My go-to option, the good thing is you don't need to publish them, but can install directly from the <strong>GitHub</strong> URL. They can be bundled in a dist file, and used as a library (as you'll do with <a href="http://getbootstrap.com/">Bootstrap</a>), or included separately from the <code>node_modules</code> or <code>bower_components</code> folders, after installing the corresponding package. This is my preferred option to try and keep file size low.</li>
+  <li><strong>Create a repository and include them as a Git submodule.</strong> While this has brought us many headaches in the past, I think it is a good idea if you don't want to fiddle with package managers</li>
+  <li><strong>Include the CSS via Sprockets.</strong> Of course this only applies in some cases like <a href="http://rubyonrails.org/">Rails</a>, but I've had great experiences before. When working at <a href="https://www.crisalix.com/en">Crisalix</a>, we already required our common stylesheets for use with the assets pipeline. <a href="https://github.com/">GitHub</a> does this with <a href="https://github.com/primer/primer">Primer</a>, too, their internal CSS toolkit and guidelines. <em>Edit: Just realized they distribute them via npm now</em>.</li>
+  <li><strong>Package them with Bower/npm.</strong> My go-to option, the good thing is you don't need to publish them, but can install directly from the <strong>GitHub</strong> URL. They can be bundled in a dist file, and used as a library (as you'll do with <a href="http://getbootstrap.com/">Bootstrap</a>), or included separately from the <code>node_modules</code> or <code>bower_components</code> folders, after installing the corresponding package. This is my preferred option to try to keep file size low.</li>
 </ul>
 
 <p>Finally, you can always include them as an external resource after packaging, and deploying it to a CDN. But I would only see this happening for larger projects where there's not direct involvement with the development process.</p>
