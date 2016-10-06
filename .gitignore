@@ -6,3 +6,4 @@ tmp
 bower_components
 .env
 .jekyll-metadata
+.ruby-version

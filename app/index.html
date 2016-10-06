@@ -64,34 +64,34 @@ background_image: "/img/backgrounds/148065923.jpg"
 
     <div class="u-inner u-inner--xxl">
       {% assign stories = site.posts | where: "category", "stories" %}
-      {% for post in stories | limit: 1 %}
-        <a href="{{ post.url }}" class="Story" title="{{ post.description }}">
-          <div class="Story-gradient"></div>
-          <div class="Story-inner">
-            <div class="Story-header">
-              <h3 class="Story-title">{{ post.title }}</h3>
-              <p class="Story-description">{{ post.date | date_to_string }}</p>
-            </div>
-          </div>
+      {% assign story = stories.first %}
 
-          {% if post.background_image_mobile %}
-            <picture>
-              <source media="(min-width: 560px)" srcset="{{ post.background_image }} 1x">
-              <source srcset="{{ post.background_image_mobile }} 1x">
-              <img src="{{ post.background_image }}" alt="{{ post.title }}" width="1280" height="720" />
-            </picture>
-          {% else %}
-            <img src="{{ post.background_image }}" alt="{{ post.title }}" width="1280" height="720" />
-          {% endif %}
-        </a>
-      {% endfor %}
+      <a href="{{ story.url }}" class="Story" title="{{ story.description }}">
+        <div class="Story-gradient"></div>
+        <div class="Story-inner">
+          <div class="Story-header">
+            <h3 class="Story-title">{{ story.title }}</h3>
+            <p class="Story-description">{{ story.date | date_to_string }}</p>
+          </div>
+        </div>
+
+        {% if story.background_image_mobile %}
+          <picture>
+            <source media="(min-width: 560px)" srcset="{{ story.background_image }} 1x">
+            <source srcset="{{ story.background_image_mobile }} 1x">
+            <img src="{{ story.background_image }}" alt="{{ story.title }}" width="1280" height="720" />
+          </picture>
+        {% else %}
+          <img src="{{ story.background_image }}" alt="{{ story.title }}" width="1280" height="720" />
+        {% endif %}
+      </a>
     </div>
 
     <div class="u-inner u-inner--l">
       <h2 class="Block-title">Posts</h2>
 
       <ul class="Posts-list">
-        {% for post in site.posts | limit: 5 %}
+        {% for post in site.posts %}
           <li class="Posts-item">{{ post.date | date_to_string }} <a href="{{ post.url }}" class="Posts-link">{{ post.title }}</a></li>
         {% endfor %}
       </ul>

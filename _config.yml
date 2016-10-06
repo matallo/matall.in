@@ -11,6 +11,8 @@ source: 'app'
 destination: 'dist'
 markdown: kramdown
 permalink: pretty
+gems:
+  - jekyll-feed
 
 years: 28
 
