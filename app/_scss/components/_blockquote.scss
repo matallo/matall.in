@@ -1,0 +1,38 @@
+// Blockquote
+// --------------------------------------------------
+
+.Pullquote {
+  margin: 40px;
+  font-size: 21px;
+  line-height: 30px;
+  text-align: center;
+
+  @media (max-width: $layout-m) {
+    margin: 40px 20px;
+  }
+
+  span {
+    position: relative;
+    font-weight: 700;
+    font-size: 31px;
+    line-height: 0;
+    color: #EEE;
+
+    &:first-child {
+      left: -5px;
+    }
+    &:last-child {
+      right: -5px;
+    }
+  }
+}
+.Blockquote {
+  border-left: 3px solid #eee;
+  padding-left: 20px;
+  margin-left: -23px;
+  padding-bottom: 3px;
+
+  @media (max-width: $layout-m + 60) {
+    margin-left: 0;
+  }
+}

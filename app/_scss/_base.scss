@@ -52,31 +52,6 @@ p, ul, ol {
     margin-bottom: 0;
   }
 }
-blockquote {
-  margin: 40px;
-  font-size: 21px;
-  line-height: 30px;
-  text-align: center;
-
-  @media (max-width: $layout-m) {
-    margin: 40px 20px;
-  }
-
-  span {
-    position: relative;
-    font-weight: 700;
-    font-size: 31px;
-    line-height: 0;
-    color: #EEE;
-
-    &:first-child {
-      left: -5px;
-    }
-    &:last-child {
-      right: -5px;
-    }
-  }
-}
 a {
   font-weight: 600;
   text-decoration: none;
