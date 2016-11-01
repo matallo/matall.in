@@ -14,7 +14,8 @@
                 <div class="Card-image" style="background-image: url({{ post.twitter_image }})" alt="{{ post.title }}"></div>
 
                 <div class="Card-inner">
-                  <h4 class="Title Card-title u-vEllipsis">{{ post.title }}</h4>
+                  <h3 class="Title Title--cTypo1 Title--h3 Card-title u-vEllipsis">{{ post.title }}</h3>
+                  <p class="Card-subtitle">{{ post.date | date_to_string }}</p>
                   <p class="Card-description u-vEllipsis u-vEllipsis--lin3">{{ post.description | truncate: 150 }}</p>
                 </div>
               </a>

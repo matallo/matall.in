@@ -25,6 +25,11 @@
 .Content-body {
   position: relative;
 
+  p {
+    + .Slideshow {
+      margin-top: 20px;
+    }
+  }
   ul, ol {
     margin-left: 20px;
   }
@@ -58,15 +63,22 @@
   margin-bottom: 40px;
 }
 .Content-title {
-  margin-top: 0;
-  margin-bottom: 10px;
-  letter-spacing: -1px;
-  color: #444;
+  margin-top: 40px;
+}
+.Content-title--h2 {
+  margin-bottom: 20px;
+
+  + .Content-title--h3 {
+    margin-top: 20px;
+  }
+}
+.Content-title--h3 {
+  color: $cTypo3;
 }
 .Content-subtitle {
   font-size: 21px;
-  line-height: 1.4;
-  color: #999;
+  line-height: 25px;
+  color: $cTypo3;
 
   a {
     font-weight: 400;
@@ -76,5 +88,5 @@
   display: block;
   font-size: 15px;
   text-transform: uppercase;
-  color: #999;
+  color: $cTypo3;
 }

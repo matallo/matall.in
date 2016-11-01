@@ -14,10 +14,13 @@
 .Aside {
   @media (max-width: $layout-xl) {
     float: none;
-    width: 100%;
     margin-top: 40px;
     margin-bottom: 40px;
     margin-left: 0;
+  }
+
+  @media (max-width: $layout-s) {
+    width: 100%;
   }
 
   iframe {
@@ -35,9 +38,9 @@
 .Caption {
   margin-bottom: 0;
   padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid $cGrey3;
   font-size: 13px;
-  color: #999;
+  color: $cTypo3;
 }
 .Caption--aside {
   width: 400px;
