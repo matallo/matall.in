@@ -13,6 +13,7 @@
   display: block;
   width: 240px;
   margin-right: 40px;
+  background: $cGrey4;
 
   @media (max-width: $layout-m) {
     width: 180px;

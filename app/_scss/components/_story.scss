@@ -4,6 +4,7 @@
 .Story {
   display: block;
   position: relative;
+  background: $cGrey4;
 }
 .Story-inner {
   &:before {
