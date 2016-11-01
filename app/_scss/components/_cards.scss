@@ -25,7 +25,7 @@
   padding: 20px;
 }
 .Card-title {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
@@ -35,6 +35,10 @@
     font-size: 18px;
     line-height: 22px;
   }
+}
+.Card-title--small {
+  font-size: 18px;
+  line-height: 22px;
 }
 .Card-title--link {
   a {
