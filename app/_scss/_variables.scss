@@ -14,9 +14,18 @@ $font-size-base: 15px;
 $line-height-base: 26.25px;
 $font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 
-$text-color: #666;
-$background-color: #FFF;
+$cTypo1: #444;
+$cTypo2: #666;
+$cTypo3: #999;
 
 // Colors
-$red1: #D0021B;
-$red2: lighten(#D0021B, 5%);
+$cRed1: #D0021B;
+$cRed2: lighten(#D0021B, 5%);
+
+$cGrey1: #CCC;
+$cGrey2: #DDD;
+$cGrey3: #EEE;
+$cGrey4: #F9F9F9;
+
+$cGold: #F93;
+$cTwitter: #03B3EE;

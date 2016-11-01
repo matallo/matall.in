@@ -16,7 +16,7 @@
     font-weight: 700;
     font-size: 31px;
     line-height: 0;
-    color: #EEE;
+    color: $cGrey3;
 
     &:first-child {
       left: -5px;
@@ -27,12 +27,8 @@
   }
 }
 .Blockquote {
-  border-left: 3px solid #eee;
+  border-left: 3px solid $cGrey3;
   padding-left: 20px;
-  margin-left: -23px;
   padding-bottom: 3px;
-
-  @media (max-width: $layout-m + 60) {
-    margin-left: 0;
-  }
+  font-style: italic;
 }

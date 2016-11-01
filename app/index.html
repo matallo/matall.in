@@ -19,7 +19,7 @@ layout: default
             </picture>
           </a>
 
-          <h1 class="Content-title">Hi, I'm Carlos Matallín</h1>
+          <h1 class="Title Title--cTypo1 Title--h1">Hi, I'm Carlos Matallín</h1>
           <p class="Content-subtitle">Code, design, and mountains</p>
         </div>
 
@@ -69,7 +69,7 @@ layout: default
         <div class="Story-gradient"></div>
         <div class="Story-inner">
           <div class="Story-header">
-            <h3 class="Story-title">{{ story.title }}</h3>
+            <h3 class="Title Title--h1 Story-title">{{ story.title }}</h3>
             <p class="Story-description">{{ story.date | date_to_string }}</p>
           </div>
         </div>
@@ -85,13 +85,26 @@ layout: default
         {% endif %}
       </a>
     </div>
+  </div>
 
+  <div class="Block">
     <div class="u-inner u-inner--l">
-      <h2 class="Block-title">Posts</h2>
+      <div class="Sep"></div>
 
+      <h2 class="Block-title">Posts</h2>
       <ul class="Posts-list">
         {% for post in site.posts %}
-          <li class="Posts-item">{{ post.date | date_to_string }} <a href="{{ post.url }}" class="Posts-link">{{ post.title }}</a></li>
+          <li class="Posts-item">
+            <div class="Posts-image">
+              <a href="{{ post.url }}"><img src="{{ post.twitter_image }}" alt="{{ post.title }}" /></a>
+            </div>
+
+            <div class="Posts-content">
+              <h3 class="Card-title Card-title--link"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+              <p class="Card-subtitle">{{ post.date | date_to_string }}</p>
+              <p class="Card-description">{{ post.description | truncate: 150 }}</p>
+            </div>
+          </li>
         {% endfor %}
       </ul>
     </div>

@@ -23,18 +23,26 @@
 .Header-background--black {
   background: rgba(#000, .2);
 }
-.Header-back {
+.Header-icon {
   position: absolute;
   top: 20px;
-  left: 20px;
   opacity: .6;
-  transform: translateX(0);
   transition: all .2s;
 
   &:hover {
     opacity: .8;
+  }
+}
+.Header-icon--back {
+  left: 20px;
+  transform: translateX(0);
+
+  &:hover {
     transform: translateX(-2px);
   }
+}
+.Header-icon--share {
+  right: 20px;
 }
 .Header-footer {
   position: absolute;

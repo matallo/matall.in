@@ -17,7 +17,7 @@
     bottom: -50px;
   }
 
-  @media screen and (max-width: $layout-xxl - 1px) {
+  @media (max-width: $layout-xxl - 1px) {
     display: none;
   }
 }
@@ -28,7 +28,7 @@
   left: -240px;
   width: 200px;
   height: 200px;
-  background: #f9f9f9;
+  background: $cGrey4;
 
   &.is-active {
     display: block;
@@ -43,19 +43,19 @@
   line-height: 200px;
   text-align: center;
   vertical-align: middle;
-  color: #999;
+  color: $cTypo3;
   transition: all .2s;
 
   &:hover {
-    color: darken(#999, 5%);
+    color: darken($cTypo3, 5%);
   }
 }
 .Country {
-  fill: #F9F9F9;
+  fill: $cGrey4;
 }
 .Route {
   fill: none;
-  stroke: #CCC;
+  stroke: $cGrey1;
   stroke-dasharray: 2,2;
   stroke-linejoin: round;
   stroke-linecap: round;
@@ -66,7 +66,7 @@
 }
 .Route--story {
   display: none;
-  stroke: #F93;
+  stroke: $cGold;
   stroke-opacity: .6;
   stroke-width: 3px;
 
@@ -76,24 +76,24 @@
 }
 .City {
   cursor: pointer;
-  fill: #999;
+  fill: $cTypo3;
 
   &.is-active {
-    fill: #333;
+    fill: $cTypo1;
   }
 }
 .City-label {
   font-size: 10px;
-  fill: #CCC;
-  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+  fill: $cTypo3;
+  text-shadow: 0 1px 0 #FFF, 0 -1px 0 #FFF, 1px 0 0 #FFF, -1px 0 0 #FFF;
   cursor: pointer;
 
   &.is-visited {
-    fill: #333;
+    fill: $cTypo1;
   }
 
   &.is-active {
-    fill: #333;
-    font-weight: bold;
+    fill: $cTypo1;
+    font-weight: 600;
   }
 }

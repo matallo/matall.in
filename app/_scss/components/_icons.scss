@@ -8,31 +8,27 @@
     height: 24px;
   }
 }
-.Icon--s12 {
-  > svg {
-    width: 12px;
-    height: 12px;
-  }
-}
-.Icon--s36 {
-  > svg {
-    width: 36px;
-    height: 36px;
+$icon-sizes: (12, 24, 36);
+@each $size in $icon-sizes {
+  .Icon--s#{$size} {
+    > svg {
+      height: #{$size}px;
+    }
   }
 }
 .Icon--link {
   &:hover {
     .Icon-path {
-      fill: #ccc;
+      fill: $cGrey1;
     }
   }
 }
 .Icon-path {
-  fill: #ddd;
+  fill: $cGrey2;
   transition: all .2s;
 }
 .Icon--Twitter {
   .Icon-path {
-    fill: #03b3ee;
+    fill: $cTwitter;
   }
 }

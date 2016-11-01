@@ -37,17 +37,7 @@
   text-shadow: 0 2px 0 rgba(#000, .3);
 }
 .Story-title {
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 40px;
   text-transform: uppercase;
-
-  @media (max-width: $layout-m) {
-    font-size: 30px;
-    line-height: 36px;
-  }
 }
 .Story-description {
   font-weight: 400;

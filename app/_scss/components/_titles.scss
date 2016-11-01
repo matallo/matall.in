@@ -2,5 +2,26 @@
 // --------------------------------------------------
 
 .Title {
-  color: #444;
+  margin-bottom: 10px;
+}
+.Title--cTypo1 {
+  color: $cTypo1;
+}
+.Title--h1 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+
+  @media (max-width: $layout-m) {
+    font-size: 30px;
+    line-height: 36px;
+  }
+}
+.Title--h2 {
+  font-size: 24px;
+  line-height: 30px;
+}
+.Title--h3 {
+  font-size: 18px;
+  line-height: 22px;
 }

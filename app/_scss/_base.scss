@@ -5,11 +5,11 @@ html, body {
   height: 100%;
 }
 body {
-  background-color: $background-color;
+  background-color: #FFF;
   text-rendering: optimizeLegibility;
   -webkit-text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  color: $text-color;
+  color: $cTypo2;
   font-weight: $font-weight-base;
   font-size: $font-size-base;
   line-height: $line-height-base;
@@ -20,33 +20,6 @@ p, blockquote, pre,
 ul, ol, dl, figure {
   margin-bottom: 20px;
 }
-h1 {
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 40px;
-
-  @media (max-width: $layout-m) {
-    font-size: 30px;
-    line-height: 36px;
-  }
-}
-h2, h3 {
-  margin-top: 40px;
-}
-h2 {
-  font-size: 24px;
-  line-height: 30px;
-  color: #444;
-
-  + h3 {
-    margin-top: 20px;
-  }
-}
-h3 {
-  font-size: 18px;
-  line-height: 22px;
-  color: #999;
-}
 p, ul, ol {
   &:last-child {
     margin-bottom: 0;
@@ -55,12 +28,12 @@ p, ul, ol {
 a {
   font-weight: 600;
   text-decoration: none;
-  color: $red2;
+  color: $cRed2;
   transition: all .2s;
 
   &:hover {
     text-decoration: underline;
-    color: $red1;
+    color: $cRed1;
   }
 }
 strong {
@@ -97,9 +70,9 @@ pre,
 code {
   font-size: 13px;
   font-family: 'PT Mono', monospace;
-  border: 1px solid #ddd;
+  border: 1px solid $cGrey2;
   border-radius: 3px;
-  background-color: #f9f9f9;
+  background-color: $cGrey4;
 }
 code {
   padding: 1px 5px;

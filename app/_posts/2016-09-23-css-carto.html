@@ -7,7 +7,7 @@ twitter_image: "/img/posts/css-carto/css-carto@mobile.png"
 
 <p>While these sites have been redesigned several times during this period until the look they have now after <a href="https://carto.com/blog/from-cartodb-to-carto/">the new brand was introduced</a>, the development and build process has mostly remained, refined in each iteration.</p>
 
-<h2>Some back story</h2>
+<h2 class="Title Title--cTypo1 Title--h2 Content-title Content-title--h2">Some back story</h2>
 
 <p>In the beginning, the commercial site was part of the user management service which helps runs the <strong>CARTO</strong> business (aka the <em>backoffice</em>), along with the documentation. The <strong>blog</strong> lived its own <em>millenial</em> life in <a href="https://www.tumblr.com/">Tumblr</a> under a subdomain. The stylesheets for all these sites were scattered between a submodule for this purpose, and the <em>backoffice</em> repository.</p>
 
@@ -17,7 +17,7 @@ twitter_image: "/img/posts/css-carto/css-carto@mobile.png"
 
 <p>I have a pretty similar setup for <a href="https://github.com/matallo/vietcongada">this site</a>, which I usually use as a playground for new ideas, and I have been deeply inspired by <a href="http://yeoman.io/">Yeoman</a>, using <a href="http://gruntjs.com/">Grunt</a> as task runner, and <a href="https://bower.io/">Bower</a> as package manager. <a href="#fn:1" id="fnref:1" class="Footnote js-Footnote">1</a> Despite that <a href="https://jekyllrb.com/">Jekyll</a> manages stylesheets pretty well, with support for <a href="http://sass-lang.com/">SASS</a>, in my opinion there's still need of a better asset management (or space to improve).</p>
 
-<h2>How we work with CSS</h2>
+<h2 class="Title Title--cTypo1 Title--h2 Content-title Content-title--h2">How we work with CSS</h2>
 
 <p>This just solved the build step, but we still needed some rules, a framework which helped us build the styles and components in the styleguide created by the designers.</p>
 
@@ -27,7 +27,7 @@ twitter_image: "/img/posts/css-carto/css-carto@mobile.png"
 
 <p>I have not been able to answer this yet, nor I don't have a silver bullet, but there are some possible solutions. Of course, there's some degree of compromise in every of them.</p>
 
-<h3>Architecture</h3>
+<h3 class="Title Title--cTypo3 Title--h3 Content-title Content-title--h3">Architecture</h3>
 
 <p>Most of the complaints CSS (unfairly) receives are related to how easy is to end up with a mess of files, classes, and <code>!important</code>s, however there are some guidelines I like to follow to avoid these situations.</p>
 
@@ -60,7 +60,7 @@ twitter_image: "/img/posts/css-carto/css-carto@mobile.png"
 
 <p>There's already some basic linting in the build tasks, and next steps would include extending the check of selectors usage, and implementing <a href="https://github.com/katiefenn/parker">Parker</a> for stats.</p>
 
-<h3>Development</h3>
+<h3 class="Title Title--cTypo3 Title--h3 Content-title Content-title--h3">Development</h3>
 
 <p>So, the process of updating the stylesheets would go as follows:</p>
 
@@ -68,7 +68,7 @@ twitter_image: "/img/posts/css-carto/css-carto@mobile.png"
 
 <p>Of course, you'd need to update the components library in every project it is being used.</p>
 
-<h3>Distribution</h3>
+<h3 class="Title Title--cTypo3 Title--h3 Content-title Content-title--h3">Distribution</h3>
 
 <p>When it comes the time to include the stylesheets in your code, these are the most common scenarios:</p>
 

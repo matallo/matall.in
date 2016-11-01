@@ -25,11 +25,11 @@
 }
 .Navbar-link {
   line-height: 80px;
-  color: #999;
+  color: $cTypo3;
   transition: all .2s;
 
   &:hover {
-    color: darken(#999, 5%);
+    color: darken($cTypo3, 5%);
     text-decoration: none;
   }
 }
