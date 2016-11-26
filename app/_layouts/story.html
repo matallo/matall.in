@@ -27,7 +27,7 @@ layout: default
         <div class="Marginote js-Marginote"></div>
 
         <div class="Content-header">
-          <h1 class="Title Title--cTypo1 Title--h1" itemprop="name headline">{{ page.title }}</h1>
+          <h1 class="Title Title--h1 Content-title Content-title--h1 Title--cTypo1" itemprop="name headline">{{ page.title }}</h1>
           <p class="Content-subtitle">{{ page.description }}</p>
         </div>
 
@@ -45,8 +45,6 @@ layout: default
   </div>
 </div>
 
-<div class="Content">
-  {% include related.html %}
-</div>
+{% include related.html %}
 
 {% include footer.html %}

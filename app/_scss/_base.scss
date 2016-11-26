@@ -52,7 +52,8 @@ button {
   cursor: pointer;
   font-family: $font-family-base;
 }
-img {
+img,
+svg {
   max-width: 100%;
   height: auto;
   vertical-align: middle;

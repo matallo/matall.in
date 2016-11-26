@@ -1,12 +1,15 @@
 // Titles
 // --------------------------------------------------
 
-.Title {
-  margin-bottom: 10px;
-}
+// Colors
 .Title--cTypo1 {
   color: $cTypo1;
 }
+.Title--cTypo3 {
+  color: $cTypo3;
+}
+
+// Size
 .Title--h1 {
   font-weight: 700;
   font-size: 36px;
@@ -24,4 +27,12 @@
 .Title--h3 {
   font-size: 18px;
   line-height: 22px;
+}
+.Title-link {
+  color: $cTypo1;
+
+  &:hover {
+    color: darken($cTypo1, 5%);
+    text-decoration: none;
+  }
 }

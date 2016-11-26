@@ -1,6 +1,11 @@
 // Aside
 // --------------------------------------------------
 
+.Aside {
+  iframe {
+    display: block;
+  }
+}
 .Aside--right {
   float: right;
   width: 160px;
@@ -11,20 +16,18 @@
   width: 400px;
   margin: 10px 40px 10px -240px;
 }
-.Aside {
+.Aside--right,
+.Aside--left {
   @media (max-width: $layout-xl) {
     float: none;
     margin-top: 40px;
     margin-bottom: 40px;
     margin-left: 0;
+    width: $layout-s;
   }
 
   @media (max-width: $layout-s) {
     width: 100%;
-  }
-
-  iframe {
-    display: block;
   }
 }
 .Aside-media {

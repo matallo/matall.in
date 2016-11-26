@@ -5,8 +5,26 @@
   display: block;
   position: relative;
   background: $cGrey4;
+  overflow: hidden;
+
+  &:hover {
+    .Story-gradient {
+      z-index: 20;
+      background: rgba(#000, 0);
+    }
+    .Story-inner {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    .Story-img {
+      transform: scale(1.05);
+    }
+  }
 }
 .Story-inner {
+  z-index: 30;
+  transition: all .2s ease-in-out;
+
   &:before {
     content: "";
     display: inline-block;
@@ -24,7 +42,9 @@
   left: 0;
 }
 .Story-gradient {
+  z-index: 20;
   background: rgba(#000, .2);
+  transition: all .2s ease-in-out;
 }
 .Story-header {
   display: inline-block;
@@ -42,11 +62,15 @@
 }
 .Story-description {
   font-weight: 400;
-  font-size: 21px;
-  line-height: 25px;
+  font-size: 18px;
+  line-height: 22px;
 
   @media (max-width: $layout-m) {
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 15px;
+    line-height: 18px;
   }
+}
+.Story-img {
+  z-index: 10;
+  transition: all 2s ease-out;
 }

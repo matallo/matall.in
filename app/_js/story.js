@@ -101,7 +101,7 @@ App.Views.Story = Backbone.View.extend({
   _fixMap: function () {
     var scroll = document.documentElement.scrollTop || document.body.scrollTop
 
-    if (scroll >= 580) {
+    if (scroll >= 642) {
       this.$map.addClass('is-fixed')
     } else {
       this.$map.removeClass('is-fixed')

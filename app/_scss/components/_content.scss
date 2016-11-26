@@ -7,11 +7,14 @@
 .Content {
   position: relative;
   margin-right: auto;
-  margin-bottom: 60px;
   margin-left: auto;
+}
+.Content--cGrey {
+  background: $cGrey4;
 }
 .Content-inner {
   padding-top: 60px;
+  padding-bottom: 60px;
 }
 .Content-inner--post {
   margin-left: 25%;
@@ -65,15 +68,16 @@
 .Content-title {
   margin-top: 40px;
 }
+.Content-title--h1 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
 .Content-title--h2 {
   margin-bottom: 20px;
 
   + .Content-title--h3 {
     margin-top: 20px;
   }
-}
-.Content-title--h3 {
-  color: $cTypo3;
 }
 .Content-subtitle {
   font-size: 21px;

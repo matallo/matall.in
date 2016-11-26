@@ -1,28 +1,28 @@
-<div class="Sep Sep--center"></div>
+<div class="Content Content--cGrey">
+  <div class="Content-inner">
+    <div class="u-inner u-inner--xxl">
+      <div class="Grid">
+        <ul class="Grid-inner Grid-inner--hCenter">
+          {% assign counter = 0 %}
 
-<div class="u-inner u-inner--xxl">
-  <div class="Block">
-    <div class="Grid">
-      <ul class="Grid-inner Grid-inner--hCenter">
-        {% assign counter = 0 %}
+          {% for post in site.related_posts %}
+            {% if counter < 4 %}
+              {% assign counter = counter | plus:1 %}
+              <li class="Grid-cell Grid-cell--col3 Grid">
+                <a href="{{ post.url }}" class="Card" title="{{ post.title }}">
+                  <div class="Card-image" style="background-image: url({{ post.twitter_image }})" alt="{{ post.title }}"></div>
 
-        {% for post in site.related_posts %}
-          {% if counter < 4 %}
-            {% assign counter = counter | plus:1 %}
-            <li class="Grid-cell Grid-cell--col3 Grid">
-              <a href="{{ post.url }}" class="Card" title="{{ post.title }}">
-                <div class="Card-image" style="background-image: url({{ post.twitter_image }})" alt="{{ post.title }}"></div>
-
-                <div class="Card-inner">
-                  <h3 class="Card-title Card-title--small u-vEllipsis">{{ post.title }}</h3>
-                  <p class="Card-subtitle">{{ post.date | date_to_string }}</p>
-                  <p class="Card-description u-vEllipsis u-vEllipsis--lin3">{{ post.description | truncate: 150 }}</p>
-                </div>
-              </a>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
+                  <div class="Card-inner">
+                    <h3 class="Title Title--h3 Title--cTypo1 Card-title u-vEllipsis">{{ post.title }}</h3>
+                    <p class="Card-subtitle">{{ post.date | date_to_string }}</p>
+                    <p class="Card-description u-vEllipsis u-vEllipsis--lin3">{{ post.description | truncate: 150 }}</p>
+                  </div>
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
     </div>
   </div>
 </div>

@@ -2,6 +2,7 @@
 // --------------------------------------------------
 
 .Card {
+  background: #fff;
   display: block;
   width: 100%;
   border: 1px solid rgba(#000, .1);
@@ -10,6 +11,10 @@
   &:hover {
     border: 1px solid rgba(#000, .2);
     text-decoration: none;
+
+    .Card-title {
+      color: darken($cTypo1, 5%);
+    }
   }
 }
 .Card-image {
@@ -26,29 +31,6 @@
 }
 .Card-title {
   margin-bottom: 5px;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 30px;
-  color: $cTypo1;
-
-  @media (max-width: $layout-m) {
-    font-size: 18px;
-    line-height: 22px;
-  }
-}
-.Card-title--small {
-  font-size: 18px;
-  line-height: 22px;
-}
-.Card-title--link {
-  a {
-    color: $cTypo1;
-
-    &:hover {
-      color: $cTypo1;
-      text-decoration: none;
-    }
-  }
 }
 .Card-subtitle,
 .Card-description {
