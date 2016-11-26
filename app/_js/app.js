@@ -3,4 +3,4 @@ window.App = {
   Collections: {},
   Views: {},
   Routers: {}
-};
+}

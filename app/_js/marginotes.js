@@ -1,5 +1,5 @@
 // jshint devel:true
-/*global $, Backbone, App, document, window */
+/* global $, Backbone, App, document, window */
 
 'use strict'
 
