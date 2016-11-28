@@ -434,7 +434,7 @@ module.exports = function (grunt) {
   ])
 
   grunt.registerTask('deploy', [
-    'htmlmin',
+    // 'htmlmin',
     'compress',
     'aws_s3:dist',
     'aws_s3:assets'
