@@ -18,15 +18,15 @@
 }
 .Aside--right,
 .Aside--left {
-  @media (max-width: $layout-xl) {
+  @media (max-width: $sMedia--xl) {
     float: none;
     margin-top: 40px;
     margin-bottom: 40px;
     margin-left: 0;
-    width: $layout-s;
+    width: $sMedia--s;
   }
 
-  @media (max-width: $layout-s) {
+  @media (max-width: $sMedia--s) {
     width: 100%;
   }
 }
@@ -34,7 +34,7 @@
   width: 400px;
   max-width: none;
 
-  @media (max-width: $layout-xl) {
+  @media (max-width: $sMedia--xl) {
     width: 100%;
   }
 }
@@ -48,7 +48,7 @@
 .Caption--aside {
   width: 400px;
 
-  @media (max-width: $layout-xl) {
+  @media (max-width: $sMedia--xl) {
     width: 100%;
   }
 }

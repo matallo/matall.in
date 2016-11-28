@@ -19,14 +19,14 @@
     margin-right: 0;
   }
 
-  @media (max-width: $layout-m) {
+  @media (max-width: $sMedia--m) {
     margin-right: 20px;
   }
 }
 .Navbar-link {
   line-height: 80px;
   color: $cTypo3;
-  transition: all .2s;
+  transition: color .2s;
 
   &:hover {
     color: darken($cTypo3, 5%);

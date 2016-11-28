@@ -1,40 +1,41 @@
 // Posts
 // --------------------------------------------------
 .Posts-item {
-  @include clearfix;
   margin-bottom: 40px;
 
   &:last-child {
     margin-bottom: 0;
   }
 }
-.Posts-image {
-  float: left;
+.Posts-img {
   display: block;
-  width: 240px;
-  margin-right: 40px;
   background: $cGrey4;
+  overflow: hidden;
+  border-radius: 3px;
+  transform: translate3d(0, 0, 0);
 
-  @media (max-width: $layout-m) {
-    width: 180px;
+  &:hover {
+    img {
+      transform: scale(1.02);
+    }
   }
 
-  @media (max-width: $layout-s) {
-    width: 100%;
-    margin-right: 0;
+  @media (max-width: $sMedia--s) {
     margin-bottom: 20px;
   }
 
   img {
     max-width: 100%;
-    border-radius: 3px;
+    transition: transform .2s ease-out;
   }
 }
-.Posts-content {
-  float: left;
-  width: calc(100% - 280px);
+.Post-title {
+  margin-bottom: 5px;
+  font-size: 24px;
+  line-height: 30px;
 
-  @media (max-width: $layout-s) {
-    width: 100%;
+  @media (max-width: $sMedia--m) {
+    font-size: 18px;
+    line-height: 22px;
   }
 }

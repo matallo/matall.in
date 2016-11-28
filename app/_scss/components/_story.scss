@@ -17,9 +17,12 @@
       transform: scale(1.05);
     }
     .Story-img {
-      transform: scale(1.05);
+      transform: scale(1.01);
     }
   }
+}
+.Story--row {
+  margin-top: 20px;
 }
 .Story-inner {
   z-index: 30;
@@ -65,12 +68,12 @@
   font-size: 18px;
   line-height: 22px;
 
-  @media (max-width: $layout-m) {
+  @media (max-width: $sMedia--m) {
     font-size: 15px;
     line-height: 18px;
   }
 }
 .Story-img {
   z-index: 10;
-  transition: all 2s ease-out;
+  transition: transform .2s ease-out;
 }

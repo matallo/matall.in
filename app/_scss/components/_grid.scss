@@ -1,6 +1,8 @@
 // Grid
 // --------------------------------------------------
 
+$grid-columns: 12;
+
 .Grid {
   display: flex;
 }
@@ -8,45 +10,43 @@
   display: flex;
   flex-wrap: wrap;
   flex: 1;
-  margin-right: -10px;
-  margin-left: -10px;
+  margin-right: -20px;
+  margin-left: -20px;
 }
 .Grid-inner--hCenter {
   justify-content: center;
 }
 .Grid-cell {
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
-.Grid-cell--col3 {
-  flex: 0 0 25%;
-  max-width: 25%;
+.Grid-inner--shortPadding {
+  margin-right: -10px;
+  margin-left: -10px;
 
-  @media (max-width: $layout-xl) {
-    flex: 0 0 50%;
-    max-width: 50%;
-
-    &:nth-child(n+3) {
-      margin-top: 20px;
-    }
-  }
-
-  @media (max-width: $layout-s) {
-    flex: 0 0 100%;
-    max-width: 100%;
-    margin-top: 20px;
-
-    &:first-child {
-      margin-top: 0;
-    }
+  > .Grid-cell {
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }
-.Grid-cell--col6 {
-  flex: 0 0 50%;
-  max-width: 50%;
 
-  @media (max-width: $layout-m) {
-    flex: 0 0 100%;
-    max-width: 100%;
+@mixin col($i, $n) {
+  flex: 0 0 $i * 100 / $n * 1%;
+  max-width: $i * 100 / $n * 1%;
+}
+
+@for $i from 1 through 12 {
+  .Grid-cell--col#{$i} {
+    @include col($i, 12);
+  }
+}
+
+@each $viewport, $breakpoint in $viewports {
+  @media (max-width: $breakpoint) {
+    @for $i from 1 through 12 {
+      .r-#{$viewport}-Grid-cell--col#{$i} {
+        @include col($i, 12);
+      }
+    }
   }
 }

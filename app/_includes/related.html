@@ -2,17 +2,20 @@
   <div class="Content-inner">
     <div class="u-inner u-inner--xxl">
       <div class="Grid">
-        <ul class="Grid-inner Grid-inner--hCenter">
+        <ul class="Grid-inner Grid-inner--shortPadding Grid-inner--hCenter">
           {% assign counter = 0 %}
 
           {% for post in site.related_posts %}
             {% if counter < 4 %}
               {% assign counter = counter | plus:1 %}
-              <li class="Grid-cell Grid-cell--col3 Grid">
+              <li class="Grid-cell Grid-cell--col3 r-sMedia--xl-Grid-cell--col6 r-sMedia--s-Grid-cell--col12 Card-sep Grid">
                 <a href="{{ post.url }}" class="Card" title="{{ post.title }}">
-                  <div class="Card-image" style="background-image: url({{ post.twitter_image }})" alt="{{ post.title }}"></div>
+                  <div class="Card-header">
+                    <div class="Card-img" style="background-image: url({{ post.twitter_image }})" alt="{{ post.title }}"></div>
+                  </div>
 
                   <div class="Card-inner">
+                    <p class="Card-categories"><span class="Card-dot Card-dot--{{ post.categories.first }}"></span> {{ post.categories }}</p>
                     <h3 class="Title Title--h3 Title--cTypo1 Card-title u-vEllipsis">{{ post.title }}</h3>
                     <p class="Card-subtitle">{{ post.date | date_to_string }}</p>
                     <p class="Card-description u-vEllipsis u-vEllipsis--lin3">{{ post.description | truncate: 150 }}</p>

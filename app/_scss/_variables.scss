@@ -2,11 +2,20 @@
 // --------------------------------------------------
 
 // Layout
-$layout-xxl: 1280px;
-$layout-xl: 1040px;
-$layout-l: 960px;
-$layout-m: 800px;
-$layout-s: 560px;
+$sMedia--xxl: 1280px;
+$sMedia--xl: 1040px;
+$sMedia--l: 960px;
+$sMedia--m: 800px;
+$sMedia--s: 560px;
+// $sMedia--xs: 374px;
+
+$viewports: (
+  sMedia--xxl: $sMedia--xxl,
+  sMedia--xl: $sMedia--xl,
+  sMedia--l: $sMedia--l,
+  sMedia--m: $sMedia--m,
+  sMedia--s: $sMedia--s
+);
 
 // Font
 $font-weight-base: 400;
@@ -21,6 +30,7 @@ $cTypo3: #999;
 
 $cRed1: #D0021B;
 $cRed2: lighten(#D0021B, 5%);
+$cRed3: #F24440;
 
 $cGrey1: #CCC;
 $cGrey2: #DDD;

@@ -15,7 +15,7 @@
   font-size: 36px;
   line-height: 40px;
 
-  @media (max-width: $layout-m) {
+  @media (max-width: $sMedia--m) {
     font-size: 30px;
     line-height: 36px;
   }

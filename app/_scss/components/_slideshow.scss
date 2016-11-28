@@ -6,7 +6,7 @@
   margin-top: 40px;
   margin-bottom: 40px;
 
-  @media (max-width: $layout-xl) {
+  @media (max-width: $sMedia--xl) {
     width: 100%;
   }
 
@@ -26,19 +26,19 @@
   }
 }
 .Slideshow--center {
-  width: $layout-l - 40px;
-  margin-left: -($layout-l - $layout-m) / 2;
+  width: $sMedia--l - 40px;
+  margin-left: -($sMedia--l - $sMedia--m) / 2;
 
-  @media (max-width: $layout-l) {
+  @media (max-width: $sMedia--l) {
     width: 100%;
     margin-left: 0;
   }
 }
 .Slideshow--wide {
-  width: $layout-xxl - 40px;
-  margin-left: -($layout-xxl - $layout-m) / 2;
+  width: $sMedia--xxl - 40px;
+  margin-left: -($sMedia--xxl - $sMedia--m) / 2;
 
-  @media (max-width: $layout-xxl) {
+  @media (max-width: $sMedia--xxl) {
     width: 100%;
     margin-left: 0;
   }

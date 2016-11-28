@@ -25,7 +25,7 @@ $icon-sizes: (12, 24, 36);
 }
 .Icon-path {
   fill: $cGrey2;
-  transition: all .2s;
+  transition: fill .2s;
 }
 .Icon--Twitter {
   .Icon-path {

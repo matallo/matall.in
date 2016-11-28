@@ -6,17 +6,17 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: $layout-m;
+  max-width: $sMedia--m;
   margin-right: auto;
   margin-left: auto;
   padding-right: 20px;
   padding-left: 20px;
 }
 .u-inner--l {
-  max-width: $layout-l;
+  max-width: $sMedia--l;
 }
 .u-inner--xxl {
-  max-width: $layout-xxl;
+  max-width: $sMedia--xxl;
 }
 .u-strike {
   text-decoration: line-through;

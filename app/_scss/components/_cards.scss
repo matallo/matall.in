@@ -1,45 +1,95 @@
 // Card
 // --------------------------------------------------
 
+.Card-sep {
+  @media (max-width: $sMedia--xl) {
+    &:nth-child(n+3) {
+      margin-top: 20px;
+    }
+  }
+
+  @media (max-width: $sMedia--s) {
+    margin-top: 20px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
 .Card {
   background: #fff;
   display: block;
   width: 100%;
   border: 1px solid rgba(#000, .1);
   border-radius: 3px;
+  transition: border-color .2s;
 
   &:hover {
-    border: 1px solid rgba(#000, .2);
+    border-color: rgba(#000, .2);
     text-decoration: none;
 
     .Card-title {
       color: darken($cTypo1, 5%);
     }
+    .Card-img {
+      transform: scale(1.02);
+    }
   }
 }
-.Card-image {
+.Card-header {
+  height: 150px;
+  border-bottom: 1px solid rgba(#000, .1);
+  overflow: hidden;
+  border-radius: 2px 2px 0 0;
+}
+.Card-img {
   display: block;
   width: 100%;
   height: 150px;
   background-size: cover;
   background-position: center;
-  border-radius: 2px 2px 0 0;
-  box-shadow: 0 -1px 0px rgba(#000, .1) inset;
+  transition: transform .2s ease-out;
 }
 .Card-inner {
   padding: 20px;
 }
 .Card-title {
   margin-bottom: 5px;
+  transition: color .2s;
 }
 .Card-subtitle,
+.Card-categories,
 .Card-description {
   font-weight: 400;
 }
+.Card-subtitle,
+.Card-categories {
+  margin-bottom: 5px;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: $cTypo3;
+}
 .Card-subtitle {
   margin-bottom: 10px;
-  color: $cTypo3;
+}
+.Card-categories {
+  margin-bottom: 5px;
 }
 .Card-description {
   color: $cTypo2;
+}
+.Card-dot {
+  width: 8px;
+  height: 8px;
+  display: block;
+  float: left;
+  margin-right: 10px;
+  margin-top: 8px;
+  border-radius: 50%;
+}
+.Card-dot--stories {
+  background: $cGold;
+}
+.Card-dot--carto {
+  background: $cRed3;
 }
