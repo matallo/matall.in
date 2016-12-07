@@ -3,7 +3,7 @@
 
   {% include head.html %}
 
-  <body class="{% if page.body_class %}{{ page.body_class }}{% endif %} js-Marginotes">
+  <body class="{% if page.body_class %}{{ page.body_class }}{% endif %}">
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -17,19 +17,25 @@
     </div>
 
     <!-- build:js(.tmp) /js/vendor.js -->
-    <script src="/../bower_components/jquery/dist/jquery.js"></script>
-    <script src="/../bower_components/underscore/underscore.js"></script>
-    <script src="/../bower_components/backbone/backbone.js"></script>
-    <script src="/../bower_components/picturefill/src/picturefill.js"></script>
-    <script src="/../bower_components/waypoints/lib/jquery.waypoints.js"></script>
-    <script src="/js/vendor/d3.min.js"></script>
-    <script src="/js/vendor/topojson.min.js"></script>
+    <script src="/../bower_components/picturefill/dist/picturefill.js"></script>
+    <script src="/../bower_components/smoothscroll/dist/smoothscroll.js"></script>
     <!-- endbuild -->
-    <!-- build:js(.tmp) /js/main.js -->
-    <script src="/js/app.js"></script>
-    <script src="/js/story.js"></script>
-    <script src="/js/marginotes.js"></script>
-    <!-- endbuild -->
+
+    {% if page.layout == "post" %}
+      <!-- build:js(.tmp) /js/post.js -->
+      <script src="/js/post.js"></script>
+      <!-- endbuild -->
+    {% elsif page.layout == "story" %}
+      <!-- build:js(.tmp) /js/story-vendor.js -->
+      <script src="/js/vendor/d3.js"></script>
+      <script src="/js/vendor/topojson.js"></script>
+      <script src="/../bower_components/waypoints/lib/noframework.waypoints.js"></script>
+      <!-- endbuild -->
+
+      <!-- build:js(.tmp) /js/story.js -->
+      <script src="/js/story.js"></script>
+      <!-- endbuild -->
+    {% endif %}
 
     {% include vendor_scripts.html %}
   </body>

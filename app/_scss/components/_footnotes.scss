@@ -30,7 +30,6 @@
   }
 }
 .Marginote {
-  display: none;
   position: absolute;
   right: 0;
   width: 300px;
@@ -38,6 +37,12 @@
   border-left: 1px solid $cGrey3;
   padding-left: 20px;
   font-size: 13px;
+  opacity: 0;
+  transition: opacity .2s;
+
+  &.is-active {
+    opacity: 1
+  }
 
   .Footnote-return {
     display: none;
