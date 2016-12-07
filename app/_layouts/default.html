@@ -19,23 +19,14 @@
     <!-- build:js(.tmp) /js/vendor.js -->
     <script src="/../bower_components/picturefill/dist/picturefill.js"></script>
     <script src="/../bower_components/smoothscroll/dist/smoothscroll.js"></script>
+    <script src="/../bower_components/waypoints/lib/noframework.waypoints.js"></script>
+    <script src="/js/vendor/d3.js"></script>
+    <script src="/js/vendor/topojson.js"></script>
     <!-- endbuild -->
 
-    {% if page.layout == "post" %}
-      <!-- build:js(.tmp) /js/post.js -->
-      <script src="/js/post.js"></script>
-      <!-- endbuild -->
-    {% elsif page.layout == "story" %}
-      <!-- build:js(.tmp) /js/story-vendor.js -->
-      <script src="/js/vendor/d3.js"></script>
-      <script src="/js/vendor/topojson.js"></script>
-      <script src="/../bower_components/waypoints/lib/noframework.waypoints.js"></script>
-      <!-- endbuild -->
-
-      <!-- build:js(.tmp) /js/story.js -->
-      <script src="/js/story.js"></script>
-      <!-- endbuild -->
-    {% endif %}
+    <!-- build:js(.tmp) /js/main.js -->
+    <script src="/js/main.js"></script>
+    <!-- endbuild -->
 
     {% include vendor_scripts.html %}
   </body>

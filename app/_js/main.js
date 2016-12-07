@@ -1,7 +1,7 @@
 import Marginotes from './modules/marginotes.js'
 import Scrollmap from './modules/scroll-map.js'
 
-class Story {
+class App {
   constructor (options) {
     const marginotes = new Marginotes(document.querySelector('.js-Marginotes'))
     const scrollmap = new Scrollmap(document.querySelector('.js-Scrollmap'))
@@ -9,5 +9,5 @@ class Story {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const story = new Story()
+  const app = new App()
 })
