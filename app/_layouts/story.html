@@ -21,10 +21,10 @@ layout: default
 
 <div class="Content">
   <div class="Content-inner Content-inner--post">
-    <div class="u-inner">
-      <article class="Content-body" itemscope itemtype="http://schema.org/BlogPosting">
-        <div class="Map js-Map"></div>
-        <div class="Marginote js-Marginote"></div>
+    <div class="u-inner {% if page.scrollmap %}js-Scrollmap{% endif %}">
+      <article class="Content-body {% if page.marginotes %}js-Marginotes{% endif %}" itemscope itemtype="http://schema.org/BlogPosting">
+        {% if page.scrollmap %}<div class="Map js-Map"></div>{% endif %}
+        {% if page.marginotes %}<div class="Marginote js-Marginote"></div>{% endif %}
 
         <div class="Content-header">
           <h1 class="Title Title--h1 Content-title Content-title--h1 Title--cTypo1" itemprop="name headline">{{ page.title }}</h1>

@@ -82,9 +82,12 @@ module.exports = function (grunt) {
     },
 
     watch: {
-      babel: {
-        files: ['<%= config.app %>/_js/*.js'],
-        tasks: ['babel:dist']
+      browserify: {
+        files: [
+          '<%= config.app %>/_js/{,*/}*.js',
+          '!<%= config.app %>/_js/{data,vendor}/*'
+        ],
+        tasks: ['browserify:dist']
       },
       js: {
         files: ['<%= config.app %>/_js/{data,vendor}/*'],
@@ -175,15 +178,22 @@ module.exports = function (grunt) {
       ]
     },
 
-    babel: {
-      options: {
-        sourceMap: true
-      },
+    browserify: {
       dist: {
+        options: {
+          transform: [
+            ['babelify', { 'presets': ['es2015'] }]
+          ],
+          browserifyOptions: { debug: true }
+        },
+
         files: [{
           expand: true,
           cwd: '<%= config.app %>/_js',
-          src: '*.js',
+          src: [
+            '{,*/}*.js',
+            '!{data,vendor}/*'
+          ],
           dest: '<%= config.tmp %>/js',
           ext: '.js'
         }]
@@ -347,12 +357,12 @@ module.exports = function (grunt) {
 
     concurrent: {
       server: [
-        'babel',
+        'browserify',
         'copy',
         'sass:server'
       ],
       dist: [
-        'babel',
+        'browserify',
         'copy',
         'sass:dist',
         'imagemin',
@@ -436,8 +446,8 @@ module.exports = function (grunt) {
   grunt.registerTask('deploy', [
     'htmlmin',
     'compress',
-    'aws_s3:dist',
-    'aws_s3:assets'
+    // 'aws_s3:dist',
+    // 'aws_s3:assets'
   ])
 
   grunt.registerTask('default', [

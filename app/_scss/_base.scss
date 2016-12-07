@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+html {
+  scroll-behaviour: smooth;
+}
 html, body {
   height: 100%;
 }
