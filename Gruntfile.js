@@ -82,13 +82,6 @@ module.exports = function (grunt) {
     },
 
     watch: {
-      browserify: {
-        files: [
-          '<%= config.app %>/_js/{,*/}*.js',
-          '!<%= config.app %>/_js/{data,vendor}/*'
-        ],
-        tasks: ['browserify:dist']
-      },
       js: {
         files: ['<%= config.app %>/_js/{data,vendor}/*'],
         tasks: ['copy']
@@ -358,12 +351,10 @@ module.exports = function (grunt) {
 
     concurrent: {
       server: [
-        'browserify',
         'copy',
         'sass:server'
       ],
       dist: [
-        'browserify',
         'copy',
         'sass:dist',
         'imagemin',
@@ -415,6 +406,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean',
       'shell:development',
+      'browserify',
       'concurrent:server',
       'postcss',
       'browserSync:livereload',
@@ -431,6 +423,7 @@ module.exports = function (grunt) {
     'clean',
     'shell:production',
     'useminPrepare',
+    'browserify',
     'concurrent:dist',
     'postcss',
     'concat',
