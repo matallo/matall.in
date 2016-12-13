@@ -14,7 +14,8 @@ install:
   - npm install
 before_script: bower install
 script: grunt
-after_success: grunt deploy
+after_success:
+  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && grunt deploy
 branches:
   only:
     - master
