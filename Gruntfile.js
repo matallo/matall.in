@@ -22,8 +22,6 @@ module.exports = function (grunt) {
   grunt.initConfig({
     config: config,
 
-    // put your credentials and save
-    // config.env.example to config.env
     aws_s3: {
       options: {
         accessKeyId: '<%= config.aws.accessKeyId %>',
@@ -438,7 +436,7 @@ module.exports = function (grunt) {
   ])
 
   grunt.registerTask('deploy', [
-    // 'htmlmin',
+    'htmlmin',
     'compress',
     'aws_s3:dist',
     'aws_s3:assets'
