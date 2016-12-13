@@ -184,6 +184,7 @@ module.exports = function (grunt) {
           transform: [
             ['babelify', { 'presets': ['es2015'] }]
           ],
+          watch: true,
           browserifyOptions: { debug: true }
         },
 
