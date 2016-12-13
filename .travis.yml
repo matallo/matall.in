@@ -1,13 +1,14 @@
-language: ruby
-rvm:
-  - 2.3.0
+language: node_js
+node_js:
+  - 'node'
 before_install:
-  - npm install -g npm@latest
-  - npm install -g grunt-cli
+  - rvm use 2.2
+  - gem install bundler
   - npm install -g bower
+  - npm install -g grunt-cli
 install:
   - bundle install
-  - npm install
+  - yarn
 before_script: bower install
 script: grunt
 after_success: grunt deploy
