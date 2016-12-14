@@ -164,8 +164,8 @@ module.exports = function (grunt) {
     eslint: {
       target: [
         'Gruntfile.js',
-        '<%= config.app %>/js/{,*/}*.js',
-        '!<%= config.app %>/js/vendor/*'
+        '<%= config.app %>/_js/{,*/}*.js',
+        '!<%= config.app %>/_js/vendor/*'
       ]
     },
 
@@ -441,7 +441,7 @@ module.exports = function (grunt) {
   ])
 
   grunt.registerTask('default', [
-    // 'newer:eslint',
+    'newer:eslint',
     'build',
     'htmlproof'
   ])
