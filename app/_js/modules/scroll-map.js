@@ -101,7 +101,7 @@ class Scrollmap {
 
     const scrollmapTitles = document.querySelectorAll('.js-Scrollmap-title')
     Array.prototype.forEach.call(scrollmapTitles, (scrollmapTitleEl, i) => {
-      const scrollmapTitleWaypointDown = new Waypoint({
+      const scrollmapTitleWaypointDown = new Waypoint({ // eslint-disable-line no-unused-vars
         element: scrollmapTitleEl,
         handler: (direction) => {
           if (direction === 'down') {
@@ -131,7 +131,7 @@ class Scrollmap {
         offset: window.innerHeight
       })
 
-      const scrollmapTitleWaypointUp = new Waypoint({
+      const scrollmapTitleWaypointUp = new Waypoint({ // eslint-disable-line no-unused-vars
         element: scrollmapTitleEl,
         handler: (direction) => {
           if (direction === 'up') {
@@ -163,7 +163,7 @@ class Scrollmap {
       })
     })
 
-    const stickyWaypoint = new Waypoint({
+    const stickyWaypoint = new Waypoint({ // eslint-disable-line no-unused-vars
       element: this.el.querySelector('.js-Sticky'),
       handler: (direction) => {
         if (direction === 'down') {
