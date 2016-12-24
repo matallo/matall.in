@@ -391,23 +391,6 @@ module.exports = function (grunt) {
           extDot: 'last'
         }]
       }
-    },
-
-    uncss: {
-      dist: {
-        options: {
-          htmlroot: '<%= config.dist %>/',
-          stylesheets: [
-            '/css/main.css'
-          ]
-        },
-
-        files: {
-          '<%= config.dist %>/css/main.css': [
-            '<%= config.dist %>/**/index.html'
-          ]
-        }
-      }
     }
   })
 
@@ -442,7 +425,6 @@ module.exports = function (grunt) {
     'concat',
     'cssmin',
     'uglify',
-    'uncss',
     'filerev',
     'usemin'
   ])

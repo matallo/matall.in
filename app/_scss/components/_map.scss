@@ -21,35 +21,6 @@
     display: none;
   }
 }
-.Placeholder {
-  display: none;
-  position: absolute;
-  top: 60px;
-  left: -240px;
-  width: 200px;
-  height: 200px;
-  background: $cGrey4;
-
-  &.is-active {
-    display: block;
-  }
-}
-.Placeholder-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  line-height: 200px;
-  text-align: center;
-  vertical-align: middle;
-  color: $cTypo3;
-  transition: color .2s;
-
-  &:hover {
-    color: darken($cTypo3, 5%);
-  }
-}
 .Country {
   fill: $cGrey4;
 }
