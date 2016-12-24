@@ -69,10 +69,12 @@ layout: default
           {% if post.categories contains "stories" %}
             <a href="{{ post.url }}" class="Story" title="{{ post.description }}">
               <div class="Story-gradient"></div>
-              <div class="Story-inner">
-                <div class="Story-header">
-                  <h3 class="Title Title--h1 Content-title Content-title--h1 Story-title">{{ post.title }}</h3>
-                  <p class="Story-description">{{ post.date | date_to_string }}</p>
+              <div class="Story-inner Grid">
+                <div class="Grid-inner Grid-inner--vCenter">
+                  <div class="Grid-cell Grid-cell--col12 Story-header">
+                    <h3 class="Title Title--h1 Content-title Content-title--h1 Story-title">{{ post.title }}</h3>
+                    <p class="Story-description">{{ post.date | date_to_string }}</p>
+                  </div>
                 </div>
               </div>
 
@@ -123,16 +125,16 @@ layout: default
 
               <ul class="Social-list">
                 <li class="Social-item">
-                  <a href="https://twitter.com/matallo" class="Icon Icon--link" target="_blank">{% include icons/icon-twitter.svg %}</a>
+                  <a href="https://twitter.com/matallo" class="Icon Icon--link" target="_blank" rel="noopener">{% include icons/icon-twitter.svg %}</a>
                 </li>
                 <li class="Social-item">
-                  <a href="https://github.com/matallo" class="Icon Icon--link" target="_blank">{% include icons/icon-github.svg %}</a>
+                  <a href="https://github.com/matallo" class="Icon Icon--link" target="_blank" rel="noopener">{% include icons/icon-github.svg %}</a>
                 </li>
                 <li class="Social-item">
-                  <a href="https://es.linkedin.com/in/carlosmatallin" class="Icon Icon--link" target="_blank">{% include icons/icon-linkedin.svg %}</a>
+                  <a href="https://es.linkedin.com/in/carlosmatallin" class="Icon Icon--link" target="_blank" rel="noopener">{% include icons/icon-linkedin.svg %}</a>
                 </li>
                 <li class="Social-item">
-                  <a href="https://www.strava.com/athletes/593049" class="Icon Icon--link" target="_blank">{% include icons/icon-strava.svg %}</a>
+                  <a href="https://www.strava.com/athletes/593049" class="Icon Icon--link" target="_blank" rel="noopener">{% include icons/icon-strava.svg %}</a>
                 </li>
               </ul>
             </div>

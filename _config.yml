@@ -2,7 +2,7 @@
 title: "Carlos Matallín"
 description: "Code, design, and mountains"
 baseurl: ""
-url: "http://matall.in"
+url: "https://matall.in"
 gems:
   - jekyll-sitemap
 
