@@ -1,30 +1,44 @@
 # matall.in
 
-Personal website of Carlos Matallín
+This repo contains the source code for the personal website of [Carlos Matallín](https://matall.in/).
 
 
 ## Installation
 
-```
-bundle install
-yarn install gulp-cli -g
-yarn install bower -g
-yarn install
-bower install
-```
+The website is built on top of [Jekyll](http://jekyllrb.com/), a simple content management system for static sites.
+
+The website uses [gulp](https://gulpjs.com/) tasks for development, and [webpack](https://webpack.js.org/) for module bundler.
 
 
 ### Dependencies
+
+In order to use Jekyll, you will need to have Ruby installed. macOS comes pre-installed with Ruby, but you might need to install [Bundler](http://bundler.io/) to install the dependencies. You'll need Node.js installed, and a package manager, such as [Yarn](https://yarnpkg.com/en/) or [npm](https://www.npmjs.com/).
 
 - Ruby
 - RubyGems
 - Bundler
 - Node.js
+- Yarn
 - gulp.js
 - Bower
 
+Once you have [Bundler](http://bundler.io/) and [Yarn](https://yarnpkg.com/en/) installed, use them to intall the dependencies:
+
+```
+bundle install
+yarn install gulp-cli -g # npm install gulp-cli -g to install with npm.
+yarn install bower -g # npm install bower -g to install with npm.
+yarn install # npm install to install with npm.
+bower install
+```
+
+You should now have everything needed to run the website locally.
+
 
 ## Usage
+
+There are several tasks available to help you build and test the website.
+
 
 ### Run locally
 
@@ -32,23 +46,51 @@ bower install
 gulp serve
 ```
 
+This will have Jekyll build the site, webpack compile the assets, run a static server to listen on port 9000 (which you can now reach at http://localhost:9000/), and watch for changes to site files. Every change will cause Jekyll to rebuild the affected files, webpack to compile the assets, and reload the page.
+
+
+### Build
+
+You can also build the website and browse through the dist files, launching a server in that folder:
+
+```
+NODE_ENV=production gulp
+cd dist/
+python -m SimpleHTTPServer
+```
+
 
 ### Test
+
+Tests can be launched with [Jest](https://facebook.github.io/jest/) running the following command in the terminal:
 
 ```
 yarn test
 ```
 
 
-### Build
+### Lint
+
+Finally, JS files can be checked with ESLint to keep a consistent styleguide, running the following command in the terminal.
 
 ```
-NODE_ENV=production gulp
+gulp lint
 ```
 
 
 ### Deploy
 
+When pushing (or merging) to the `master` branch in the repository automatically deploys to [https://matall.in/](https://matall.in/) via [Travis CI](https://travis-ci.org/).
+
+
+You can also launch a deploy to AWS S3.
+
 ```
 NODE_ENV=production gulp deploy
+```
+
+You will need to add your credentials in config, or run the following command with your credentials
+
+```
+AWS_BUCKET=XXX AWS_ACCESSKEYID=XXX AWS_SECRETACCESSKEY=XXX NODE_ENV=production gulp deploy
 ```

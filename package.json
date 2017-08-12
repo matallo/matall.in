@@ -6,7 +6,6 @@
   "scripts": {
     "jekyll-build": "bundle exec jekyll build --config _config.yml,_config-prod.yml",
     "jekyll-serve": "bundle exec jekyll build --incremental",
-    "lint": "eslint app/_js/{,**/}*.js",
     "test": "jest"
   },
   "jest": {
