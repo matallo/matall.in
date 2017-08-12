@@ -1,6 +1,6 @@
 <head>
   <meta charset="utf-8">
-  <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+  <title>{% if page.url == "/" %}{{ site.title }}{% if page.title %} — {{ page.title }}{% endif %}{% else %}{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,9 +28,7 @@
   <style>
   {% include css/reset.css %}
   </style>
-  <!-- build:css(.tmp) /css/main.css -->
   <link rel="stylesheet" href="/css/main.css">
-  <!-- endbuild -->
 
   <style>
     {% if page.background_image %}
@@ -47,9 +45,7 @@
     {% endif %}
   </style>
   <!--[if lt IE 9]>
-    <!-- build:js(.) /js/vendor/html5shiv.js -->
-    <script src="/bower_components/html5shiv/dist/html5shiv.js"></script>
-    <!-- endbuild -->
+    <script src="/js/html5shiv.js"></script>
   <![endif]-->
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 </head>

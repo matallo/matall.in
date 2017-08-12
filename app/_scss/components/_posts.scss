@@ -6,6 +6,10 @@
   &:last-child {
     margin-bottom: 0;
   }
+
+  @media (max-width: $sMedia--m) {
+    margin-bottom: 20px;
+  }
 }
 .Posts-img {
   display: block;

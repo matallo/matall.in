@@ -2,8 +2,8 @@
 // --------------------------------------------------
 
 .Footer {
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 
   @media (max-width: $sMedia--m) {
     text-align: center;
@@ -18,7 +18,7 @@
 
   @media (max-width: $sMedia--m) {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 20px;
     padding-left: 0;
   }
 }

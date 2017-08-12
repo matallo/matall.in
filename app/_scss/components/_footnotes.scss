@@ -12,13 +12,13 @@
   line-height: 14px;
   vertical-align: middle;
   text-align: center;
+  text-decoration: none;
   color: #FFF;
   background: $cGrey1;
   border-radius: 2px;
   outline: none;
 
   &:hover {
-    text-decoration: none;
     color: #FFF;
   }
 }
@@ -36,7 +36,7 @@
   margin-right: -320px;
   border-left: 1px solid $cGrey3;
   padding-left: 20px;
-  font-size: 13px;
+  font-size: 14px;
   opacity: 0;
   transition: opacity .2s;
 

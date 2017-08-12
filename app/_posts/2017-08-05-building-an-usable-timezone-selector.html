@@ -1,0 +1,77 @@
+---
+title: Building an usable timezone selector
+description: Building an usable timezone selector with Moment.js, and Select2
+marginotes: true
+twitter_image: "/img/posts/building-an-usable-timezone-selector/timezone-selector-html@mobile.png"
+category: development
+---
+<p>If you've been around for enough time in the software development field you'll have encountered with the problem of working with date and time data, not to mention timezones.</p>
+
+<p>One of the latest projects I've worked on involved creating a timezone selector. Having a <code>DateTime</code> value stored in UTC format, we needed to be able to represent the data in the corresponding format depending on the timezone selected.</p>
+
+<p>The most straightforward solution to solve this is creating a selector with offset values for each option, which will be added or subtracted to the value stored.</p>
+
+<figure class="Slideshow Slideshow--center">
+  <p data-height="265" data-theme-id="0" data-slug-hash="MvpwPy" data-default-tab="html,result" data-user="matallo" data-embed-version="2" data-pen-title="timezone-selector-html" class="codepen">See the Pen <a href="https://codepen.io/matallo/pen/MvpwPy/">timezone-selector-html</a> by Carlos Matallín (<a href="https://codepen.io/matallo">@matallo</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+</figure>
+
+<p>The user picks an offset, the date and time are transformed depending on the option selected, and the card is promoted to the next column in the Kanban board. BOOM.</p>
+
+<h2 class="Title Title--cTypo1 Title--h2 Content-title Content-title--h2">Offset vs timezone</h2>
+
+<p>However there is a difference between timezones and offsets. Multiple timezones can correspond to the same offset, and some timezones may change their offset depending on the time of the year.</p>
+
+<p>As the <a href="http://momentjs.com/guides/#/lib-concepts/timezone-offset/">Moment.js guides</a> put it:</p>
+
+<blockquote class="Blockquote">A time zone usually has more than one offset from UTC due to daylight saving time. Several time zones may have the same offset at some point during the year. For example, the time zones America/Chicago, America/Denver, and America/Belize all have an offset of -06:00 at varying times. For this reason, it is impossible to infer a time zone from just an offset value.</blockquote>
+
+<p>The <a href="http://momentjs.com/">Moment.js</a> library provides functionality related to adjusting times based on an offset value, and <a href="http://momentjs.com/timezone/">Moment Timezone</a> library provides the support for adjusting dates based on timezone data.</p>
+
+<h2 class="Title Title--cTypo1 Title--h2 Content-title Content-title--h2">Making the timezone selector usable</h2>
+
+<p>Again, we can just create a selector with the existing timezones, which will be used to calculate the offset for an existing <code>DateTime</code> value, but we need to ask first <strong>"How many timezones are there?"</strong>.</p>
+
+<p>Loading all the data for the <a href="http://momentjs.com/timezone/">Moment Timezone</a> library returns a list of <strong>593 timezones</strong>, that can be hard to navigate and pick the prefered option from the selector.</p>
+
+<figure class="Slideshow Slideshow--center">
+  <p data-height="265" data-theme-id="0" data-slug-hash="zdZBRj" data-default-tab="html,result" data-user="matallo" data-embed-version="2" data-pen-title="timezone-selector-moment-html" class="codepen">See the Pen <a href="https://codepen.io/matallo/pen/zdZBRj/">timezone-selector-moment-html</a> by Carlos Matallín (<a href="https://codepen.io/matallo">@matallo</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+</figure>
+
+<p>Thus, a better question to ask would be <strong>"What is the most usable way to show a timezone selector?"</strong>. We can find several answers in <a href="https://ux.stackexchange.com/questions/21409/how-to-make-selecting-a-timezone-more-user-friendly">UX Stack Exchange</a>:</p>
+
+<ul>
+  <li>
+    <p><strong>Removing the duplicates, showing the offset and some example cities</strong>. Example lists of timezones grouped by offset can be found in <a href="https://en.wikipedia.org/wiki/Time_zone#List_of_UTC_offsets">Wikipedia</a>, or <a href="https://msdn.microsoft.com/en-us/library/ms912391(v=winembedded.11).aspx">Microsoft documentation</a>.</p>
+  </li>
+  <li>
+    <p><strong>Offer a text input to search among all the timezone options</strong>. This can be achieved with a jQuery plugin such <a href="https://select2.github.io/">Select2</a>.</p>
+  </li>
+</ul>
+
+<p>These two approaches can be combined.</p>
+
+<p>However there are some drawbacks. Only one timezone value can be assigned to each group of cities, so those cities with the same offset but with different daylight savings time must be splitted into a different group.</p>
+
+<p>Another interesting alternative can be <strong>picking the timezone within an interactive map</strong>, in the same fashion than macOS, or Ubuntu settings, and even make use of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation">Geolocation API</a>. Nevertheless, it depends on the constraints in the form of the timezone selector.</p>
+
+<p class="u-txt-center">
+  <picture>
+    <source media="(min-width: 560px)" srcset="/img/posts/building-an-usable-timezone-selector/macos.png 1x">
+    <source srcset="/img/posts/building-an-usable-timezone-selector/macos@mobile.png 1x">
+    <img src="/img/posts/building-an-usable-timezone-selector/macos.png" alt="OS X" width="780" height="703" />
+  </picture>
+</p>
+
+<p>Summing up, here are <strong>some tips to build an usable timezone selector:</strong></p>
+
+<ul>
+  <li>Show timezones, not offsets.</li>
+  <li>Group timezones with same offset, and show some example cities.</li>
+  <li>Offer an input field to search timezones.</li>
+</ul>
+
+<p>And the final result:</p>
+
+<figure class="Slideshow Slideshow--center">
+  <p data-height="265" data-theme-id="dark" data-slug-hash="WEjKqG" data-default-tab="html,result" data-user="matallo" data-embed-version="2" data-pen-title="timezone-selector-moment-select2-html" class="codepen">See the Pen <a href="https://codepen.io/matallo/pen/WEjKqG/">timezone-selector-moment-select2-html</a> by Carlos Matallín (<a href="https://codepen.io/matallo">@matallo</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+</figure>

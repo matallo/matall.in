@@ -23,24 +23,19 @@
   border: 1px solid rgba(#000, .1);
   border-radius: 3px;
   transition: border-color .2s;
-
-  &:hover {
-    border-color: rgba(#000, .2);
-    text-decoration: none;
-
-    .Card-title {
-      color: darken($cTypo1, 5%);
-    }
-    .Card-img {
-      transform: scale(1.02);
-    }
-  }
 }
 .Card-header {
+  display: block;
   height: 150px;
   border-bottom: 1px solid rgba(#000, .1);
   overflow: hidden;
   border-radius: 2px 2px 0 0;
+
+  &:hover {
+    .Card-img {
+      transform: scale(1.02);
+    }
+  }
 }
 .Card-img {
   display: block;
@@ -57,6 +52,15 @@
   margin-bottom: 5px;
   transition: color .2s;
 }
+.Card-link {
+  font-weight: 400;
+  color: $cTypo1;
+  text-decoration: none;
+
+  &:hover {
+    color: darken($cTypo1, 5%);
+  }
+}
 .Card-subtitle,
 .Card-categories,
 .Card-description {
@@ -72,9 +76,6 @@
 .Card-subtitle {
   margin-bottom: 10px;
 }
-.Card-categories {
-  margin-bottom: 5px;
-}
 .Card-description {
   color: $cTypo2;
 }
@@ -86,6 +87,7 @@
   margin-right: 10px;
   margin-top: 8px;
   border-radius: 50%;
+  background: #DDD;
 }
 .Card-dot--stories {
   background: $cGold;

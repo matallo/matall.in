@@ -1,9 +1,9 @@
 .DS_Store
-node_modules
-dist
-tmp
-.tmp
-bower_components
+.awspublish-*
 .env
 .jekyll-metadata
 .ruby-version
+.tmp
+bower_components
+dist
+node_modules

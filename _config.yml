@@ -3,19 +3,18 @@ title: "Carlos Matallín"
 description: "Code, design, and mountains"
 baseurl: ""
 url: "https://matall.in"
-gems:
-  - jekyll-sitemap
 
 # Build settings
-source: 'app'
-destination: 'dist'
+source: "app"
+destination: "dist"
 markdown: kramdown
 permalink: pretty
-gems:
+plugins:
+  - jekyll-sitemap
   - jekyll-feed
   - jekyll-redirect-from
 
-years: 29
+birthday: "1988-02-02"
 
 # analytics_property_id: ''
 

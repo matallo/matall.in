@@ -4,28 +4,31 @@
 .Story {
   display: block;
   position: relative;
+  margin-bottom: 40px;
   background: $cGrey4;
   overflow: hidden;
 
   &:hover {
     .Story-gradient {
       z-index: 20;
-      background: rgba(#000, 0);
+      background: rgba(#000, .4);
     }
     .Story-inner {
-      opacity: 0;
+      opacity: 1;
       transform: scale(1.05);
     }
     .Story-img {
       transform: scale(1.01);
     }
   }
-}
-.Story--row {
-  margin-top: 20px;
+
+  @media (max-width: $sMedia--m) {
+    margin-bottom: 20px;
+  }
 }
 .Story-inner {
   z-index: 30;
+  opacity: 0;
   transition: all .2s ease-in-out;
 }
 .Story-inner,
@@ -38,7 +41,7 @@
 }
 .Story-gradient {
   z-index: 20;
-  background: rgba(#000, .2);
+  background: rgba(#000, .0);
   transition: all .2s ease-in-out;
 }
 .Story-header {
@@ -46,20 +49,30 @@
 }
 .Story-title,
 .Story-description {
-  color: #fff;
+  font-weight: 400;
   text-shadow: 0 2px 0 rgba(#000, .3);
 }
 .Story-title {
-  text-transform: uppercase;
-}
-.Story-description {
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  line-height: 30px;
+  color: #FFF;
 
   @media (max-width: $sMedia--m) {
-    font-size: 15px;
-    line-height: 18px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+.Story-description {
+  color: rgba(#fff, .6);
+  font-size: 15px;
+  line-height: 18px;
+  text-transform: uppercase;
+
+  @media (max-width: $sMedia--m) {
+    font-size: 13px;
+    line-height: 16px;
   }
 }
 .Story-img {

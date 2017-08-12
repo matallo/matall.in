@@ -1,0 +1,10 @@
+{
+  "presets": ["es2015"],
+  "plugins": [
+    ["module-resolver", {
+      "alias": {
+        "waypoints": "./bower_components/waypoints/lib/noframework.waypoints.js"
+      }
+    }]
+  ]
+}
