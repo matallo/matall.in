@@ -1,10 +1,20 @@
 {
-  "name": "vietcongada",
+  "name": "matall.in",
+  "description": "Personal website of Carlos Matallín",
+  "main": "index.js",
+  "authors": [
+    "Carlos Matallín"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/matallo/matall.in",
   "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "__tests__"
+  ],
   "dependencies": {
-    "html5shiv": "^3.7.3",
-    "picturefill": "^3.0.2",
-    "smoothscroll": "^0.3.4",
     "waypoints": "^4.0.1"
   }
 }

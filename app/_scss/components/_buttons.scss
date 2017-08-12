@@ -3,13 +3,10 @@
 
 .Button {
   display: inline-block;
-  border: 2px solid $cGrey3;
+  border: 1px solid $cGrey2;
   text-align: center;
   white-space: nowrap;
-  font-weight: 600;
-  font-size: 13px;
   line-height: 1;
-  text-transform: uppercase;
   color: $cTypo3;
   border-radius: 3px;
   transition: all .2s;
@@ -17,8 +14,8 @@
 
   &:hover {
     text-decoration: none;
-    border-color: $cGrey2;
-    color: darken($cTypo3, 5%);
+    border-color: $cGrey1;
+    color: darken($cTypo3, 10%);
   }
 
   > span {

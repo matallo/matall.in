@@ -1,8 +1,7 @@
 ---
 title: Code, design, and mountains
 description: >
-  Map maker at CARTO. I'm a 29 year old geek from Valencia living in Madrid. I’m a web enthusiast, passionate about
-  technology and design. I climb mountains, too.
+  Map maker at CARTO. I'm a 29 year old explorer from Valencia living in Madrid. I’m a web and blockchain enthusiast, passionate about technology and design. I climb mountains, too.
 layout: default
 ---
 {% include navigation.html %}
@@ -11,16 +10,20 @@ layout: default
   <div class="Content-inner">
     <div class="u-inner u-inner--l">
       <div class="Content-body">
-        <div class="Home-header">
-          <a href="/" class="Avatar Avatar--home">
-            <picture>
-              <source srcset="/img/about/1363306686_04d7bb3035.jpg 1x, /img/about/1363306686_04d7bb3035@2x.jpg 2x">
-              <img src="/img/about/1363306686_04d7bb3035.jpg" alt="matallo" width="100" height="100" />
-            </picture>
-          </a>
+        <div class="Grid">
+          <div class="Grid-inner">
+            <div class="Grid-cell Grid-cell--col12">
+              <a href="/" class="Avatar Avatar--home">
+                <picture>
+                  <source srcset="/img/about/1363306686_04d7bb3035.jpg 1x, /img/about/1363306686_04d7bb3035@2x.jpg 2x">
+                  <img src="/img/about/1363306686_04d7bb3035.jpg" alt="matallo" width="100" height="100" />
+                </picture>
+              </a>
 
-          <h1 class="Title Title--h1 Content-title Content-title--h1 Title--cTypo1">Hi, I'm Carlos Matallín</h1>
-          <p class="Content-subtitle">Code, design, and mountains</p>
+              <h1 class="Title Title--h1 Content-title Content-title--h1 Title--cTypo1">Hi, I'm Carlos Matallín</h1>
+              <p class="Content-subtitle">Code, design, and mountains</p>
+            </div>
+          </div>
         </div>
 
         <div class="Grid">
@@ -30,7 +33,7 @@ layout: default
                 <div class="Sep"></div>
 
                 <h2 class="Block-title">About</h2>
-                <p>I'm a {{ site.years }} year old geek from Valencia living in Madrid. I’m a web enthusiast, passionate about technology and design.<br />I climb mountains, too.</p>
+                <p>I'm a {% birthday_years site.birthday %} year old explorer from Valencia living in Madrid. I’m a web and blockchain enthusiast, passionate about technology and design. I climb mountains, too.</p>
 
                 <p>This is <a href="/usesthis/">what I use</a> to get stuff done.</p>
 
@@ -62,29 +65,34 @@ layout: default
     </div>
 
     <div class="u-inner u-inner--xxl">
-      {% assign counter = 0 %}
+      <div class="Grid">
+        <ul class="Grid-inner">
+          <li class="Grid-cell Grid-cell--col12">
+            {% assign counter = 0 %}
 
-      {% for post in site.posts %}
-        {% if counter < 1 %}
-          {% if post.categories contains "stories" %}
-            <a href="{{ post.url }}" class="Story" title="{{ post.description }}">
-              <div class="Story-gradient"></div>
-              <div class="Story-inner Grid">
-                <div class="Grid-inner Grid-inner--vCenter">
-                  <div class="Grid-cell Grid-cell--col12 Story-header">
-                    <h3 class="Title Title--h1 Content-title Content-title--h1 Story-title">{{ post.title }}</h3>
-                    <p class="Story-description">{{ post.date | date_to_string }}</p>
-                  </div>
-                </div>
-              </div>
+            {% for post in site.posts %}
+              {% if counter < 1 %}
+                {% if post.categories contains "stories" %}
+                  <a href="{{ post.url }}" class="Story" title="{{ post.description }}">
+                    <div class="Story-gradient"></div>
+                    <div class="Story-inner Grid">
+                      <div class="Grid-inner Grid-inner--vCenter">
+                        <div class="Grid-cell Grid-cell--col12 Story-header">
+                          <h3 class="Story-title">{{ post.title }}</h3>
+                          <p class="Story-description">{{ post.date | date_to_string }}</p>
+                        </div>
+                      </div>
+                    </div>
 
-              <img src="{{ post.background_image }}" alt="{{ post.title }}" width="1240" height="698" class="Story-img" />
-            </a>
-
-            {% assign counter = counter | plus:1 %}
-          {% endif %}
-        {% endif %}
-      {% endfor %}
+                    <img src="{{ post.background_image }}" alt="{{ post.title }}" width="1240" height="698" class="Story-img" />
+                  </a>
+                  {% assign counter = counter | plus:1 %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </li>
+        </ul>
+      </div>
     </div>
 
     <div class="u-inner u-inner--l">
@@ -93,6 +101,8 @@ layout: default
 
         <h2 class="Block-title">Posts</h2>
         <ul class="Posts-list">
+          {% assign counter = 0 %}
+
           {% for post in site.posts %}
             <li class="Posts-item">
               <div class="Grid">
@@ -103,7 +113,7 @@ layout: default
 
                   <div class="Grid-cell Grid-cell--col8 r-sMedia--m-Grid-cell--col6 r-sMedia--s-Grid-cell--col12">
                     <p class="Card-categories"><span class="Card-dot Card-dot--{{ post.categories.first }}"></span> {{ post.categories }}</p>
-                    <h3 class="Post-title"><a href="{{ post.url }}" class="Title-link">{{ post.title }}</a></h3>
+                    <h3 class="Title Title--h3 Card-title"><a href="{{ post.url }}" class="Card-link">{{ post.title }}</a></h3>
                     <p class="Card-subtitle">{{ post.date | date_to_string }}</p>
                     <p class="Card-description">{{ post.description | truncate: 150 }}</p>
                   </div>
@@ -149,6 +159,6 @@ layout: default
 
 <footer class="Footer">
   <div class="u-inner">
-    <p class="Footer-credits">© Copyright 2016 Carlos Matallín</p>
+    <p class="Footer-credits">© Copyright {{ 'now' | date: "%Y" }} Carlos Matallín</p>
   </div>
 </footer>

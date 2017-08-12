@@ -13,7 +13,6 @@
 .Navbar-item {
   display: inline-block;
   margin-right: 40px;
-  text-transform: uppercase;
 
   &:last-child {
     margin-right: 0;
@@ -29,7 +28,6 @@
   transition: color .2s;
 
   &:hover {
-    color: darken($cTypo3, 5%);
-    text-decoration: none;
+    color: darken($cTypo3, 10%);
   }
 }

@@ -8,10 +8,15 @@
 .Title--cTypo3 {
   color: $cTypo3;
 }
+.Title--cWhite {
+  color: #FFF;
+}
 
 // Size
+.Title {
+  font-weight: 400;
+}
 .Title--h1 {
-  font-weight: 700;
   font-size: 36px;
   line-height: 40px;
 
@@ -27,12 +32,4 @@
 .Title--h3 {
   font-size: 18px;
   line-height: 22px;
-}
-.Title-link {
-  color: $cTypo1;
-
-  &:hover {
-    color: darken($cTypo1, 5%);
-    text-decoration: none;
-  }
 }

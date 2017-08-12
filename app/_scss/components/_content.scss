@@ -59,9 +59,6 @@
     }
   }
 }
-.Home-header {
-  text-align: center;
-}
 .Content-header {
   margin-bottom: 40px;
 }
@@ -85,6 +82,7 @@
   color: $cTypo3;
 
   a {
+    text-decoration: none;
     font-weight: 400;
   }
 }

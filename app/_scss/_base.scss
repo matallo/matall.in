@@ -26,13 +26,10 @@ p, ul, ol {
   }
 }
 a {
-  font-weight: 600;
-  text-decoration: none;
   color: $cRed2;
   transition: color .2s;
 
   &:hover {
-    text-decoration: underline;
     color: $cRed1;
   }
 }
