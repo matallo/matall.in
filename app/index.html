@@ -93,6 +93,38 @@ layout: default
           </li>
         </ul>
       </div>
+
+      <div class="Grid">
+        <ul class="Grid-inner">
+          {% assign counter = 0 %}
+
+          {% for post in site.posts %}
+            {% if counter < 3 %}
+              {% if post.categories contains "stories" %}
+                {% if counter > 0 %}
+                  <li class="Grid-cell Grid-cell--col6 r-sMedia--l-Grid-cell--col12">
+                    <a href="{{ post.url }}" class="Story" title="{{ post.description }}">
+                      <div class="Story-gradient"></div>
+                      <div class="Story-inner Grid">
+                        <div class="Grid-inner Grid-inner--vCenter">
+                          <div class="Grid-cell Grid-cell--col12 Story-header">
+                            <h3 class="Story-title">{{ post.title }}</h3>
+                            <p class="Story-description">{{ post.date | date_to_string }}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <img src="{{ post.background_image }}" alt="{{ post.title }}" width="1240" height="698" class="Story-img" />
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% assign counter = counter | plus:1 %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
     </div>
 
     <div class="u-inner u-inner--l">
@@ -104,22 +136,26 @@ layout: default
           {% assign counter = 0 %}
 
           {% for post in site.posts %}
-            <li class="Posts-item">
-              <div class="Grid">
-                <div class="Grid-inner">
-                  <div class="Grid-cell Grid-cell--col4 r-sMedia--m-Grid-cell--col6 r-sMedia--s-Grid-cell--col12">
-                    <a href="{{ post.url }}" class="Posts-img"><img src="{{ post.twitter_image }}" alt="{{ post.title }}" /></a>
-                  </div>
+            {% unless post.categories contains "stories" %}
+              <li class="Posts-item">
+                <div class="Grid">
+                  <div class="Grid-inner">
+                    <div class="Grid-cell Grid-cell--col4 r-sMedia--m-Grid-cell--col6 r-sMedia--s-Grid-cell--col12">
+                      <a href="{{ post.url }}" class="Posts-img"><img src="{{ post.twitter_image }}" alt="{{ post.title }}" /></a>
+                    </div>
 
-                  <div class="Grid-cell Grid-cell--col8 r-sMedia--m-Grid-cell--col6 r-sMedia--s-Grid-cell--col12">
-                    <p class="Card-categories"><span class="Card-dot Card-dot--{{ post.categories.first }}"></span> {{ post.categories }}</p>
-                    <h3 class="Title Title--h3 Card-title"><a href="{{ post.url }}" class="Card-link">{{ post.title }}</a></h3>
-                    <p class="Card-subtitle">{{ post.date | date_to_string }}</p>
-                    <p class="Card-description">{{ post.description | truncate: 150 }}</p>
+                    <div class="Grid-cell Grid-cell--col8 r-sMedia--m-Grid-cell--col6 r-sMedia--s-Grid-cell--col12">
+                      <p class="Card-categories"><span class="Card-dot Card-dot--{{ post.categories.first }}"></span> {{ post.categories }}</p>
+                      <h3 class="Title Title--h3 Card-title"><a href="{{ post.url }}" class="Card-link">{{ post.title }}</a></h3>
+                      <p class="Card-subtitle">{{ post.date | date_to_string }}</p>
+                      <p class="Card-description">{{ post.description | truncate: 150 }}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
+
+              {% assign counter = counter | plus:1 %}
+            {% endunless %}
           {% endfor %}
         </ul>
       </div>
