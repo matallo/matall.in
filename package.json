@@ -4,9 +4,12 @@
   "description": "Personal website of Carlos Matallín",
   "main": "index.js",
   "scripts": {
-    "jekyll-build": "bundle exec jekyll build --config _config.yml,_config-prod.yml",
-    "jekyll-serve": "bundle exec jekyll build --incremental",
-    "test": "jest"
+    "lint": "eslint app/_js/**/*.js __tests__/spec/**/*.js",
+    "lint:config": "eslint {gulpfile,webpack.config}.js",
+    "test": "jest",
+    "start": "gulp serve",
+    "build": "NODE_ENV=production gulp",
+    "deploy": "aws s3 sync --acl public-read dist/ s3://$AWS_BUCKET --delete --exclude \"*\" --include \"*.html\"  --include \"*.txt\" --include \"*.xml\" --cache-control \"max-age=0, public\" && aws s3 sync --acl public-read dist/ s3://$AWS_BUCKET --delete --exclude \"*\" --include \"*.ico\" --include \"*.png\" --include \"css/*\" --include \"js/*\" --include \"img/*\" --cache-control \"max-age=31536000, public\" --expires $(date -d \"+1 year\" -u +%Y-%m-%dT%H:%M:%SZ)"
   },
   "jest": {
     "moduleDirectories": [
@@ -37,7 +40,6 @@
     "bower": "^1.8.0",
     "browser-sync": "^2.18.13",
     "child_process": "^1.0.2",
-    "concurrent-transform": "^1.0.0",
     "css-loader": "^0.28.4",
     "d3-geo": "^1.6.4",
     "d3-selection": "^1.1.0",
@@ -46,8 +48,6 @@
     "eslint-loader": "^1.9.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "gulp": "^3.9.1",
-    "gulp-awspublish": "^3.3.0",
-    "gulp-eslint": "^4.0.0",
     "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.2",
     "gulp-load-plugins": "^1.5.0",

@@ -26,9 +26,9 @@ Once you have [Bundler](http://bundler.io/) and [Yarn](https://yarnpkg.com/en/) 
 
 ```
 bundle install
-yarn install gulp-cli -g # npm install gulp-cli -g to install with npm.
-yarn install bower -g # npm install bower -g to install with npm.
-yarn install # npm install to install with npm.
+yarn global add gulp-cli # npm install gulp-cli -g to install with npm.
+yarn global add bower # npm install bower -g to install with npm.
+yarn # npm install to install with npm.
 bower install
 ```
 
@@ -43,10 +43,10 @@ There are several tasks available to help you build and test the website.
 ### Run locally
 
 ```
-gulp serve
+yarn run start
 ```
 
-This will have Jekyll build the site, webpack compile the assets, run a static server to listen on port 9000 (which you can now reach at http://localhost:9000/), and watch for changes to site files. Every change will cause Jekyll to rebuild the affected files, webpack to compile the assets, and reload the page.
+This will have Jekyll build the site, webpack compile the assets, run a static server to listen on port 9000 (which you can now reach at [http://localhost:9000/](http://localhost:9000/)), and watch for changes to site files. Every change will cause Jekyll to rebuild the affected files, webpack to compile the assets, and reload the page.
 
 
 ### Build
@@ -54,7 +54,7 @@ This will have Jekyll build the site, webpack compile the assets, run a static s
 You can also build the website and browse through the dist files, launching a server in that folder:
 
 ```
-NODE_ENV=production gulp
+yarn run build
 cd dist/
 python -m SimpleHTTPServer
 ```
@@ -65,32 +65,26 @@ python -m SimpleHTTPServer
 Tests can be launched with [Jest](https://facebook.github.io/jest/) running the following command in the terminal:
 
 ```
-yarn test
+yarn run test
 ```
 
 
 ### Lint
 
-Finally, JS files can be checked with ESLint to keep a consistent styleguide, running the following command in the terminal.
+Finally, JS files can be checked with [ESLint](http://eslint.org/) to keep a consistent styleguide, running the following command in the terminal.
 
 ```
-gulp lint
+yarn run lint
 ```
 
 
 ### Deploy
 
-When pushing (or merging) to the `master` branch in the repository automatically deploys to [https://matall.in/](https://matall.in/) via [Travis CI](https://travis-ci.org/).
+When pushing (or merging) to the `master` branch in the repository, the website is automatically deployed to [https://matall.in/](https://matall.in/) via [CircleCI](https://circleci.com/gh/matallo/workflows/matall.in).
 
 
-You can also launch a deploy to AWS S3.
-
-```
-NODE_ENV=production gulp deploy
-```
-
-You will need to add your credentials in config, or run the following command with your credentials
+You can also launch a deploy to AWS S3 with the [AWS CLI](https://aws.amazon.com/cli/):
 
 ```
-AWS_BUCKET=XXX AWS_ACCESSKEYID=XXX AWS_SECRETACCESSKEY=XXX NODE_ENV=production gulp deploy
+yarn run deploy
 ```
