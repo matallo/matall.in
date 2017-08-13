@@ -88,3 +88,6 @@ workflows:
       - deploy:
           requires:
             - dependencies_test_build
+          filters:
+            branches:
+              only: master
