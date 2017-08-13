@@ -43,10 +43,10 @@ There are several tasks available to help you build and test the website.
 ### Run locally
 
 ```
-gulp serve
+yarn run start
 ```
 
-This will have Jekyll build the site, webpack compile the assets, run a static server to listen on port 9000 (which you can now reach at http://localhost:9000/), and watch for changes to site files. Every change will cause Jekyll to rebuild the affected files, webpack to compile the assets, and reload the page.
+This will have Jekyll build the site, webpack compile the assets, run a static server to listen on port 9000 (which you can now reach at [http://localhost:9000/](http://localhost:9000/)), and watch for changes to site files. Every change will cause Jekyll to rebuild the affected files, webpack to compile the assets, and reload the page.
 
 
 ### Build
@@ -54,7 +54,7 @@ This will have Jekyll build the site, webpack compile the assets, run a static s
 You can also build the website and browse through the dist files, launching a server in that folder:
 
 ```
-NODE_ENV=production gulp
+yarn run build
 cd dist/
 python -m SimpleHTTPServer
 ```
@@ -65,16 +65,16 @@ python -m SimpleHTTPServer
 Tests can be launched with [Jest](https://facebook.github.io/jest/) running the following command in the terminal:
 
 ```
-yarn test
+yarn run test
 ```
 
 
 ### Lint
 
-Finally, JS files can be checked with ESLint to keep a consistent styleguide, running the following command in the terminal.
+Finally, JS files can be checked with [ESLint](http://eslint.org/) to keep a consistent styleguide, running the following command in the terminal.
 
 ```
-gulp lint
+yarn run lint
 ```
 
 
@@ -83,9 +83,8 @@ gulp lint
 When pushing (or merging) to the `master` branch in the repository, the website is automatically deployed to [https://matall.in/](https://matall.in/) via [CircleCI](https://circleci.com/gh/matallo/workflows/matall.in).
 
 
-You can also launch a deploy to AWS S3 with the AWS CLI:
+You can also launch a deploy to AWS S3 with the [AWS CLI](https://aws.amazon.com/cli/):
 
 ```
-aws s3 sync --acl public-read dist/ s3://$AWS_BUCKET --delete --exclude "*" --include "*.html"  --include "*.txt" --include "*.xml" --cache-control "max-age=0, public"
-aws s3 sync --acl public-read dist/ s3://$AWS_BUCKET --delete --exclude "*" --include "*.ico" --include "*.png" --include "css/*" --include "js/*" --include "img/*" --cache-control "max-age=31536000, public" --expires $(date -d "+1 year" -u +%Y-%m-%dT%H:%M:%SZ)
+yarn run deploy
 ```
