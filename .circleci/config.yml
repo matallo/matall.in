@@ -13,71 +13,7 @@ jobs:
           key: v1-repo-{{ checksum ".circle-sha" }}
           paths:
             - ~/matall.in
-  bundle_dependencies:
-    docker:
-      - image: circleci/ruby:2.4-node
-    working_directory: ~/matall.in
-    steps:
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
-      - restore_cache:
-          keys:
-            - v1-repo-{{ checksum ".circle-sha" }}
-      - restore_cache:
-          keys:
-            - v1-bundle-{{ checksum "Gemfile.lock" }}
-      - restore_cache:
-          keys:
-            - v1-yarn-{{ checksum "yarn.lock" }}
-            - v1-yarn-
-      - restore_cache:
-          keys:
-            - v1-bower-{{ checksum "bower.json" }}
-            - v1-bower-
-      - run: bundle install --path vendor/bundle
-      - save_cache:
-          key: v1-bundle-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-      - run: sudo yarn global add gulp-cli
-      - run: sudo yarn global add bower
-      - run: yarn
-      - save_cache:
-          key: v1-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-      - run: bower install
-      - save_cache:
-          key: v1-bower-{{ checksum "bower.json" }}
-          paths:
-            - bower_components
-  test:
-    docker:
-      - image: circleci/ruby:2.4-node
-    working_directory: ~/matall.in
-    steps:
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
-      - restore_cache:
-          keys:
-            - v1-repo-{{ checksum ".circle-sha" }}
-      - restore_cache:
-          keys:
-            - v1-yarn-{{ checksum "yarn.lock" }}
-            - v1-yarn-
-      - restore_cache:
-          keys:
-            - v1-bower-{{ checksum "bower.json" }}
-            - v1-bower-
-      - run:
-          name: Run linter
-          command: gulp lint
-      - run:
-          name: Run tests
-          command: yarn test
-  build:
+  dependencies_test_build:
     docker:
       - image: circleci/ruby:2.4-node
     working_directory: ~/matall.in
@@ -101,6 +37,17 @@ jobs:
           keys:
             - v1-bower-{{ checksum "bower.json" }}
             - v1-bower-
+      - run: bundle install --path vendor/bundle
+      - run: sudo yarn global add gulp-cli
+      - run: sudo yarn global add bower
+      - run: yarn
+      - run: bower install
+      - run:
+          name: Run linter
+          command: gulp lint
+      - run:
+          name: Run tests
+          command: yarn test
       - run: bundle --path vendor/bundle
       - run:
           name: Build
@@ -135,15 +82,9 @@ workflows:
   build-and-deploy:
     jobs:
       - checkout_code
-      - bundle_dependencies:
+      - dependencies_test_build:
           requires:
             - checkout_code
-      - test:
-          requires:
-            - bundle_dependencies
-      - build:
-          requires:
-            - test
       - deploy:
           requires:
-            - build
+            - dependencies_test_build
