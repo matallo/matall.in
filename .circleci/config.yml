@@ -51,7 +51,7 @@ jobs:
       - run: bundle --path vendor/bundle
       - run:
           name: Build
-          command: gulp build
+          command: yarn run build
       - save_cache:
           key: v1-assets-{{ checksum ".circle-sha" }}
           paths:
@@ -74,9 +74,7 @@ jobs:
             - v1-assets-{{ checksum ".circle-sha" }}
       - run:
           name: Deploy to S3
-          command: |
-            aws s3 sync --acl public-read dist/ s3://$AWS_BUCKET --delete --exclude "*" --include "*.html"  --include "*.txt" --include "*.xml" --cache-control "max-age=0, public"
-            aws s3 sync --acl public-read dist/ s3://$AWS_BUCKET --delete --exclude "*" --include "*.ico" --include "*.png" --include "css/*" --include "js/*" --include "img/*" --cache-control "max-age=31536000, public" --expires $(date -d "+1 year" -u +%Y-%m-%dT%H:%M:%SZ)
+          command: yarn run deploy
 workflows:
   version: 2
   build-and-deploy:
