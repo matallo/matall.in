@@ -40,8 +40,8 @@ jobs:
           key: v1-bundle-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-      - run: npm install gulp-cli -g
-      - run: npm install bower -g
+      - run: sudo yarn global add gulp-cli
+      - run: sudo yarn global add bower
       - run: yarn
       - save_cache:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
