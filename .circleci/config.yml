@@ -46,7 +46,7 @@ jobs:
       - save_cache:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
           paths:
-            - node_modules
+            - ~/.cache/yarn
       - run: bower install
       - save_cache:
           key: v1-bower-{{ checksum "bower.json" }}
