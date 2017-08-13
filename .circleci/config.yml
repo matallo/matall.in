@@ -81,10 +81,10 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - checkout_code
+      - checkout
       - dependencies_test_build:
           requires:
-            - checkout_code
+            - checkout
       - deploy:
           requires:
             - dependencies_test_build
