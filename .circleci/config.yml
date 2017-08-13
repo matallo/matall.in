@@ -29,8 +29,8 @@ jobs:
             - v1-bundle-{{ checksum "Gemfile.lock" }}
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-            - v1-dependencies-
+            - v1-yarn-{{ checksum "yarn.lock" }}
+            - v1-yarn-
       - restore_cache:
           keys:
             - v1-bower-{{ checksum "bower.json" }}
@@ -44,7 +44,7 @@ jobs:
       - run: sudo yarn global add bower
       - run: yarn
       - save_cache:
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          key: v1-yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
       - run: bower install
@@ -65,8 +65,8 @@ jobs:
             - v1-repo-{{ checksum ".circle-sha" }}
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-            - v1-dependencies-
+            - v1-yarn-{{ checksum "yarn.lock" }}
+            - v1-yarn-
       - restore_cache:
           keys:
             - v1-bower-{{ checksum "bower.json" }}
@@ -95,8 +95,8 @@ jobs:
             - v1-bundle-{{ checksum "Gemfile.lock" }}
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-            - v1-dependencies-
+            - v1-yarn-{{ checksum "yarn.lock" }}
+            - v1-yarn-
       - restore_cache:
           keys:
             - v1-bower-{{ checksum "bower.json" }}
