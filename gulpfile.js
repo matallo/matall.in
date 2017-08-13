@@ -11,24 +11,11 @@ const webpackConfig = require("./webpack.config.js");
 const gutil = require("gulp-util");
 const rev = require("gulp-rev");
 const revReplace = require("gulp-rev-replace");
-const awsPublish = require("gulp-awspublish");
-const parallelize = require("concurrent-transform");
 
 const plugins = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 let dev = true; // eslint-disable-line no-unused-vars
-
-const aws = {
-  params: {
-    "Bucket": process.env.AWS_BUCKET || "..."
-  },
-  accessKeyId: process.env.AWS_ACCESSKEYID || "...",
-  secretAccessKey: process.env.AWS_SECRETACCESSKEY || "...",
-  region: "us-west-2"
-};
-
-const publisher = awsPublish.create(aws);
 
 gulp.task("rev-assets", () => {
   return gulp.src([
@@ -61,66 +48,6 @@ gulp.task("replace-assets", () => {
       modifyReved: replaceJsAndCssIfMap
     }))
     .pipe(gulp.dest("dist/"));
-});
-
-gulp.task("deploy-dist", () => {
-  const headers = {"Cache-Control": "max-age=0, public"};
-
-  return gulp.src([
-    "dist/**/*.{html,txt,xml}"
-  ], { base: "dist/" })
-    .pipe(parallelize(publisher.publish(headers), 5))
-    .pipe(awsPublish.reporter());
-});
-
-gulp.task("deploy-assets", () => {
-  const headers = {
-    "Cache-Control": "max-age=31536000, public",
-    "Expires": new Date(Date.now() + 31536000 * 1000)
-  };
-
-  return gulp.src([
-    "dist/*.{ico,png}",
-    "dist/css/{,*/}*.css{,.map}",
-    "dist/js/{,*/}*.js{,.map}",
-    "dist/img/**/*.{gif,jpeg,jpg,png,svg}"
-  ], { base: "dist/" })
-    .pipe(parallelize(publisher.publish(headers), 5))
-    .pipe(awsPublish.reporter());
-});
-
-gulp.task("deploy-clean", () => {
-  return gulp.src([
-    "dist/**/*",
-    "!dist/rev-manifest.json"
-  ], { base: "dist/" })
-    .pipe(publisher.publish())
-    .pipe(publisher.cache())
-    .pipe(publisher.sync())
-    .pipe(awsPublish.reporter());
-});
-
-const lint = files => {
-  return gulp.src(files)
-    .pipe(plugins.eslint({ fix: true }))
-    .pipe(reload({ stream: true, once: true }))
-    .pipe(plugins.eslint.format())
-    .pipe(plugins.if(!browserSync.active, plugins.eslint.failAfterError()));
-};
-
-gulp.task("lint", () => {
-  return lint("app/_js/**/*.js")
-    .pipe(gulp.dest("app/_js"));
-});
-
-gulp.task("lint:test", () => {
-  return lint("__tests__/spec/**/*.js")
-    .pipe(gulp.dest("__tests__/spec"));
-});
-
-gulp.task("lint:config", () => {
-  return lint("*.js")
-    .pipe(gulp.dest("./"));
 });
 
 gulp.task("html", () => {
@@ -201,21 +128,21 @@ gulp.task("serve:dist", ["default"], () => {
 });
 
 gulp.task("jekyll-serve", done => {
-  return childProcess.spawn("yarn", ["jekyll-serve"], { stdio: "inherit" })
+  return childProcess.spawn("bundle", ["exec", "jekyll", "build", "--incremental"], { stdio: "inherit" })
     .on("close", () => {
       done();
     })
-    .on('error', function (err) {
+    .on("error", function (err) {
       gutil.log(err);
     });
 });
 
 gulp.task("jekyll-build", done => {
-  return childProcess.spawn("yarn", ["jekyll-build"], { stdio: "inherit" })
+  return childProcess.spawn("bundle", ["exec", "jekyll", "build", "--config", "_config.yml,_config-prod.yml"], { stdio: "inherit" })
     .on("close", () => {
       done();
     })
-    .on('error', function (err) {
+    .on("error", function (err) {
       gutil.log(err);
     });
 });
@@ -251,11 +178,7 @@ gulp.task("webpack-build", done => {
 });
 
 gulp.task("build", done => {
-  runSequence("clean", "lint", ["jekyll-build", "webpack-build"], "html", "rev-assets", "replace-assets", done);
-});
-
-gulp.task("deploy", done => {
-  runSequence("build", ["deploy-dist", "deploy-assets"], "deploy-clean", done);
+  runSequence("clean", ["jekyll-build", "webpack-build"], "html", "rev-assets", "replace-assets", done);
 });
 
 gulp.task("default", () => {

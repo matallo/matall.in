@@ -1,24 +1,93 @@
 version: 2
 jobs:
-  build:
+  checkout:
     docker:
-      - image: circleci/node:7.10
-
-    working_directory: ~/repo
-
+      - image: circleci/ruby:2.4-node
+    working_directory: ~/matall.in
     steps:
       - checkout
-
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - save_cache:
+          key: v1-repo-{{ checksum ".circle-sha" }}
+          paths:
+            - ~/matall.in
+  dependencies_test_build:
+    docker:
+      - image: circleci/ruby:2.4-node
+    working_directory: ~/matall.in
+    environment:
+      - NODE_ENV: production
+    steps:
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-
-      - run: yarn install
-
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ checksum "Gemfile.lock" }}
+      - restore_cache:
+          keys:
+            - v1-yarn-{{ checksum "yarn.lock" }}
+            - v1-yarn-
+      - restore_cache:
+          keys:
+            - v1-bower-{{ checksum "bower.json" }}
+            - v1-bower-
+      - run: bundle install --path vendor/bundle
+      - run: sudo yarn global add gulp-cli
+      - run: sudo yarn global add bower
+      - run: yarn
+      - run: bower install
+      - run:
+          name: Run linter
+          command: yarn run lint
+      - run:
+          name: Run tests
+          command: yarn run test
+      - run: bundle --path vendor/bundle
+      - run:
+          name: Build
+          command: yarn run build
       - save_cache:
+          key: v1-assets-{{ checksum ".circle-sha" }}
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-        
-      - run: yarn test
+            - dist
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/matall.in
+    environment:
+      - NODE_ENV: production
+    steps:
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-assets-{{ checksum ".circle-sha" }}
+      - run:
+          name: Deploy to S3
+          command: |
+            aws s3 sync --acl public-read dist/ s3://$AWS_BUCKET --delete --exclude "*" --include "*.html"  --include "*.txt" --include "*.xml" --cache-control "max-age=0, public"
+            aws s3 sync --acl public-read dist/ s3://$AWS_BUCKET --delete --exclude "*" --include "*.ico" --include "*.png" --include "css/*" --include "js/*" --include "img/*" --cache-control "max-age=31536000, public" --expires $(date -d "+1 year" -u +%Y-%m-%dT%H:%M:%SZ)
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - checkout
+      - dependencies_test_build:
+          requires:
+            - checkout
+      - deploy:
+          requires:
+            - dependencies_test_build
+          filters:
+            branches:
+              only: master
