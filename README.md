@@ -80,17 +80,12 @@ gulp lint
 
 ### Deploy
 
-When pushing (or merging) to the `master` branch in the repository automatically deploys to [https://matall.in/](https://matall.in/) via [Travis CI](https://travis-ci.org/).
+When pushing (or merging) to the `master` branch in the repository, the website is automatically deployed to [https://matall.in/](https://matall.in/) via [CircleCI](https://circleci.com/gh/matallo/workflows/matall.in).
 
 
-You can also launch a deploy to AWS S3.
-
-```
-NODE_ENV=production gulp deploy
-```
-
-You will need to add your credentials in config, or run the following command with your credentials
+You can also launch a deploy to AWS S3 with the AWS CLI:
 
 ```
-AWS_BUCKET=XXX AWS_ACCESSKEYID=XXX AWS_SECRETACCESSKEY=XXX NODE_ENV=production gulp deploy
+aws s3 sync --acl public-read dist/ s3://$AWS_BUCKET --delete --exclude "*" --include "*.html"  --include "*.txt" --include "*.xml" --cache-control "max-age=0, public"
+aws s3 sync --acl public-read dist/ s3://$AWS_BUCKET --delete --exclude "*" --include "*.ico" --include "*.png" --include "css/*" --include "js/*" --include "img/*" --cache-control "max-age=31536000, public" --expires $(date -d "+1 year" -u +%Y-%m-%dT%H:%M:%SZ)
 ```
