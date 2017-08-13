@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint app/_js/**/*.js",
+    "lint:test": "eslint __tests__/spec/**/*.js",
+    "lint:config": "eslint {gulpfile,webpack.config}.js",
     "test": "jest"
   },
   "jest": {

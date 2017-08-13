@@ -50,29 +50,6 @@ gulp.task("replace-assets", () => {
     .pipe(gulp.dest("dist/"));
 });
 
-const lint = files => {
-  return gulp.src(files)
-    .pipe(plugins.eslint({ fix: true }))
-    .pipe(reload({ stream: true, once: true }))
-    .pipe(plugins.eslint.format())
-    .pipe(plugins.if(!browserSync.active, plugins.eslint.failAfterError()));
-};
-
-gulp.task("lint", () => {
-  return lint("app/_js/**/*.js")
-    .pipe(gulp.dest("app/_js"));
-});
-
-gulp.task("lint:test", () => {
-  return lint("__tests__/spec/**/*.js")
-    .pipe(gulp.dest("__tests__/spec"));
-});
-
-gulp.task("lint:config", () => {
-  return lint("*.js")
-    .pipe(gulp.dest("./"));
-});
-
 gulp.task("html", () => {
   return gulp.src("dist/**/*.html")
     .pipe(plugins.if(/\.html$/, plugins.htmlmin({
