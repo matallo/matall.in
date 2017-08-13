@@ -4,8 +4,7 @@
   "description": "Personal website of Carlos Matallín",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint app/_js/**/*.js",
-    "lint:test": "eslint __tests__/spec/**/*.js",
+    "lint": "eslint app/_js/**/*.js __tests__/spec/**/*.js",
     "lint:config": "eslint {gulpfile,webpack.config}.js",
     "test": "jest"
   },
