@@ -1,6 +1,8 @@
 version: 2
 jobs:
   checkout_code:
+    docker:
+      - image: circleci/ruby:2.4-node
     working_directory: ~/matall.in
     steps:
       - checkout
