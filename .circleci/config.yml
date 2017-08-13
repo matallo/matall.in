@@ -1,24 +1,147 @@
 version: 2
 jobs:
-  build:
-    docker:
-      - image: circleci/node:7.10
-
-    working_directory: ~/repo
-
+  checkout_code:
+    working_directory: ~/matall.in
     steps:
       - checkout
-
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - save_cache:
+          key: v1-repo-{{ checksum ".circle-sha" }}
+          paths:
+            - ~/matall.in
+  bundle_dependencies:
+    docker:
+      - image: circleci/ruby:2.4-node
+    working_directory: ~/matall.in
+    steps:
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-
-      - run: yarn install
-
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ checksum "Gemfile.lock" }}
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - restore_cache:
+          keys:
+            - v1-bower-{{ checksum "bower.json" }}
+            - v1-bower-
+      - run: bundle install --path vendor/bundle
       - save_cache:
+          key: v1-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run: yarn global add gulp-cli
+      - run: yarn global add bower
+      - run: yarn
+      - save_cache:
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-        
-      - run: yarn test
+      - run: bower install
+      - save_cache:
+          key: v1-bower-{{ checksum "bower.json" }}
+          paths:
+            - bower_components
+  test:
+    docker:
+      - image: circleci/ruby:2.4-node
+    working_directory: ~/matall.in
+    steps:
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - restore_cache:
+          keys:
+            - v1-bower-{{ checksum "bower.json" }}
+            - v1-bower-
+      - run:
+          name: Run linter
+          command: gulp lint
+      - run:
+          name: Run tests
+          command: yarn test
+  build:
+    docker:
+      - image: circleci/ruby:2.4-node
+    working_directory: ~/matall.in
+    environment:
+      - NODE_ENV: production
+    steps:
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ checksum "Gemfile.lock" }}
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - restore_cache:
+          keys:
+            - v1-bower-{{ checksum "bower.json" }}
+            - v1-bower-
+      - run: bundle --path vendor/bundle
+      - run:
+          name: Build
+          command: gulp build
+      - save_cache:
+          key: v1-assets-{{ checksum ".circle-sha" }}
+          paths:
+            - dist
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/matall.in
+    environment:
+      - NODE_ENV: production
+    steps:
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-assets-{{ checksum ".circle-sha" }}
+      - run:
+          name: Deploy to S3
+          command: |
+            aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET} --delete --exclude "*" --include "*.html"  --include "*.txt" --include "*.xml" --cache-control "max-age=0, public"
+            aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET} --delete --exclude "*" --include "*.ico" --include "*.png" --include "css/*" --include "js/*" --include "img/*" --cache-control "max-age=31536000, public" --expires $(date -v +1y -u +%Y-%m-%dT%H:%M:%SZ)
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - checkout_code
+      - bundle_dependencies:
+          requires:
+            - checkout_code
+      - test:
+          requires:
+            - bundle_dependencies
+      - build:
+          requires:
+            - test
+      - deploy:
+          requires:
+            - build

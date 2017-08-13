@@ -201,7 +201,7 @@ gulp.task("serve:dist", ["default"], () => {
 });
 
 gulp.task("jekyll-serve", done => {
-  return childProcess.spawn("yarn", ["jekyll-serve"], { stdio: "inherit" })
+  return childProcess.spawn("bundle", ["exec", "jekyll", "build", "--incremental"], { stdio: "inherit" })
     .on("close", () => {
       done();
     })
@@ -211,7 +211,7 @@ gulp.task("jekyll-serve", done => {
 });
 
 gulp.task("jekyll-build", done => {
-  return childProcess.spawn("yarn", ["jekyll-build"], { stdio: "inherit" })
+  return childProcess.spawn("bundle", ["exec", "jekyll", "build", "--config", "_config.yml,_config-prod.yml"], { stdio: "inherit" })
     .on("close", () => {
       done();
     })
@@ -251,7 +251,7 @@ gulp.task("webpack-build", done => {
 });
 
 gulp.task("build", done => {
-  runSequence("clean", "lint", ["jekyll-build", "webpack-build"], "html", "rev-assets", "replace-assets", done);
+  runSequence("clean", ["jekyll-build", "webpack-build"], "html", "rev-assets", "replace-assets", done);
 });
 
 gulp.task("deploy", done => {

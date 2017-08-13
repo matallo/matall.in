@@ -26,9 +26,9 @@ Once you have [Bundler](http://bundler.io/) and [Yarn](https://yarnpkg.com/en/) 
 
 ```
 bundle install
-yarn install gulp-cli -g # npm install gulp-cli -g to install with npm.
-yarn install bower -g # npm install bower -g to install with npm.
-yarn install # npm install to install with npm.
+yarn global add gulp-cli # npm install gulp-cli -g to install with npm.
+yarn global add bower # npm install bower -g to install with npm.
+yarn # npm install to install with npm.
 bower install
 ```
 
