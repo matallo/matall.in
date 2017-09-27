@@ -1,4 +1,4 @@
-import Marginotes from './components/marginotes.js';
+import { Marginotes } from "./components/marginotes.js";
 
 class App {
   constructor (options) {

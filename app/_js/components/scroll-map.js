@@ -5,7 +5,7 @@ import { geoMercator, geoPath } from 'd3-geo';
 import { select, selectAll } from 'd3-selection';
 import { feature } from 'topojson';
 
-class Scrollmap {
+export const Scrollmap = class Scrollmap {
   constructor(options) {
     if (options.containerEl === undefined) {
       throw new Error('containerEl option is required');
@@ -170,6 +170,4 @@ class Scrollmap {
 
     window.addEventListener('resize', scroller.resize());
   }
-}
-
-export default Scrollmap;
+};

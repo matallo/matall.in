@@ -1,4 +1,4 @@
-class Marginotes {
+export const Marginotes = class Marginotes {
   constructor(options) {
     if (options.container === undefined) {
       throw new Error('container option is required');
@@ -42,6 +42,4 @@ class Marginotes {
       this.marginote.style.display = 'none';
     }, 201);
   }
-}
-
-export default Marginotes;
+};

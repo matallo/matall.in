@@ -1,4 +1,4 @@
-import Scrollmap from './components/scroll-map.js';
+import { Scrollmap } from './components/scroll-map.js';
 
 class Story {
   constructor (options) {
