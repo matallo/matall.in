@@ -4,8 +4,7 @@ import { geoMercator, geoPath} from "d3-geo";
 import { select, selectAll } from "d3-selection";
 import { feature } from "topojson";
 
-class Scrollmap {
-
+export const Scrollmap = class Scrollmap {
   constructor (options) {
     this.el = options.el;
 
@@ -204,6 +203,4 @@ class Scrollmap {
       this._map.classList.remove("is-fixed");
     }
   }
-}
-
-export default Scrollmap;
+};

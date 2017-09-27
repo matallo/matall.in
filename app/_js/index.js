@@ -1,5 +1,5 @@
-import Marginotes from "./components/marginotes.js";
-import Scrollmap from "./components/scroll-map.js";
+import { Marginotes } from "./components/marginotes.js";
+import { Scrollmap } from "./components/scroll-map.js";
 
 class App {
   constructor () {

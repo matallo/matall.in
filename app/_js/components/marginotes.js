@@ -1,5 +1,4 @@
-class Marginotes {
-
+export const Marginotes = class Marginotes {
   constructor (options) {
     this.el = options.el;
 
@@ -44,7 +43,4 @@ class Marginotes {
       this.marginote.style.display = "none";
     }, 201);
   }
-
-}
-
-export default Marginotes;
+};
