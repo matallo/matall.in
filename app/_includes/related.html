@@ -15,9 +15,8 @@
                   </a>
 
                   <div class="Card-inner">
-                    <p class="Card-categories"><span class="Card-dot Card-dot--{{ post.categories.first }}"></span> {{ post.categories }}</p>
-                    <h3 class="Title Title--h3 Card-title u-vEllipsis"><a href="{{ post.url }}" class="Card-link">{{ post.title }}</a></h3>
                     <p class="Card-subtitle">{{ post.date | date_to_string }}</p>
+                    <h3 class="Title Title--h3 Card-title u-vEllipsis"><a href="{{ post.url }}" class="Card-link">{{ post.title }}</a></h3>
                     <p class="Card-description u-vEllipsis u-vEllipsis--lin3">{{ post.description | truncate: 150 }}</p>
                   </div>
                 </div>

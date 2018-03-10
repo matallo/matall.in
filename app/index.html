@@ -1,7 +1,7 @@
 ---
 title: Code, design, and mountains
 description: >
-  Map maker at CARTO. I'm a 29 year old explorer from Valencia living in Madrid. I’m a web and blockchain enthusiast, passionate about technology and design. I climb mountains, too.
+  Frontend designer at TransferWise. I'm a 30 year old explorer from Valencia living in London. I’m a decentralized web enthusiast, passionate about technology and design. I climb mountains, too.
 layout: default
 ---
 {% include navigation.html %}
@@ -33,7 +33,7 @@ layout: default
                 <div class="Sep"></div>
 
                 <h2 class="Block-title">About</h2>
-                <p>I'm a {% birthday_years site.birthday %} year old explorer from Valencia living in Madrid. I’m a web and blockchain enthusiast, passionate about technology and design. I climb mountains, too.</p>
+                <p>I'm a {% birthday_years site.birthday %} year old explorer from Valencia living in London. I’m a decentralized web enthusiast, passionate about technology and design. I climb mountains, too.</p>
 
                 <p>This is <a href="/usesthis/">what I use</a> to get stuff done.</p>
 
@@ -46,7 +46,7 @@ layout: default
                 <div class="Sep"></div>
 
                 <h2 class="Block-title">Work</h2>
-                <p>I'm an Interaction designer. Currently I work as Front-end engineer at <a href="https://carto.com/">CARTO</a>, a location intelligence and data visualization platform.</p>
+                <p>I'm an Interaction designer. Currently I work as Frontend designer at <a href="https://transferwise.com/">TransferWise</a>, building a better way of sending money internationally.</p>
 
                 <p><a href="/work/" class="Button Button--m"><span>Portfolio</span></a></p>
               </div>
@@ -112,9 +112,8 @@ layout: default
                   </div>
 
                   <div class="Grid-cell Grid-cell--col8 r-sMedia--m-Grid-cell--col6 r-sMedia--s-Grid-cell--col12">
-                    <p class="Card-categories"><span class="Card-dot Card-dot--{{ post.categories.first }}"></span> {{ post.categories }}</p>
-                    <h3 class="Title Title--h3 Card-title"><a href="{{ post.url }}" class="Card-link">{{ post.title }}</a></h3>
                     <p class="Card-subtitle">{{ post.date | date_to_string }}</p>
+                    <h3 class="Title Title--h3 Card-title"><a href="{{ post.url }}" class="Card-link">{{ post.title }}</a></h3>
                     <p class="Card-description">{{ post.description | truncate: 150 }}</p>
                   </div>
                 </div>
