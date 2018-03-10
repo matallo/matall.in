@@ -70,9 +70,13 @@
   margin-bottom: 10px;
 }
 .Content-title--h2 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   + .Content-title--h3 {
+    margin-top: 10px;
+  }
+
+  + p {
     margin-top: 20px;
   }
 }

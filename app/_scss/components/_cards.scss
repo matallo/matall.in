@@ -49,7 +49,7 @@
   padding: 20px;
 }
 .Card-title {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   transition: color .2s;
 }
 .Card-link {
@@ -62,36 +62,15 @@
   }
 }
 .Card-subtitle,
-.Card-categories,
 .Card-description {
   font-weight: 400;
 }
-.Card-subtitle,
-.Card-categories {
+.Card-subtitle {
   margin-bottom: 5px;
   font-size: 13px;
   text-transform: uppercase;
   color: $cTypo3;
 }
-.Card-subtitle {
-  margin-bottom: 10px;
-}
 .Card-description {
   color: $cTypo2;
-}
-.Card-dot {
-  width: 8px;
-  height: 8px;
-  display: block;
-  float: left;
-  margin-right: 10px;
-  margin-top: 8px;
-  border-radius: 50%;
-  background: #DDD;
-}
-.Card-dot--stories {
-  background: $cGold;
-}
-.Card-dot--carto {
-  background: $cRed3;
 }

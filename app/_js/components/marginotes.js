@@ -1,19 +1,20 @@
 class Marginotes {
 
   constructor (options) {
-    this.el = options.el;
-
-    if (this.el === null) {
-      return false;
+    if (options.container === void 0) {
+      throw new Error("container option is required");
     }
 
-    this.marginote = this.el.querySelector(".js-Marginote");
+    this._container = options.container;
+    this._marginote = this._container.querySelector(".js-Marginote");
+  }
 
+  init () {
     this._initEvents();
   }
 
   _initEvents () {
-    const footNotes = this.el.querySelectorAll(".js-Footnote");
+    const footNotes = this._container.querySelectorAll(".js-Footnote");
 
     footNotes.forEach(footNote => {
       footNote.addEventListener("mouseover", (e) => this._onMouseoverFootnote(e));
@@ -22,26 +23,24 @@ class Marginotes {
   }
 
   _onMouseoverFootnote (e) {
-    if (window.innerWidth < 1280) {
-      return;
-    }
-
     const target = e.target;
     const text = document.getElementById(target.href.split("#")[1]).innerHTML;
     const top = target.offsetTop;
 
-    this.marginote.innerHTML = text;
-    this.marginote.style.top = `${top}px`;
-    this.marginote.style.display = "";
+    this._marginote.innerHTML = text;
+    this._marginote.style.top = `${top}px`;
+    this._marginote.style.display = "";
+
     setTimeout(() => {
-      this.marginote.classList.add("is-active");
+      this._marginote.classList.add("is-active");
     }, 1);
   }
 
   _onMouseoutFootnote () {
-    this.marginote.classList.remove("is-active");
+    this._marginote.classList.remove("is-active");
+
     setTimeout(() => {
-      this.marginote.style.display = "none";
+      this._marginote.style.display = "none";
     }, 201);
   }
 

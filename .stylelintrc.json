@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recommended-scss",
+    "stylelint-config-property-sort-order-smacss"
+  ],
+  "ignoreFiles": [
+    "app/css/base/_reset.scss"
+  ],
+  "rules": {
+    "color-hex-case": "upper",
+    "custom-property-empty-line-before": null,
+    "declaration-empty-line-before": null,
+    "no-descending-specificity": null,
+    "selector-pseudo-element-colon-notation": "double",
+    "shorthand-property-no-redundant-values": true
+  }
+}

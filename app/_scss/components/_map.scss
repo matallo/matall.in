@@ -2,19 +2,19 @@
 // --------------------------------------------------
 
 .Map {
-  display: block;
   position: absolute;
   top: 0;
-  margin-left: -360px;
+  bottom: auto;
+  width: 320px;
+  transform: translate3d(-320px, 20px, 0);
 
   &.is-fixed {
     position: fixed;
   }
 
   &.is-bottom {
-    position: absolute;
+    bottom: 0;
     top: auto;
-    bottom: -60px;
   }
 
   @media (max-width: $sMedia--xxl - 1px) {

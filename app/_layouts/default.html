@@ -17,9 +17,12 @@
     </div>
 
     {% if page.scrollmap_file %}
-    <script>
-      var scrollmapFile = {% include {{ page.scrollmap_file }} %};
-    </script>
+    {% if page.scrollmap_center %}
+      <script>
+        var scrollmapFile = {% include {{ page.scrollmap_file }} %};
+        var scrollmapCenter = {{ page.scrollmap_center }};
+      </script>
+    {% endif %}
     {% endif %}
 
     <script src="/js/vendor.js"></script>

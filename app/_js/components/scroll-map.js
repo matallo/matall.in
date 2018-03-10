@@ -1,51 +1,48 @@
-require("waypoints");
+import "intersection-observer";
+import scrollama from "scrollama";
 
 import { geoMercator, geoPath} from "d3-geo";
 import { select, selectAll } from "d3-selection";
 import { feature } from "topojson";
 
 class Scrollmap {
-
   constructor (options) {
-    this.el = options.el;
-
-    if (this.el === null) {
-      return false;
+    if (options.containerEl === void 0) {
+      throw new Error("containerEl option is required");
     }
 
     if (options.scrollmapFile === void 0) {
       throw new Error("scrollmapFile option is required");
     }
+
+    this._containerEl = options.containerEl;
     this._scrollmapFile = options.scrollmapFile;
-
-    this._map = this.el.querySelector(".js-Map");
-
-    this._initScrollmap();
+    this._scrollmapCenter = options.scrollmapCenter;
+    this._graphicEl = this._containerEl.querySelector(".js-Scroll-graphic");
   }
 
-  _initScrollmap () {
-    if (window.innerWidth < 1280) {
-      return;
-    }
+  init () {
+    const width = 300;
+    const height = 600;
 
-    const height = 720;
-
-    const svg = select(".js-Map")
+    const svg = select(".js-Scroll-graphic")
       .append("svg")
-      .attr("width", 360)
+      .classed("Chart", true)
+      .attr("width", width)
       .attr("height", height);
 
+    const country = this._scrollmapFile.objects.world_borders_hd_copy;
+
     const projection = geoMercator()
-      .center([101.3097594, 15.8565707])
-      .scale(2400)
-      .translate([0, height / 2]);
+      .center(this._scrollmapCenter)
+      .fitSize([width, height], feature(this._scrollmapFile, country));
 
     const path = geoPath()
       .projection(projection);
 
     svg
       .selectAll(".Country")
-      .data(feature(this._scrollmapFile, this._scrollmapFile.objects.world_borders_hd_copy).features)
+      .data(feature(this._scrollmapFile, country).features)
       .enter()
       .append("path")
       .attr("class", "Country")
@@ -86,105 +83,84 @@ class Scrollmap {
       .attr("dy", "1.5em")
       .attr("dx", (d, i, j) => j[i].getBoundingClientRect().width / 2 * -1)
       .on("click", d => {
-        this.el.querySelector("#" + d.properties.slug).scrollIntoView({
+        this._containerEl.querySelector("#" + d.properties.slug).scrollIntoView({
           behavior: "smooth"
         });
       });
 
-    this._initEvents();
+    this._initScroller();
   }
 
-  _initEvents () {
-    document.addEventListener("DOMContentLoaded", () => this._fixScrollmap());
+  _initScroller () {
+    const scroller = scrollama();
 
-    window.addEventListener("scroll", () => this._fixScrollmap());
-    window.addEventListener("resize", () => this._fixScrollmap());
+    scroller
+      .setup({
+        container: ".js-Scroll",
+        graphic: ".js-Scroll-graphic",
+        text: ".js-Scroll-text",
+        step: ".js-Scroll-step",
+        offset: 0.5,
+        debug: false
+      })
+      .onStepEnter(response => {
+        const direction = response.direction;
+        const target = response.element;
+        const id = target.id;
+        let mapTitles = [];
 
-    const scrollmapTitles = document.querySelectorAll(".js-Scrollmap-title");
-
-    scrollmapTitles.forEach(scrollmapTitleEl => {
-      /* eslint-disable no-unused-vars, no-undef */
-      const scrollmapTitleWaypointDown = new Waypoint({
-      /* eslint-enable no-unused-vars, no-undef */
-
-        element: scrollmapTitleEl,
-        handler: direction => {
-          if (direction === "down") {
-            const id = scrollmapTitleEl.id;
-
-            if (this.el.querySelector(".js-City-label--" + id) !== null) {
-              this._activeCity(id);
-
-              let mapTitles = [];
-              let prevEl = scrollmapTitleEl.previousElementSibling;
-
-              while (prevEl) {
-                if (prevEl.classList.contains("js-Scrollmap-title")) {
-                  mapTitles.push(prevEl);
-                }
-
-                prevEl = prevEl.previousElementSibling;
-              }
-
-              mapTitles.forEach(mapTitleEl => {
-                select(".js-City-label--" + mapTitleEl.id).classed("is-visited", true);
-                selectAll(".js-Route--" + id).classed("is-active", true);
-              });
-            }
-          }
-        },
-        offset: window.innerHeight
-      });
-
-      /* eslint-disable no-unused-vars, no-undef */
-      const scrollmapTitleWaypointUp = new Waypoint({
-      /* eslint-enable no-unused-vars, no-undef */
-        element: scrollmapTitleEl,
-        handler: direction => {
-          if (direction === "up") {
-            const id = scrollmapTitleEl.id;
-
-            if (this.el.querySelector(".js-City-label--" + id) !== null) {
-              this._activeCity(id);
-
-              let mapTitles = [];
-              let nextEl = scrollmapTitleEl.nextElementSibling;
-
-              while (nextEl) {
-                if (nextEl.classList.contains("js-Scrollmap-title")) {
-                  mapTitles.push(nextEl);
-                }
-
-                nextEl = nextEl.nextElementSibling;
-              }
-
-              mapTitles.forEach(mapTitleEl => {
-                const nextId = mapTitleEl.id;
-
-                select(".js-City-label--" + nextId).classed("is-visited", false);
-                selectAll(".js-Route--" + nextId).classed("is-active", false);
-              });
-            }
-          }
-        }
-      });
-    });
-
-    /* eslint-disable no-unused-vars, no-undef */
-    const stickyWaypoint = new Waypoint({
-    /* eslint-enable no-unused-vars, no-undef */
-      element: this.el.querySelector(".js-Sticky"),
-      handler: direction => {
         if (direction === "down") {
-          this._map.classList.add("is-bottom");
-        }
+          if (this._containerEl.querySelector(".js-City-label--" + id) !== null) {
+            let prevEl = target.previousElementSibling;
 
-        if (direction === "up") {
-          this._map.classList.remove("is-bottom");
+            this._activeCity(id);
+
+            while (prevEl) {
+              if (prevEl.classList.contains("js-Scroll-step")) {
+                mapTitles.push(prevEl);
+              }
+
+              prevEl = prevEl.previousElementSibling;
+            }
+
+            mapTitles.forEach(mapTitleEl => {
+              select(".js-City-label--" + mapTitleEl.id).classed("is-visited", true);
+              selectAll(".js-Route--" + id).classed("is-active", true);
+            });
+          }
+        } else if (direction === "up") {
+          if (this._containerEl.querySelector(".js-City-label--" + id) !== null) {
+            let nextEl = target.nextElementSibling;
+
+            this._activeCity(id);
+
+            while (nextEl) {
+              if (nextEl.classList.contains("js-Scroll-step")) {
+                mapTitles.push(nextEl);
+              }
+
+              nextEl = nextEl.nextElementSibling;
+            }
+
+            mapTitles.forEach(mapTitleEl => {
+              const nextId = mapTitleEl.id;
+
+              select(".js-City-label--" + nextId).classed("is-visited", false);
+              selectAll(".js-Route--" + nextId).classed("is-active", false);
+            });
+          }
         }
-      },
-      offset: 720
-    });
+      })
+      .onContainerEnter(() => {
+        this._graphicEl.classList.add("is-fixed");
+        this._graphicEl.classList.remove("is-bottom");
+      })
+      .onContainerExit(response => {
+        this._graphicEl.classList.remove("is-fixed");
+        this._graphicEl.classList.toggle("is-bottom", response.direction === "down");
+      });
+
+    window.addEventListener("resize", scroller.resize());
   }
 
   _activeCity (id) {
@@ -193,16 +169,6 @@ class Scrollmap {
 
     selectAll(".js-City-label").classed("is-active", false);
     select(".js-City-label--" + id).classed("is-active is-visited", true);
-  }
-
-  _fixScrollmap () {
-    var scroll = document.body.scrollTop;
-
-    if (scroll >= 642) {
-      this._map.classList.add("is-fixed");
-    } else {
-      this._map.classList.remove("is-fixed");
-    }
   }
 }
 

@@ -20,16 +20,13 @@ In order to use Jekyll, you will need to have Ruby installed. macOS comes pre-in
 - Node.js
 - Yarn
 - gulp.js
-- Bower
 
 Once you have [Bundler](http://bundler.io/) and [Yarn](https://yarnpkg.com/en/) installed, use them to intall the dependencies:
 
 ```
 bundle install
 yarn global add gulp-cli # npm install gulp-cli -g to install with npm.
-yarn global add bower # npm install bower -g to install with npm.
 yarn # npm install to install with npm.
-bower install
 ```
 
 You should now have everything needed to run the website locally.

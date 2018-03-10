@@ -21,9 +21,9 @@ layout: default
 
 <div class="Content">
   <div class="Content-inner Content-inner--post">
-    <div class="u-inner {% if page.scrollmap_file %}js-Scrollmap{% endif %}">
-      <article class="Content-body {% if page.marginotes %}js-Marginotes{% endif %}" itemscope itemtype="http://schema.org/BlogPosting">
-        {% if page.scrollmap_file %}<div class="Map js-Map"></div>{% endif %}
+    <div class="u-inner">
+      <article class="Content-body {% if page.scrollmap_file %}js-Scroll{% endif %} {% if page.marginotes %}js-Marginotes{% endif %}" itemscope itemtype="http://schema.org/BlogPosting">
+        {% if page.scrollmap_file %}<div class="Map js-Scroll-graphic"></div>{% endif %}
         {% if page.marginotes %}<div class="Marginote js-Marginote"></div>{% endif %}
 
         <div class="Content-header">
@@ -31,7 +31,7 @@ layout: default
           <p class="Content-subtitle">{{ page.description }}</p>
         </div>
 
-        <div itemprop="articleBody">
+        <div class="js-Text" itemprop="articleBody">
 
           {{ content }}
 
