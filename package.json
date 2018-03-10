@@ -4,20 +4,17 @@
   "description": "Personal website of Carlos Matallín",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint app/_js/**/*.js __tests__/spec/**/*.js",
-    "lint:config": "eslint {gulpfile,webpack.config}.js",
+    "lint": "yarn run lint:js && yarn run lint:css",
+    "lint:js": "eslint {gulpfile,webpack.config}.js app/_js/**/*.js __tests__/spec/**/*.js",
+    "lint:css": "stylelint 'app/css/**/*.scss'",
     "test": "jest",
     "start": "gulp serve",
     "build": "NODE_ENV=production gulp"
   },
   "jest": {
     "moduleDirectories": [
-      "node_modules",
-      "bower_components"
-    ],
-    "moduleNameMapper": {
-      "^waypoints$": "<rootDir>/waypoints/lib/noframework.waypoints.js"
-    }
+      "node_modules"
+    ]
   },
   "repository": {
     "type": "git",
@@ -31,40 +28,43 @@
     "node": ">=4"
   },
   "dependencies": {
-    "babel-core": "^6.25.0",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.1.1",
-    "babel-plugin-module-resolver": "^2.7.1",
-    "babel-preset-es2015": "^6.24.1",
-    "bower": "^1.8.0",
-    "browser-sync": "^2.18.13",
-    "child_process": "^1.0.2",
-    "css-loader": "^0.28.4",
-    "d3-geo": "^1.6.4",
-    "d3-selection": "^1.1.0",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.23.5",
+    "css-loader": "^0.28.8",
+    "d3-geo": "^1.9.1",
+    "d3-selection": "^1.2.0",
     "del": "^3.0.0",
-    "eslint": "^4.4.1",
+    "eslint": "^4.15.0",
     "eslint-loader": "^1.9.0",
-    "extract-text-webpack-plugin": "^3.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "gulp": "^3.9.1",
-    "gulp-htmlmin": "^3.0.0",
+    "gulp-htmlmin": "^4.0.0",
     "gulp-if": "^2.0.2",
     "gulp-load-plugins": "^1.5.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-rev": "^8.0.0",
+    "gulp-rev": "^8.1.1",
     "gulp-rev-replace": "^0.4.3",
     "html5shiv": "^3.7.3",
-    "jest": "^20.0.4",
-    "node-sass": "^4.5.3",
+    "intersection-observer": "^0.5.0",
+    "jest": "^22.0.5",
+    "node-sass": "^4.7.2",
     "picturefill": "^3.0.2",
-    "run-sequence": "^2.1.0",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-loader": "^2.0.10",
+    "run-sequence": "^2.2.1",
     "sass-loader": "^6.0.6",
-    "shim-loader": "^1.0.1",
-    "smoothscroll": "^0.3.0",
-    "style-loader": "^0.18.2",
-    "topojson": "^3.0.0",
-    "webpack": "^3.5.3",
-    "webpack-dev-middleware": "^1.12.0",
-    "webpack-hot-middleware": "^2.18.2"
+    "scrollama": "^1.4.1",
+    "smoothscroll": "^0.4.0",
+    "style-loader": "^0.19.1",
+    "stylelint": "^8.4.0",
+    "stylelint-config-property-sort-order-smacss": "^2.0.0",
+    "stylelint-config-recommended-scss": "^3.0.0",
+    "stylelint-config-standard": "^18.0.0",
+    "stylelint-scss": "^2.2.0",
+    "topojson": "^3.0.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-middleware": "^2.0.4",
+    "webpack-hot-middleware": "^2.21.0"
   }
 }

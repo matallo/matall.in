@@ -33,15 +33,9 @@ jobs:
           keys:
             - v1-yarn-{{ checksum "yarn.lock" }}
             - v1-yarn-
-      - restore_cache:
-          keys:
-            - v1-bower-{{ checksum "bower.json" }}
-            - v1-bower-
       - run: bundle install --path vendor/bundle
       - run: sudo yarn global add gulp-cli
-      - run: sudo yarn global add bower
       - run: yarn
-      - run: bower install
       - run:
           name: Run linter
           command: yarn run lint

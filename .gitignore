@@ -4,6 +4,5 @@
 .jekyll-metadata
 .ruby-version
 .tmp
-bower_components
 dist
 node_modules
