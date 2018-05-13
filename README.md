@@ -56,7 +56,6 @@ cd dist/
 python -m SimpleHTTPServer
 ```
 
-
 ### Test
 
 Tests can be launched with [Jest](https://facebook.github.io/jest/) running the following command in the terminal:
@@ -83,6 +82,8 @@ When pushing (or merging) to the `master` branch in the repository, the website 
 You can also launch a deploy to AWS S3 with the [AWS CLI](https://aws.amazon.com/cli/):
 
 ```
-aws s3 sync --acl public-read dist/ s3://$AWS_BUCKET --delete --exclude "*" --include "*.html"  --include "*.txt" --include "*.xml" --cache-control "max-age=0, public"
-aws s3 sync --acl public-read dist/ s3://$AWS_BUCKET --delete --exclude "*" --include "*.ico" --include "*.png" --include "css/*" --include "js/*" --include "img/*" --cache-control "max-age=31536000, public" --expires $(date -d "+1 year" -u +%Y-%m-%dT%H:%M:%SZ)
+aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET} --delete --exclude "*" --include "*.html" --include "*.txt" --include "*.xml" --cache-control "max-age=0, public"
+aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET} --delete --exclude "*" --include "*.ico" --include "*.png" --include "css/*" --include "js/*" --include "img/*" --cache-control "max-age=31536000, public" --expires $(date -d "+1 year" -u +%Y-%m-%dT%H:%M:%SZ)
 ```
+
+## TODO

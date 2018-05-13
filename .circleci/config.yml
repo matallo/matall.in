@@ -45,7 +45,12 @@ jobs:
       - run: bundle --path vendor/bundle
       - run:
           name: Build
-          command: yarn run build
+          command: |
+            if [ ${CIRCLE_BRANCH} == "master" ]; then
+              JEKYLL_ENV=production yarn run build
+            else
+              yarn run build
+            fi
       - save_cache:
           key: v1-assets-{{ checksum ".circle-sha" }}
           paths:
@@ -69,8 +74,13 @@ jobs:
       - run:
           name: Deploy to S3
           command: |
-            aws s3 sync --acl public-read dist/ s3://$AWS_BUCKET --delete --exclude "*" --include "*.html"  --include "*.txt" --include "*.xml" --cache-control "max-age=0, public"
-            aws s3 sync --acl public-read dist/ s3://$AWS_BUCKET --delete --exclude "*" --include "*.ico" --include "*.png" --include "css/*" --include "js/*" --include "img/*" --cache-control "max-age=31536000, public" --expires $(date -d "+1 year" -u +%Y-%m-%dT%H:%M:%SZ)
+            if [ ${CIRCLE_BRANCH} == "master" ]; then
+              aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET} --delete --exclude "*" --include "*.html" --include "*.txt" --include "*.xml" --cache-control "max-age=0, public"
+              aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET} --delete --exclude "*" --include "*.ico" --include "*.png" --include "css/*" --include "js/*" --include "img/*" --cache-control "max-age=31536000, public" --expires $(date -d "+1 year" -u +%Y-%m-%dT%H:%M:%SZ)
+            else
+              aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET_STAGING} --delete --exclude "*" --include "*.html" --include "*.txt" --include "*.xml" --cache-control "max-age=0, public"
+              aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET_STAGING} --delete --exclude "*" --include "*.ico" --include "*.png" --include "css/*" --include "js/*" --include "img/*" --cache-control "max-age=31536000, public" --expires $(date -d "+1 year" -u +%Y-%m-%dT%H:%M:%SZ)
+            fi
 workflows:
   version: 2
   build-and-deploy:
@@ -82,6 +92,3 @@ workflows:
       - deploy:
           requires:
             - dependencies_test_build
-          filters:
-            branches:
-              only: master
