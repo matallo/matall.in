@@ -10,23 +10,23 @@ category: carto
 
 <h2 class="Title Title--cTypo1 Title--h2 Content-title Content-title--h2">Getting the data</h2>
 
-<p>Friday night, destroyed after a hard week. I got home, had some dinner, and started poking at FlightStats Developer Center. I grabbed a RedBull to stay awake, and wrote a script to get the rating for every route in a <a href="https://gist.githubusercontent.com/pramsey/8eae41eae99cb07fd9a7/raw/6cbc092b831a9c5d3c884400549a9ef64426db76/routes.csv">dataset</a> from <a href="http://openflights.org/data.html">OpenFlights.org</a>.</p>
+<p>Friday night, destroyed after a hard week. I got home, had some dinner, and started poking at FlightStats Developer Center. I grabbed a RedBull to stay awake, and wrote a script to get the rating for every route in a dataset from <a href="http://openflights.org/data.html">OpenFlights.org</a>.</p>
 
 <figure class="Slideshow Slideshow--center">
   <script src="https://gist.github.com/matallo/8a1a158c3e1d093e323f.js"></script>
 </figure>
 
-<p>I validated the visualization with a sample of flights departing from <a href="https://team.cartodb.com/u/matallo/viz/dbc10032-d7f3-11e5-8e48-0e31c9be1b51/public_map">Barcelona</a>, with a very simple line visualization: a color ramp corresponding to a 5 star scale (red for 1, green for 5).</p>
+<p>I validated the visualization with a sample of flights departing from <a href="https://matallo.carto.com/builder/dbc10032-d7f3-11e5-8e48-0e31c9be1b51/embed">Barcelona</a>, with a very simple line visualization: a color ramp corresponding to a 5 star scale (red for 1, green for 5).</p>
 
 <figure class="Slideshow Slideshow--center">
-  <iframe width='100%' height='520' frameborder='0' src='https://team.cartodb.com/u/matallo/viz/dbc10032-d7f3-11e5-8e48-0e31c9be1b51/embed_map' allowfullscreen></iframe>
+  <iframe width='100%' height='520' frameborder='0' src='https://matallo.carto.com/builder/dbc10032-d7f3-11e5-8e48-0e31c9be1b51/embed' allowfullscreen></iframe>
 </figure>
 
 <p>Several hours, a couple of <code>"Authorization failed. usage limits are exceeded"</code>, and different API keys later I had the data.</p>
 
 <h2 class="Title Title--cTypo1 Title--h2 Content-title Content-title--h2">Explore and analyze</h2>
 
-<p>Fast forward to this week. We've been working on some <em>new and shiny</em> stuff at CartoDB that <a href="http://blog.cartodb.com/deep-insights/">has just been presented</a> at <abbr title="Mobile World Congress">MWC</abbr> — <a href="https://cartodb.com/deep-insights">CartoDB for Deep Insights</a>. I had the data ready, so I uploaded it to CartoDB, and created my first Deep Insights dashboard within a couple of minutes. BOOM.</p>
+<p>Fast forward to this week. We've been working on some <em>new and shiny</em> stuff at CartoDB that <a href="https://carto.com/blog/deep-insights/">has just been presented</a> at <abbr title="Mobile World Congress">MWC</abbr> — <a href="https://carto.com/engine/">CartoDB for Deep Insights</a>. I had the data ready, so I uploaded it to CartoDB, and created my first Deep Insights dashboard within a couple of minutes. BOOM.</p>
 
 <figure class="Slideshow Slideshow--wide">
   <iframe width="100%" height="700" frameborder="0" src="https://team.carto.com/u/matallo/builder/71d401dc-d9b6-11e5-9076-0e3ff518bd15/embed" allowfullscreen></iframe>
@@ -34,8 +34,8 @@ category: carto
 
 <p>A quick look at the visualization and I can start uncovering stories.</p>
 
-<p>We're continuously working to improve this, so any feedback is welcomed. Go ahead and <a href="https://team.cartodb.com/u/matallo/tables/ratings_copy_1/public">play with the data</a>. I'm not sure it can be published but ¯\_(ツ)_/¯</p>
+<p>We're continuously working to improve this, so any feedback is welcomed. Go ahead and <a href="https://team.carto.com/u/matallo/tables/ratings_copy_1/public">play with the data</a>.</p>
 
 <p>You can check the code in <a href="https://github.com/matallo/flightstats">GitHub</a>.</p>
 
-<p><em>Disclaimer: I'm not a Data Scientist, just some guy who knows how to put together a script in Ruby and happens to work at <a href="https://cartodb.com/">CartoDB</a>. I really, really, really got inspired by <a href="https://defaultnamehere.tumblr.com/post/139351766005/graphing-when-your-facebook-friends-are-awake">this post</a> to share the visualization. I usually tinker a lot but never end up sharing anything because I'm too critical with the results, so please be kind.</em></p>
+<p><em>Disclaimer: I'm not a Data Scientist, just some guy who knows how to put together a script in Ruby and happens to work at <a href="https://carto.com/">CartoDB</a>. I really, really, really got inspired by <a href="https://defaultnamehere.tumblr.com/post/139351766005/graphing-when-your-facebook-friends-are-awake">this post</a> to share the visualization. I usually tinker a lot but never end up sharing anything because I'm too critical with the results, so please be kind.</em></p>
