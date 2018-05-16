@@ -1,9 +1,10 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+const dev = process.env.NODE_ENV !== 'production';
 const path = require('path');
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
   entry: {
     app: ['./app/_js/index.js', './app/_scss/main.scss'],
     story: ['./app/_js/story.js'],
@@ -21,6 +22,8 @@ module.exports = {
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
         sourceMap: true,
       }),
     ],
@@ -35,25 +38,24 @@ module.exports = {
         },
       }, {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [{
-            loader: 'css-loader',
-            options: {
-              minimize: true,
-              sourceMap: true,
-            },
-          }, {
-            loader: 'postcss-loader', options: { sourceMap: true },
-          }, {
-            loader: 'sass-loader', options: { sourceMap: true },
-          }],
-        }),
+        use: [{
+          loader: dev ? 'style-loader' : MiniCssExtractPlugin.loader,
+        }, {
+          loader: 'css-loader',
+          options: {
+            minimize: true,
+            sourceMap: true,
+          },
+        }, {
+          loader: 'postcss-loader', options: { sourceMap: true },
+        }, {
+          loader: 'sass-loader', options: { sourceMap: true },
+        }],
       },
     ],
   },
   plugins: [
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: 'css/[name].css',
     }),
   ],

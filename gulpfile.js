@@ -13,6 +13,7 @@ const log = require('fancy-log');
 const PluginError = require('plugin-error');
 const rev = require('gulp-rev');
 const revReplace = require('gulp-rev-replace');
+const critical = require('critical').stream;
 
 const plugins = gulpLoadPlugins();
 const { reload } = browserSync;
@@ -49,6 +50,16 @@ gulp.task('replace-assets', () => {
     }))
     .pipe(gulp.dest('dist/'));
 });
+
+gulp.task('critical', () => gulp.src([
+  'dist/**/index.html',
+  '!dist/flights/index.html',
+])
+  .pipe(critical({ base: 'dist/', inline: true }))
+  .on('error', (err) => {
+    log(err.message);
+  })
+  .pipe(gulp.dest('dist/')));
 
 gulp.task('html', () => gulp.src('dist/**/*.html')
   .pipe(plugins.if(/\.html$/, plugins.htmlmin({
@@ -184,7 +195,7 @@ gulp.task('webpack-build', (done) => {
 });
 
 gulp.task('build', (done) => {
-  runSequence('clean', ['jekyll-build', 'webpack-build'], 'html', 'images', 'rev-assets', 'replace-assets', done);
+  runSequence('clean', ['jekyll-build', 'webpack-build'], 'critical', 'html', 'images', 'rev-assets', 'replace-assets', done);
 });
 
 gulp.task('default', () => new Promise((resolve) => {
