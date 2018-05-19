@@ -39,3 +39,40 @@
 .u-txt-center {
   text-align: center;
 }
+.u-hide {
+  display: none;
+}
+.u-show {
+  display: block;
+}
+.a-fade {
+  animation-name: fade;
+  animation-duration: 1s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@each $viewport, $breakpoint in $viewports {
+  .r-#{$viewport}-u-hide {
+    display: block;
+
+    @media (max-width: $breakpoint) {
+      display: none;
+    }
+  }
+
+  .r-#{$viewport}-u-show {
+    display: none;
+
+    @media (max-width: $breakpoint) {
+      display: block;
+    }
+  }
+}
