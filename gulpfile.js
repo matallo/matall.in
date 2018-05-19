@@ -76,7 +76,7 @@ gulp.task('html', () => gulp.src('dist/**/*.html')
 
 gulp.task('imagemin', () => gulp.src('dist/img/**/*.{gif,jpeg,jpg,png,svg}')
   .pipe(plugins.cache(plugins.imagemin([
-    imageminJpegtran(),
+    imageminJpegtran({ progressive: true }),
     imageminPngquant({ quality: '65-80' }),
   ])))
   .pipe(gulp.dest('dist/')));
