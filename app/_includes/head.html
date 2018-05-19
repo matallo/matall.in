@@ -4,7 +4,7 @@
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  {% if jekyll.environment == "development" %}
+  {% if jekyll.environment != "production" %}
     <meta name="robots" content="noindex, nofollow">
   {% endif %}
 
@@ -16,34 +16,54 @@
   <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="{{ page.url | prepend: site.url }}"/>
-  {% if page.twitter_image %}
-    <meta property="og:image" content="{{ page.twitter_image | prepend: site.url }}">
+  {% if page.background_image %}
+    <meta property="og:image" content="https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,fl_progressive,w_560/matall.in{{ page.background_image }}">
   {% endif %}
 
   <meta name="twitter:site" content="@matallo">
   <meta name="twitter:title" content="{% if page.title_meta %}{{ page.title_meta }} — {% elsif page.title %}{{ page.title }} — {% endif %}{{ site.title }}">
   <meta name="twitter:description" content="{% if page.description_meta %}{{ page.description_meta }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-  {% if page.twitter_image %}
+  {% if page.background_image %}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{{ page.twitter_image | prepend: site.url }}">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,fl_progressive,w_560/matall.in{{ page.background_image }}">
   {% else %}
     <meta name="twitter:card" content="summary" />
   {% endif %}
   <style>
-  {% include css/reset.css %}
+  {% include css/vendor/reset.css %}
   </style>
   <link rel="stylesheet" href="/css/app.css">
 
   <style>
     {% if page.background_image %}
       .Header-background--image {
-        background-image: url({{ page.background_image }});
+        background-image: url(https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,fl_progressive,w_1240/matall.in{{ page.background_image }});
       }
-    {% endif %}
-    {% if page.background_image_mobile %}
+      @media
+      only screen and (-webkit-min-device-pixel-ratio: 2),
+      only screen and (min--moz-device-pixel-ratio: 2),
+      only screen and (-o-min-device-pixel-ratio: 2/1),
+      only screen and (min-device-pixel-ratio: 2),
+      only screen and (min-resolution: 192dpi),
+      only screen and (min-resolution: 2dppx) {
+        .Header-background--image {
+          background-image: url(https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,fl_progressive,w_2480/matall.in{{ page.background_image }});
+        }
+      }
       @media (max-width: 560px) {
         .Header-background--image {
-          background-image: url({{ page.background_image_mobile }});
+          background-image: url(https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,fl_progressive,w_560/matall.in{{ page.background_image }});
+        }
+      }
+      @media
+      only screen and (-webkit-min-device-pixel-ratio: 2)and (max-width: 560px),
+      only screen and (min--moz-device-pixel-ratio: 2)and (max-width: 560px),
+      only screen and (-o-min-device-pixel-ratio: 2/1)and (max-width: 560px),
+      only screen and (min-device-pixel-ratio: 2)and (max-width: 560px),
+      only screen and (min-resolution: 192dpi) and (max-width: 560px),
+      only screen and (min-resolution: 2dppx)and (max-width: 560px) {
+        .Header-background--image {
+          background-image: url(https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,fl_progressive,w_1120/matall.in{{ page.background_image }});
         }
       }
     {% endif %}

@@ -1,7 +1,7 @@
 ---
 title: Visualizing 1M flight routes with CartoDB
 description: "Using CartoDB Deep Insights to visualize and analize flights data for 1M routes from FlightStats"
-twitter_image: "/img/posts/deep-insights-visualizing-1m-flight-routes/tpl_71d401dc_d9b6_11e5_9076_0e3ff518bd15@mobile.png"
+background_image: "/img/posts/deep-insights-visualizing-1m-flight-routes/tpl_71d401dc_d9b6_11e5_9076_0e3ff518bd15.png"
 category: carto
 ---
 <p>Last week a friend <a href="https://twitter.com/txarly/status/699349558497845248">asked on Twitter</a> how to extract some data from <a href="http://www.flightstats.com/company/monthly-performance-reports/airlines/">Airline On-Time Performance Reports</a> in a Tableau public dashboard. I replied back with some tricks using Tabula, when the raw data or a workbook aren't provided, and turned in.</p>
@@ -19,7 +19,7 @@ category: carto
 <p>I validated the visualization with a sample of flights departing from <a href="https://matallo.carto.com/builder/dbc10032-d7f3-11e5-8e48-0e31c9be1b51/embed">Barcelona</a>, with a very simple line visualization: a color ramp corresponding to a 5 star scale (red for 1, green for 5).</p>
 
 <figure class="Slideshow Slideshow--center">
-  <iframe width='100%' height='520' frameborder='0' src='https://matallo.carto.com/builder/dbc10032-d7f3-11e5-8e48-0e31c9be1b51/embed' allowfullscreen></iframe>
+  <iframe class="lazyload" width='100%' height='520' frameborder='0' data-src='https://matallo.carto.com/builder/dbc10032-d7f3-11e5-8e48-0e31c9be1b51/embed' allowfullscreen></iframe>
 </figure>
 
 <p>Several hours, a couple of <code>"Authorization failed. usage limits are exceeded"</code>, and different API keys later I had the data.</p>
@@ -29,7 +29,7 @@ category: carto
 <p>Fast forward to this week. We've been working on some <em>new and shiny</em> stuff at CartoDB that <a href="https://carto.com/blog/deep-insights/">has just been presented</a> at <abbr title="Mobile World Congress">MWC</abbr> — <a href="https://carto.com/engine/">CartoDB for Deep Insights</a>. I had the data ready, so I uploaded it to CartoDB, and created my first Deep Insights dashboard within a couple of minutes. BOOM.</p>
 
 <figure class="Slideshow Slideshow--wide">
-  <iframe width="100%" height="700" frameborder="0" src="https://team.carto.com/u/matallo/builder/71d401dc-d9b6-11e5-9076-0e3ff518bd15/embed" allowfullscreen></iframe>
+  <iframe class="lazyload" width="100%" height="700" frameborder="0" data-src="https://team.carto.com/u/matallo/builder/71d401dc-d9b6-11e5-9076-0e3ff518bd15/embed" allowfullscreen></iframe>
 </figure>
 
 <p>A quick look at the visualization and I can start uncovering stories.</p>

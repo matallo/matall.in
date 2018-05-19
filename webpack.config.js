@@ -1,7 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const dev = process.env.NODE_ENV !== 'production';
 const path = require('path');
 
 module.exports = {
@@ -9,9 +8,14 @@ module.exports = {
     app: ['./app/_js/index.js', './app/_scss/main.scss'],
     story: ['./app/_js/story.js'],
     html5shiv: ['html5shiv'],
-    vendor: [
+    polyfills: [
       'picturefill',
       'smoothscroll',
+    ],
+    vendor: [
+      './app/_js/vendor/widgets.js',
+      './app/_js/vendor/ei.js',
+      './app/_js/vendor/analytics.js',
     ],
   },
   output: {
@@ -39,7 +43,7 @@ module.exports = {
       }, {
         test: /\.scss$/,
         use: [{
-          loader: dev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          loader: MiniCssExtractPlugin.loader,
         }, {
           loader: 'css-loader',
           options: {
