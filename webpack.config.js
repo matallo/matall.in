@@ -11,6 +11,7 @@ module.exports = {
     polyfills: [
       'picturefill',
       'smoothscroll',
+      'lazysizes',
     ],
     vendor: [
       './app/_js/vendor/widgets.js',

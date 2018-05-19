@@ -1,5 +1,3 @@
-import lozad from 'lozad';
-
 import Marginotes from './components/marginotes';
 
 class App {
@@ -15,17 +13,6 @@ class App {
 
       marginotes.init();
     }
-
-    const observer = lozad('.lazyload', {
-      load: (el) => {
-          el.src = el.dataset.src;
-
-          el.onload = function() {
-            el.classList.add('a-fade');
-          }
-      }
-    });
-    observer.observe();
   }
 }
 
