@@ -1,8 +1,5 @@
 .DS_Store
-.awspublish-*
-.env
 .jekyll-metadata
-.ruby-version
-.tmp
+app/_js/vendor
 dist
 node_modules

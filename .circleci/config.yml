@@ -51,7 +51,7 @@ jobs:
             if [ ${CIRCLE_BRANCH} == "master" ]; then
               JEKYLL_ENV=production yarn run build
             else
-              yarn run build
+              JEKYLL_ENV=staging yarn run build
             fi
       - save_cache:
           key: v1-assets-{{ checksum ".circle-sha" }}
