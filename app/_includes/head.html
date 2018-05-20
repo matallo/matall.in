@@ -1,7 +1,16 @@
 <head>
   <meta charset="utf-8">
-  <title>{% if page.url == "/" %}{{ site.title }}{% if page.title %} — {{ page.title }}{% endif %}{% else %}{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  {% if page.url == "/" %}
+    <title>{{ site.title }} — {{ page.title }}</title>
+    <meta name="description" content="{{ site.description }}">
+  {% elsif page.layout == "story" %}
+    <title>{% if page.title %}{{ page.title }} — {% endif %}{% if page.description %}{{ page.description }} — {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  {% else %}
+    <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  {% endif %}
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   {% if jekyll.environment != "production" %}
@@ -12,7 +21,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- twitter cards -->
-  <meta property="og:title" content="{% if page.title_meta %}{{ page.title_meta }} — {% elsif page.title %}{{ page.title }} — {% endif %}{{ site.title }}"/>
+  <meta property="og:title" content="{% if page.twitter_text %}{{ page.twitter_text }} — {% elsif page.title %}{{ page.title }} — {% endif %}{{ site.title }}"/>
   <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="{{ page.url | prepend: site.url }}"/>
@@ -21,7 +30,7 @@
   {% endif %}
 
   <meta name="twitter:site" content="@matallo">
-  <meta name="twitter:title" content="{% if page.title_meta %}{{ page.title_meta }} — {% elsif page.title %}{{ page.title }} — {% endif %}{{ site.title }}">
+  <meta name="twitter:title" content="{% if page.twitter_text %}{{ page.twitter_text }} — {% elsif page.title %}{{ page.title }} — {% endif %}{{ site.title }}">
   <meta name="twitter:description" content="{% if page.description_meta %}{{ page.description_meta }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   {% if page.background_image %}
     <meta name="twitter:card" content="summary_large_image">
