@@ -6,7 +6,7 @@ layout: default
   <div class="Header-background Header-background--black"></div>
 
   <a href="/" class="Header-icon Header-icon--back Icon Icon--s36">{% include icons/icon-back.svg %}</a>
-  <a href="https://twitter.com/intent/tweet?text={% if page.twitter_text %}{{ page.twitter_text }}{% elsif page.title_meta %}{{ page.title_meta }}{% elsif page.title %}{{ page.title }}{% endif %}&amp;url={{ page.url | prepend: site.url }}&amp;via=matallo" class="Header-icon Header-icon--share Icon Icon--s24" title="Tweet this">{% include icons/icon-twitter.svg %}</a>
+  <a href="https://twitter.com/intent/tweet?text={% if page.twitter_text %}{{ page.twitter_text }} — {% elsif page.title %}{{ page.title }} — {% endif %}{{ site.title }}&amp;url={{ page.url | prepend: site.url }}&amp;via=matallo" class="Header-icon Header-icon--share Icon Icon--s24" title="Tweet this">{% include icons/icon-twitter.svg %}</a>
 
   <div class="Header-footer">
     <div class="Stats">

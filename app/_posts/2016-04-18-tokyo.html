@@ -7,10 +7,13 @@ background_image: "/img/posts/tokyo/25720441604_9c26662678_o.jpg"
 twitter_text: "5 days travelling solo in Tokyo"
 category: stories
 days: 5
+excerpt_separator: <!--more-->
 ---
 <p>Someday, I want to live in that city.</p>
 
 <p>Long story short: I had planned a trip to Japan with my family, but as they couldn't make it for those dates I finally decided to travel solo, inspired by some of my colleagues who had already done so. <strong>It's been my first solo trip and I couldn't be happier about the experience</strong>. Well, if only I could have extended it.</p>
+
+<!--more-->
 
 <h2 class="Title Title--cTypo1 Title--h2 Content-title Content-title--h2"><span class="Content-date">Day 1</span>Konnichiwa, motherfuckers</h2>
 
@@ -65,7 +68,7 @@ days: 5
   </picture>
 
   <div class="Caption">
-    <a href="https://twitter.com/intent/tweet?text={% if page.twitter_text %}{{ page.twitter_text }}{% elsif page.title_meta %}{{ page.title_meta }}{% elsif page.title %}{{ page.title }}{% endif %}&amp;url={{ page.url | prepend: site.url }}&amp;via=matallo" class="Slideshow-social" title="Tweet this"><span class="Icon Icon--s12 Icon--Twitter">{% include icons/icon-twitter.svg %}</span></a>
+    <a href="https://twitter.com/intent/tweet?text={% if page.twitter_text %}{{ page.twitter_text }} — {% elsif page.title %}{{ page.title }} — {% endif %}{{ site.title }}&amp;url={{ page.url | prepend: site.url }}&amp;via=matallo" class="Slideshow-social" title="Tweet this"><span class="Icon Icon--s12 Icon--Twitter">{% include icons/icon-twitter.svg %}</span></a>
 
     <p>Shinjuku Gyoen National Garden, photograph by <a href="https://www.flickr.com/photos/matallo/25722604713/in/album-72157664645019684/">Carlos Matallín</a></p>
   </div>
@@ -87,7 +90,7 @@ days: 5
   </picture>
 
   <div class="Caption">
-    <a href="https://twitter.com/intent/tweet?text={% if page.twitter_text %}{{ page.twitter_text }}{% elsif page.title_meta %}{{ page.title_meta }}{% elsif page.title %}{{ page.title }}{% endif %}&amp;url={{ page.url | prepend: site.url }}&amp;via=matallo" class="Slideshow-social" title="Tweet this"><span class="Icon Icon--s12 Icon--Twitter">{% include icons/icon-twitter.svg %}</span></a>
+    <a href="https://twitter.com/intent/tweet?text={% if page.twitter_text %}{{ page.twitter_text }} — {% elsif page.title %}{{ page.title }} — {% endif %}{{ site.title }}&amp;url={{ page.url | prepend: site.url }}&amp;via=matallo" class="Slideshow-social" title="Tweet this"><span class="Icon Icon--s12 Icon--Twitter">{% include icons/icon-twitter.svg %}</span></a>
 
     <p>Hanami at Ueno Park, photograph by <a href="https://www.flickr.com/photos/matallo/25720460774/in/album-72157664645019684/">Carlos Matallín</a></p>
   </div>
