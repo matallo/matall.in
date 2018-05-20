@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const download = require('gulp-download');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const browserSync = require('browser-sync').create();
 const del = require('del');
@@ -13,17 +14,17 @@ const log = require('fancy-log');
 const PluginError = require('plugin-error');
 const rev = require('gulp-rev');
 const revReplace = require('gulp-rev-replace');
+const critical = require('critical').stream;
 
 const plugins = gulpLoadPlugins();
 const { reload } = browserSync;
 
+const imageminJpegtran = require('imagemin-jpegtran');
 const imageminPngquant = require('imagemin-pngquant');
-const imageminMozjpeg = require('imagemin-mozjpeg');
 
 gulp.task('rev-assets', () => gulp.src([
   'dist/css/{,*/}*.css{,.map}',
   'dist/js/{,*/}*.js{,.map}',
-  'dist/img/**/*.{gif,jpeg,jpg,png,svg}',
 ], { base: 'dist/' })
   .pipe(gulp.dest('dist/'))
   .pipe(rev())
@@ -50,6 +51,16 @@ gulp.task('replace-assets', () => {
     .pipe(gulp.dest('dist/'));
 });
 
+gulp.task('critical', () => gulp.src([
+  'dist/**/index.html',
+  '!dist/flights/index.html',
+])
+  .pipe(critical({ base: 'dist/', inline: true }))
+  .on('error', (err) => {
+    log(err.message);
+  })
+  .pipe(gulp.dest('dist/')));
+
 gulp.task('html', () => gulp.src('dist/**/*.html')
   .pipe(plugins.if(/\.html$/, plugins.htmlmin({
     collapseWhitespace: true,
@@ -63,22 +74,24 @@ gulp.task('html', () => gulp.src('dist/**/*.html')
   })))
   .pipe(gulp.dest('dist/')));
 
-gulp.task('images', () => gulp.src('dist/img/**/*.{gif,jpeg,jpg,png,svg')
+gulp.task('imagemin', () => gulp.src('dist/img/**/*.{gif,jpeg,jpg,png,svg}')
   .pipe(plugins.cache(plugins.imagemin([
-    imageminPngquant({
-      speed: 1,
-      quality: 98,
-    }),
-    imageminMozjpeg({
-      quality: 90,
-    }),
+    imageminJpegtran({ progressive: true }),
+    imageminPngquant({ quality: '65-80' }),
   ])))
   .pipe(gulp.dest('dist/')));
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
+gulp.task('download', () => download([
+  'https://platform.twitter.com/widgets.js',
+  'https://production-assets.codepen.io/assets/embed/ei.js',
+  'https://www.google-analytics.com/analytics.js',
+])
+  .pipe(gulp.dest('app/_js/vendor/')));
+
 gulp.task('serve', () => {
-  runSequence('clean', ['jekyll-serve'], () => {
+  runSequence('clean', 'jekyll-serve', () => {
     const myDevConfig = merge(webpackConfig, {
       entry: {
         'webpack-hot-middleware': ['webpack/hot/dev-server', 'webpack-hot-middleware/client'],
@@ -167,6 +180,7 @@ gulp.task('webpack-build', (done) => {
         filename: '[file].map',
         exclude: [
           'js/html5shiv.js',
+          'js/polyfills.js',
           'js/vendor.js',
         ],
       }),
@@ -184,7 +198,7 @@ gulp.task('webpack-build', (done) => {
 });
 
 gulp.task('build', (done) => {
-  runSequence('clean', ['jekyll-build', 'webpack-build'], 'html', 'images', 'rev-assets', 'replace-assets', done);
+  runSequence('clean', 'download', ['jekyll-build', 'webpack-build'], 'critical', 'html', 'imagemin', 'rev-assets', 'replace-assets', done);
 });
 
 gulp.task('default', () => new Promise((resolve) => {

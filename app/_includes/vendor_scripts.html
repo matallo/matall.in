@@ -1,3 +1,4 @@
+{% if jekyll.environment == "development" %}
 <script>window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
     t = window.twttr || {};
@@ -17,11 +18,15 @@
 
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+{% else %}
+    <script async src="/js/vendor.js"></script>
+{% endif %}
+
 {% if site.analytics_property_id %}
 <script>
   window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
   ga('create', '{{ site.analytics_property_id }}', 'auto');
   ga('send', 'pageview');
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 {% endif %}

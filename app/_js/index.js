@@ -1,14 +1,14 @@
-import { Marginotes } from "./components/marginotes.js";
+import { Marginotes } from "./components/marginotes";
 
 class App {
-  constructor (options) {
+  constructor(options) {
     this.marginotesEl = options.marginotesEl;
   }
 
-  init () {
+  init() {
     if (this.marginotesEl) {
       const marginotes = new Marginotes({
-        container: this.marginotesEl
+        container: this.marginotesEl,
       });
 
       marginotes.init();
@@ -18,7 +18,7 @@ class App {
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new App({
-    marginotesEl: document.querySelector('.js-Marginotes')
+    marginotesEl: document.querySelector('.js-Marginotes'),
   });
 
   app.init();
