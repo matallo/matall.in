@@ -1,13 +1,10 @@
 <head>
   <meta charset="utf-8">
-  {% if page.url == "/" %}
-    <title>{{ site.title }} — {{ page.title }}</title>
-    <meta name="description" content="{{ site.description }}">
-  {% elsif page.layout == "story" %}
+  {% if page.layout == "story" %}
     <title>{% if page.title %}{{ page.title }} — {% endif %}{% if page.description %}{{ page.description }} — {% endif %}{{ site.title }}</title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   {% else %}
-    <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+    <title>{% if page.url == "/" %}{{ site.title }}{% if page.title %} — {{ page.title }}{% endif %}{% else %}{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}{% endif %}</title>
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   {% endif %}
 
@@ -26,7 +23,7 @@
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="{{ page.url | prepend: site.url }}"/>
   {% if page.background_image %}
-    <meta property="og:image" content="https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,fl_progressive,w_560/matall.in{{ page.background_image }}">
+    <meta property="og:image" content="https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,f_auto,fl_progressive,w_560/matall.in{{ page.background_image }}">
   {% endif %}
 
   <meta name="twitter:site" content="@matallo">
@@ -34,7 +31,7 @@
   <meta name="twitter:description" content="{% if page.description_meta %}{{ page.description_meta }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   {% if page.background_image %}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,fl_progressive,w_560/matall.in{{ page.background_image }}">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,f_auto,fl_progressive,w_560/matall.in{{ page.background_image }}">
   {% else %}
     <meta name="twitter:card" content="summary" />
   {% endif %}
@@ -46,7 +43,7 @@
   <style>
     {% if page.background_image %}
       .Header-background--image {
-        background-image: url(https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,fl_progressive,w_1240/matall.in{{ page.background_image }});
+        background-image: url(https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,f_auto,fl_progressive,w_1240/matall.in{{ page.background_image }});
       }
       @media
       only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -56,12 +53,12 @@
       only screen and (min-resolution: 192dpi),
       only screen and (min-resolution: 2dppx) {
         .Header-background--image {
-          background-image: url(https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,fl_progressive,w_2480/matall.in{{ page.background_image }});
+          background-image: url(https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,f_auto,fl_progressive,w_2480/matall.in{{ page.background_image }});
         }
       }
       @media (max-width: 560px) {
         .Header-background--image {
-          background-image: url(https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,fl_progressive,w_560/matall.in{{ page.background_image }});
+          background-image: url(https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,f_auto,fl_progressive,w_560/matall.in{{ page.background_image }});
         }
       }
       @media
@@ -72,7 +69,7 @@
       only screen and (min-resolution: 192dpi) and (max-width: 560px),
       only screen and (min-resolution: 2dppx)and (max-width: 560px) {
         .Header-background--image {
-          background-image: url(https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,fl_progressive,w_1120/matall.in{{ page.background_image }});
+          background-image: url(https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,f_auto,fl_progressive,w_1120/matall.in{{ page.background_image }});
         }
       }
     {% endif %}
