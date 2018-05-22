@@ -1,53 +1,6 @@
 // Card
 // --------------------------------------------------
 
-.Card-sep {
-  @media (max-width: $sMedia--xl) {
-    &:nth-child(n+3) {
-      margin-top: 20px;
-    }
-  }
-
-  @media (max-width: $sMedia--s) {
-    margin-top: 20px;
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-}
-.Card {
-  background: #fff;
-  display: block;
-  width: 100%;
-  border: 1px solid rgba(#000, .1);
-  border-radius: 3px;
-  transition: border-color .2s;
-}
-.Card-header {
-  display: block;
-  height: 150px;
-  border-bottom: 1px solid rgba(#000, .1);
-  overflow: hidden;
-  border-radius: 2px 2px 0 0;
-
-  &:hover {
-    .Card-img {
-      transform: scale(1.02);
-    }
-  }
-}
-.Card-img {
-  display: block;
-  width: 100%;
-  height: 150px;
-  background-size: cover;
-  background-position: center;
-  transition: transform .2s ease-out;
-}
-.Card-inner {
-  padding: 20px;
-}
 .Card-title {
   margin-bottom: 10px;
   transition: color .2s;
