@@ -1,16 +1,16 @@
 import Scrollmap from './components/scroll-map';
 
-class Story {
+const Story = class Story {
   constructor(options) {
-    this.scrollmapEl = options.scrollmapEl;
+    this.scrollmap = options.scrollmap;
     this.scrollmapFile = options.scrollmapFile;
     this.scrollmapCenter = options.scrollmapCenter;
   }
 
   init() {
-    if (this.scrollmapEl) {
+    if (this.scrollmap) {
       const scrollmap = new Scrollmap({
-        containerEl: this.scrollmapEl,
+        container: this.scrollmap,
         scrollmapFile: this.scrollmapFile,
         scrollmapCenter: this.scrollmapCenter,
       });
@@ -18,14 +18,16 @@ class Story {
       scrollmap.init();
     }
   }
-}
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   const story = new Story({
-    scrollmapEl: document.querySelector('.js-Scroll'),
+    scrollmap: document.querySelector('.js-Scroll'),
     scrollmapFile: window.scrollmapFile,
     scrollmapCenter: window.scrollmapCenter,
   });
 
   story.init();
 });
+
+export default Story;

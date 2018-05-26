@@ -59,6 +59,8 @@ Tests can be launched with [Jest](https://facebook.github.io/jest/) running the 
 yarn run test
 ```
 
+Add `--coverage` option to show test coverage.
+
 ### Lint
 
 Finally, JS files can be checked with [ESLint](http://eslint.org/) to keep a consistent styleguide, running the following command in the terminal.

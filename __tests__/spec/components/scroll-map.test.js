@@ -1,5 +1,5 @@
-import Scrollmap from '../../app/_js/components/scroll-map';
-import jsonFile from '../../app/_includes/js/data/vietnam.json';
+import Scrollmap from '../../../app/_js/components/scroll-map';
+import jsonFile from '../../../app/_includes/js/data/vietnam.json';
 
 describe('Scrollmap', () => {
   let view;
@@ -20,14 +20,14 @@ describe('Scrollmap', () => {
     scrollmapCenter = [101.3097594, 15.8565707];
 
     view = new Scrollmap({
-      containerEl: document.querySelector('.js-Scroll'),
+      container: document.querySelector('.js-Scroll'),
       scrollmapFile,
       scrollmapCenter,
     });
   });
 
   test('initializes correctly', () => {
-    expect(view.containerEl).toBeDefined();
+    expect(view.container).toBeDefined();
     expect(view.scrollmapFile).toBe(scrollmapFile);
     expect(view.scrollmapCenter).toBe(scrollmapCenter);
   });

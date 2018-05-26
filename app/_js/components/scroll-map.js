@@ -5,20 +5,20 @@ import { geoMercator, geoPath } from 'd3-geo';
 import { select, selectAll } from 'd3-selection';
 import { feature } from 'topojson';
 
-class Scrollmap {
+const Scrollmap = class Scrollmap {
   constructor(options) {
-    if (options.containerEl === undefined) {
-      throw new Error('containerEl option is required');
+    if (options.container === undefined) {
+      throw new Error('container option is required');
     }
 
     if (options.scrollmapFile === undefined) {
       throw new Error('scrollmapFile option is required');
     }
 
-    this.containerEl = options.containerEl;
+    this.container = options.container;
     this.scrollmapFile = options.scrollmapFile;
     this.scrollmapCenter = options.scrollmapCenter;
-    this.graphicEl = this.containerEl.querySelector('.js-Scroll-graphic');
+    this.graphic = this.container.querySelector('.js-Scroll-graphic');
   }
 
   init() {
@@ -82,7 +82,7 @@ class Scrollmap {
       .attr('dy', '1.5em')
       .attr('dx', (d, i, j) => j[i].getBoundingClientRect().width / 2 * -1)
       .on('click', d => {
-        this.containerEl.querySelector(`#${d.properties.slug}`).scrollIntoView({
+        this.container.querySelector(`#${d.properties.slug}`).scrollIntoView({
           behavior: 'smooth',
         });
       });
@@ -117,40 +117,40 @@ class Scrollmap {
         const mapTitles = [];
 
         if (direction === 'down') {
-          if (this.containerEl.querySelector(`.js-City-label--${id}`) !== null) {
-            let prevEl = target.previousElementSibling;
+          if (this.container.querySelector(`.js-City-label--${id}`) !== null) {
+            let prev = target.previousElementSibling;
 
             activeCity(id);
 
-            while (prevEl) {
-              if (prevEl.classList.contains('js-Scroll-step')) {
-                mapTitles.push(prevEl);
+            while (prev) {
+              if (prev.classList.contains('js-Scroll-step')) {
+                mapTitles.push(prev);
               }
 
-              prevEl = prevEl.previousElementSibling;
+              prev = prev.previousElementSibling;
             }
 
-            mapTitles.forEach(mapTitleEl => {
-              select(`.js-City-label--${mapTitleEl.id}`).classed('is-visited', true);
+            mapTitles.forEach(mapTitle => {
+              select(`.js-City-label--${mapTitle.id}`).classed('is-visited', true);
               selectAll(`.js-Route--${id}`).classed('is-active', true);
             });
           }
         } else if (direction === 'up') {
-          if (this.containerEl.querySelector(`.js-City-label--${id}`) !== null) {
-            let nextEl = target.nextElementSibling;
+          if (this.container.querySelector(`.js-City-label--${id}`) !== null) {
+            let next = target.nextElementSibling;
 
             activeCity(id);
 
-            while (nextEl) {
-              if (nextEl.classList.contains('js-Scroll-step')) {
-                mapTitles.push(nextEl);
+            while (next) {
+              if (next.classList.contains('js-Scroll-step')) {
+                mapTitles.push(next);
               }
 
-              nextEl = nextEl.nextElementSibling;
+              next = next.nextElementSibling;
             }
 
-            mapTitles.forEach(mapTitleEl => {
-              const nextId = mapTitleEl.id;
+            mapTitles.forEach(mapTitle => {
+              const nextId = mapTitle.id;
 
               select(`.js-City-label--${nextId}`).classed('is-visited', false);
               selectAll(`.js-Route--${nextId}`).classed('is-active', false);
@@ -159,16 +159,16 @@ class Scrollmap {
         }
       })
       .onContainerEnter(() => {
-        this.graphicEl.classList.add('is-fixed');
-        this.graphicEl.classList.remove('is-bottom');
+        this.graphic.classList.add('is-fixed');
+        this.graphic.classList.remove('is-bottom');
       })
       .onContainerExit(response => {
-        this.graphicEl.classList.remove('is-fixed');
-        this.graphicEl.classList.toggle('is-bottom', response.direction === 'down');
+        this.graphic.classList.remove('is-fixed');
+        this.graphic.classList.toggle('is-bottom', response.direction === 'down');
       });
 
     window.addEventListener('resize', scroller.resize());
   }
-}
+};
 
 export default Scrollmap;

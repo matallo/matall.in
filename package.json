@@ -13,6 +13,7 @@
     "build": "NODE_ENV=production gulp"
   },
   "jest": {
+    "collectCoverageFrom": ["app/_js/{,components/}*.js"],
     "moduleDirectories": ["node_modules"]
   },
   "repository": {
