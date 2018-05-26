@@ -6,5 +6,5 @@
     "jest": true,
     "node": true
   },
-  "extends": "airbnb-base"
+  "extends": ["airbnb-base", "prettier"]
 }

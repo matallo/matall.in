@@ -37,8 +37,7 @@ class Scrollmap {
       .center(this.scrollmapCenter)
       .fitSize([width, height], feature(this.scrollmapFile, country));
 
-    const path = geoPath()
-      .projection(projection);
+    const path = geoPath().projection(projection);
 
     svg
       .selectAll('.Country')
@@ -81,8 +80,8 @@ class Scrollmap {
       .attr('transform', d => `translate(${projection(d.geometry.coordinates)})`)
       .text(d => (d.properties.label ? d.properties.name : ''))
       .attr('dy', '1.5em')
-      .attr('dx', (d, i, j) => (j[i].getBoundingClientRect().width / 2) * -1)
-      .on('click', (d) => {
+      .attr('dx', (d, i, j) => j[i].getBoundingClientRect().width / 2 * -1)
+      .on('click', d => {
         this.containerEl.querySelector(`#${d.properties.slug}`).scrollIntoView({
           behavior: 'smooth',
         });
@@ -94,7 +93,7 @@ class Scrollmap {
   initScroller() {
     const scroller = scrollama();
 
-    const activeCity = (id) => {
+    const activeCity = id => {
       selectAll('.js-City').classed('is-active', false);
       select(`.js-City--${id}`).classed('is-active', true);
 
@@ -111,7 +110,7 @@ class Scrollmap {
         offset: 0.5,
         debug: false,
       })
-      .onStepEnter((response) => {
+      .onStepEnter(response => {
         const { direction } = response;
         const target = response.element;
         const { id } = target;
@@ -131,7 +130,7 @@ class Scrollmap {
               prevEl = prevEl.previousElementSibling;
             }
 
-            mapTitles.forEach((mapTitleEl) => {
+            mapTitles.forEach(mapTitleEl => {
               select(`.js-City-label--${mapTitleEl.id}`).classed('is-visited', true);
               selectAll(`.js-Route--${id}`).classed('is-active', true);
             });
@@ -150,7 +149,7 @@ class Scrollmap {
               nextEl = nextEl.nextElementSibling;
             }
 
-            mapTitles.forEach((mapTitleEl) => {
+            mapTitles.forEach(mapTitleEl => {
               const nextId = mapTitleEl.id;
 
               select(`.js-City-label--${nextId}`).classed('is-visited', false);
@@ -163,7 +162,7 @@ class Scrollmap {
         this.graphicEl.classList.add('is-fixed');
         this.graphicEl.classList.remove('is-bottom');
       })
-      .onContainerExit((response) => {
+      .onContainerExit(response => {
         this.graphicEl.classList.remove('is-fixed');
         this.graphicEl.classList.toggle('is-bottom', response.direction === 'down');
       });
