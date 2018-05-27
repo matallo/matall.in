@@ -22,18 +22,18 @@ const { reload } = browserSync;
 const imageminJpegtran = require('imagemin-jpegtran');
 const imageminPngquant = require('imagemin-pngquant');
 
-gulp.task('rev-assets', () => gulp.src([
-  'dist/css/{,*/}*.css{,.map}',
-  'dist/js/{,*/}*.js{,.map}',
-], { base: 'dist/' })
-  .pipe(gulp.dest('dist/'))
-  .pipe(rev())
-  .pipe(gulp.dest('dist/'))
-  .pipe(rev.manifest())
-  .pipe(gulp.dest('dist/')));
+gulp.task('rev-assets', () =>
+  gulp
+    .src(['dist/css/{,*/}*.css{,.map}', 'dist/js/{,*/}*.js{,.map}'], { base: 'dist/' })
+    .pipe(gulp.dest('dist/'))
+    .pipe(rev())
+    .pipe(gulp.dest('dist/'))
+    .pipe(rev.manifest())
+    .pipe(gulp.dest('dist/')),
+);
 
 gulp.task('replace-assets', () => {
-  const replaceJsAndCssIfMap = (filename) => {
+  const replaceJsAndCssIfMap = filename => {
     if (filename.indexOf('.map') > -1) {
       return filename.replace('js/', '').replace('css/', '');
     }
@@ -41,54 +41,73 @@ gulp.task('replace-assets', () => {
     return filename;
   };
 
-  return gulp.src(['dist/**/*.{js,css,html}'])
-    .pipe(revReplace({
-      manifest: gulp.src('./dist/rev-manifest.json'),
-      replaceInExtensions: ['.js', '.css', '.html'],
-      modifyUnreved: replaceJsAndCssIfMap,
-      modifyReved: replaceJsAndCssIfMap,
-    }))
+  return gulp
+    .src(['dist/**/*.{js,css,html}'])
+    .pipe(
+      revReplace({
+        manifest: gulp.src('./dist/rev-manifest.json'),
+        replaceInExtensions: ['.js', '.css', '.html'],
+        modifyUnreved: replaceJsAndCssIfMap,
+        modifyReved: replaceJsAndCssIfMap,
+      }),
+    )
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('critical', () => gulp.src([
-  'dist/**/index.html',
-  '!dist/flights/index.html',
-])
-  .pipe(critical({ base: 'dist/', inline: true }))
-  .on('error', (err) => {
-    log(err.message);
-  })
-  .pipe(gulp.dest('dist/')));
+gulp.task('critical', () =>
+  gulp
+    .src(['dist/**/index.html', '!dist/flights/index.html'])
+    .pipe(critical({ base: 'dist/', inline: true }))
+    .on('error', err => {
+      log(err.message);
+    })
+    .pipe(gulp.dest('dist/')),
+);
 
-gulp.task('html', () => gulp.src('dist/**/*.html')
-  .pipe(plugins.if(/\.html$/, plugins.htmlmin({
-    collapseWhitespace: true,
-    minifyCSS: true,
-    minifyJS: { compress: { drop_console: true } },
-    processConditionalComments: true,
-    removeComments: true,
-    removeEmptyAttributes: true,
-    removeScriptTypeAttributes: true,
-    removeStyleLinkTypeAttributes: true,
-  })))
-  .pipe(gulp.dest('dist/')));
+gulp.task('html', () =>
+  gulp
+    .src('dist/**/*.html')
+    .pipe(
+      plugins.if(
+        /\.html$/,
+        plugins.htmlmin({
+          collapseWhitespace: true,
+          minifyCSS: true,
+          minifyJS: { compress: { drop_console: true } },
+          processConditionalComments: true,
+          removeComments: true,
+          removeEmptyAttributes: true,
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+        }),
+      ),
+    )
+    .pipe(gulp.dest('dist/')),
+);
 
-gulp.task('imagemin', () => gulp.src('dist/img/**/*.{gif,jpeg,jpg,png,svg}')
-  .pipe(plugins.cache(plugins.imagemin([
-    imageminJpegtran({ progressive: true }),
-    imageminPngquant({ quality: '65-80' }),
-  ])))
-  .pipe(gulp.dest('dist/')));
+gulp.task('imagemin', () =>
+  gulp
+    .src('dist/img/**/*.{gif,jpeg,jpg,png,svg}')
+    .pipe(
+      plugins.cache(
+        plugins.imagemin([
+          imageminJpegtran({ progressive: true }),
+          imageminPngquant({ quality: '65-80' }),
+        ]),
+      ),
+    )
+    .pipe(gulp.dest('dist/')),
+);
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('download', () => download([
-  'https://platform.twitter.com/widgets.js',
-  'https://production-assets.codepen.io/assets/embed/ei.js',
-  'https://www.google-analytics.com/analytics.js',
-])
-  .pipe(gulp.dest('app/_js/vendor/')));
+gulp.task('download', () =>
+  download([
+    'https://platform.twitter.com/widgets.js',
+    'https://production-assets.codepen.io/assets/embed/ei.js',
+    'https://www.google-analytics.com/analytics.js',
+  ]).pipe(gulp.dest('app/_js/vendor/')),
+);
 
 gulp.task('serve', () => {
   runSequence('clean', 'jekyll-serve', () => {
@@ -101,11 +120,7 @@ gulp.task('serve', () => {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.SourceMapDevToolPlugin({
           filename: '[file].map',
-          exclude: [
-            'js/html5shiv.js',
-            'js/vendor.js',
-            'js/webpack-hot-middleware.js',
-          ],
+          exclude: ['js/html5shiv.js', 'js/vendor.js', 'js/webpack-hot-middleware.js'],
         }),
       ],
     });
@@ -127,17 +142,11 @@ gulp.task('serve', () => {
       reloadDebounce: 2000,
     });
 
-    gulp.watch([
-      'app/**/*.html',
-      'app/img/**/*',
-    ], ['jekyll-serve']);
+    gulp.watch(['app/**/*.html', 'app/img/**/*'], ['jekyll-serve']);
 
-    gulp.watch([
-      'app/_scss/**/*.scss',
-      'app/_js/**/*.js',
-      'dist/**/*.html',
-      'dist/img/**/*',
-    ]).on('change', reload);
+    gulp
+      .watch(['app/_scss/**/*.scss', 'app/_js/**/*.js', 'dist/**/*.html', 'dist/img/**/*'])
+      .on('change', reload);
   });
 });
 
@@ -151,23 +160,31 @@ gulp.task('serve:dist', ['default'], () => {
   });
 });
 
-gulp.task('jekyll-serve', done => childProcess.spawn('bundle', ['exec', 'jekyll', 'build', '--incremental'], { stdio: 'inherit' })
-  .on('close', () => {
-    done();
-  })
-  .on('error', (err) => {
-    log(err);
-  }));
+gulp.task('jekyll-serve', done =>
+  childProcess
+    .spawn('bundle', ['exec', 'jekyll', 'build', '--incremental'], { stdio: 'inherit' })
+    .on('close', () => {
+      done();
+    })
+    .on('error', err => {
+      log(err);
+    }),
+);
 
-gulp.task('jekyll-build', done => childProcess.spawn('bundle', ['exec', 'jekyll', 'build', '--config', '_config.yml,_config-prod.yml'], { stdio: 'inherit' })
-  .on('close', () => {
-    done();
-  })
-  .on('error', (err) => {
-    log(err);
-  }));
+gulp.task('jekyll-build', done =>
+  childProcess
+    .spawn('bundle', ['exec', 'jekyll', 'build', '--config', '_config.yml,_config-prod.yml'], {
+      stdio: 'inherit',
+    })
+    .on('close', () => {
+      done();
+    })
+    .on('error', err => {
+      log(err);
+    }),
+);
 
-gulp.task('webpack-build', (done) => {
+gulp.task('webpack-build', done => {
   const myConfig = merge(webpackConfig, {
     mode: 'production',
     plugins: [
@@ -178,29 +195,42 @@ gulp.task('webpack-build', (done) => {
       }),
       new webpack.SourceMapDevToolPlugin({
         filename: '[file].map',
-        exclude: [
-          'js/html5shiv.js',
-          'js/polyfills.js',
-          'js/vendor.js',
-        ],
+        exclude: ['js/html5shiv.js', 'js/polyfills.js', 'js/vendor.js'],
       }),
     ],
   });
 
   webpack(myConfig, (err, stats) => {
     if (err) throw new PluginError('webpack-build', err);
-    log('[webpack-build]', stats.toString({
-      colors: true,
-    }));
+    log(
+      '[webpack-build]',
+      stats.toString({
+        colors: true,
+      }),
+    );
 
     done();
   });
 });
 
-gulp.task('build', (done) => {
-  runSequence('clean', 'download', ['jekyll-build', 'webpack-build'], 'critical', 'html', 'imagemin', 'rev-assets', 'replace-assets', done);
+gulp.task('build', done => {
+  runSequence(
+    'clean',
+    'download',
+    ['jekyll-build', 'webpack-build'],
+    'critical',
+    'html',
+    'imagemin',
+    'rev-assets',
+    'replace-assets',
+    done,
+  );
 });
 
-gulp.task('default', () => new Promise((resolve) => {
-  runSequence('build', resolve);
-}));
+gulp.task(
+  'default',
+  () =>
+    new Promise(resolve => {
+      runSequence('build', resolve);
+    }),
+);
