@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/matallo
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://matall.in
+  * I am matallo (https://keybase.io/matallo) on keybase.
+  * I have a public key with fingerprint 5CC0 A430 62EB 7044 E9C1  20AE 0AD6 01D5 6149 D3AF
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101145dced1703c7896ee5b0d7305ee4368f06cf1fe145286ae293e5a9ccabd538b0a",
+      "fingerprint": "5cc0a43062eb7044e9c120ae0ad601d56149d3af",
+      "host": "keybase.io",
+      "key_id": "0ad601d56149d3af",
+      "kid": "0101145dced1703c7896ee5b0d7305ee4368f06cf1fe145286ae293e5a9ccabd538b0a",
+      "uid": "b539898125105b8b17fb6cbe842dc700",
+      "username": "matallo"
+    },
+    "service": {
+      "hostname": "matall.in",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1527949729,
+  "expire_in": 157680000,
+  "prev": "179fe058adf4c03efb4f53cb6635c031925976cd851207eef2fe13da4928336c",
+  "seqno": 32,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.77
+Comment: https://keybase.io/crypto
+
+yMIkAnicrZJbSBVBGMePWUlCNyHSrroPVnaQ2Z2dvRwxKAoKiqSiMqvjzOzscfOc
+3XPZY1cvD6ZoFokmRSRUVhiCokFoWWYRgelDl4fA6EUS8UV8qOihmu3yEL02L8P3
+8fv/5/u++Z4tTPWlpwzNrQlduJZxKWXkSWvSV5LRef20QBzjpBA4LZSznxcLGyzh
+BsstQwgIQASiKCODMkNUAaSqpiuMIQIMFQLEmAwVzQQKNUWTcU7SFMwkHTKEdUox
+MRDUCMCCXzAtO8Ti0bhlu9wWUQqwDIEiMaICWWY6FSWAGcCGAkQDKaKsGxCbXFjm
+JDwFL47gBMu3HJ7jQfBXef/y/7nu5E87gqCu6ZooIREgohFRNYlCCdNkyaAqAB6Y
+YHEbRxinI9jF4bAjVPoFnqywKPPm6jXyF5Bv2VwXjTuuQ50wT5e5bjQR8GTuyajH
+HWck+NshSCzb4DPkigoWT1iOLQRETlLX8ixFJKm6rKuS7hfYiagVZ0HLI5CqaIAf
+7x1WwS1FVTcZQBo2TJkCyEwimwhSoigQ8VjUJaSrCjU0xD9EZcyU+ICggWVd0iBU
+qOD1FLMdIQAlXicOcc+EFbKxm4wzoXJ46PBcX0q6b/68Od5y+dIXLPmzcrQh7Rsc
+mOz4Wl81tujFo9fP793bsvLuudva++S3wMSHM6/eFdwajfW7Lb3L3qDIhXx6YKAz
+k3083K3Bxpupa/c05T6uuppx/mJOVe616R0560pl+b6btenZ+HBh0eV1W/3n/Ys7
+iyIzw1M9a3avqFkEeneOFx9LlkzgK91P7z4ezO67kVNQmX1j/FHfC7djQ1NbPZtO
+JSEjb7qr8G3kTtvD/tip9u0lPXlTM6XNDY1HYsOr5bar+7NOpc3mdZ0NjU22jRbE
++2Zzv8yr3exrCVc/Pfq5+uA+M0vYW3io9Urz/o91dds+Db4U20fWR8qqMx8oxat7
+SmaXb5z4/nrx0tiu7lqSs8r+AcanPWg=
+=VsSc
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/matallo
+
+==================================================================
