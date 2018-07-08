@@ -27,7 +27,7 @@ describe('Scrollmap', () => {
   });
 
   test('initializes correctly', () => {
-    expect(view.containerEl).toBeDefined();
+    expect(view.container).toBeDefined();
     expect(view.scrollmapFile).toBe(scrollmapFile);
     expect(view.scrollmapCenter).toBe(scrollmapCenter);
   });
