@@ -20,7 +20,7 @@ describe('Scrollmap', () => {
     scrollmapCenter = [101.3097594, 15.8565707];
 
     view = new Scrollmap({
-      containerEl: document.querySelector('.js-Scroll'),
+      container: document.querySelector('.js-Scroll'),
       scrollmapFile,
       scrollmapCenter,
     });
