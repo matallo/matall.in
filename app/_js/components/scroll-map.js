@@ -31,7 +31,7 @@ const Scrollmap = class Scrollmap {
       .attr('width', width)
       .attr('height', height);
 
-    const country = this.scrollmapFile.objects.country;
+    const { country } = this.scrollmapFile.objects;
 
     const projection = geoMercator()
       .center(this.scrollmapCenter)

@@ -6,19 +6,15 @@
   "scripts": {
     "precommit": "pretty-quick --staged",
     "lint": "yarn run lint:js && yarn run lint:css",
-    "lint:js": "eslint {gulpfile,webpack.config}.js app/_js/**/*.js __tests__/spec/**/*.js",
-    "lint:css": "stylelint 'app/css/**/*.scss'",
+    "lint:js": "eslint {gulpfile,webpack.config}.js app/_js/{**/,}*.js __tests__/spec/{**/,}*.js",
+    "lint:css": "stylelint 'app/css/{**/,}*.scss'",
     "test": "jest",
     "start": "gulp serve",
     "build": "NODE_ENV=production gulp"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "app/_js/{,components/}*.js"
-    ],
-    "moduleDirectories": [
-      "node_modules"
-    ]
+    "collectCoverageFrom": ["app/_js/{,components/}*.js"],
+    "moduleDirectories": ["node_modules"]
   },
   "repository": {
     "type": "git",
