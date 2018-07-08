@@ -1,5 +1,5 @@
+const postcssPresetEnv = require('postcss-preset-env');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const path = require('path');
 
@@ -9,25 +9,11 @@ module.exports = {
     story: ['./app/_js/story.js'],
     html5shiv: ['html5shiv'],
     polyfills: ['picturefill', 'smoothscroll', 'lazysizes'],
-    vendor: [
-      './app/_js/vendor/widgets.js',
-      './app/_js/vendor/ei.js',
-      './app/_js/vendor/analytics.js',
-    ],
   },
   output: {
     filename: 'js/[name].js',
     path: path.resolve(__dirname, 'dist/'),
     publicPath: '/',
-  },
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true,
-      }),
-    ],
   },
   module: {
     rules: [
@@ -47,17 +33,22 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              minimize: true,
               sourceMap: true,
             },
           },
           {
             loader: 'postcss-loader',
-            options: { sourceMap: true },
+            options: {
+              ident: 'postcss',
+              plugins: () => [postcssPresetEnv()],
+              sourceMap: true,
+            },
           },
           {
             loader: 'sass-loader',
-            options: { sourceMap: true },
+            options: {
+              sourceMap: true,
+            },
           },
         ],
       },

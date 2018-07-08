@@ -13,8 +13,12 @@
     "build": "NODE_ENV=production gulp"
   },
   "jest": {
-    "collectCoverageFrom": ["app/_js/{,components/}*.js"],
-    "moduleDirectories": ["node_modules"]
+    "collectCoverageFrom": [
+      "app/_js/{,components/}*.js"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ]
   },
   "repository": {
     "type": "git",
@@ -63,6 +67,7 @@
     "lazysizes": "^4.0.4",
     "mini-css-extract-plugin": "^0.4.1",
     "node-sass": "^4.9.2",
+    "optimize-css-assets-webpack-plugin": "^4.0.3",
     "picturefill": "^3.0.2",
     "plugin-error": "^1.0.1",
     "postcss-loader": "^2.1.5",
