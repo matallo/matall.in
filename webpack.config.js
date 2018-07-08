@@ -40,7 +40,14 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
-              plugins: () => [postcssPresetEnv()],
+              plugins: () => [
+                postcssPresetEnv({
+                  stage: 2,
+                  features: {
+                    'custom-media-queries': true,
+                  },
+                }),
+              ],
               sourceMap: true,
             },
           },

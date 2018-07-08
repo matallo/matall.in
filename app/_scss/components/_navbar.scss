@@ -1,5 +1,6 @@
-// Navbar
-// --------------------------------------------------
+/* ==========================================================================
+   #NAVBAR
+   ========================================================================== */
 
 .Navbar {
   height: 80px;
@@ -18,16 +19,16 @@
     margin-right: 0;
   }
 
-  @media (max-width: $sMedia--m) {
+  @media (--size-m) {
     margin-right: 20px;
   }
 }
 .Navbar-link {
   line-height: 80px;
-  color: $cTypo3;
-  transition: color .2s;
+  color: var(--color-typo3);
+  transition: color 0.2s;
 
   &:hover {
-    color: darken($cTypo3, 10%);
+    color: color(var(--color-typo3) shade(10%));
   }
 }

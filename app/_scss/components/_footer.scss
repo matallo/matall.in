@@ -1,11 +1,12 @@
-// Footer
-// --------------------------------------------------
+/* ==========================================================================
+   #FOOTER
+   ========================================================================== */
 
 .Footer {
   padding-top: 40px;
   padding-bottom: 40px;
 
-  @media (max-width: $sMedia--m) {
+  @media (--size-m) {
     text-align: center;
   }
 }
@@ -16,7 +17,7 @@
   padding-left: 40px;
   vertical-align: middle;
 
-  @media (max-width: $sMedia--m) {
+  @media (--size-m) {
     width: 100%;
     margin-top: 20px;
     padding-left: 0;
@@ -24,5 +25,5 @@
 }
 .Footer-credits {
   text-align: center;
-  color: $cTypo3;
+  color: var(--color-typo3);
 }

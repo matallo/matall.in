@@ -1,0 +1,23 @@
+/* ==========================================================================
+   #SIZES
+   ========================================================================== */
+
+:root {
+  --size-xxl: 1280px;
+  --size-xl: 1040px;
+  --size-l: 960px;
+  --size-m: 800px;
+  --size-s: 560px;
+}
+
+$viewports: (
+  size-xxl: 1280px,
+  size-xl: 1040px,
+  size-l: 960px,
+  size-m: 800px,
+  size-s: 560px,
+);
+
+@each $viewport, $breakpoint in $viewports {
+  @custom-media --#{$viewport} (max-width: #{$breakpoint});
+}

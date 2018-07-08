@@ -1,5 +1,6 @@
-// Content
-// --------------------------------------------------
+/* ==========================================================================
+   #CONTENT
+   ========================================================================== */
 
 .Offcanvas {
   overflow: hidden;
@@ -10,7 +11,7 @@
   margin-left: auto;
 }
 .Content--cGrey {
-  background: $cGrey4;
+  background: var(--color-grey4);
 }
 .Content-inner {
   padding-top: 60px;
@@ -20,7 +21,7 @@
   margin-left: 25%;
   margin-right: 25%;
 
-  @media (max-width: $sMedia--xl) {
+  @media (--size-xl) {
     margin-left: auto;
     margin-right: auto;
   }
@@ -33,7 +34,8 @@
       margin-top: 20px;
     }
   }
-  ul, ol {
+  ul,
+  ol {
     margin-left: 20px;
   }
   ul {
@@ -49,7 +51,9 @@
       margin-bottom: 0;
     }
 
-    > p, > ul, > ol {
+    > p,
+    > ul,
+    > ol {
       margin-top: 10px;
       margin-bottom: 0;
 
@@ -83,7 +87,7 @@
 .Content-subtitle {
   font-size: 21px;
   line-height: 25px;
-  color: $cTypo3;
+  color: var(--color-typo3);
 
   a {
     text-decoration: none;
@@ -94,5 +98,5 @@
   display: block;
   font-size: 15px;
   text-transform: uppercase;
-  color: $cTypo3;
+  color: var(--color-typo3);
 }

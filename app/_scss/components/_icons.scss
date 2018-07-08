@@ -1,5 +1,7 @@
-// Icon
-// --------------------------------------------------
+/* ==========================================================================
+   #ICON
+   ========================================================================== */
+
 .Icon {
   > svg {
     display: inline-block;
@@ -8,6 +10,7 @@
     height: 24px;
   }
 }
+
 $icon-sizes: (12, 24, 36);
 @each $size in $icon-sizes {
   .Icon--s#{$size} {
@@ -19,16 +22,16 @@ $icon-sizes: (12, 24, 36);
 .Icon--link {
   &:hover {
     .Icon-path {
-      fill: $cGrey1;
+      fill: var(--color-grey1);
     }
   }
 }
 .Icon-path {
-  fill: $cGrey2;
-  transition: fill .2s;
+  fill: var(--color-grey2);
+  transition: fill 0.2s;
 }
 .Icon--Twitter {
   .Icon-path {
-    fill: $cTwitter;
+    fill: var(--color-twitter);
   }
 }
