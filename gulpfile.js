@@ -7,12 +7,14 @@ const webpack = require('webpack');
 const browserSync = require('browser-sync').create();
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+
 const { reload } = browserSync;
 const download = require('gulp-download');
 const PluginError = require('plugin-error');
 const log = require('fancy-log');
 const critical = require('critical').stream;
 const gulpLoadPlugins = require('gulp-load-plugins');
+
 const plugins = gulpLoadPlugins();
 const imageminJpegtran = require('imagemin-jpegtran');
 const imageminPngquant = require('imagemin-pngquant');
