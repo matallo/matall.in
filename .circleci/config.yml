@@ -1,19 +1,6 @@
 version: 2
 jobs:
-  checkout:
-    docker:
-      - image: circleci/ruby:2.5-node-browsers
-    working_directory: ~/matall.in
-    steps:
-      - checkout
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
-      - save_cache:
-          key: v1-repo-{{ checksum ".circle-sha" }}
-          paths:
-            - ~/matall.in
-  dependencies_test_build:
+  build_and_test:
     docker:
       - image: circleci/ruby:2.5-node-browsers
         environment:
@@ -22,22 +9,14 @@ jobs:
     environment:
       - NODE_ENV: production
     steps:
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
+      - checkout
       - restore_cache:
-          keys:
-            - v1-repo-{{ checksum ".circle-sha" }}
+          key: v1-bundle-{{ checksum "Gemfile.lock" }}
       - restore_cache:
-          keys:
-            - v1-bundle-{{ checksum "Gemfile.lock" }}
-      - restore_cache:
-          keys:
-            - v1-yarn-{{ checksum "yarn.lock" }}
-            - v1-yarn-
+          key: v1-yarn-{{ checksum "yarn.lock" }}
       - run: bundle install --path vendor/bundle
       - run: sudo yarn global add gulp-cli
-      - run: yarn
+      - run: yarn install
       - run:
           name: Run linter
           command: yarn run lint
@@ -54,25 +33,24 @@ jobs:
               JEKYLL_ENV=staging yarn run build
             fi
       - save_cache:
-          key: v1-assets-{{ checksum ".circle-sha" }}
+          key: v1-bundle-{{ checksum "Gemfile.lock" }}
           paths:
-            - dist
+            - ~/matall.in/vendor/bundle
+      - save_cache:
+          key: v1-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/matall.in/node_modules
+      - save_cache:
+          key: v1-assets-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/matall.in/dist
   deploy:
     machine:
       enabled: true
     working_directory: ~/matall.in
-    environment:
-      - NODE_ENV: production
     steps:
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
       - restore_cache:
-          keys:
-            - v1-repo-{{ checksum ".circle-sha" }}
-      - restore_cache:
-          keys:
-            - v1-assets-{{ checksum ".circle-sha" }}
+          key: v1-assets-{{ .Environment.CIRCLE_SHA1 }}
       - run:
           name: Deploy to S3
           command: |
@@ -87,10 +65,7 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - checkout
-      - dependencies_test_build:
-          requires:
-            - checkout
+      - build_and_test
       - deploy:
           requires:
-            - dependencies_test_build
+            - build_and_test
