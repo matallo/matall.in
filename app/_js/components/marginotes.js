@@ -1,4 +1,4 @@
-export const Marginotes = class Marginotes {
+const Marginotes = class Marginotes {
   constructor(options) {
     if (options.container === undefined) {
       throw new Error('container option is required');
@@ -15,7 +15,7 @@ export const Marginotes = class Marginotes {
   initEvents() {
     const footNotes = this.container.querySelectorAll('.js-Footnote');
 
-    footNotes.forEach((footNote) => {
+    footNotes.forEach(footNote => {
       footNote.addEventListener('mouseover', event => this.onMouseoverFootnote(event));
       footNote.addEventListener('mouseout', event => this.onMouseoutFootnote(event));
     });
@@ -43,3 +43,5 @@ export const Marginotes = class Marginotes {
     }, 201);
   }
 };
+
+export default Marginotes;

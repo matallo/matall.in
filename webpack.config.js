@@ -8,11 +8,7 @@ module.exports = {
     app: ['./app/_js/index.js', './app/_scss/main.scss'],
     story: ['./app/_js/story.js'],
     html5shiv: ['html5shiv'],
-    polyfills: [
-      'picturefill',
-      'smoothscroll',
-      'lazysizes',
-    ],
+    polyfills: ['picturefill', 'smoothscroll', 'lazysizes'],
     vendor: [
       './app/_js/vendor/widgets.js',
       './app/_js/vendor/ei.js',
@@ -41,21 +37,29 @@ module.exports = {
         use: {
           loader: 'babel-loader',
         },
-      }, {
+      },
+      {
         test: /\.scss$/,
-        use: [{
-          loader: MiniCssExtractPlugin.loader,
-        }, {
-          loader: 'css-loader',
-          options: {
-            minimize: true,
-            sourceMap: true,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
           },
-        }, {
-          loader: 'postcss-loader', options: { sourceMap: true },
-        }, {
-          loader: 'sass-loader', options: { sourceMap: true },
-        }],
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: true,
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: { sourceMap: true },
+          },
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: true },
+          },
+        ],
       },
     ],
   },
