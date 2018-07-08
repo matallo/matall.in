@@ -1,11 +1,12 @@
-// Header
-// --------------------------------------------------
+/* ==========================================================================
+   #HEADER
+   ========================================================================== */
 
 .Header {
   position: relative;
   height: 500px;
 
-  @media (max-width: $sMedia--m) {
+  @media (--size-m) {
     height: 300px;
   }
 }
@@ -21,16 +22,16 @@
   background-position: center;
 }
 .Header-background--black {
-  background: rgba(#000, .2);
+  background: rgba(#000, 0.2);
 }
 .Header-icon {
   position: absolute;
   top: 20px;
-  opacity: .6;
-  transition: all .2s;
+  opacity: 0.6;
+  transition: all 0.2s;
 
   &:hover {
-    opacity: .8;
+    opacity: 0.8;
   }
 }
 .Header-icon--back {

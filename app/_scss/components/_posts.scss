@@ -1,5 +1,7 @@
-// Posts
-// --------------------------------------------------
+/* ==========================================================================
+   #POSTS
+   ========================================================================== */
+
 .Posts-item {
   margin-bottom: 40px;
 
@@ -7,13 +9,13 @@
     margin-bottom: 0;
   }
 
-  @media (max-width: $sMedia--m) {
+  @media (--size-m) {
     margin-bottom: 20px;
   }
 }
 .Posts-img {
   display: block;
-  background: $cGrey4;
+  background: var(--color-grey4);
   overflow: hidden;
   border-radius: 3px;
   transform: translate3d(0, 0, 0);
@@ -24,12 +26,12 @@
     }
   }
 
-  @media (max-width: $sMedia--s) {
+  @media (--size-s) {
     margin-bottom: 20px;
   }
 
   img {
-    transition: transform .2s ease-out;
+    transition: transform 0.2s ease-out;
   }
 }
 .Post-title {
@@ -37,7 +39,7 @@
   font-size: 24px;
   line-height: 30px;
 
-  @media (max-width: $sMedia--m) {
+  @media (--size-m) {
     font-size: 18px;
     line-height: 22px;
   }

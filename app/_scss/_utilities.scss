@@ -1,22 +1,23 @@
-// Utilities
-// --------------------------------------------------
+/* ==========================================================================
+   #UTILITIES
+   ========================================================================== */
 
 .u-inner {
   @include clearfix;
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: $sMedia--m;
+  max-width: var(--size-m);
   margin-right: auto;
   margin-left: auto;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: var(--gap);
+  padding-left: var(--gap);
 }
 .u-inner--l {
-  max-width: $sMedia--l;
+  max-width: var(--size-l);
 }
 .u-inner--xxl {
-  max-width: $sMedia--xxl;
+  max-width: var(--size-xxl);
 }
 .u-strike {
   text-decoration: line-through;
@@ -50,7 +51,6 @@
   height: 0;
   display: block;
   width: 100%;
-  /* padding-bottom is calculated and rendered in to HTML */
 }
 .ratio-box {
   img,
@@ -87,7 +87,7 @@
   .r-#{$viewport}-u-hide {
     display: block;
 
-    @media (max-width: $breakpoint) {
+    @media (--#{$viewport}) {
       display: none;
     }
   }
@@ -95,7 +95,7 @@
   .r-#{$viewport}-u-show {
     display: none;
 
-    @media (max-width: $breakpoint) {
+    @media (--#{$viewport}) {
       display: block;
     }
   }

@@ -1,5 +1,6 @@
-// Stats
-// --------------------------------------------------
+/* ==========================================================================
+   #STATS
+   ========================================================================== */
 
 .Stats {
   text-align: right;
@@ -8,7 +9,7 @@
   display: inline-block;
   margin-left: 40px;
   text-align: left;
-  text-shadow: 0 2px 0 rgba(#000, .3);
+  text-shadow: 0 2px 0 rgba(#000, 0.3);
 
   &:first-child {
     margin-left: 0;
@@ -20,7 +21,7 @@
   font-weight: 300;
   font-size: 36px;
 
-  @media (max-width: $sMedia--m) {
+  @media (--size-m) {
     font-size: 30px;
     line-height: 36px;
   }

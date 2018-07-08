@@ -1,21 +1,22 @@
-// Buttons
-// --------------------------------------------------
+/* ==========================================================================
+   #BUTTONS
+   ========================================================================== */
 
 .Button {
   display: inline-block;
-  border: 1px solid $cGrey2;
+  border: 1px solid var(--color-grey2);
   text-align: center;
   white-space: nowrap;
   line-height: 1;
-  color: $cTypo3;
+  color: var(--color-typo3);
   border-radius: 3px;
-  transition: all .2s;
+  transition: all 0.2s;
   outline: none;
 
   &:hover {
     text-decoration: none;
-    border-color: $cGrey1;
-    color: darken($cTypo3, 10%);
+    border-color: var(--color-grey1);
+    color: var(--color-typo3--hover);
   }
 
   > span {

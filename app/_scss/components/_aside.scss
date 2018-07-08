@@ -1,5 +1,6 @@
-// Aside
-// --------------------------------------------------
+/* ==========================================================================
+   #ASIDE
+   ========================================================================== */
 
 .Aside {
   iframe {
@@ -18,15 +19,15 @@
 }
 .Aside--right,
 .Aside--left {
-  @media (max-width: $sMedia--xl) {
+  @media (--size-xl) {
     float: none;
     margin-top: 40px;
     margin-bottom: 40px;
     margin-left: 0;
-    width: $sMedia--s;
+    width: var(--size-s);
   }
 
-  @media (max-width: $sMedia--s) {
+  @media (--size-s) {
     width: 100%;
   }
 }
@@ -34,21 +35,21 @@
   width: 400px;
   max-width: none;
 
-  @media (max-width: $sMedia--xl) {
+  @media (--size-xl) {
     width: 100%;
   }
 }
 .Caption {
   margin-bottom: 0;
   padding: 10px 0;
-  border-bottom: 1px solid $cGrey3;
+  border-bottom: 1px solid var(--color-grey3);
   font-size: 13px;
-  color: $cTypo3;
+  color: var(--color-typo3);
 }
 .Caption--aside {
   width: 400px;
 
-  @media (max-width: $sMedia--xl) {
+  @media (--size-xl) {
     width: 100%;
   }
 }

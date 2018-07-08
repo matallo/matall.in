@@ -1,11 +1,12 @@
-// Story
-// --------------------------------------------------
+/* ==========================================================================
+   #STORY
+   ========================================================================== */
 
 .Story {
   display: block;
   position: relative;
   margin-bottom: 40px;
-  background: $cGrey4;
+  background: var(--color-grey4);
   overflow: hidden;
 
   &:hover {
@@ -22,14 +23,14 @@
     }
   }
 
-  @media (max-width: $sMedia--m) {
+  @media (--size-m) {
     margin-bottom: 20px;
   }
 }
 .Story-inner {
   z-index: 30;
   opacity: 1;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .Story-inner,
 .Story-gradient {
@@ -41,8 +42,8 @@
 }
 .Story-gradient {
   z-index: 20;
-  background: rgba(#000, .2);
-  transition: all .2s ease-in-out;
+  background: rgba(#000, 0.2);
+  transition: all 0.2s ease-in-out;
 }
 .Story-header {
   text-align: center;
@@ -50,21 +51,21 @@
 .Story-title,
 .Story-description {
   font-weight: 400;
-  text-shadow: 0 2px 0 rgba(#000, .3);
+  text-shadow: 0 2px 0 rgba(#000, 0.3);
 }
 .Story-title {
   margin-bottom: 10px;
   font-size: 21px;
   line-height: 25px;
-  color: #FFF;
+  color: #fff;
 }
 .Story-description {
-  color: rgba(#fff, .6);
+  color: rgba(#fff, 0.6);
   font-size: 15px;
   line-height: 18px;
   text-transform: uppercase;
 }
 .Story-img {
   z-index: 10;
-  transition: transform .2s ease-out;
+  transition: transform 0.2s ease-out;
 }

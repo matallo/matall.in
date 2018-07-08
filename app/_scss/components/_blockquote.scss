@@ -1,5 +1,6 @@
-// Blockquote
-// --------------------------------------------------
+/* ==========================================================================
+   #BLOCKQUOTE
+   ========================================================================== */
 
 .Pullquote {
   margin: 40px;
@@ -7,7 +8,7 @@
   line-height: 30px;
   text-align: center;
 
-  @media (max-width: $sMedia--m) {
+  @media (--size-m) {
     margin: 40px 20px;
   }
 
@@ -16,7 +17,7 @@
     font-weight: 700;
     font-size: 31px;
     line-height: 0;
-    color: $cGrey3;
+    color: var(--color-grey3);
 
     &:first-child {
       left: -5px;
@@ -27,7 +28,7 @@
   }
 }
 .Blockquote {
-  border-left: 3px solid $cGrey3;
+  border-left: 3px solid var(--color-grey3);
   padding-left: 20px;
   padding-bottom: 3px;
   font-style: italic;

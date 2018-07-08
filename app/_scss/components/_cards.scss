@@ -1,17 +1,18 @@
-// Card
-// --------------------------------------------------
+/* ==========================================================================
+   #CARD
+   ========================================================================== */
 
 .Card-title {
   margin-bottom: 10px;
-  transition: color .2s;
+  transition: color 0.2s;
 }
 .Card-link {
   font-weight: 400;
-  color: $cTypo1;
+  color: var(--color-typo1);
   text-decoration: none;
 
   &:hover {
-    color: darken($cTypo1, 5%);
+    color: color(var(--color-typo1) shade(5%));
   }
 }
 .Card-subtitle,
@@ -22,8 +23,8 @@
   margin-bottom: 5px;
   font-size: 13px;
   text-transform: uppercase;
-  color: $cTypo3;
+  color: var(--color-typo3);
 }
 .Card-description {
-  color: $cTypo2;
+  color: var(--color-typo2);
 }

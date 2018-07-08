@@ -1,5 +1,6 @@
-// Map
-// --------------------------------------------------
+/* ==========================================================================
+   #MAP
+   ========================================================================== */
 
 .Map {
   position: absolute;
@@ -17,17 +18,17 @@
     top: auto;
   }
 
-  @media (max-width: $sMedia--xxl - 1px) {
+  @media (max-width: var(--size-xxl) - 1px) {
     display: none;
   }
 }
 .Country {
-  fill: $cGrey4;
+  fill: var(--color-grey4);
 }
 .Route {
   fill: none;
-  stroke: $cGrey1;
-  stroke-dasharray: 2,2;
+  stroke: var(--color-grey1);
+  stroke-dasharray: 2, 2;
   stroke-linejoin: round;
   stroke-linecap: round;
 
@@ -37,8 +38,8 @@
 }
 .Route--story {
   display: none;
-  stroke: $cGold;
-  stroke-opacity: .6;
+  stroke: var(--color-gold);
+  stroke-opacity: 0.6;
   stroke-width: 3px;
 
   &.is-active {
@@ -46,24 +47,24 @@
   }
 }
 .City {
-  fill: $cTypo3;
+  fill: var(--color-typo3);
 
   &.is-active {
-    fill: $cTypo1;
+    fill: var(--color-typo1);
   }
 }
 .City-label {
   font-size: 10px;
-  fill: $cTypo3;
-  text-shadow: 0 1px 0 #FFF, 0 -1px 0 #FFF, 1px 0 0 #FFF, -1px 0 0 #FFF;
+  fill: var(--color-typo3);
+  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
   cursor: pointer;
 
   &.is-visited {
-    fill: $cTypo1;
+    fill: var(--color-typo1);
   }
 
   &.is-active {
-    fill: $cTypo1;
+    fill: var(--color-typo1);
     font-weight: 600;
   }
 }

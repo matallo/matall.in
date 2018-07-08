@@ -10,11 +10,11 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  color: $cTypo2;
-  font-weight: $font-weight-base;
-  font-size: $font-size-base;
-  line-height: $line-height-base;
-  font-family: $font-family-base;
+  color: var(--color-typo2);
+  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  font-family: var(--font-family-base);
 }
 h1,
 h2,
@@ -39,11 +39,11 @@ ol {
   }
 }
 a {
-  color: $cRed2;
+  color: var(--color-red);
   transition: color 0.2s;
 
   &:hover {
-    color: $cRed1;
+    color: var(--color-red--hover);
   }
 }
 strong {
@@ -60,7 +60,7 @@ button {
   border: 0;
   outline: none;
   cursor: pointer;
-  font-family: $font-family-base;
+  font-family: var(--font-family-base);
 }
 img,
 svg {
@@ -82,9 +82,9 @@ pre,
 code {
   font-size: 13px;
   font-family: 'PT Mono', monospace;
-  border: 1px solid $cGrey2;
+  border: 1px solid var(--color-grey2);
   border-radius: 3px;
-  background-color: $cGrey4;
+  background-color: var(--color-grey4);
 }
 code {
   padding: 1px 5px;
