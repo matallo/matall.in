@@ -10,6 +10,8 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const { reload } = browserSync;
 const download = require('gulp-download');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PluginError = require('plugin-error');
 const log = require('fancy-log');
 const critical = require('critical').stream;
@@ -22,9 +24,6 @@ const rev = require('gulp-rev');
 const revReplace = require('gulp-rev-replace');
 
 const webpackConfig = require('./webpack.config.js');
-
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 gulp.task('rev-assets', () =>
   gulp
