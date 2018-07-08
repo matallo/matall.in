@@ -28,34 +28,120 @@ category: development
 
 <p>I have not been able to answer this yet, nor I don't have a silver bullet, but there are some possible solutions. Of course, there's some degree of compromise in every of them.</p>
 
-<h3 class="Title Title--h3 Content-title Content-title--h3 Title--cTypo3">Architecture</h3>
+<h3 class="Title Title--h3 Content-title Content-title--h3 Title--cTypo3">Styleguide</h3>
 
 <p>Most of the complaints CSS (unfairly) receives are related to how easy is to end up with a mess of files, classes, and <code>!important</code>, however there are some guidelines I like to follow to avoid these situations.</p>
 
 <ul>
-  <li>Use SCSS as preprocessor. I feel OK using CSS, but the support for mixins, and imports completely increases the productivity working with stylesheets. I'm not totally sold on SASS syntax, though.</li>
-  <li>Use a <a href="https://smacss.com/" title="Scalable and Modular Architecture for CSS">SMACSS</a> approach for file structure, categorizing CSS rules in <strong>Base, Components, and Layout</strong>.</li>
-  <li>Use <a href="http://meyerweb.com/eric/tools/css/reset/">Reset CSS</a>, along with our own base styles.</li>
-  <li>Use <a href="https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md">SuitCSS</a> naming conventions, or <a href="https://en.bem.info/methodology/quick-start/">BEM</a>, creating reusable, composable components.</li>
-  <li>Avoid unnecessary nesting. The use of <code>@extend</code> can cause similar effects, bloating your files.</li>
-  <li>Use <a href="https://github.com/postcss/postcss">PostCSS</a> for vendor prefixes.</li>
+  <li>
+    <p><strong>Architecture</strong><br />Use a <a href="https://smacss.com/" title="Scalable and Modular Architecture for CSS">SMACSS</a> approach for file structure, categorizing CSS rules in <strong>Variables, Mixins, Base, Components, Layout, and Utilities</strong>.</p>
+  </li>
+  <li>
+    <p><strong>Preprocessors</strong><br /> Use SCSS as preprocessor. I feel OK using CSS, but the support for mixins, and imports completely increases the productivity working with stylesheets. I'm not totally sold on SASS syntax, though.</p>
+  </li>
+  <li>
+    <p><strong>Naming</strong><br />Use <a href="https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md">SuitCSS</a> naming conventions, or <a href="https://en.bem.info/methodology/quick-start/">BEM</a>, creating reusable, composable components.</p>
+  </li>
+  <li>
+    <p><strong>Specificity</strong><br />Avoid unnecessary nesting. The use of <code>@extend</code> can cause unintended consequences, bloating your files, and adding specificity to your selectors.</p>
+  </li>
+  <li>
+    <p><strong>Browsers</strong><br />Use <a href="http://meyerweb.com/eric/tools/css/reset/">Reset CSS</a>, along with our own default styles. For vendor prefixes use <a href="https://github.com/postcss/postcss">PostCSS</a>.</p>
+  </li>
 </ul>
 
-<p class="u-txt-center">
-  <picture>
-    <source media="(min-width: 560px)" srcset="/img/posts/css-carto/css-carto.png 1x">
-    <source srcset="/img/posts/css-carto/css-carto@mobile.png 1x">
-    <img src="/img/posts/css-carto/css-carto.png" alt="SCSS files" width="640" height="480" />
-  </picture>
-</p>
+<pre><code>. main.scss
+├── _base.scss
+├── _components.scss
+├── _layout.scss
+├── _mixins.scss
+├── _utilities.scss
+├── _variables.scss
+├── base
+│   ├── _defaults.scss
+│   └── _reset.scss
+├── components
+│   ├── _aside.scss
+│   ├── _buttons.scss
+│   ├── _dialogs.scss
+│   ├── _dropdowns.scss
+│   ├── _footer.scss
+│   ├── _grid.scss
+│   ├── _header.scss
+│   ├── _icons.scss
+│   ├── _navbar.scss
+│   ├── _offcanvas.scss
+│   ├── _section.scss
+│   ├── _separator.scss
+│   ├── _subheader.scss
+│   └── _titles.scss
+├── layout
+│   └── _home.scss
+├── main.scss
+├── mixins
+│   └── _clearfix.scss
+└── variables
+    ├── _colors.scss
+    ├── _sizes.scss
+    └── _typography.scss
+</code></pre>
 
 <p>The <code>main.scss</code> file is the entry point, and is the only file which doesn't start with underscore:</p>
 
-<script src="https://gist.github.com/matallo/adb09592c227503c3bddde0d14bf6c29.js"></script>
+<pre><code>/* ==========================================================================
+   #MAIN
+   ========================================================================== */
+
+/* Non-rendering scss
+   ========================================================================== */
+
+@import "variables";
+@import "mixins";
+
+/* Base
+   ========================================================================== */
+
+@import "base";
+
+/* Components
+   ========================================================================== */
+
+@import "components";
+
+/* Layout
+   ========================================================================== */
+
+@import "layout";
+
+/* Utilities
+   ========================================================================== */
+
+@import "utilities";
+</code></pre>
 
 <p>By requireing the non-rendering SCSS at the top of the file we make available the variables and mixins to the rest of the files.</p>
 
 <p>Similar files (such components) can be grouped in folders. I prefer to require every file in these folders explicitly.</p>
+
+<pre><code>/* ==========================================================================
+   #COMPONENTS
+   ========================================================================== */
+
+@import "components/aside";
+@import "components/buttons";
+@import "components/dialogs";
+@import "components/dropdowns";
+@import "components/footer";
+@import "components/grid";
+@import "components/header";
+@import "components/icons";
+@import "components/navbar";
+@import "components/offcanvas";
+@import "components/section";
+@import "components/separator";
+@import "components/subheader";
+@import "components/titles";
+</code></pre>
 
 <p>Minification is applied to the entry files, and sourcemaps are created. Finally optimization tasks are performed like file revision, and gzipping.</p>
 
@@ -88,7 +174,8 @@ category: development
   <li><a href="http://primercss.io/">Primer by GitHub</a></li>
   <li><a href="https://docs.vanillaframework.io/">Vanilla by Canonical</a></li>
   <li><a href="https://www.mapbox.com/base/">Base by Mapbox</a></li>
-  <li><a href="http://purple3.herokuapp.com/">Purple3 by Heroku</a></li>
+  <li><a href="https://design.herokai.com/purple3">Purple3 by Heroku</a></li>
+  <li><a href="https://frontend.18f.gov/css/">18F Front-End Guide</a></li>
 </ul>
 
 <p>Do you know any more examples or want to share your experience?</p>
