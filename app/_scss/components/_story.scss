@@ -11,10 +11,10 @@
   &:hover {
     .Story-gradient {
       z-index: 20;
-      background: rgba(#000, .4);
+      background: rgba(#000, 0);
     }
     .Story-inner {
-      opacity: 1;
+      opacity: 0;
       transform: scale(1.05);
     }
     .Story-img {
@@ -28,7 +28,7 @@
 }
 .Story-inner {
   z-index: 30;
-  opacity: 0;
+  opacity: 1;
   transition: all .2s ease-in-out;
 }
 .Story-inner,
@@ -41,7 +41,7 @@
 }
 .Story-gradient {
   z-index: 20;
-  background: rgba(#000, .0);
+  background: rgba(#000, .2);
   transition: all .2s ease-in-out;
 }
 .Story-header {
@@ -54,26 +54,15 @@
 }
 .Story-title {
   margin-bottom: 10px;
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 21px;
+  line-height: 25px;
   color: #FFF;
-
-  @media (max-width: $sMedia--m) {
-    margin-bottom: 5px;
-    font-size: 18px;
-    line-height: 22px;
-  }
 }
 .Story-description {
   color: rgba(#fff, .6);
   font-size: 15px;
   line-height: 18px;
   text-transform: uppercase;
-
-  @media (max-width: $sMedia--m) {
-    font-size: 13px;
-    line-height: 16px;
-  }
 }
 .Story-img {
   z-index: 10;

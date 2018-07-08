@@ -4,15 +4,37 @@
     "stylelint-config-recommended-scss",
     "stylelint-config-property-sort-order-smacss"
   ],
-  "ignoreFiles": [
-    "app/css/base/_reset.scss"
-  ],
   "rules": {
     "color-hex-case": "upper",
     "custom-property-empty-line-before": null,
     "declaration-empty-line-before": null,
     "no-descending-specificity": null,
     "selector-pseudo-element-colon-notation": "double",
-    "shorthand-property-no-redundant-values": true
+    "shorthand-property-no-redundant-values": true,
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"]
+      }
+    ],
+    "custom-property-empty-line-before": [
+      "always",
+      {
+        "except": ["after-custom-property", "first-nested"]
+      }
+    ],
+    "declaration-empty-line-before": [
+      "always",
+      {
+        "except": ["after-declaration", "first-nested"]
+      }
+    ],
+    "block-closing-brace-empty-line-before": "never",
+    "rule-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"]
+      }
+    ]
   }
 }

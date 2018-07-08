@@ -31,7 +31,7 @@ const Scrollmap = class Scrollmap {
       .attr('width', width)
       .attr('height', height);
 
-    const country = this.scrollmapFile.objects.world_borders_hd_copy;
+    const { country } = this.scrollmapFile.objects;
 
     const projection = geoMercator()
       .center(this.scrollmapCenter)
@@ -65,7 +65,7 @@ const Scrollmap = class Scrollmap {
 
     svg
       .selectAll('.City')
-      .data(feature(this.scrollmapFile, this.scrollmapFile.objects.cities_1).features)
+      .data(feature(this.scrollmapFile, this.scrollmapFile.objects.cities).features)
       .enter()
       .append('path')
       .attr('class', d => `City js-City js-City--${d.properties.slug}`)
@@ -73,7 +73,7 @@ const Scrollmap = class Scrollmap {
 
     svg
       .selectAll('.City-label')
-      .data(feature(this.scrollmapFile, this.scrollmapFile.objects.cities_1).features)
+      .data(feature(this.scrollmapFile, this.scrollmapFile.objects.cities).features)
       .enter()
       .append('text')
       .attr('class', d => `City-label js-City-label js-City-label--${d.properties.slug}`)

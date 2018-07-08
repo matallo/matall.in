@@ -1,26 +1,27 @@
 const gulp = require('gulp');
-const download = require('gulp-download');
-const gulpLoadPlugins = require('gulp-load-plugins');
-const browserSync = require('browser-sync').create();
 const del = require('del');
 const runSequence = require('run-sequence').use(gulp);
 const childProcess = require('child_process');
+const merge = require('webpack-merge');
 const webpack = require('webpack');
+const browserSync = require('browser-sync').create();
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const webpackConfig = require('./webpack.config.js');
-const merge = require('webpack-merge');
-const log = require('fancy-log');
+
+const { reload } = browserSync;
+const download = require('gulp-download');
 const PluginError = require('plugin-error');
-const rev = require('gulp-rev');
-const revReplace = require('gulp-rev-replace');
+const log = require('fancy-log');
 const critical = require('critical').stream;
+const gulpLoadPlugins = require('gulp-load-plugins');
 
 const plugins = gulpLoadPlugins();
-const { reload } = browserSync;
-
 const imageminJpegtran = require('imagemin-jpegtran');
 const imageminPngquant = require('imagemin-pngquant');
+const rev = require('gulp-rev');
+const revReplace = require('gulp-rev-replace');
+
+const webpackConfig = require('./webpack.config.js');
 
 gulp.task('rev-assets', () =>
   gulp
