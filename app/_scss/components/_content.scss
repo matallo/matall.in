@@ -33,7 +33,8 @@
       margin-top: 20px;
     }
   }
-  ul, ol {
+  ul,
+  ol {
     margin-left: 20px;
   }
   ul {
@@ -49,7 +50,9 @@
       margin-bottom: 0;
     }
 
-    > p, > ul, > ol {
+    > p,
+    > ul,
+    > ol {
       margin-top: 10px;
       margin-bottom: 0;
 
@@ -95,4 +98,10 @@
   font-size: 15px;
   text-transform: uppercase;
   color: $cTypo3;
+}
+.Content-aside {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: $cGrey4;
+  border-radius: 3px;
 }
