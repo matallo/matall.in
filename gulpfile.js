@@ -23,6 +23,9 @@ const revReplace = require('gulp-rev-replace');
 
 const webpackConfig = require('./webpack.config.js');
 
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 gulp.task('rev-assets', () =>
   gulp
     .src(['dist/css/{,*/}*.css{,.map}', 'dist/js/{,*/}*.js{,.map}'], { base: 'dist/' })
@@ -140,7 +143,7 @@ gulp.task('serve', () => {
         }),
         webpackHotMiddleware(devCompiler),
       ],
-      reloadDebounce: 2000,
+      reloadDebounce: 1000,
     });
 
     gulp.watch(['app/**/*.html', 'app/img/**/*'], ['jekyll-serve']);
@@ -188,6 +191,28 @@ gulp.task('jekyll-build', done =>
 gulp.task('webpack-build', done => {
   const myConfig = merge(webpackConfig, {
     mode: 'production',
+    entry: {
+      vendor: [
+        './app/_js/vendor/widgets.js',
+        './app/_js/vendor/ei.js',
+        './app/_js/vendor/analytics.js',
+      ],
+    },
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin({
+          sourceMap: true,
+        }),
+        new OptimizeCSSAssetsPlugin({
+          cssProcessorOptions: {
+            map: {
+              inline: false,
+              annotation: true,
+            },
+          },
+        }),
+      ],
+    },
     plugins: [
       new webpack.DefinePlugin({
         'process.env': {
