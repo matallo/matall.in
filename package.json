@@ -8,7 +8,7 @@
     "lint": "yarn run lint:js && yarn run lint:css",
     "lint:js": "eslint {gulpfile,webpack.config}.js app/_js/{**/,}*.js __tests__/spec/{**/,}*.js",
     "lint:css": "stylelint 'app/css/{**/,}*.scss'",
-    "test": "jest",
+    "test": "jest --coverage",
     "start": "gulp serve",
     "build": "NODE_ENV=production gulp"
   },

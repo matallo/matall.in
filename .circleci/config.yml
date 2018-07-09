@@ -44,6 +44,8 @@ jobs:
           key: v1-assets-{{ .Environment.CIRCLE_SHA1 }}
           paths:
             - ~/matall.in/dist
+      - store_test_results:
+          path: ~/matall.in/coverage
   deploy:
     machine:
       enabled: true
