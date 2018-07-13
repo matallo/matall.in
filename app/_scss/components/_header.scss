@@ -10,6 +10,7 @@
     height: 300px;
   }
 }
+
 .Header-background {
   position: absolute;
   top: 0;
@@ -17,23 +18,27 @@
   bottom: 0;
   left: 0;
 }
+
 .Header-background--cover {
-  background-size: cover;
   background-position: center;
+  background-size: cover;
 }
+
 .Header-background--black {
   background: rgba(#000, 0.2);
 }
+
 .Header-icon {
   position: absolute;
   top: 20px;
-  opacity: 0.6;
   transition: all 0.2s;
+  opacity: 0.6;
 
   &:hover {
     opacity: 0.8;
   }
 }
+
 .Header-icon--back {
   left: 20px;
   transform: translateX(0);
@@ -42,9 +47,11 @@
     transform: translateX(-2px);
   }
 }
+
 .Header-icon--share {
   right: 20px;
 }
+
 .Header-footer {
   position: absolute;
   bottom: 20px;

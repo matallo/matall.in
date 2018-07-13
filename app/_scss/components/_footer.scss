@@ -10,6 +10,7 @@
     text-align: center;
   }
 }
+
 .Footer-description {
   display: inline-block;
   width: calc(100% - 105px);
@@ -23,7 +24,8 @@
     padding-left: 0;
   }
 }
+
 .Footer-credits {
-  text-align: center;
   color: var(--color-typo3);
+  text-align: center;
 }

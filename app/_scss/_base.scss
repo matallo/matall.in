@@ -1,21 +1,24 @@
 * {
   box-sizing: border-box;
 }
+
 html,
 body {
   height: 100%;
 }
+
 body {
   background-color: #fff;
-  text-rendering: optimizeLegibility;
-  -webkit-text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
   color: var(--color-typo2);
-  font-weight: var(--font-weight-base);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
   font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  -webkit-font-smoothing: antialiased;
+  font-weight: var(--font-weight-base);
+  line-height: var(--line-height-base);
+  -webkit-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
 }
+
 h1,
 h2,
 h3,
@@ -31,6 +34,7 @@ dl,
 figure {
   margin-bottom: 20px;
 }
+
 p,
 ul,
 ol {
@@ -38,66 +42,77 @@ ol {
     margin-bottom: 0;
   }
 }
+
 a {
-  color: var(--color-red);
   transition: color 0.2s;
+  color: var(--color-red);
 
   &:hover {
     color: var(--color-red--hover);
   }
 }
+
 strong {
   font-weight: 600;
 }
+
 em {
   font-style: italic;
 }
+
 abbr {
   border-bottom: 1px dotted #ddd;
 }
+
 button {
   margin: 0;
   border: 0;
   outline: none;
-  cursor: pointer;
   font-family: var(--font-family-base);
+  cursor: pointer;
 }
+
 img,
 svg {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
 }
+
 sup {
   top: -0.5em;
 }
+
 sub,
 sup {
+  position: relative;
   font-size: 75%;
   line-height: 0;
-  position: relative;
   vertical-align: baseline;
 }
+
 pre,
 code {
-  font-size: 13px;
-  font-family: 'PT Mono', monospace;
   border: 1px solid var(--color-grey2);
   border-radius: 3px;
   background-color: var(--color-grey4);
+  font-family: 'PT Mono', monospace;
+  font-size: 13px;
 }
+
 code {
   padding: 1px 5px;
 }
+
 pre {
   padding: 16px;
-  line-height: 19px;
   overflow-x: auto;
+  line-height: 19px;
   white-space: pre-line;
 
   > code {
-    border: 0;
     padding-right: 0;
     padding-left: 0;
+    border: 0;
   }
 }

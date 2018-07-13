@@ -5,6 +5,7 @@
 .Stats {
   text-align: right;
 }
+
 .Stats-item {
   display: inline-block;
   margin-left: 40px;
@@ -15,11 +16,12 @@
     margin-left: 0;
   }
 }
+
 .Stats-number {
   display: block;
   margin-bottom: 10px;
-  font-weight: 300;
   font-size: 36px;
+  font-weight: 300;
 
   @media (--size-m) {
     font-size: 30px;

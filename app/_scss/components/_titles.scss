@@ -8,9 +8,11 @@
 .Title--cTypo1 {
   color: var(--color-typo1);
 }
+
 .Title--cTypo3 {
   color: var(--color-typo3);
 }
+
 .Title--cWhite {
   color: #fff;
 }
@@ -21,6 +23,7 @@
 .Title {
   font-weight: 400;
 }
+
 .Title--h1 {
   font-size: 36px;
   line-height: 40px;
@@ -30,10 +33,12 @@
     line-height: 36px;
   }
 }
+
 .Title--h2 {
   font-size: 24px;
   line-height: 30px;
 }
+
 .Title--h3 {
   font-size: 18px;
   line-height: 22px;
