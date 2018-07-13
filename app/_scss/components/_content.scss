@@ -5,27 +5,32 @@
 .Offcanvas {
   overflow: hidden;
 }
+
 .Content {
   position: relative;
   margin-right: auto;
   margin-left: auto;
 }
+
 .Content--cGrey {
   background: var(--color-grey4);
 }
+
 .Content-inner {
   padding-top: 60px;
   padding-bottom: 60px;
 }
+
 .Content-inner--post {
-  margin-left: 25%;
   margin-right: 25%;
+  margin-left: 25%;
 
   @media (--size-xl) {
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
   }
 }
+
 .Content-body {
   position: relative;
 
@@ -34,16 +39,20 @@
       margin-top: 20px;
     }
   }
+
   ul,
   ol {
     margin-left: 20px;
   }
+
   ul {
     list-style-type: disc;
   }
+
   ol {
     list-style-type: decimal;
   }
+
   li {
     margin-bottom: 10px;
 
@@ -63,16 +72,20 @@
     }
   }
 }
+
 .Content-header {
   margin-bottom: 40px;
 }
+
 .Content-title {
   margin-top: 40px;
 }
+
 .Content-title--h1 {
   margin-top: 0;
   margin-bottom: 10px;
 }
+
 .Content-title--h2 {
   margin-bottom: 10px;
 
@@ -84,19 +97,21 @@
     margin-top: 20px;
   }
 }
+
 .Content-subtitle {
+  color: var(--color-typo3);
   font-size: 21px;
   line-height: 25px;
-  color: var(--color-typo3);
 
   a {
-    text-decoration: none;
     font-weight: 400;
+    text-decoration: none;
   }
 }
+
 .Content-date {
   display: block;
+  color: var(--color-typo3);
   font-size: 15px;
   text-transform: uppercase;
-  color: var(--color-typo3);
 }

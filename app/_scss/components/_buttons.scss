@@ -4,25 +4,26 @@
 
 .Button {
   display: inline-block;
+  transition: all 0.2s;
   border: 1px solid var(--color-grey2);
+  border-radius: 3px;
+  outline: none;
+  color: var(--color-typo3);
+  line-height: 1;
   text-align: center;
   white-space: nowrap;
-  line-height: 1;
-  color: var(--color-typo3);
-  border-radius: 3px;
-  transition: all 0.2s;
-  outline: none;
 
   &:hover {
-    text-decoration: none;
     border-color: var(--color-grey1);
     color: var(--color-typo3--hover);
+    text-decoration: none;
   }
 
   > span {
     display: inline-block;
   }
 }
+
 .Button--m {
   > span {
     padding: 12px 24px;

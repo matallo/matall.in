@@ -4,6 +4,7 @@
 
 .u-inner {
   @include clearfix;
+
   position: relative;
   z-index: 1;
   width: 100%;
@@ -13,55 +14,64 @@
   padding-right: var(--gap);
   padding-left: var(--gap);
 }
+
 .u-inner--l {
   max-width: var(--size-l);
 }
+
 .u-inner--xxl {
   max-width: var(--size-xxl);
 }
+
 .u-strike {
   text-decoration: line-through;
 }
+
 .u-hEllipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
+
 .u-vEllipsis {
+  display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+
 .u-vEllipsis--lin3 {
   -webkit-line-clamp: 3;
 }
+
 .u-txt-center {
   text-align: center;
 }
+
 .u-hide {
   display: none;
 }
+
 .u-show {
   display: block;
 }
+
 .ratio-box {
-  position: relative;
-  height: 0;
   display: block;
+  position: relative;
   width: 100%;
-}
-.ratio-box {
+  height: 0;
+
   img,
   iframe,
   video {
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: block;
   }
 }
 
@@ -69,6 +79,7 @@
 .lazyloading {
   opacity: 0;
 }
+
 .lazyloaded {
   animation-name: fade;
   animation-duration: 1s;
@@ -78,6 +89,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }

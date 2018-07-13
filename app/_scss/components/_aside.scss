@@ -7,30 +7,34 @@
     display: block;
   }
 }
+
 .Aside--right {
-  float: right;
   width: 160px;
   margin: 10px 0 10px 40px;
+  float: right;
 }
+
 .Aside--left {
-  float: left;
   width: 400px;
   margin: 10px 40px 10px -240px;
+  float: left;
 }
+
 .Aside--right,
 .Aside--left {
   @media (--size-xl) {
-    float: none;
+    width: var(--size-s);
     margin-top: 40px;
     margin-bottom: 40px;
     margin-left: 0;
-    width: var(--size-s);
+    float: none;
   }
 
   @media (--size-s) {
     width: 100%;
   }
 }
+
 .Aside-media {
   width: 400px;
   max-width: none;
@@ -39,13 +43,15 @@
     width: 100%;
   }
 }
+
 .Caption {
   margin-bottom: 0;
   padding: 10px 0;
   border-bottom: 1px solid var(--color-grey3);
-  font-size: 13px;
   color: var(--color-typo3);
+  font-size: 13px;
 }
+
 .Caption--aside {
   width: 400px;
 

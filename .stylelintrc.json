@@ -5,16 +5,13 @@
     "stylelint-config-property-sort-order-smacss"
   ],
   "rules": {
-    "color-hex-case": "upper",
-    "custom-property-empty-line-before": null,
-    "declaration-empty-line-before": null,
     "no-descending-specificity": null,
     "selector-pseudo-element-colon-notation": "double",
     "shorthand-property-no-redundant-values": true,
     "at-rule-empty-line-before": [
       "always",
       {
-        "except": ["first-nested"]
+        "except": ["first-nested", "blockless-after-same-name-blockless"]
       }
     ],
     "custom-property-empty-line-before": [
@@ -31,7 +28,7 @@
     ],
     "block-closing-brace-empty-line-before": "never",
     "rule-empty-line-before": [
-      "always",
+      "always-multi-line",
       {
         "except": ["first-nested"]
       }

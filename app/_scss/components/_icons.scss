@@ -5,13 +5,14 @@
 .Icon {
   > svg {
     display: inline-block;
-    vertical-align: middle;
     width: 24px;
     height: 24px;
+    vertical-align: middle;
   }
 }
 
 $icon-sizes: (12, 24, 36);
+
 @each $size in $icon-sizes {
   .Icon--s#{$size} {
     > svg {
@@ -19,6 +20,7 @@ $icon-sizes: (12, 24, 36);
     }
   }
 }
+
 .Icon--link {
   &:hover {
     .Icon-path {
@@ -26,10 +28,12 @@ $icon-sizes: (12, 24, 36);
     }
   }
 }
+
 .Icon-path {
-  fill: var(--color-grey2);
   transition: fill 0.2s;
+  fill: var(--color-grey2);
 }
+
 .Icon--Twitter {
   .Icon-path {
     fill: var(--color-twitter);

@@ -1,11 +1,13 @@
+defaults: &defaults
+  working_directory: ~/matall.in
 version: 2
 jobs:
   build_and_test:
+    <<: *defaults
     docker:
       - image: circleci/ruby:2.5-node-browsers
         environment:
           CHROME_BIN: "/usr/bin/google-chrome"
-    working_directory: ~/matall.in
     environment:
       - NODE_ENV: production
     steps:
@@ -45,9 +47,9 @@ jobs:
           paths:
             - ~/matall.in/dist
   deploy:
+    <<: *defaults
     machine:
       enabled: true
-    working_directory: ~/matall.in
     steps:
       - restore_cache:
           key: v1-assets-{{ .Environment.CIRCLE_SHA1 }}

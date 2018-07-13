@@ -6,25 +6,29 @@
   margin-bottom: 10px;
   transition: color 0.2s;
 }
+
 .Card-link {
-  font-weight: 400;
   color: var(--color-typo1);
+  font-weight: 400;
   text-decoration: none;
 
   &:hover {
     color: color(var(--color-typo1) shade(5%));
   }
 }
+
 .Card-subtitle,
 .Card-description {
   font-weight: 400;
 }
+
 .Card-subtitle {
   margin-bottom: 5px;
+  color: var(--color-typo3);
   font-size: 13px;
   text-transform: uppercase;
-  color: var(--color-typo3);
 }
+
 .Card-description {
   color: var(--color-typo2);
 }
