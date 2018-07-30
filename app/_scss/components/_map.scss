@@ -18,7 +18,7 @@
     bottom: 0;
   }
 
-  @media (max-width: var(--size-xxl) - 1px) {
+  @media (--size-xxl) {
     display: none;
   }
 }

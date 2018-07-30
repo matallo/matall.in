@@ -13,7 +13,7 @@
   text-decoration: none;
 
   &:hover {
-    color: color(var(--color-typo1) shade(5%));
+    color: var(--color-typo1--hover);
   }
 }
 

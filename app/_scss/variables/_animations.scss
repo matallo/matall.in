@@ -1,0 +1,21 @@
+/* ==========================================================================
+   #ANIMATIONS
+   ========================================================================== */
+
+:root {
+  --move-in-animation: 1s both move-in;
+  --move-in-base-delay: 100ms;
+  --move-in-offset: 10px;
+}
+
+@keyframes move-in {
+  from {
+    transform: translateY(var(--move-in-offset));
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

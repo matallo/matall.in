@@ -32,6 +32,6 @@
   line-height: 80px;
 
   &:hover {
-    color: color(var(--color-typo3) shade(10%));
+    color: var(--color-typo3--hover);
   }
 }
