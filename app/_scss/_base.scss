@@ -13,10 +13,9 @@ body {
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-weight: var(--font-weight-base);
   line-height: var(--line-height-base);
-  -webkit-text-rendering: optimizeLegibility;
-  text-rendering: optimizeLegibility;
 }
 
 h1,

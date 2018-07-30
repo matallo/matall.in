@@ -10,6 +10,8 @@
   position: relative;
   margin-right: auto;
   margin-left: auto;
+  animation: var(--move-in-animation);
+  animation-delay: calc(var(--move-in-base-delay) * 4);
 }
 
 .Content--cGrey {
@@ -84,6 +86,8 @@
 .Content-title--h1 {
   margin-top: 0;
   margin-bottom: 10px;
+  animation: var(--move-in-animation);
+  animation-delay: calc(var(--move-in-base-delay) * 5);
 }
 
 .Content-title--h2 {
@@ -99,6 +103,8 @@
 }
 
 .Content-subtitle {
+  animation: var(--move-in-animation);
+  animation-delay: calc(var(--move-in-base-delay) * 6);
   color: var(--color-typo3);
   font-size: 21px;
   line-height: 25px;
@@ -114,4 +120,25 @@
   color: var(--color-typo3);
   font-size: 15px;
   text-transform: uppercase;
+}
+
+.Content-intro {
+  font-size: 18px;
+  line-height: 27px;
+
+  p {
+    animation: var(--move-in-animation);
+
+    &:nth-of-type(1) {
+      animation-delay: calc(var(--move-in-base-delay) * 7);
+    }
+
+    &:nth-of-type(2) {
+      animation-delay: calc(var(--move-in-base-delay) * 8);
+    }
+
+    &:nth-of-type(3) {
+      animation-delay: calc(var(--move-in-base-delay) * 9);
+    }
+  }
 }

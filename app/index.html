@@ -1,59 +1,36 @@
 ---
 title: Code, design, and mountains
 description: >
-  Frontend designer at TransferWise. I'm a 30 year old explorer from Valencia living in London. I'm a decentralized web enthusiast, passionate about technology and design. I climb mountains, too.
+  Frontend designer at TransferWise. I'm a 30 year old explorer from Valencia living in London. I'm a decentralized web and Open Source enthusiast, passionate about technology, design, and building digital products. I climb mountains, too.
 layout: default
 ---
 {% include navigation.html %}
 
 <div class="Content">
   <div class="Content-inner">
-    <div class="u-inner u-inner--l">
+    <div class="u-inner">
       <div class="Content-body">
-        <div class="Grid">
-          <div class="Grid-inner">
-            <div class="Grid-item Grid-item--12">
-              <a href="/" class="Avatar Avatar--home">
-                <img srcset="https://res.cloudinary.com/dcuclvhyb/image/upload/c_scale,f_auto,fl_progressive,w_100/v1526775414/matall.in/img/about/1363306686_04d7bb3035.jpg 100w, https://res.cloudinary.com/dcuclvhyb/image/upload/c_scale,f_auto,fl_progressive,w_200/v1526775414/matall.in/img/about/1363306686_04d7bb3035.jpg 200w" size="100px" src="https://res.cloudinary.com/dcuclvhyb/image/upload/c_scale,f_auto,fl_progressive,w_200/v1526775414/matall.in/img/about/1363306686_04d7bb3035.jpg" alt="matallo" width="100" height="100">
-              </a>
+        <a href="/" class="Avatar Avatar--home">
+          <img srcset="https://res.cloudinary.com/dcuclvhyb/image/upload/c_scale,f_auto,fl_progressive,w_100/v1526775414/matall.in/img/about/1363306686_04d7bb3035.jpg 100w, https://res.cloudinary.com/dcuclvhyb/image/upload/c_scale,f_auto,fl_progressive,w_200/v1526775414/matall.in/img/about/1363306686_04d7bb3035.jpg 200w" size="100px" src="https://res.cloudinary.com/dcuclvhyb/image/upload/c_scale,f_auto,fl_progressive,w_200/v1526775414/matall.in/img/about/1363306686_04d7bb3035.jpg" alt="matallo" width="100" height="100">
+        </a>
 
-              <h1 class="Title Title--h1 Content-title Content-title--h1 Title--cTypo1">Hi, I'm Carlos Matallín</h1>
-              <p class="Content-subtitle">Code, design, and mountains</p>
-            </div>
-          </div>
-        </div>
+        <h1 class="Title Title--h1 Content-title Content-title--h1 Title--cTypo1">Hi, I'm Carlos Matallín</h1>
+        <p class="Content-subtitle">Code, design, and mountains</p>
+      </div>
 
-        <div class="Grid">
-          <div class="Grid-inner">
-            <div class="Grid-item Grid-item--6 r-size-m-Grid-item--12">
-              <div class="Block">
-                <div class="Sep"></div>
+      <div class="Content-intro">
+        <div class="Block">
+          <p>I'm a {% birthday_years site.birthday %} year old explorer from Valencia living in London. I'm a decentralized web and Open Source enthusiast, passionate about technology, design, and building digital products. I climb mountains, too.</p>
 
-                <h2 class="Block-title">About</h2>
-                <p>I'm a {% birthday_years site.birthday %} year old explorer from Valencia living in London. I'm a decentralized web enthusiast, passionate about technology and design. I climb mountains, too.</p>
+          <p>I'm a product oriented Frontend engineer and Interaction designer. Currently, I work as Frontend designer at <a href="https://transferwise.com/">TransferWise</a>, powering money for people and businesses.</p>
 
-                <p>This is <a href="/usesthis/">what I use</a> to get stuff done.</p>
-
-                <p><a href="/about/" class="Button Button--m"><span>Learn more</span></a></p>
-              </div>
-            </div>
-
-            <div class="Grid-item Grid-item--6 r-size-m-Grid-item--12">
-              <div class="Block">
-                <div class="Sep"></div>
-
-                <h2 class="Block-title">Work</h2>
-                <p>I'm a Frontend engineer and Interaction designer. Currently I work as Frontend designer at <a href="https://transferwise.com/">TransferWise</a>, powering money for people and businesses.</p>
-
-                <p><a href="/work/" class="Button Button--m"><span>Portfolio</span></a></p>
-              </div>
-            </div>
-          </div>
+          <p>This is <a href="/usesthis/">what I use</a> to get stuff done.</p>
         </div>
       </div>
+
     </div>
 
-    <div class="u-inner u-inner--l">
+    <div class="u-inner">
       <div class="Block">
         <div class="Sep"></div>
 
@@ -61,7 +38,7 @@ layout: default
       </div>
     </div>
 
-    <div class="u-inner u-inner--xxl r-size-s-u-hide">
+    <div class="u-inner u-inner--xl r-size-s-u-hide">
       {% assign counter = 0 %}
 
       {% for post in site.posts %}
@@ -79,7 +56,7 @@ layout: default
               </div>
 
               <div class="ratio-box" style="padding-bottom: 56.25%;">
-                <img srcset="https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,f_auto,fl_progressive,w_1240/matall.in{{ post.background_image }} 1240w, https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,f_auto,fl_progressive,w_2480/matall.in{{ post.background_image }} 2480w" sizes="1240px" src="https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,f_auto,fl_progressive,w_1240/matall.in{{ post.background_image }}" alt="{{ post.title }}" class="Story-img">
+                <img srcset="https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,f_auto,fl_progressive,w_1000/matall.in{{ post.background_image }} 1000w, https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,f_auto,fl_progressive,w_2000/matall.in{{ post.background_image }} 2000w" sizes="1000px" src="https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,f_auto,fl_progressive,w_1000/matall.in{{ post.background_image }}" alt="{{ post.title }}" class="Story-img">
               </div>
             </a>
             {% assign counter = counter | plus:1 %}
@@ -88,7 +65,7 @@ layout: default
       {% endfor %}
     </div>
 
-    <div class="u-inner u-inner--l r-size-s-u-hide">
+    <div class="u-inner r-size-s-u-hide">
       <ul class="Posts-list">
         {% assign counter = 0 %}
 
@@ -124,7 +101,7 @@ layout: default
       </ul>
     </div>
 
-    <div class="u-inner u-inner--l r-size-s-u-show">
+    <div class="u-inner r-size-s-u-show">
       <ul class="Posts-list">
         {% assign counter = 0 %}
 
@@ -149,7 +126,7 @@ layout: default
       </ul>
     </div>
 
-    <div class="u-inner u-inner--l">
+    <div class="u-inner">
       <div class="Block">
         <div class="Sep"></div>
 
@@ -170,33 +147,29 @@ layout: default
           {% endfor %}
         </ul>
       </div>
+    </div>
 
+    <div class="u-inner">
       <div class="Block">
-        <div class="Grid">
-          <div class="Grid-inner">
-            <div class="Grid-item Grid-item--6 r-size-m-Grid-item--12">
-              <div class="Sep"></div>
+        <div class="Sep"></div>
 
-              <h2 class="Block-title">Contact</h2>
-              <p>Feel free to <a href="mailto:carlos@matallin.com">drop me a line</a>. You can also find me in other social networks.</p>
+        <h2 class="Block-title">Contact</h2>
+        <p>Feel free to <a href="mailto:carlos@matallin.com">drop me a line</a> or ping me on <a href="https://twitter.com/matallo">Twitter</a>. You can also find me in other social networks.</p>
 
-              <ul class="Social-list">
-                <li class="Social-item">
-                  <a href="https://twitter.com/matallo" class="Icon Icon--link" target="_blank" rel="noopener">{% include icons/icon-twitter.svg %}</a>
-                </li>
-                <li class="Social-item">
-                  <a href="https://github.com/matallo" class="Icon Icon--link" target="_blank" rel="noopener">{% include icons/icon-github.svg %}</a>
-                </li>
-                <li class="Social-item">
-                  <a href="https://es.linkedin.com/in/carlosmatallin" class="Icon Icon--link" target="_blank" rel="noopener">{% include icons/icon-linkedin.svg %}</a>
-                </li>
-                <li class="Social-item">
-                  <a href="https://www.strava.com/athletes/593049" class="Icon Icon--link" target="_blank" rel="noopener">{% include icons/icon-strava.svg %}</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <ul class="Social-list">
+          <li class="Social-item">
+            <a href="https://twitter.com/matallo" class="Icon Icon--link" target="_blank" rel="noopener">{% include icons/icon-twitter.svg %}</a>
+          </li>
+          <li class="Social-item">
+            <a href="https://github.com/matallo" class="Icon Icon--link" target="_blank" rel="noopener">{% include icons/icon-github.svg %}</a>
+          </li>
+          <li class="Social-item">
+            <a href="https://es.linkedin.com/in/carlosmatallin" class="Icon Icon--link" target="_blank" rel="noopener">{% include icons/icon-linkedin.svg %}</a>
+          </li>
+          <li class="Social-item">
+            <a href="https://www.strava.com/athletes/593049" class="Icon Icon--link" target="_blank" rel="noopener">{% include icons/icon-strava.svg %}</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -206,6 +179,6 @@ layout: default
 
 <footer class="Footer">
   <div class="u-inner">
-    <p class="Footer-credits">© Copyright {{ 'now' | date: "%Y" }} Carlos Matallín</p>
+    <p class="Footer-credits">© Copyright {{ 'now' | date: "%Y" }} <a href="/">Carlos Matallín</a> — Designed and built with <span class="Icon Icon--s16">{% include icons/emoji-heart.svg %}</span> from London</p>
   </div>
 </footer>

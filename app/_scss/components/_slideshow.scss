@@ -30,8 +30,8 @@
 }
 
 .Slideshow--center {
-  width: var(--size-l) - 40px;
-  margin-left: -(var(--size-l) - var(--size-m)) / 2;
+  width: calc(var(--size-l) - 40px);
+  margin-left: calc(-1 * (var(--size-l) - var(--size-m)) / 2);
 
   @media (--size-l) {
     width: 100%;
@@ -40,8 +40,8 @@
 }
 
 .Slideshow--wide {
-  width: var(--size-xxl) - 40px;
-  margin-left: -(var(--size-xxl) - var(--size-m)) / 2;
+  width: calc(var(--size-xxl) - 40px);
+  margin-left: calc(-1 * (var(--size-xxl) - var(--size-m)) / 2);
 
   @media (--size-xxl) {
     width: 100%;

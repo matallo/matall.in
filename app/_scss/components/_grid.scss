@@ -16,8 +16,8 @@ $columns: 12;
   display: flex;
   flex: 1;
   flex-wrap: wrap;
-  margin-right: -var(--gap);
-  margin-left: -var(--gap);
+  margin-right: calc(-1 * var(--gap));
+  margin-left: calc(-1 * var(--gap));
 }
 
 .Grid-inner--hCenter {

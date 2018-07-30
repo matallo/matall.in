@@ -9,12 +9,13 @@
   border-radius: 3px;
   outline: none;
   color: var(--color-typo3);
+  font-size: var(--font-size-base);
   line-height: 1;
   text-align: center;
   white-space: nowrap;
 
   &:hover {
-    border-color: var(--color-grey1);
+    border-color: var(--color-grey2--hover);
     color: var(--color-typo3--hover);
     text-decoration: none;
   }
