@@ -2,11 +2,10 @@
   <meta charset="utf-8">
   {% if page.layout == "story" %}
     <title>{% if page.title %}{{ page.title }} — {% endif %}{% if page.description %}{{ page.description }} — {% endif %}{{ site.title }}</title>
-    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   {% else %}
     <title>{% if page.url == "/" %}{{ site.title }}{% if page.title %} — {{ page.title }}{% endif %}{% else %}{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}{% endif %}</title>
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   {% endif %}
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,7 +18,7 @@
 
   <!-- twitter cards -->
   <meta property="og:title" content="{% if page.twitter_text %}{{ page.twitter_text }} — {% elsif page.title %}{{ page.title }} — {% endif %}{{ site.title }}"/>
-  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"/>
+  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="{{ page.url | prepend: site.url }}"/>
   {% if page.background_image %}
@@ -28,7 +27,7 @@
 
   <meta name="twitter:site" content="@matallo">
   <meta name="twitter:title" content="{% if page.twitter_text %}{{ page.twitter_text }} — {% elsif page.title %}{{ page.title }} — {% endif %}{{ site.title }}">
-  <meta name="twitter:description" content="{% if page.description_meta %}{{ page.description_meta }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   {% if page.background_image %}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://res.cloudinary.com/dcuclvhyb/image/upload/ar_16:9,c_fill,f_auto,fl_progressive,w_560/matall.in{{ page.background_image }}">
