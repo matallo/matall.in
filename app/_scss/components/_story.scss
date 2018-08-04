@@ -24,10 +24,6 @@
       transform: scale(1.01);
     }
   }
-
-  @media (--size-m) {
-    margin-bottom: 20px;
-  }
 }
 
 .Story-inner {
@@ -57,7 +53,6 @@
 
 .Story-title,
 .Story-description {
-  font-weight: 400;
   text-shadow: 0 2px 0 rgba(#000, 0.3);
 }
 
@@ -65,12 +60,14 @@
   margin-bottom: 10px;
   color: #fff;
   font-size: 21px;
+  font-weight: 700;
   line-height: 25px;
 }
 
 .Story-description {
   color: rgba(#fff, 0.6);
   font-size: 15px;
+  font-weight: 500;
   line-height: 18px;
   text-transform: uppercase;
 }

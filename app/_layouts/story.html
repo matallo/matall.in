@@ -19,7 +19,7 @@ layout: default
 
 {% include navigation.html %}
 
-<div class="Content">
+<div class="Content js-Animate">
   <div class="Content-inner Content-inner--post">
     <div class="u-inner">
       <article class="Content-body {% if page.scrollmap_file %}js-Scroll{% endif %} {% if page.marginotes %}js-Marginotes{% endif %}" itemscope itemtype="http://schema.org/BlogPosting">
@@ -27,8 +27,8 @@ layout: default
         {% if page.marginotes %}<div class="Marginote js-Marginote"></div>{% endif %}
 
         <div class="Content-header">
-          <h1 class="Title Title--h1 Content-title Content-title--h1 Title--cTypo1" itemprop="name headline">{{ page.title }}</h1>
-          <p class="Content-subtitle">{{ page.description }}</p>
+          <h1 class="Title Title--h1 Content-title Content-title--h1 animate animate--d5 Title--cTypo1" itemprop="name headline">{{ page.title }}</h1>
+          <p class="Content-subtitle animate animate--d6">{{ page.description }}</p>
         </div>
 
         <div itemprop="articleBody">
