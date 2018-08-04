@@ -8,6 +8,16 @@
   --move-in-offset: 10px;
 }
 
+.animate {
+  animation: var(--move-in-animation);
+}
+
+@for $i from 4 through 9 {
+  .animate--d#{$i} {
+    animation-delay: calc(var(--move-in-base-delay) * #{$i});
+  }
+}
+
 @keyframes move-in {
   from {
     transform: translateY(var(--move-in-offset));
