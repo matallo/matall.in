@@ -5,8 +5,9 @@ jobs:
   build_and_test:
     <<: *defaults
     docker:
-      - image: circleci/ruby:2.5-node-browsers
+      - image: circleci/ruby:2.6.0-node-browsers
         environment:
+          BUNDLER_VERSION: 2.0.1
           CHROME_BIN: "/usr/bin/google-chrome"
     environment:
       - NODE_ENV: production
@@ -16,6 +17,7 @@ jobs:
           key: v1-bundle-{{ checksum "Gemfile.lock" }}
       - restore_cache:
           key: v1-yarn-{{ checksum "yarn.lock" }}
+      - run: gem install bundler
       - run: bundle install --path vendor/bundle
       - run: sudo yarn global add gulp-cli
       - run: yarn install
