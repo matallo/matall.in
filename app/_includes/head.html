@@ -37,7 +37,11 @@
   <style>
   {% include css/vendor/reset.css %}
   </style>
-  <link rel="stylesheet" href="/css/app.css">
+  <link rel="preload" href="/css/app.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/css/app.css"></noscript>
+  <script>
+  {% include js/vendor/cssrelpreload.js %}
+  </script>
 
   <style>
     {% if page.background_image %}
