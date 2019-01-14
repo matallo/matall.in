@@ -42,8 +42,9 @@ module.exports = {
               ident: 'postcss',
               plugins: () => [
                 postcssPresetEnv({
-                  stage: 2,
+                  stage: 3,
                   features: {
+                    'color-mod-function': { unresolved: 'warn' },
                     'custom-media-queries': true,
                   },
                 }),

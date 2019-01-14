@@ -4,12 +4,12 @@
 
 :root {
   --color-typo1: #222;
-  --color-typo1--hover: color-mod(var(--color-typo1) tint(10%));
+  --color-typo1--hover: color-mod(var(--color-typo1) shade(10%));
   --color-typo2: #444;
   --color-typo3: #767676;
   --color-typo3--hover: color-mod(var(--color-typo3) shade(10%));
   --color-red: #d0021b;
-  --color-red--hover: color-mod(var(--color-red) tint(10%));
+  --color-red--hover: color-mod(var(--color-red) shade(10%));
   --color-grey1: #ccc;
   --color-grey2: #ddd;
   --color-grey2--hover: var(--color-grey1);
