@@ -1,13 +1,13 @@
-import gulpLoadPlugins from 'gulp-load-plugins';
-import rev from 'gulp-rev';
-import revReplace from 'gulp-rev-replace';
 import childProcess from 'child_process';
 import del from 'del';
 import gulp from 'gulp';
+import gulpLoadPlugins from 'gulp-load-plugins';
 import log from 'fancy-log';
 import merge from 'webpack-merge';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import PluginError from 'plugin-error';
+import rev from 'gulp-rev';
+import revReplace from 'gulp-rev-replace';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -21,18 +21,14 @@ const critical = require('critical').stream;
 const $ = gulpLoadPlugins();
 const server = require('browser-sync').create();
 
-const app = 'app';
-const dist = 'dist';
-const tmp = '.tmp';
-
-const clean = () => del([tmp, dist]);
+const clean = () => del(['.tmp', 'dist']);
 
 gulp.task('download', done => {
   $.download([
     'https://platform.twitter.com/widgets.js',
     'https://production-assets.codepen.io/assets/embed/ei.js',
     'https://www.google-analytics.com/analytics.js',
-  ]).pipe(dest(`${app}/_js/vendor/`));
+  ]).pipe(dest('app/_js/vendor/'));
 
   done();
 });
@@ -98,31 +94,31 @@ gulp.task('webpack-build', done => {
 });
 
 const scripts = () =>
-  src(`./${app}/_js/vendor/*.js`)
+  src('app/_js/vendor/*.js')
     .pipe($.concat('vendor.js'))
     .on('error', err => {
       throw new PluginError('scripts', err);
     })
-    .pipe(dest(`${dist}/js`));
+    .pipe(dest('dist/js'));
 
 const uglify = () =>
-  src([`${dist}/js/{html5shiv,polyfills}.js`])
+  src(['dist/js/{html5shiv,polyfills}.js'])
     .pipe($.uglify())
     .on('error', err => {
       throw new PluginError('uglify', err);
     })
-    .pipe(gulp.dest(`${dist}/js`));
+    .pipe(gulp.dest('dist/js'));
 
 const inlineCriticalCss = () =>
-  src([`${dist}/**/index.html`, `!${dist}/flights/index.html`])
-    .pipe(critical({ base: dist, inline: true }))
+  src(['dist/**/index.html', '!dist/flights/index.html'])
+    .pipe(critical({ base: 'dist', inline: true }))
     .on('error', err => {
       throw new PluginError('critical', err);
     })
-    .pipe(dest(dist));
+    .pipe(dest('dist'));
 
 const html = () =>
-  src(`${dist}/**/*.html`)
+  src('dist/**/*.html')
     .pipe(
       $.if(
         /\.html$/,
@@ -138,20 +134,20 @@ const html = () =>
         }),
       ),
     )
-    .pipe(dest(dist));
+    .pipe(dest('dist'));
 
 const images = () =>
-  src(`${dist}/img/**/*.{gif,jpeg,jpg,png,svg}`, { since: lastRun(images) })
+  src('dist/img/**/*.{gif,jpeg,jpg,png,svg}', { since: lastRun(images) })
     .pipe($.imagemin([$.imagemin.jpegtran({ progressive: true }), $.imagemin.optipng({ optimizationLevel: 5 })]))
-    .pipe(dest(dist));
+    .pipe(dest('dist/img/'));
 
 const revAssets = () =>
-  src([`${dist}/css/{,*/}*.css{,.map}`, `${dist}/js/{,*/}*.js{,.map}`], { base: dist })
-    .pipe(dest(dist))
+  src(['dist/css/{,*/}*.css{,.map}', 'dist/js/{,*/}*.js{,.map}'], { base: 'dist' })
+    .pipe(dest('dist'))
     .pipe(rev())
-    .pipe(dest(dist))
+    .pipe(dest('dist'))
     .pipe(rev.manifest())
-    .pipe(dest(dist));
+    .pipe(dest('dist'));
 
 const replaceAssets = () => {
   const replaceJsAndCssIfMap = filename => {
@@ -162,16 +158,16 @@ const replaceAssets = () => {
     return filename;
   };
 
-  return src([`${dist}/**/*.{js,css,html}`])
+  return src(['dist/**/*.{js,css,html}'])
     .pipe(
       revReplace({
-        manifest: src(`${dist}/rev-manifest.json`),
+        manifest: src('dist/rev-manifest.json'),
         replaceInExtensions: ['.js', '.css', '.html'],
         modifyUnreved: replaceJsAndCssIfMap,
         modifyReved: replaceJsAndCssIfMap,
       }),
     )
-    .pipe(dest(dist));
+    .pipe(dest('dist'));
 };
 
 const jekyllServe = done => {
@@ -206,7 +202,7 @@ gulp.task('webpack-serve', () => {
     notify: false,
     port: 9000,
     server: {
-      baseDir: [tmp, dist],
+      baseDir: ['.tmp', 'dist'],
     },
     middleware: [
       webpackDevMiddleware(devCompiler, {
@@ -218,11 +214,8 @@ gulp.task('webpack-serve', () => {
     reloadDebounce: 1000,
   });
 
-  watch([`${app}/**/*.html`, `${app}/img/**/*`]).on('change', series(jekyllServe));
-  watch([`${app}/_scss/**/*.scss`, `${app}/_js/**/*.js`, `${dist}/**/*.html`, `${dist}/img/**/*`]).on(
-    'change',
-    server.reload,
-  );
+  watch(['app/**/*.html', 'app/img/**/*']).on('change', series(jekyllServe));
+  watch(['app/_scss/**/*.scss', 'app/_js/**/*.js', 'dist/**/*.html', 'dist/img/**/*']).on('change', server.reload);
 });
 
 const serve = series(clean, jekyllServe, 'webpack-serve');
@@ -250,7 +243,7 @@ gulp.task(
       notify: false,
       port: 9000,
       server: {
-        baseDir: [dist],
+        baseDir: ['dist'],
       },
     }),
   ),

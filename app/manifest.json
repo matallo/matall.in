@@ -1,0 +1,21 @@
+{
+  "short_name": "matall.in",
+  "name": "Carlos Matallín",
+  "icons": [
+    {
+      "src": "/img/icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/img/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "background_color": "#f9f9f9",
+  "display": "standalone",
+  "scope": "/maps/",
+  "theme_color": "#000"
+}
