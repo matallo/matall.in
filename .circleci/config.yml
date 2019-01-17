@@ -59,11 +59,11 @@ jobs:
           name: Deploy to S3
           command: |
             if [ ${CIRCLE_BRANCH} == "master" ]; then
-              aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET} --delete --exclude "*" --include "*.html" --include "*.txt" --include "*.xml" --cache-control "max-age=0, public"
-              aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET} --delete --exclude "*" --include "*.ico" --include "*.png" --include "css/*" --include "js/*" --include "img/*" --cache-control "max-age=31536000, public" --expires $(date -d "+1 year" -u +%Y-%m-%dT%H:%M:%SZ)
+              aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET} --delete --exclude "*" --include "*.html" --include "*.ico" --include "sw.js" --include "manifest.json" --include "*.png" --include "*.txt" --include "*.xml" --include "img/*" --cache-control "max-age=0, public"
+              aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET} --delete --exclude "*" --include "css/*" --include "js/*" --cache-control "max-age=31536000, public" --expires $(date -d "+1 year" -u +%Y-%m-%dT%H:%M:%SZ)
             else
-              aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET_STAGING} --delete --exclude "*" --include "*.html" --include "*.txt" --include "*.xml" --cache-control "max-age=0, public"
-              aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET_STAGING} --delete --exclude "*" --include "*.ico" --include "*.png" --include "css/*" --include "js/*" --include "img/*" --cache-control "max-age=31536000, public" --expires $(date -d "+1 year" -u +%Y-%m-%dT%H:%M:%SZ)
+              aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET_STAGING} --delete --exclude "*" --include "*.html" --include "*.ico" --include "sw.js" --include "manifest.json" --include "*.png" --include "*.txt" --include "*.xml" --include "img/*" --cache-control "max-age=0, public"
+              aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET_STAGING} --delete --exclude "*" --include "css/*" --include "js/*" --cache-control "max-age=31536000, public" --expires $(date -d "+1 year" -u +%Y-%m-%dT%H:%M:%SZ)
             fi
 workflows:
   version: 2
