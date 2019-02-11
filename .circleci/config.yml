@@ -13,6 +13,9 @@ jobs:
       - NODE_ENV: production
     steps:
       - checkout
+      - run:
+          name: Set cache variable
+          command: date '+%Y-%m-%d' > ~/DATE
       - restore_cache:
           key: v1-bundle-{{ checksum "Gemfile.lock" }}
       - restore_cache:
@@ -45,7 +48,7 @@ jobs:
           paths:
             - ~/matall.in/node_modules
       - save_cache:
-          key: v1-assets-{{ .Environment.CIRCLE_SHA1 }}
+          key: v1-assets-{{ .Environment.CIRCLE_SHA1 }}-{{ checksum "~/DATE" }}
           paths:
             - ~/matall.in/dist
   deploy:
@@ -53,8 +56,11 @@ jobs:
     machine:
       enabled: true
     steps:
+      - run:
+          name: Set cache variable
+          command: date '+%Y-%m-%d' > ~/DATE
       - restore_cache:
-          key: v1-assets-{{ .Environment.CIRCLE_SHA1 }}
+          key: v1-assets-{{ .Environment.CIRCLE_SHA1 }}-{{ checksum "~/DATE" }}
       - run:
           name: Deploy to S3
           command: |
