@@ -1,5 +1,7 @@
 # matall.in
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/matallo/matall.in.svg)](https://greenkeeper.io/)
+
 This repo contains the source code for the personal website of [Carlos Matallín](https://matall.in/).
 
 ## Installation
