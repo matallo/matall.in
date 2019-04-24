@@ -75,7 +75,7 @@
     "gulp-rev-replace": "^0.4.4",
     "gulp-uglify": "^3.0.1",
     "html5shiv": "^3.7.3",
-    "husky": "^1.3.1",
+    "husky": "^2.0.0",
     "intersection-observer": "^0.5.1",
     "jest": "^24.1.0",
     "lazysizes": "^4.1.5",
