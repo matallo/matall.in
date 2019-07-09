@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "9000:9000"
+    command: "yarn start"
+    volumes:
+        - ./:/matall.in/
+        - /matall.in/node_modules
