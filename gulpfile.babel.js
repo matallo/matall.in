@@ -35,9 +35,13 @@ gulp.task('download', done => {
 
 gulp.task('jekyll-build', done =>
   childProcess
-    .spawn('bundle', ['exec', 'jekyll', 'build', '--config', '_config.yml,_config-prod.yml'], {
-      stdio: 'inherit',
-    })
+    .spawn(
+      'bundle',
+      ['exec', 'jekyll', 'build', '--config', '_config.yml,_config-prod.yml'],
+      {
+        stdio: 'inherit',
+      },
+    )
     .on('close', () => {
       done();
     })
@@ -138,11 +142,18 @@ const html = () =>
 
 const images = () =>
   src('dist/img/**/*.{gif,jpeg,jpg,png,svg}', { since: lastRun(images) })
-    .pipe($.imagemin([$.imagemin.jpegtran({ progressive: true }), $.imagemin.optipng({ optimizationLevel: 5 })]))
+    .pipe(
+      $.imagemin([
+        $.imagemin.jpegtran({ progressive: true }),
+        $.imagemin.optipng({ optimizationLevel: 5 }),
+      ]),
+    )
     .pipe(dest('dist/img/'));
 
 const revAssets = () =>
-  src(['dist/css/{,*/}*.css{,.map}', 'dist/js/{,*/}*.js{,.map}'], { base: 'dist' })
+  src(['dist/css/{,*/}*.css{,.map}', 'dist/js/{,*/}*.js{,.map}'], {
+    base: 'dist',
+  })
     .pipe(dest('dist'))
     .pipe(rev())
     .pipe(dest('dist'))
@@ -172,7 +183,9 @@ const replaceAssets = () => {
 
 const jekyllServe = done => {
   childProcess
-    .spawn('bundle', ['exec', 'jekyll', 'build', '--incremental'], { stdio: 'inherit' })
+    .spawn('bundle', ['exec', 'jekyll', 'build', '--incremental'], {
+      stdio: 'inherit',
+    })
     .on('close', () => {
       done();
     })
@@ -184,14 +197,21 @@ const jekyllServe = done => {
 gulp.task('webpack-serve', () => {
   const myDevConfig = merge(webpackConfig, {
     entry: {
-      'webpack-hot-middleware': ['webpack/hot/dev-server', 'webpack-hot-middleware/client'],
+      'webpack-hot-middleware': [
+        'webpack/hot/dev-server',
+        'webpack-hot-middleware/client',
+      ],
     },
     mode: 'development',
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.SourceMapDevToolPlugin({
         filename: '[file].map',
-        exclude: ['js/html5shiv.js', 'js/vendor.js', 'js/webpack-hot-middleware.js'],
+        exclude: [
+          'js/html5shiv.js',
+          'js/vendor.js',
+          'js/webpack-hot-middleware.js',
+        ],
       }),
     ],
   });
@@ -215,7 +235,12 @@ gulp.task('webpack-serve', () => {
   });
 
   watch(['app/**/*.html', 'app/img/**/*']).on('change', series(jekyllServe));
-  watch(['app/_scss/**/*.scss', 'app/_js/**/*.js', 'dist/**/*.html', 'dist/img/**/*']).on('change', server.reload);
+  watch([
+    'app/_scss/**/*.scss',
+    'app/_js/**/*.js',
+    'dist/**/*.html',
+    'dist/img/**/*',
+  ]).on('change', server.reload);
 });
 
 const serve = series(clean, jekyllServe, 'webpack-serve');

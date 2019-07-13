@@ -6,9 +6,9 @@
   "scripts": {
     "build": "gulp",
     "lint": "yarn run lint:js && yarn run lint:css",
-    "lint:js": "./node_modules/eslint/bin/eslint.js *.js app/_js/{**/,}*.js __tests__/spec/{**/,}*.js",
-    "lint:css": "./node_modules/stylelint/bin/stylelint.js 'app/_scss/{**/,}*.scss'",
-    "format": "./node_modules/lint-staged/bin/lint-staged",
+    "lint:js": "yarn run eslint *.js app/_js/{**/,}*.js __tests__/spec/{**/,}*.js",
+    "lint:css": "yarn run stylelint app/_scss/{**/,}*.scss",
+    "format": "yarn run prettier-eslint --write *.{js,json,md} app/_js/{**/,}*.js __tests__/spec/{**/,}*.js app/_scss/{**/,}*.scss",
     "start": "gulp serve",
     "test": "jest"
   },
@@ -30,12 +30,6 @@
   "private": true,
   "engines": {
     "node": ">=4"
-  },
-  "lint-staged": {
-    "*.{js,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
@@ -73,7 +67,6 @@
     "intersection-observer": "^0.7.0",
     "jest": "^24.1.0",
     "lazysizes": "^5.1.0",
-    "lint-staged": "^9.2.0",
     "mini-css-extract-plugin": "^0.7.0",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
@@ -82,6 +75,8 @@
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.5.0",
     "prettier": "^1.15.3",
+    "prettier-eslint": "^9.0.0",
+    "prettier-eslint-cli": "^5.0.0",
     "pretty-quick": "^1.11.1",
     "sass-loader": "^7.1.0",
     "scrollama": "^2.0.0",

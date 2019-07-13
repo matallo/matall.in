@@ -19,11 +19,11 @@ The website uses [gulp](https://gulpjs.com/) tasks for development, and [webpack
 
 In order to use Jekyll, you will need to have Ruby installed. There are several ways to [install Ruby](https://www.ruby-lang.org/en/documentation/installation/). You need to install [Bundler](http://bundler.io/) to install the dependencies. You'll need Node.js installed, and a package manager, such as [Yarn](https://yarnpkg.com/en/) or [npm](https://www.npmjs.com/).
 
-* Ruby
-* RubyGems
-* Bundler
-* Node.js
-* Yarn
+- Ruby
+- RubyGems
+- Bundler
+- Node.js
+- Yarn
 
 Once you have [Bundler](http://bundler.io/) and [Yarn](https://yarnpkg.com/en/) installed, use them to intall the dependencies:
 
@@ -81,18 +81,20 @@ docker-compose run --rm web yarn test
 
 Add `--coverage` option to show test coverage.
 
+### Format
+
+Before commiting files run [Prettier](https://prettier.io/) to format the code:
+
+```
+docker-compose run --rm web yarn format
+```
+
 ### Lint
 
 Finally, JS files can be checked with [ESLint](http://eslint.org/) to keep a consistent styleguide, running the following command in the terminal.
 
 ```
 docker-compose run --rm web yarn lint
-```
-
-When commiting files [Prettier](https://prettier.io/) will run to format code automatically. It can be launched manually, too:
-
-```
-docker-compose run --rm web yarn prettier '**/*.js' --write
 ```
 
 ### Update dependencies

@@ -49,7 +49,9 @@ const Scrollmap = class Scrollmap {
 
     svg
       .selectAll('.Route')
-      .data(feature(this.scrollmapFile, this.scrollmapFile.objects.routes).features)
+      .data(
+        feature(this.scrollmapFile, this.scrollmapFile.objects.routes).features,
+      )
       .enter()
       .append('path')
       .attr('class', d => `Route ${d.properties.display ? '' : 'is-hidden'}`)
@@ -57,15 +59,22 @@ const Scrollmap = class Scrollmap {
 
     svg
       .selectAll('.Route--story')
-      .data(feature(this.scrollmapFile, this.scrollmapFile.objects.routes).features)
+      .data(
+        feature(this.scrollmapFile, this.scrollmapFile.objects.routes).features,
+      )
       .enter()
       .append('path')
-      .attr('class', d => `Route Route--story js-Route js-Route--${d.properties.route}`)
+      .attr(
+        'class',
+        d => `Route Route--story js-Route js-Route--${d.properties.route}`,
+      )
       .attr('d', path);
 
     svg
       .selectAll('.City')
-      .data(feature(this.scrollmapFile, this.scrollmapFile.objects.cities).features)
+      .data(
+        feature(this.scrollmapFile, this.scrollmapFile.objects.cities).features,
+      )
       .enter()
       .append('path')
       .attr('class', d => `City js-City js-City--${d.properties.slug}`)
@@ -73,11 +82,19 @@ const Scrollmap = class Scrollmap {
 
     svg
       .selectAll('.City-label')
-      .data(feature(this.scrollmapFile, this.scrollmapFile.objects.cities).features)
+      .data(
+        feature(this.scrollmapFile, this.scrollmapFile.objects.cities).features,
+      )
       .enter()
       .append('text')
-      .attr('class', d => `City-label js-City-label js-City-label--${d.properties.slug}`)
-      .attr('transform', d => `translate(${projection(d.geometry.coordinates)})`)
+      .attr(
+        'class',
+        d => `City-label js-City-label js-City-label--${d.properties.slug}`,
+      )
+      .attr(
+        'transform',
+        d => `translate(${projection(d.geometry.coordinates)})`,
+      )
       .text(d => (d.properties.label ? d.properties.name : ''))
       .attr('dy', '1.5em')
       .attr('dx', (d, i, j) => (j[i].getBoundingClientRect().width / 2) * -1)
@@ -131,7 +148,10 @@ const Scrollmap = class Scrollmap {
             }
 
             mapTitles.forEach(mapTitle => {
-              select(`.js-City-label--${mapTitle.id}`).classed('is-visited', true);
+              select(`.js-City-label--${mapTitle.id}`).classed(
+                'is-visited',
+                true,
+              );
               selectAll(`.js-Route--${id}`).classed('is-active', true);
             });
           }
@@ -164,7 +184,10 @@ const Scrollmap = class Scrollmap {
       })
       .onContainerExit(response => {
         this.graphic.classList.remove('is-fixed');
-        this.graphic.classList.toggle('is-bottom', response.direction === 'down');
+        this.graphic.classList.toggle(
+          'is-bottom',
+          response.direction === 'down',
+        );
       });
 
     window.addEventListener('resize', scroller.resize());
