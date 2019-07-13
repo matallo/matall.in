@@ -8,7 +8,7 @@
     "lint": "yarn run lint:js && yarn run lint:css",
     "lint:js": "yarn run eslint *.js app/_js/{**/,}*.js __tests__/spec/{**/,}*.js",
     "lint:css": "yarn run stylelint app/_scss/{**/,}*.scss",
-    "format": "yarn run prettier-eslint --write *.{js,json,md} app/_js/{**/,}*.js __tests__/spec/{**/,}*.js app/_scss/{**/,}*.scss",
+    "format": "yarn run prettier-eslint --prettierLast --write *.{js,json,md} app/_js/{**/,}*.js __tests__/spec/{**/,}*.js app/_scss/{**/,}*.scss",
     "start": "gulp serve",
     "test": "jest"
   },
@@ -82,6 +82,7 @@
     "scrollama": "^2.0.0",
     "smoothscroll": "^0.4.0",
     "stylelint": "^10.1.0",
+    "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-property-sort-order-smacss": "^5.0.0",
     "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-config-standard": "^18.2.0",
