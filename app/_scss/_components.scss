@@ -1,26 +1,10 @@
 // Components
 // --------------------------------------------------
 
-@import
-  "components/aside",
-  "components/avatar",
-  "components/blockquote",
-  "components/blocks",
-  "components/buttons",
-  "components/cards",
-  "components/content",
-  "components/footer",
-  "components/footnotes",
-  "components/grid",
-  "components/header",
-  "components/icons",
-  "components/map",
-  "components/navbar",
-  "components/posts",
-  "components/sep",
-  "components/slideshow",
-  "components/social",
-  "components/stats",
-  "components/story",
-  "components/titles"
-;
+@import 'components/aside', 'components/avatar', 'components/blockquote',
+  'components/blocks', 'components/buttons', 'components/cards',
+  'components/content', 'components/footer', 'components/footnotes',
+  'components/grid', 'components/header', 'components/icons', 'components/map',
+  'components/navbar', 'components/posts', 'components/sep',
+  'components/slideshow', 'components/social', 'components/stats',
+  'components/story', 'components/titles';

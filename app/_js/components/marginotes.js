@@ -16,8 +16,12 @@ const Marginotes = class Marginotes {
     const footNotes = this.container.querySelectorAll('.js-Footnote');
 
     footNotes.forEach(footNote => {
-      footNote.addEventListener('mouseover', event => this.onMouseoverFootnote(event));
-      footNote.addEventListener('mouseout', event => this.onMouseoutFootnote(event));
+      footNote.addEventListener('mouseover', event =>
+        this.onMouseoverFootnote(event),
+      );
+      footNote.addEventListener('mouseout', event =>
+        this.onMouseoutFootnote(event),
+      );
     });
   }
 
