@@ -33,7 +33,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "docker-compose exec -T web lint-staged"
     }
   },
   "lint-staged": {
@@ -55,13 +55,13 @@
     "browser-sync": "^2.26.3",
     "critical": "^1.3.4",
     "css-loader": "^3.0.0",
-    "d3-geo": "^1.11.3",
+    "d3-geo": "^1.11.6",
     "d3-selection": "^1.3.2",
     "del": "^5.0.0",
     "eslint": "^6.0.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.12.3",
     "gulp": "^4.0.0",
