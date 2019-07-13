@@ -1,3 +1,12 @@
+.circleci
+.dockerignore
+.editorconfig
+.gitattributes
 .gitignore
+docker-compose.yml
+docker-entrypoint.yml
+Dockerfile
+dist
 node_modules
+README.md
 vendor
