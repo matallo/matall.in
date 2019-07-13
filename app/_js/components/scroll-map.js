@@ -80,7 +80,7 @@ const Scrollmap = class Scrollmap {
       .attr('transform', d => `translate(${projection(d.geometry.coordinates)})`)
       .text(d => (d.properties.label ? d.properties.name : ''))
       .attr('dy', '1.5em')
-      .attr('dx', (d, i, j) => j[i].getBoundingClientRect().width / 2 * -1)
+      .attr('dx', (d, i, j) => (j[i].getBoundingClientRect().width / 2) * -1)
       .on('click', d => {
         this.container.querySelector(`#${d.properties.slug}`).scrollIntoView({
           behavior: 'smooth',

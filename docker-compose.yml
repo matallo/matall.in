@@ -2,9 +2,17 @@ version: '3'
 services:
   web:
     build: .
+    command: bash -c "yarn build"
+    environment:
+      JEKYLL_ENV: "${JEKYLL_ENV:-production}"
+      NODE_ENV: "${NODE_ENV:-production}"
+    network_mode: "host"
     ports:
       - "9000:9000"
-    command: "yarn start"
     volumes:
-        - ./:/matall.in/
-        - /matall.in/node_modules
+      - ./:/matall.in/
+      - bundle:/matall.in/vendor/bundle
+      - yarn:/matall.in/node_modules
+volumes:
+  bundle:
+  yarn:

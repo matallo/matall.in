@@ -7,7 +7,6 @@ jobs:
     docker:
       - image: circleci/ruby:latest-node-browsers
         environment:
-          BUNDLER_VERSION: 2.0.1
           CHROME_BIN: "/usr/bin/google-chrome"
     environment:
       - NODE_ENV: production
@@ -20,20 +19,23 @@ jobs:
           key: v1-bundle-{{ checksum "Gemfile.lock" }}
       - restore_cache:
           key: v1-yarn-{{ checksum "yarn.lock" }}
-      - run: gem install bundler -v '2.0.1'
-      - run: bundle install --path vendor/bundle
-      - run: sudo yarn global add gulp-cli
-      - run: yarn install
+      - run:
+          name: Install dependencies
+          command: |
+            gem install bundler
+            sudo yarn global add gulp-cli
+            bundle install --path vendor/bundle
+            yarn install
       - run:
           name: Run linter
           command: yarn run lint
       - run:
           name: Run tests
           command: yarn run test
-      - run: bundle --path vendor/bundle
       - run:
           name: Build
           command: |
+            bundle --path vendor/bundle
             if [ ${CIRCLE_BRANCH} == "master" ]; then
               JEKYLL_ENV=production yarn run build
             else
