@@ -41,7 +41,7 @@ You should now have everything needed to run the website locally.
 
 You should have Docker and Compose properly installed on your machine.
 
-Running the website on Docker is as simple as `docker-compose run --rm web yarn start`. This downloads the Docker image, builds and starts the website, and exposes it on port 9090.
+Running the website on Docker is as simple as running `docker-compose up`. This downloads the Docker image, and builds the website.
 
 ## Usage
 
