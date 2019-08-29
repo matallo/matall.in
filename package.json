@@ -78,7 +78,7 @@
     "prettier-eslint": "^9.0.0",
     "prettier-eslint-cli": "^5.0.0",
     "pretty-quick": "^1.11.1",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "^8.0.0",
     "scrollama": "^2.0.0",
     "smoothscroll": "^0.4.0",
     "stylelint": "^10.1.0",
