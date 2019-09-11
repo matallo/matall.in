@@ -22,7 +22,7 @@ jobs:
             gem install bundler
             sudo yarn global add gulp-cli
             bundle install --path vendor/bundle
-            yarn install
+            yarn install --no-lockfile
       - run:
           name: Run linter
           command: yarn run lint
