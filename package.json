@@ -1,6 +1,6 @@
 {
   "name": "matall.in",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Personal website of Carlos Matallín",
   "main": "index.js",
   "scripts": {
