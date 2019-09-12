@@ -63,10 +63,6 @@ jobs:
       - run:
           name: Publish Release on GitHub
           command: gh-release -y
-      - persist_to_workspace:
-          root: .
-          paths:
-            - '*'
   deploy:
     <<: *defaults
     machine:
