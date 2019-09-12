@@ -59,12 +59,10 @@ jobs:
           at: .
       - run:
           name: Install dependencies
-          command: sudo yarn global add np
+          command: sudo yarn global add gh-release
       - run:
           name: Publish Release on GitHub
-          command: |
-            VERSION=$(node -p "require('./package.json').version")
-            np --yolo --no-release-draft ${VERSION}
+          command: gh-release -y
       - persist_to_workspace:
           root: .
           paths:
