@@ -9,12 +9,9 @@ jobs:
         environment:
           CHROME_BIN: "/usr/bin/google-chrome"
     environment:
-      - NODE_ENV: production
+      NODE_ENV: production
     steps:
       - checkout
-      - run:
-          name: Set cache variable
-          command: date '+%Y-%m-%d' > ~/DATE
       - restore_cache:
           key: v1-bundle-{{ checksum "Gemfile.lock" }}
       - restore_cache:
@@ -25,7 +22,7 @@ jobs:
             gem install bundler
             sudo yarn global add gulp-cli
             bundle install --path vendor/bundle
-            yarn install
+            yarn install --no-lockfile
       - run:
           name: Run linter
           command: yarn run lint
@@ -49,20 +46,30 @@ jobs:
           key: v1-yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/matall.in/node_modules
-      - save_cache:
-          key: v1-assets-{{ .Environment.CIRCLE_SHA1 }}-{{ checksum "~/DATE" }}
+      - persist_to_workspace:
+          root: .
           paths:
-            - ~/matall.in/dist
+            - '*'
+  release:
+    <<: *defaults
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Install dependencies
+          command: sudo yarn global add gh-release
+      - run:
+          name: Publish Release on GitHub
+          command: gh-release -y
   deploy:
     <<: *defaults
     machine:
       enabled: true
     steps:
-      - run:
-          name: Set cache variable
-          command: date '+%Y-%m-%d' > ~/DATE
-      - restore_cache:
-          key: v1-assets-{{ .Environment.CIRCLE_SHA1 }}-{{ checksum "~/DATE" }}
+      - attach_workspace:
+          at: .
       - run:
           name: Deploy to S3
           command: |
@@ -81,3 +88,9 @@ workflows:
       - deploy:
           requires:
             - build_and_test
+      - release:
+          requires:
+            - deploy
+          filters:
+            branches:
+              only: master
