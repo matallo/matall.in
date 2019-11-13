@@ -50,7 +50,7 @@ There are several tasks available to help you build and test the website. We'll 
 ### Run locally
 
 ```
-docker-compose run --rm web yarn start
+docker-compose run --rm -e JEKYLL_ENV=development web yarn start
 ```
 
 This will have Jekyll build the site, webpack compile the assets, run a static server to listen on port 9000 (which you can now reach at [http://localhost:9000/](http://localhost:9000/)), and watch for changes to site files. Every change will cause Jekyll to rebuild the affected files, webpack to compile the assets, and reload the page.
@@ -120,3 +120,6 @@ aws s3 sync --acl public-read dist/ s3://${AWS_BUCKET} --delete --exclude "*" --
 ```
 
 ## TODO
+
+- [Bump scrollama to 2.0.0+](https://pudding.cool/process/scrollytelling-sticky/)
+- [Serve ES2017 bundles to modern browsers](https://instagram-engineering.com/making-instagram-com-faster-code-size-and-execution-optimizations-part-4-57668be796a8)

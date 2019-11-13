@@ -1,6 +1,6 @@
 {
   "name": "matall.in",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "Personal website of Carlos Matallín",
   "main": "index.js",
   "scripts": {
@@ -79,7 +79,7 @@
     "prettier-eslint-cli": "^5.0.0",
     "pretty-quick": "^2.0.0",
     "sass-loader": "^8.0.0",
-    "scrollama": "^2.0.0",
+    "scrollama": "1.4.4",
     "smoothscroll": "^0.4.0",
     "stylelint": "^11.0.0",
     "stylelint-config-prettier": "^6.0.0",
