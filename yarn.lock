@@ -8163,10 +8163,10 @@ mimic-response@^1.0.0:
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-1.0.1.tgz#4923538878eef42063cb8a3e3b0798781487ab1b"
   integrity sha512-j5EctnkH7amfV/q5Hgmoal1g2QHFJRraOtmx0JpIqkxhBhI/lJSl1nMpQ45hVarwNETOoWEimndZ4QK0RHxuxQ==
 
-mini-css-extract-plugin@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-0.8.0.tgz#81d41ec4fe58c713a96ad7c723cdb2d0bd4d70e1"
-  integrity sha512-MNpRGbNA52q6U92i0qbVpQNsgk7LExy41MdAlG84FeytfDOtRIf/mCHdEgG8rpTKOaNKiqUnZdlptF469hxqOw==
+mini-css-extract-plugin@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-0.9.0.tgz#47f2cf07aa165ab35733b1fc97d4c46c0564339e"
+  integrity sha512-lp3GeY7ygcgAmVIcRPBVhIkf8Us7FZjA+ILpal44qLdSu11wmjKQ3d9k15lfD7pO4esu9eUIAW7qiYIBppv40A==
   dependencies:
     loader-utils "^1.1.0"
     normalize-url "1.9.1"
@@ -11159,10 +11159,10 @@ schema-utils@^2.0.0, schema-utils@^2.1.0:
     ajv "^6.10.2"
     ajv-keywords "^3.4.1"
 
-scrollama@1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/scrollama/-/scrollama-1.4.4.tgz#e0fd474e04c0be4c95d08280bdc2d636f619db59"
-  integrity sha512-okBTs3Wa0NJY6xoX6wXUWltorKe5N7tF2fF8y0oJIt6VFeGja461WXAODhxpKq+1Zy4gqKIG2nghDYukYqBD+Q==
+scrollama@2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/scrollama/-/scrollama-2.1.4.tgz#712084258e5466904980b881c7d8cf498b323590"
+  integrity sha512-bVc0TsghalmkKfLFh2W50RIGE16rEifDA5D9wked7EgZU22pa6hxnw0MeA6usUd/L11qReqVHPUVQPIQ4t1y4g==
 
 scss-tokenizer@^0.2.3:
   version "0.2.3"
