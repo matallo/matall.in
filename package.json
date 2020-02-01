@@ -52,7 +52,7 @@
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.12.3",
+    "eslint-plugin-react": "7.18.0",
     "gulp": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-download": "^0.0.1",
