@@ -8163,10 +8163,10 @@ mimic-response@^1.0.0:
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-1.0.1.tgz#4923538878eef42063cb8a3e3b0798781487ab1b"
   integrity sha512-j5EctnkH7amfV/q5Hgmoal1g2QHFJRraOtmx0JpIqkxhBhI/lJSl1nMpQ45hVarwNETOoWEimndZ4QK0RHxuxQ==
 
-mini-css-extract-plugin@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-0.8.0.tgz#81d41ec4fe58c713a96ad7c723cdb2d0bd4d70e1"
-  integrity sha512-MNpRGbNA52q6U92i0qbVpQNsgk7LExy41MdAlG84FeytfDOtRIf/mCHdEgG8rpTKOaNKiqUnZdlptF469hxqOw==
+mini-css-extract-plugin@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-0.9.0.tgz#47f2cf07aa165ab35733b1fc97d4c46c0564339e"
+  integrity sha512-lp3GeY7ygcgAmVIcRPBVhIkf8Us7FZjA+ILpal44qLdSu11wmjKQ3d9k15lfD7pO4esu9eUIAW7qiYIBppv40A==
   dependencies:
     loader-utils "^1.1.0"
     normalize-url "1.9.1"
@@ -11986,10 +11986,10 @@ stylelint-config-recommended@^3.0.0:
   resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-3.0.0.tgz#e0e547434016c5539fe2650afd58049a2fd1d657"
   integrity sha512-F6yTRuc06xr1h5Qw/ykb2LuFynJ2IxkKfCMf+1xqPffkxh0S09Zc902XCffcsw/XMFq/OzQ1w54fLIDtmRNHnQ==
 
-stylelint-config-standard@^19.0.0:
-  version "19.0.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-standard/-/stylelint-config-standard-19.0.0.tgz#66f0cf13f33b8a9e34965881493b38fc1313693a"
-  integrity sha512-VvcODsL1PryzpYteWZo2YaA5vU/pWfjqBpOvmeA8iB2MteZ/ZhI1O4hnrWMidsS4vmEJpKtjdhLdfGJmmZm6Cg==
+stylelint-config-standard@^20.0.0:
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-standard/-/stylelint-config-standard-20.0.0.tgz#06135090c9e064befee3d594289f50e295b5e20d"
+  integrity sha512-IB2iFdzOTA/zS4jSVav6z+wGtin08qfj+YyExHB3LF9lnouQht//YyB0KZq9gGz5HNPkddHOzcY8HsUey6ZUlA==
   dependencies:
     stylelint-config-recommended "^3.0.0"
 
